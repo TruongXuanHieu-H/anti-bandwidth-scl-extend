@@ -21,10 +21,6 @@ namespace SATABP
             cad_solver->add(lit);
         }
 
-        for (int cl : c)
-            std::cout << cl << " ";
-        std::cout << std::endl;
-
         cad_solver->add(0);
         clause_counter += 1;
     };

@@ -51,8 +51,6 @@ namespace SATABP
 
     void DuplexEncoder::seq_encode_column_eo()
     {
-        std::cout << "seq_encode_column_eo\n";
-
         for (unsigned i = 0; i < g->n; i++)
         {
             std::vector<int> label_node_eo(g->n);
@@ -85,8 +83,6 @@ namespace SATABP
 
     void DuplexEncoder::encode_column_eo()
     {
-        std::cout << "encode_column_eo\n";
-
         for (unsigned i = 0; i < g->n; i++)
         {
             std::vector<int> label_node_eo(g->n);
@@ -99,11 +95,6 @@ namespace SATABP
 
     void DuplexEncoder::product_encode_eo(const std::vector<int> &vars)
     {
-        std::cout << "product_encode_eo: ";
-        for (int var : vars)
-            std::cout << var << " ";
-        std::cout << std::endl;
-
         if (vars.size() < 2)
             return;
         if (vars.size() == 2)
@@ -149,11 +140,6 @@ namespace SATABP
 
     void DuplexEncoder::product_encode_amo(const std::vector<int> &vars)
     {
-        std::cout << "product_encode_amo: ";
-        for (int var : vars)
-            std::cout << var << " ";
-        std::cout << std::endl;
-
         if (vars.size() < 2)
             return;
         if (vars.size() == 2)
@@ -192,11 +178,6 @@ namespace SATABP
 
     void DuplexEncoder::seq_encode_amo(const std::vector<int> &vars)
     {
-        std::cout << "seq_encode_amo: ";
-        for (int var : vars)
-            std::cout << var << " ";
-        std::cout << std::endl;
-
         if (vars.size() < 2)
             return;
 
@@ -217,8 +198,6 @@ namespace SATABP
 
     void DuplexEncoder::construct_window_bdds(int w)
     {
-        std::cout << "construct_window_bdds with width: " << w << std::endl;
-
         number_of_windows = g->n / w;
         last_window_w = g->n % w;
         if (last_window_w != 0)
@@ -233,7 +212,6 @@ namespace SATABP
 
             for (unsigned gw = 0; gw < number_of_windows; ++gw)
             {
-                std::cout << "construct_window_bdds with width: " << w << "of window" << gw << std::endl;
                 bool last_window = (gw == number_of_windows - 1);
                 int p1 = (i * g->n) + (gw * w) + 1;
                 int p2 = p1 + w - 1;
@@ -306,7 +284,6 @@ namespace SATABP
 
     void DuplexEncoder::glue_window_bdds()
     {
-        std::cout << "glue_window_bdds\n";
         for (unsigned var_group = 0; var_group < g->n; ++var_group)
         {
             node_amz_literals[var_group] = std::vector<std::vector<int>>();
@@ -385,8 +362,6 @@ namespace SATABP
 
     void DuplexEncoder::glue_edge_windows(int node1, int node2)
     {
-        std::cout << "glue_edge_windows: " << node1 << " " << node2 << std::endl;
-
         assert(node_amz_literals[node1].size() == node_amz_literals[node2].size());
         for (unsigned i = 0; i < node_amz_literals[node1].size(); ++i)
         {
@@ -405,11 +380,6 @@ namespace SATABP
 
     BDD_id DuplexEncoder::build_amo(std::deque<unsigned int> vars)
     {
-        std::cout << "build_amo: ";
-        for (int var : vars)
-            std::cout << var << " ";
-        std::cout << std::endl;
-
         BDD_id lookup;
         int from = vars.front();
         int to = vars.back();
@@ -452,11 +422,6 @@ namespace SATABP
 
     BDD_id DuplexEncoder::build_amz(std::deque<unsigned int> vars)
     {
-        std::cout << "build_amz: ";
-        for (int var : vars)
-            std::cout << var << " ";
-        std::cout << std::endl;
-
         BDD_id lookup;
         int from = vars.front();
         int to = vars.back();
@@ -497,7 +462,6 @@ namespace SATABP
 
     void DuplexEncoder::make_equal_bdds(BDD_id b1, BDD_id b2)
     {
-        std::cout << "make_equal_bdds: " << b1 << " " << b2 << std::endl;
         if (b1 == b2)
             return;
         if (b1 == -1)

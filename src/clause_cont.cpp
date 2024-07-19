@@ -66,9 +66,6 @@ namespace SATABP
 
     void ClauseVector::do_add_clause(const Clause &c)
     {
-        for (int cl : c)
-            std::cout << cl << " ";
-        std::cout << std::endl;
         clause_list.push_back(c);
     };
 

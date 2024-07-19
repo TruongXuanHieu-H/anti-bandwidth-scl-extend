@@ -15,16 +15,18 @@
 */
 namespace SATABP
 {
-    bool is_debug_mode = true;
+    bool is_debug_mode = false;
 
     int vertices_aux_var = 0;
     int labels_aux_var = 0;
 
     // Use to save aux vars of LABELS and VERTICES constraints
     std::map<int, int> aux_vars = {};
+    int eo_constraints = 0;
 
     // Use to save aux vars of OBJ-K constraints
     std::map<std::pair<int, int>, int> obj_k_aux_vars;
+    int obj_k_constraints = 0;
 
     DuplexNSCEncoder::DuplexNSCEncoder(Graph *g, ClauseContainer *cc, VarHandler *vh) : Encoder(g, cc, vh)
     {
@@ -64,6 +66,8 @@ namespace SATABP
 
     void DuplexNSCEncoder::do_encode_antibandwidth(unsigned w, const std::vector<std::pair<int, int>> &node_pairs)
     {
+        eo_constraints = 0;
+        obj_k_constraints = 0;
         aux_vars.clear();
         obj_k_aux_vars.clear();
 
@@ -77,6 +81,8 @@ namespace SATABP
         // Prevent error when build due to unused variables
         (void)node_pairs;
         (void)w;
+        std::cout << "Aux var: " << aux_vars.size() << std::endl;
+        std::cout << "Obj k aux var: " << obj_k_aux_vars.size() << std::endl;
     };
 
     void DuplexNSCEncoder::encode_vertices()
@@ -174,10 +180,10 @@ namespace SATABP
             encode_stair(i, w);
         }
 
-        // for (auto edge : g->edges)
-        // {
-        //     glue_stair(edge.first - 1, edge.second - 1, w);
-        // }
+        for (auto edge : g->edges)
+        {
+            glue_stair(edge.first - 1, edge.second - 1, w);
+        }
 
         if (is_debug_mode)
         {
@@ -370,8 +376,6 @@ namespace SATABP
                 int reverse_var = stair * (int)g->n + (window + 1) * (int)w + i;
                 int var = stair * (int)g->n + window * (int)w + i + 1;
 
-                std::cout << first_reverse_var << " - " << reverse_var << " - " << last_var << " - " << var << std::endl;
-
                 cv->add_clause({-get_obj_k_aux_var(var, last_var), -get_obj_k_aux_var(first_reverse_var, reverse_var)});
             }
         }
@@ -385,55 +389,49 @@ namespace SATABP
                 int reverse_var = stair * (int)g->n + (window + 1) * (int)w + i;
                 int var = stair * (int)g->n + window * (int)w + i + 1;
 
-                std::cout << first_reverse_var << " - " << reverse_var << " - " << last_var << " - " << var << std::endl;
-
                 cv->add_clause({-get_obj_k_aux_var(var, last_var), -get_obj_k_aux_var(first_reverse_var, reverse_var)});
             }
         }
     }
 
-    // void DuplexNSCEncoder::glue_stair(int stair1, int stair2, unsigned w)
-    // {
-    //     if (is_debug_mode)
-    //         std::cout << "Glue stair " << stair1 << " with stair " << stair2 << std::endl;
-    //     int number_step = g->n - w + 1;
-    //     for (int i = 0; i < number_step; i++)
-    //     {
-    //         int mod = i % w;
-    //         int subset = i / w;
-    //         int firstVar, secondVar, thirdVar, forthVar;
-    //         if (mod == 0)
-    //         {
-    //             if (i < number_step - 1)
-    //             {
-    //                 std::cout << "test 1 - " << i << "\n";
-    //                 firstVar = stair1 * g->n + subset * w + 1;
-    //                 secondVar = registerBits[{stair1 * g->n + subset * w + 2, stair1 * g->n + subset * w + w}];
-    //                 thirdVar = stair2 * g->n + subset * w + 1;
-    //                 forthVar = registerBits[{stair2 * g->n + subset * w + 2, stair2 * g->n + subset * w + w}];
-    //             }
-    //             else
-    //             {
-
-    //                 std::cout << "test 2 - " << i << "\n";
-    //                 firstVar = stair1 * g->n + subset * w + w;
-    //                 secondVar = registerBits[{stair1 * g->n + subset * w + 1, stair1 * g->n + subset * w + w - 1}];
-    //                 thirdVar = stair2 * g->n + subset * w + w;
-    //                 forthVar = registerBits[{stair2 * g->n + subset * w + 1, stair2 * g->n + subset * w + w - 1}];
-    //             }
-    //         }
-    //         else
-    //         {
-    //             std::cout << "test 3 - " << i << "\n";
-    //             firstVar = registerBits[{stair1 * g->n + subset * w + 1 + mod, stair1 * g->n + subset * w + w}];
-    //             secondVar = registerBits[{stair1 * g->n + subset * w + w + 1, stair1 * g->n + subset * w + w + mod}];
-    //             thirdVar = registerBits[{stair2 * g->n + subset * w + 1 + mod, stair2 * g->n + subset * w + w}];
-    //             forthVar = registerBits[{stair2 * g->n + subset * w + w + 1, stair2 * g->n + subset * w + w + mod}];
-    //         }
-    //         cv->add_clause({-firstVar, -thirdVar});
-    //         cv->add_clause({-firstVar, -forthVar});
-    //         cv->add_clause({-secondVar, -thirdVar});
-    //         cv->add_clause({-secondVar, -forthVar});
-    //     }
-    // }
+    void DuplexNSCEncoder::glue_stair(int stair1, int stair2, unsigned w)
+    {
+        if (is_debug_mode)
+            std::cout << "Glue stair " << stair1 << " with stair " << stair2 << std::endl;
+        int number_step = g->n - w + 1;
+        for (int i = 0; i < number_step; i++)
+        {
+            int mod = i % w;
+            int subset = i / w;
+            int firstVar, secondVar, thirdVar, forthVar;
+            if (mod == 0)
+            {
+                if (i < number_step - 1)
+                {
+                    firstVar = stair1 * g->n + subset * w + 1;
+                    secondVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 2, stair1 * g->n + subset * w + w);
+                    thirdVar = stair2 * g->n + subset * w + 1;
+                    forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 2, stair2 * g->n + subset * w + w);
+                }
+                else
+                {
+                    firstVar = stair1 * g->n + subset * w + w;
+                    secondVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1, stair1 * g->n + subset * w + w - 1);
+                    thirdVar = stair2 * g->n + subset * w + w;
+                    forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1, stair2 * g->n + subset * w + w - 1);
+                }
+            }
+            else
+            {
+                firstVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1 + mod, stair1 * g->n + subset * w + w);
+                secondVar = get_obj_k_aux_var(stair1 * g->n + subset * w + w + 1, stair1 * g->n + subset * w + w + mod);
+                thirdVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1 + mod, stair2 * g->n + subset * w + w);
+                forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + w + 1, stair2 * g->n + subset * w + w + mod);
+            }
+            cv->add_clause({-firstVar, -thirdVar});
+            cv->add_clause({-firstVar, -forthVar});
+            cv->add_clause({-secondVar, -thirdVar});
+            cv->add_clause({-secondVar, -forthVar});
+        }
+    }
 }
