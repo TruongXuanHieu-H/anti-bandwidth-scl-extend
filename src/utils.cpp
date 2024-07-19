@@ -187,5 +187,4 @@ namespace SATABP
     {
         return next_to_assign - first_assigned_id;
     };
-
 }

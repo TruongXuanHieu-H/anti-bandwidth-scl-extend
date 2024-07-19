@@ -17,15 +17,8 @@ namespace SATABP
 
         int do_vars_size() const final;
 
-        /*
-         *  Get actual aux var to push into solver from aux var deducted from encoding method
-         */
-        int GetEncodedAuxVar(int symbolicAuxVar);
-
-        /*
-         *  Get number of aux var requires to encode a single stair
-         */
-        int GetAuxVarPerStair(unsigned w);
+        int get_aux_var(int symbolicAuxVar);
+        int get_obj_k_aux_var(int first, int last);
 
         void encode_vertices();
         void encode_labels();
