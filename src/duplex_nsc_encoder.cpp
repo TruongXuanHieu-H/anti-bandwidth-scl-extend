@@ -201,12 +201,12 @@ namespace SATABP
             encode_window(gw, stair, w);
         }
 
-        // for (int gw = 0; gw < ceil((float)g->n / w) - 1; gw++)
-        // {
-        //     if (is_debug_mode)
-        //         std::cout << "Glue window " << gw << " with window " << gw + 1 << std::endl;
-        //     glue_window(gw, stair, w);
-        // }
+        for (int gw = 0; gw < ceil((float)g->n / w) - 1; gw++)
+        {
+            if (is_debug_mode)
+                std::cout << "Glue window " << gw << " with window " << gw + 1 << std::endl;
+            glue_window(gw, stair, w);
+        }
     }
 
     /*
@@ -336,44 +336,61 @@ namespace SATABP
         }
     }
 
-    // /*
-    //  * Glue adjacent windows with each other.
-    //  * Using lower part of the previous window and upper part of the next window
-    //  * as anchor points to glue.
-    //  */
-    // void DuplexNSCEncoder::glue_window(int window, int stair, unsigned w)
-    // {
-    //     int auxStartVarLP = obj_k_aux_var + stair * auxVarPerStair + auxVarPerStair / 2;
-    //     int auxStartVarUP = obj_k_aux_var + stair * auxVarPerStair;
+    /*
+     * Glue adjacent windows with each other.
+     * Using lower part of the previous window and upper part of the next window
+     * as anchor points to glue.
+     */
+    void DuplexNSCEncoder::glue_window(int window, int stair, unsigned w)
+    {
+        /*  The stair look like this:
+         *      Window 1        Window 2        Window 3        Window 4
+         *      1   2   3   |               |               |
+         *          2   3   |   4           |               |
+         *              3   |   4   5       |               |
+         *                  |   4   5   6   |               |
+         *                  |       5   6   |   7           |
+         *                  |           6   |   7   8       |
+         *                  |               |   7   8   9   |
+         *                  |               |       8   9   |   10
+         *                  |               |           9   |   10  11
+         *
+         * If the next window has width of w, then we only encode w - 1 register bits (because
+         * NSC only define w - 1 register bits), else we encode using number of register bit
+         * equal to width of the next window.
+         */
+        if ((window + 2) * w > g->n)
+        {
+            int real_w = g->n % w;
+            for (int i = 1; i <= real_w; i++)
+            {
+                int first_reverse_var = stair * (int)g->n + (window + 1) * (int)w + 1;
+                int last_var = stair * (int)g->n + window * (int)w + w;
 
-    //     /*  The stair look like this:
-    //      *      Window 1        Window 2        Window 3        Window 4
-    //      *      1   2   3   |               |               |
-    //      *          2   3   |   4           |               |
-    //      *              3   |   4   5       |               |
-    //      *                  |   4   5   6   |               |
-    //      *                  |       5   6   |   7           |
-    //      *                  |           6   |   7   8       |
-    //      *                  |               |   7   8   9   |
-    //      *                  |               |       8   9   |   10
-    //      *                  |               |           9   |   10  11
-    //      *
-    //      * If the next window has width of w, then we only encode w - 1 register bits (because
-    //      * NSC only define w - 1 register bits), else we encode using number of register bit
-    //      * equal to width of the next window.
-    //      */
-    //     int real_w = w - 1;
-    //     if ((window + 1) * w > g->n)
-    //         real_w = g->n % w;
+                int reverse_var = stair * (int)g->n + (window + 1) * (int)w + i;
+                int var = stair * (int)g->n + window * (int)w + i + 1;
 
-    //     for (int i = 1; i <= real_w; i++)
-    //     {
-    //         int reverse_var = stair * (int)g->n + (window + 1) * (int)w + real_w - i + 1;
-    //         int var = stair * (int)g->n + window * (int)w + w - i + 1;
+                std::cout << first_reverse_var << " - " << reverse_var << " - " << last_var << " - " << var << std::endl;
 
-    //         cv->add_clause({-get_aux_var(auxStartVarLP + var), -get_aux_var(auxStartVarUP + reverse_var)});
-    //     }
-    // }
+                cv->add_clause({-get_obj_k_aux_var(var, last_var), -get_obj_k_aux_var(first_reverse_var, reverse_var)});
+            }
+        }
+        else
+        {
+            for (int i = 1; i < (int)w; i++)
+            {
+                int first_reverse_var = stair * (int)g->n + (window + 1) * (int)w + 1;
+                int last_var = stair * (int)g->n + window * (int)w + w;
+
+                int reverse_var = stair * (int)g->n + (window + 1) * (int)w + i;
+                int var = stair * (int)g->n + window * (int)w + i + 1;
+
+                std::cout << first_reverse_var << " - " << reverse_var << " - " << last_var << " - " << var << std::endl;
+
+                cv->add_clause({-get_obj_k_aux_var(var, last_var), -get_obj_k_aux_var(first_reverse_var, reverse_var)});
+            }
+        }
+    }
 
     // void DuplexNSCEncoder::glue_stair(int stair1, int stair2, unsigned w)
     // {
