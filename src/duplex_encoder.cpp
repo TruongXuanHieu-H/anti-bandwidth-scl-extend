@@ -8,7 +8,6 @@
 
 namespace SATABP
 {
-
     DuplexEncoder::DuplexEncoder(Graph *g, ClauseContainer *cc, VarHandler *vh)
         : Encoder(g, cc, vh)
     {
@@ -34,6 +33,11 @@ namespace SATABP
 
     void DuplexEncoder::do_encode_antibandwidth(unsigned w, const std::vector<std::pair<int, int>> &node_pairs)
     {
+        num_l_v_constraints = 0;
+        num_obj_k_constraints = 0;
+        num_l_v_aux_vars = 0;
+        num_obj_k_aux_vars = 0;
+
         encode_symmetry_break();
 
         construct_window_bdds(w);
@@ -47,6 +51,11 @@ namespace SATABP
         node_amz_literals.clear();
 
         encode_column_eo();
+
+        std::cout << "Labels and Vertices aux var: " << num_l_v_aux_vars << std::endl;
+        std::cout << "Labels and Vertices constraints:  " << num_l_v_constraints << std::endl;
+        std::cout << "Obj k aux var: " << num_obj_k_aux_vars << std::endl;
+        std::cout << "Obj k constraints: " << num_obj_k_constraints << std::endl;
     };
 
     void DuplexEncoder::seq_encode_column_eo()
@@ -67,17 +76,23 @@ namespace SATABP
             {
                 int curr = *i_pos;
                 int next = vh->get_new_var();
+                num_l_v_aux_vars++;
                 cv->add_clause({-1 * prev, -1 * curr});
+                num_l_v_constraints++;
                 cv->add_clause({-1 * prev, next});
+                num_l_v_constraints++;
                 cv->add_clause({-1 * curr, next});
+                num_l_v_constraints++;
 
                 or_clause.push_back(curr);
                 prev = next;
             }
             cv->add_clause({-1 * prev, -1 * (*std::prev(it_end))});
+            num_l_v_constraints++;
 
             or_clause.push_back(*std::prev(it_end));
             cv->add_clause(or_clause);
+            num_l_v_constraints++;
         }
     };
 
@@ -101,7 +116,9 @@ namespace SATABP
         {
             // simplifies to vars[0] /\ -1*vars[0], in case vars[0] == vars[1]
             cv->add_clause({vars[0], vars[1]});
+            num_l_v_constraints++;
             cv->add_clause({-1 * vars[0], -1 * vars[1]});
+            num_l_v_constraints++;
             return;
         }
 
@@ -112,9 +129,15 @@ namespace SATABP
         std::vector<int> u_vars;
         std::vector<int> v_vars;
         for (int i = 1; i <= p; ++i)
+        {
             u_vars.push_back(vh->get_new_var());
+            num_l_v_aux_vars++;
+        }
         for (int j = 1; j <= q; ++j)
+        {
             v_vars.push_back(vh->get_new_var());
+            num_l_v_aux_vars++;
+        }
 
         int i, j;
         std::vector<int> or_clause = std::vector<int>();
@@ -124,11 +147,14 @@ namespace SATABP
             j = idx % p;
 
             cv->add_clause({-1 * vars[idx], v_vars[i]});
+            num_l_v_constraints++;
             cv->add_clause({-1 * vars[idx], u_vars[j]});
+            num_l_v_constraints++;
 
             or_clause.push_back(vars[idx]);
         }
         cv->add_clause(or_clause);
+        num_l_v_constraints++;
 
         // Similar results (faster on small instances, slightly worse on large)
         // product_encode_amo(u_vars);
@@ -147,6 +173,7 @@ namespace SATABP
             if (vars[0] == vars[1])
                 return;
             cv->add_clause({-1 * vars[0], -1 * vars[1]});
+            num_l_v_constraints++;
             return;
         }
 
@@ -157,9 +184,15 @@ namespace SATABP
         std::vector<int> u_vars;
         std::vector<int> v_vars;
         for (int i = 1; i <= p; ++i)
+        {
             u_vars.push_back(vh->get_new_var());
+            num_l_v_aux_vars++;
+        }
         for (int j = 1; j <= q; ++j)
+        {
             v_vars.push_back(vh->get_new_var());
+            num_l_v_aux_vars++;
+        }
 
         int i, j;
 
@@ -169,7 +202,9 @@ namespace SATABP
             j = idx % p;
 
             cv->add_clause({-1 * vars[idx], v_vars[i]});
+            num_l_v_constraints++;
             cv->add_clause({-1 * vars[idx], u_vars[j]});
+            num_l_v_constraints++;
         }
 
         product_encode_amo(u_vars);
@@ -187,13 +222,18 @@ namespace SATABP
         {
             int curr = vars[idx];
             int next = vh->get_new_var();
+            num_l_v_aux_vars++;
             cv->add_clause({-1 * prev, -1 * curr});
+            num_l_v_constraints++;
             cv->add_clause({-1 * prev, next});
+            num_l_v_constraints++;
             cv->add_clause({-1 * curr, next});
+            num_l_v_constraints++;
 
             prev = next;
         }
         cv->add_clause({-1 * prev, -1 * vars[vars.size() - 1]});
+        num_l_v_constraints++;
     };
 
     void DuplexEncoder::construct_window_bdds(int w)
@@ -261,7 +301,10 @@ namespace SATABP
                 }
 
                 if (window_vars.size() > 1)
+                {
                     cv->add_clause({fwd_amo_id});
+                    num_obj_k_constraints++;
+                }
             }
 
             assert(!fwd_amz_roots[i].empty());
@@ -274,11 +317,15 @@ namespace SATABP
                 for (unsigned g = f + 1; g < fwd_amz_roots[i].size(); ++g)
                 {
                     cv->add_clause({fwd_amz_roots[i][f], fwd_amz_roots[i][g]});
+                    num_l_v_constraints++;
                 }
             }
             amz_clause.push_back(-1 * fwd_amz_roots[i].back());
             if (!amz_clause.empty())
+            {
                 cv->add_clause(amz_clause);
+                num_l_v_constraints++;
+            }
         }
     };
 
@@ -307,10 +354,12 @@ namespace SATABP
                 if (fwd_from != fwd_to)
                 {
                     cv->add_clause({curr_fwd_amo});
+                    num_obj_k_constraints++;
                 }
                 if (bwd_from != bwd_to)
                 {
                     cv->add_clause({next_bwd_amo});
+                    num_obj_k_constraints++;
                 }
 
                 std::deque<int> fwd_window(fwd_to - fwd_from + 1);
@@ -342,13 +391,16 @@ namespace SATABP
                     if (fwd_window.size() > 1)
                     {
                         cv->add_clause({b1_amo});
+                        num_obj_k_constraints++;
                     }
                     if (bwd_window.size() > 1)
                     {
                         cv->add_clause({b2_amo});
+                        num_obj_k_constraints++;
                     }
 
                     cv->add_clause({b1_amz, b2_amz});
+                    num_obj_k_constraints++;
 
                     node_amz_literals[var_group].push_back({b1_amz, b2_amz});
 
@@ -373,6 +425,7 @@ namespace SATABP
                 for (unsigned d = 0; d < node2_amz_clause.size(); ++d)
                 {
                     cv->add_clause({node1_amz_clause[c], node2_amz_clause[d]});
+                    num_obj_k_constraints++;
                 }
             }
         }
@@ -402,14 +455,17 @@ namespace SATABP
         else
         {
             new_bdd.id = vh->get_new_var();
+            num_obj_k_aux_vars++;
             vars.pop_front();
             false_child = build_amo(vars);
             true_child = build_amz(vars);
 
             cv->add_clause({-1 * from, -1 * new_bdd.id, true_child});
+            num_obj_k_constraints++;
             if (vars.size() > 1)
             {
                 cv->add_clause({new_bdd.id * -1, false_child});
+                num_obj_k_constraints++;
             }
         }
 
@@ -444,13 +500,17 @@ namespace SATABP
         else
         {
             new_bdd.id = vh->get_new_var();
+            num_obj_k_aux_vars++;
             true_child = 0; //\bot BDD
             vars.pop_front();
             false_child = build_amz(vars);
 
             cv->add_clause({-1 * from, -1 * new_bdd.id});
+            num_obj_k_constraints++;
             cv->add_clause({from, -1 * new_bdd.id, false_child});
+            num_obj_k_constraints++;
             cv->add_clause({from, new_bdd.id, -1 * false_child});
+            num_obj_k_constraints++;
         }
 
         new_bdd.true_child_id = true_child;
@@ -467,19 +527,23 @@ namespace SATABP
         if (b1 == -1)
         {
             cv->add_clause({b2});
+            num_obj_k_constraints++;
             return;
         }
 
         if (b2 == -1)
         {
             cv->add_clause({b1});
+            num_obj_k_constraints++;
             return;
         }
 
         assert(b1 > 0 && b2 > 0);
 
         cv->add_clause({-1 * b1, b2});
+        num_obj_k_constraints++;
         cv->add_clause({b1, -1 * b2});
+        num_obj_k_constraints++;
     };
 
 }

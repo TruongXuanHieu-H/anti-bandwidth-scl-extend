@@ -2,11 +2,10 @@
 #include "math_extension.h"
 
 #include <iostream>
-#include <numeric>   //iota
-#include <algorithm> //reverse
+#include <numeric>
+#include <algorithm>
 #include <assert.h>
-#include <cmath> //floor,ceil
-#include <map>
+#include <cmath>
 
 /*
     Find more details about New Sequential Counter Encoding in
@@ -15,19 +14,6 @@
 */
 namespace SATABP
 {
-    bool is_debug_mode = false;
-
-    int vertices_aux_var = 0;
-    int labels_aux_var = 0;
-
-    // Use to save aux vars of LABELS and VERTICES constraints
-    std::map<int, int> aux_vars = {};
-    int eo_constraints = 0;
-
-    // Use to save aux vars of OBJ-K constraints
-    std::map<std::pair<int, int>, int> obj_k_aux_vars;
-    int obj_k_constraints = 0;
-
     DuplexNSCEncoder::DuplexNSCEncoder(Graph *g, ClauseContainer *cc, VarHandler *vh) : Encoder(g, cc, vh)
     {
     }
@@ -71,6 +57,9 @@ namespace SATABP
         aux_vars.clear();
         obj_k_aux_vars.clear();
 
+        num_l_v_constraints = 0;
+        num_obj_k_constraints = 0;
+
         vertices_aux_var = g->n * g->n;
         labels_aux_var = vertices_aux_var + g->n * g->n;
 
@@ -81,8 +70,10 @@ namespace SATABP
         // Prevent error when build due to unused variables
         (void)node_pairs;
         (void)w;
-        std::cout << "Aux var: " << aux_vars.size() << std::endl;
+        std::cout << "Labels and Vertices aux var: " << aux_vars.size() << std::endl;
+        std::cout << "Labels and Vertices constraints:  " << num_l_v_constraints << std::endl;
         std::cout << "Obj k aux var: " << obj_k_aux_vars.size() << std::endl;
+        std::cout << "Obj k constraints: " << num_obj_k_constraints << std::endl;
     };
 
     void DuplexNSCEncoder::encode_vertices()
@@ -102,7 +93,7 @@ namespace SATABP
 
             std::generate(node_vertices_eo.begin(), node_vertices_eo.end(), [this, &j, i]()
                           { return (j++ * g->n) + i + 1; });
-            encode_exactly_one(node_vertices_eo, vertices_aux_var + i * g->n);
+            encode_exactly_one_NSC(node_vertices_eo, vertices_aux_var + i * g->n);
         }
     }
 
@@ -120,11 +111,11 @@ namespace SATABP
         {
             std::vector<int> node_labels_eo(g->n);
             std::iota(node_labels_eo.begin(), node_labels_eo.end(), (i * g->n) + 1);
-            encode_exactly_one(node_labels_eo, labels_aux_var + i * g->n);
+            encode_exactly_one_NSC(node_labels_eo, labels_aux_var + i * g->n);
         }
     }
 
-    void DuplexNSCEncoder::encode_exactly_one(std::vector<int> listVars, int auxVar)
+    void DuplexNSCEncoder::encode_exactly_one_NSC(std::vector<int> listVars, int auxVar)
     {
         // Exactly one variables in listVars is True
         // Using NSC to encode AMO and ALO, EO = AMO and ALO
@@ -137,6 +128,7 @@ namespace SATABP
         for (int i = 1; i <= listVarsSize - 1; i++)
         {
             cv->add_clause({-listVars[i - 1], get_aux_var(auxVar + i)});
+            num_l_v_constraints++;
         }
 
         // Constraint 2: R(i-1, 1) -> R(i, 1) for i in [2, n - 1]
@@ -144,6 +136,7 @@ namespace SATABP
         for (int i = 2; i <= listVarsSize - 1; i++)
         {
             cv->add_clause({-(get_aux_var(auxVar + i - 1)), get_aux_var(auxVar + i)});
+            num_l_v_constraints++;
         }
 
         // Constraint 3: Since k = 1 (Exactly 1 constraint), this constraint is empty and then skipped.
@@ -153,23 +146,27 @@ namespace SATABP
         for (int i = 2; i <= listVarsSize - 1; i++)
         {
             cv->add_clause({listVars[i - 1], get_aux_var(auxVar + i - 1), -(get_aux_var(auxVar + i))});
+            num_l_v_constraints++;
         }
 
         // Constraint 5: not(X1) -> not(R(1,1))
         // In CNF: X1 or not(R(1,1))
         cv->add_clause({listVars[0], -(get_aux_var(auxVar + 1))});
+        num_l_v_constraints++;
 
         // Constraint 6: Since k = 1 (Exactly 1 constraint), this constraint is empty and then skipped.
 
         // Constraint 7: (At Least k) R(n-1, 1) or Xn
         // In CNF: R(n-1, 1) or Xn
         cv->add_clause({get_aux_var(auxVar + listVarsSize - 1), listVars[listVarsSize - 1]});
+        num_l_v_constraints++;
 
         // Constraint 8: (At Most k) Xi -> not(R(i-1,1)) for i in [k + 1, n]
         // In CNF: not(Xi) or not(R(i-1,1))
         for (int i = 2; i <= listVarsSize; i++)
         {
             cv->add_clause({-listVars[i - 1], -(get_aux_var(auxVar + i - 1))});
+            num_l_v_constraints++;
         }
     }
 
@@ -232,18 +229,21 @@ namespace SATABP
             {
                 int var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-var, get_obj_k_aux_var(var, lastVar)});
+                num_obj_k_constraints++;
             }
 
             for (int i = w; i > 2; i--)
             {
                 int var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-get_obj_k_aux_var(var, lastVar), get_obj_k_aux_var(var - 1, lastVar)});
+                num_obj_k_constraints++;
             }
 
             for (int i = 1; i < (int)w; i++)
             {
                 int var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-var, -get_obj_k_aux_var(var + 1, lastVar)});
+                num_obj_k_constraints++;
             }
         }
         else if (window == ceil((float)g->n / w) - 1)
@@ -259,18 +259,21 @@ namespace SATABP
                 {
                     int reverse_var = stair * (int)g->n + window * (int)w + i;
                     cv->add_clause({-reverse_var, get_obj_k_aux_var(firstVar, reverse_var)});
+                    num_obj_k_constraints++;
                 }
 
                 for (int i = real_w - 1; i > 0; i--)
                 {
                     int reverse_var = stair * (int)g->n + window * (int)w + real_w - i;
                     cv->add_clause({-get_obj_k_aux_var(firstVar, reverse_var), get_obj_k_aux_var(firstVar, reverse_var + 1)});
+                    num_obj_k_constraints++;
                 }
 
                 for (int i = real_w; i > 1; i--)
                 {
                     int reverse_var = stair * (int)g->n + window * (int)w + i;
                     cv->add_clause({-reverse_var, -get_obj_k_aux_var(firstVar, reverse_var - 1)});
+                    num_obj_k_constraints++;
                 }
             }
             else
@@ -280,18 +283,21 @@ namespace SATABP
                 {
                     int reverse_var = stair * (int)g->n + window * (int)w + i;
                     cv->add_clause({-reverse_var, get_obj_k_aux_var(firstVar, reverse_var)});
+                    num_obj_k_constraints++;
                 }
 
                 for (int i = w - 1; i > 1; i--)
                 {
                     int reverse_var = stair * (int)g->n + window * (int)w + w - i;
                     cv->add_clause({-get_obj_k_aux_var(firstVar, reverse_var), get_obj_k_aux_var(firstVar, reverse_var + 1)});
+                    num_obj_k_constraints++;
                 }
 
                 for (int i = (int)w; i > 1; i--)
                 {
                     int reverse_var = stair * (int)g->n + window * (int)w + i;
                     cv->add_clause({-reverse_var, -get_obj_k_aux_var(firstVar, reverse_var - 1)});
+                    num_obj_k_constraints++;
                 }
             }
         }
@@ -305,18 +311,21 @@ namespace SATABP
             {
                 int reverse_var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-reverse_var, get_obj_k_aux_var(firstVar, reverse_var)});
+                num_obj_k_constraints++;
             }
 
             for (int i = w - 1; i > 1; i--)
             {
                 int reverse_var = stair * (int)g->n + window * (int)w + w - i;
                 cv->add_clause({-get_obj_k_aux_var(firstVar, reverse_var), get_obj_k_aux_var(firstVar, reverse_var + 1)});
+                num_obj_k_constraints++;
             }
 
             for (int i = (int)w; i > 1; i--)
             {
                 int reverse_var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-reverse_var, -get_obj_k_aux_var(firstVar, reverse_var - 1)});
+                num_obj_k_constraints++;
             }
 
             // Lower part
@@ -325,12 +334,14 @@ namespace SATABP
             {
                 int var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-var, get_obj_k_aux_var(var, lastVar)});
+                num_obj_k_constraints++;
             }
 
             for (int i = w; i > 2; i--)
             {
                 int var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-get_obj_k_aux_var(var, lastVar), get_obj_k_aux_var(var - 1, lastVar)});
+                num_obj_k_constraints++;
             }
 
             // Can be disable
@@ -338,6 +349,7 @@ namespace SATABP
             // {
             //     int var = stair * (int)g->n + window * (int)w + i;
             //     cv->add_clause({-var, -GetEncodedAuxVar(auxStartVarLP + var + 1)});
+            //     num_obj_k_constraints++;
             // }
         }
     }
@@ -377,6 +389,7 @@ namespace SATABP
                 int var = stair * (int)g->n + window * (int)w + i + 1;
 
                 cv->add_clause({-get_obj_k_aux_var(var, last_var), -get_obj_k_aux_var(first_reverse_var, reverse_var)});
+                num_obj_k_constraints++;
             }
         }
         else
@@ -390,6 +403,7 @@ namespace SATABP
                 int var = stair * (int)g->n + window * (int)w + i + 1;
 
                 cv->add_clause({-get_obj_k_aux_var(var, last_var), -get_obj_k_aux_var(first_reverse_var, reverse_var)});
+                num_obj_k_constraints++;
             }
         }
     }
@@ -429,9 +443,13 @@ namespace SATABP
                 forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + w + 1, stair2 * g->n + subset * w + w + mod);
             }
             cv->add_clause({-firstVar, -thirdVar});
+            num_obj_k_constraints++;
             cv->add_clause({-firstVar, -forthVar});
+            num_obj_k_constraints++;
             cv->add_clause({-secondVar, -thirdVar});
+            num_obj_k_constraints++;
             cv->add_clause({-secondVar, -forthVar});
+            num_obj_k_constraints++;
         }
     }
 }
