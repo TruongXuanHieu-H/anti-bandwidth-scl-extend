@@ -42,6 +42,8 @@ namespace SATABP
         void encode_vertices();
         void encode_labels();
         void encode_exactly_one_NSC(std::vector<int> listVars, int auxVar);
+        void encode_exactly_one_product(const std::vector<int> &vars);
+        void encode_amo_seq(const std::vector<int> &vars);
 
         void encode_obj_k(unsigned w);
         void encode_stair(int stair, unsigned w);

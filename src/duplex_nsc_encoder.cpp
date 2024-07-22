@@ -14,6 +14,8 @@
 */
 namespace SATABP
 {
+    bool isUsingProductAndSEQ = true;
+
     DuplexNSCEncoder::DuplexNSCEncoder(Graph *g, ClauseContainer *cc, VarHandler *vh) : Encoder(g, cc, vh)
     {
     }
@@ -93,7 +95,13 @@ namespace SATABP
 
             std::generate(node_vertices_eo.begin(), node_vertices_eo.end(), [this, &j, i]()
                           { return (j++ * g->n) + i + 1; });
-            encode_exactly_one_NSC(node_vertices_eo, vertices_aux_var + i * g->n);
+
+            if (isUsingProductAndSEQ)
+            {
+                encode_exactly_one_product(node_vertices_eo);
+            }
+            else
+                encode_exactly_one_NSC(node_vertices_eo, vertices_aux_var + i * g->n);
         }
     }
 
@@ -111,7 +119,13 @@ namespace SATABP
         {
             std::vector<int> node_labels_eo(g->n);
             std::iota(node_labels_eo.begin(), node_labels_eo.end(), (i * g->n) + 1);
-            encode_exactly_one_NSC(node_labels_eo, labels_aux_var + i * g->n);
+
+            if (isUsingProductAndSEQ)
+            {
+                encode_exactly_one_product(node_labels_eo);
+            }
+            else
+                encode_exactly_one_NSC(node_labels_eo, labels_aux_var + i * g->n);
         }
     }
 
@@ -169,6 +183,85 @@ namespace SATABP
             num_l_v_constraints++;
         }
     }
+
+    void DuplexNSCEncoder::encode_exactly_one_product(const std::vector<int> &vars)
+    {
+        if (vars.size() < 2)
+            return;
+        if (vars.size() == 2)
+        {
+            // simplifies to vars[0] /\ -1*vars[0], in case vars[0] == vars[1]
+            cv->add_clause({vars[0], vars[1]});
+            num_l_v_constraints++;
+            cv->add_clause({-1 * vars[0], -1 * vars[1]});
+            num_l_v_constraints++;
+            return;
+        }
+
+        int len = vars.size();
+        int p = std::ceil(std::sqrt(len));
+        int q = std::ceil((float)len / (float)p);
+
+        std::vector<int> u_vars;
+        std::vector<int> v_vars;
+        for (int i = 1; i <= p; ++i)
+        {
+            int new_var = vh->get_new_var();
+            u_vars.push_back(new_var);
+            aux_vars.insert({new_var, new_var});
+        }
+        for (int j = 1; j <= q; ++j)
+        {
+            int new_var = vh->get_new_var();
+            v_vars.push_back(new_var);
+            aux_vars.insert({new_var, new_var});
+        }
+
+        int i, j;
+        std::vector<int> or_clause = std::vector<int>();
+        for (unsigned idx = 0; idx < vars.size(); ++idx)
+        {
+            i = std::floor(idx / p);
+            j = idx % p;
+
+            cv->add_clause({-1 * vars[idx], v_vars[i]});
+            num_l_v_constraints++;
+            cv->add_clause({-1 * vars[idx], u_vars[j]});
+            num_l_v_constraints++;
+
+            or_clause.push_back(vars[idx]);
+        }
+        cv->add_clause(or_clause);
+        num_l_v_constraints++;
+
+        encode_amo_seq(u_vars);
+        encode_amo_seq(v_vars);
+    };
+
+    void DuplexNSCEncoder::encode_amo_seq(const std::vector<int> &vars)
+    {
+        if (vars.size() < 2)
+            return;
+
+        int prev = vars[0];
+
+        for (unsigned idx = 1; idx < vars.size() - 1; ++idx)
+        {
+            int curr = vars[idx];
+            int next = vh->get_new_var();
+            aux_vars.insert({next, next});
+            cv->add_clause({-1 * prev, -1 * curr});
+            num_l_v_constraints++;
+            cv->add_clause({-1 * prev, next});
+            num_l_v_constraints++;
+            cv->add_clause({-1 * curr, next});
+            num_l_v_constraints++;
+
+            prev = next;
+        }
+        cv->add_clause({-1 * prev, -1 * vars[vars.size() - 1]});
+        num_l_v_constraints++;
+    };
 
     void DuplexNSCEncoder::encode_obj_k(unsigned w)
     {
