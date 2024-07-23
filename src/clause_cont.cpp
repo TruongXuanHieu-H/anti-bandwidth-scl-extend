@@ -66,6 +66,11 @@ namespace SATABP
     void ClauseVector::do_add_clause(const Clause &c)
     {
         clause_list.push_back(c);
+        for (auto cl : c)
+        {
+            std::cout << cl << " ";
+        }
+        std::cout << std::endl;
     };
 
     unsigned ClauseVector::do_size() const

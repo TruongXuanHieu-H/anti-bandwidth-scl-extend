@@ -306,7 +306,7 @@ namespace SATABP
     }
 
     /*
-     * Encode each window seperately.
+     * Encode each window separately.
      * The first window only has lower part.
      * The last window only has upper part.
      * Other windows have both upper part and lower part.
@@ -318,14 +318,14 @@ namespace SATABP
             // Encode the first window, which only have lower part
             int lastVar = stair * (int)g->n + window * (int)w + w;
 
-            for (int i = w; i > 1; i--)
+            for (int i = w - 1; i >= 1; i--)
             {
                 int var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-var, get_obj_k_aux_var(var, lastVar)});
                 num_obj_k_constraints++;
             }
 
-            for (int i = w; i > 2; i--)
+            for (int i = w; i >= 2; i--)
             {
                 int var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-get_obj_k_aux_var(var, lastVar), get_obj_k_aux_var(var - 1, lastVar)});
@@ -348,7 +348,7 @@ namespace SATABP
             {
                 int real_w = g->n % w;
                 // Upper part
-                for (int i = 1; i <= real_w; i++)
+                for (int i = 2; i <= real_w; i++)
                 {
                     int reverse_var = stair * (int)g->n + window * (int)w + i;
                     cv->add_clause({-reverse_var, get_obj_k_aux_var(firstVar, reverse_var)});
@@ -372,14 +372,14 @@ namespace SATABP
             else
             {
                 // Upper part
-                for (int i = 1; i < (int)w; i++)
+                for (int i = 2; i <= (int)w; i++)
                 {
                     int reverse_var = stair * (int)g->n + window * (int)w + i;
                     cv->add_clause({-reverse_var, get_obj_k_aux_var(firstVar, reverse_var)});
                     num_obj_k_constraints++;
                 }
 
-                for (int i = w - 1; i > 1; i--)
+                for (int i = w - 1; i >= 1; i--)
                 {
                     int reverse_var = stair * (int)g->n + window * (int)w + w - i;
                     cv->add_clause({-get_obj_k_aux_var(firstVar, reverse_var), get_obj_k_aux_var(firstVar, reverse_var + 1)});
@@ -400,14 +400,14 @@ namespace SATABP
 
             // Upper part
             int firstVar = stair * (int)g->n + window * (int)w + 1;
-            for (int i = 1; i < (int)w; i++)
+            for (int i = 2; i <= (int)w; i++)
             {
                 int reverse_var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-reverse_var, get_obj_k_aux_var(firstVar, reverse_var)});
                 num_obj_k_constraints++;
             }
 
-            for (int i = w - 1; i > 1; i--)
+            for (int i = w - 1; i >= 1; i--)
             {
                 int reverse_var = stair * (int)g->n + window * (int)w + w - i;
                 cv->add_clause({-get_obj_k_aux_var(firstVar, reverse_var), get_obj_k_aux_var(firstVar, reverse_var + 1)});
@@ -423,14 +423,14 @@ namespace SATABP
 
             // Lower part
             int lastVar = stair * (int)g->n + window * (int)w + w;
-            for (int i = w; i > 1; i--)
+            for (int i = w - 1; i >= 1; i--)
             {
                 int var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-var, get_obj_k_aux_var(var, lastVar)});
                 num_obj_k_constraints++;
             }
 
-            for (int i = w; i > 2; i--)
+            for (int i = w; i >= 2; i--)
             {
                 int var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-get_obj_k_aux_var(var, lastVar), get_obj_k_aux_var(var - 1, lastVar)});
