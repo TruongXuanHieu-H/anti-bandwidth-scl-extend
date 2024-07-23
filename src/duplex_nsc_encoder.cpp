@@ -42,7 +42,7 @@ namespace SATABP
         if (pair != obj_k_aux_vars.end())
             return pair->second;
 
-        int new_obj_k_aux_var = vh->get_new_var();
+        int new_obj_k_aux_var = first == last ? first : vh->get_new_var();
         obj_k_aux_vars.insert({{first, last}, new_obj_k_aux_var});
         return new_obj_k_aux_var;
     }
