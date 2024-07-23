@@ -1,7 +1,6 @@
 #include "clause_cont.h"
 #include <iostream>
 #include <assert.h>
-#include <fstream>
 
 namespace SATABP
 {
@@ -76,22 +75,15 @@ namespace SATABP
 
     void ClauseVector::do_print_dimacs() const
     {
-        std::ofstream outputFile;
-        outputFile.open("cnf.cnf", std::ios::out | std::ios::trunc);
-
         std::cout << "p cnf " << vh->size() << " " << size() << std::endl;
-        outputFile << "p cnf " << vh->size() << " " << size() << std::endl;
         for (auto const &c : clause_list)
         {
             for (auto const &l : c)
             {
                 std::cout << l << " ";
-                outputFile << l << " ";
             }
             std::cout << "0" << std::endl;
-            outputFile << "0" << std::endl;
         }
-        outputFile.close();
     };
 
     void ClauseVector::do_print_clauses() const
