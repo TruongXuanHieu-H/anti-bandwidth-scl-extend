@@ -66,7 +66,7 @@ namespace SATABP
         labels_aux_var = vertices_aux_var + g->n * g->n;
 
         encode_vertices();
-        encode_labels();
+        // encode_labels();
         encode_obj_k(w);
 
         // Prevent error when build due to unused variables
