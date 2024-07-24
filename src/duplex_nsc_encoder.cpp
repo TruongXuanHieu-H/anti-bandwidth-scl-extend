@@ -297,6 +297,34 @@ namespace SATABP
                 std::cout << "Glue window " << gw << " with window " << gw + 1 << std::endl;
             glue_window(gw, stair, w);
         }
+
+        std::vector<std::pair<int, int>> windows = {};
+        int number_windows = ceil((float)g->n / w);
+
+        for (int i = 0; i < number_windows; i++)
+        {
+            int stair_anchor = stair * (int)g->n;
+            int window_anchor = i * (int)w;
+            if (window_anchor + w > g->n)
+                windows.push_back({stair_anchor + window_anchor + 1, stair_anchor + g->n});
+            else
+                windows.push_back({stair_anchor + window_anchor + 1, stair_anchor + window_anchor + w});
+        }
+
+        std::vector<int> alo_clause = {};
+        for (int i = 0; i < number_windows; i++)
+        {
+            int first_window_aux_var = get_obj_k_aux_var(windows[i].first, windows[i].second);
+            alo_clause.push_back(first_window_aux_var);
+            for (int j = i + 1; j < number_windows; j++)
+            {
+                int second_window_aux_var = get_obj_k_aux_var(windows[j].first, windows[j].second);
+                cv->add_clause({-first_window_aux_var, -second_window_aux_var});
+                num_l_v_constraints++;
+            }
+        }
+        cv->add_clause(alo_clause);
+        num_l_v_constraints++;
     }
 
     /*
@@ -549,39 +577,28 @@ namespace SATABP
         {
             int mod = i % w;
             int subset = i / w;
-            int firstVar, secondVar, thirdVar, forthVar;
             if (mod == 0)
             {
-                if (i < number_step - 1)
-                {
-                    firstVar = stair1 * g->n + subset * w + 1;
-                    secondVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 2, stair1 * g->n + subset * w + w);
-                    thirdVar = stair2 * g->n + subset * w + 1;
-                    forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 2, stair2 * g->n + subset * w + w);
-                }
-                else
-                {
-                    firstVar = stair1 * g->n + subset * w + w;
-                    secondVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1, stair1 * g->n + subset * w + w - 1);
-                    thirdVar = stair2 * g->n + subset * w + w;
-                    forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1, stair2 * g->n + subset * w + w - 1);
-                }
+                int firstVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1, stair1 * g->n + subset * w + w);
+                int secondVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1, stair2 * g->n + subset * w + w);
+                cv->add_clause({-firstVar, -secondVar});
+                num_obj_k_constraints++;
             }
             else
             {
-                firstVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1 + mod, stair1 * g->n + subset * w + w);
-                secondVar = get_obj_k_aux_var(stair1 * g->n + subset * w + w + 1, stair1 * g->n + subset * w + w + mod);
-                thirdVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1 + mod, stair2 * g->n + subset * w + w);
-                forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + w + 1, stair2 * g->n + subset * w + w + mod);
+                int firstVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1 + mod, stair1 * g->n + subset * w + w);
+                int secondVar = get_obj_k_aux_var(stair1 * g->n + subset * w + w + 1, stair1 * g->n + subset * w + w + mod);
+                int thirdVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1 + mod, stair2 * g->n + subset * w + w);
+                int forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + w + 1, stair2 * g->n + subset * w + w + mod);
+                cv->add_clause({-firstVar, -thirdVar});
+                num_obj_k_constraints++;
+                cv->add_clause({-firstVar, -forthVar});
+                num_obj_k_constraints++;
+                cv->add_clause({-secondVar, -thirdVar});
+                num_obj_k_constraints++;
+                cv->add_clause({-secondVar, -forthVar});
+                num_obj_k_constraints++;
             }
-            cv->add_clause({-firstVar, -thirdVar});
-            num_obj_k_constraints++;
-            cv->add_clause({-firstVar, -forthVar});
-            num_obj_k_constraints++;
-            cv->add_clause({-secondVar, -thirdVar});
-            num_obj_k_constraints++;
-            cv->add_clause({-secondVar, -forthVar});
-            num_obj_k_constraints++;
         }
     }
 }
