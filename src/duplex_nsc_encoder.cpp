@@ -277,15 +277,6 @@ namespace SATABP
         {
             glue_stair(edge.first - 1, edge.second - 1, w);
         }
-
-        if (is_debug_mode)
-        {
-            std::cout << "OBJ-K aux vars:\n";
-            for (auto var : obj_k_aux_vars)
-            {
-                std::cout << "(" << var.first.first << ", " << var.first.second << ") - " << var.second << std::endl;
-            }
-        }
     }
 
     void DuplexNSCEncoder::encode_stair(int stair, unsigned w)
