@@ -335,6 +335,15 @@ namespace SATABP
             for (int i = 1; i < (int)w; i++)
             {
                 int var = stair * (int)g->n + window * (int)w + i;
+                int main = get_obj_k_aux_var(var, lastVar);
+                int sub = get_obj_k_aux_var(var + 1, lastVar);
+                cv->add_clause({var, sub, -main});
+                num_obj_k_constraints++;
+            }
+
+            for (int i = 1; i < (int)w; i++)
+            {
+                int var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-var, -get_obj_k_aux_var(var + 1, lastVar)});
                 num_obj_k_constraints++;
             }
@@ -362,6 +371,14 @@ namespace SATABP
                     num_obj_k_constraints++;
                 }
 
+                for (int i = 0; i < (int)real_w - 1; i++)
+                {
+                    int var = stair * (int)g->n + window * (int)w + real_w - i;
+                    int main = get_obj_k_aux_var(firstVar, var);
+                    int sub = get_obj_k_aux_var(firstVar, var - 1);
+                    cv->add_clause({sub, var, -main});
+                }
+
                 for (int i = real_w; i > 1; i--)
                 {
                     int reverse_var = stair * (int)g->n + window * (int)w + i;
@@ -384,6 +401,14 @@ namespace SATABP
                     int reverse_var = stair * (int)g->n + window * (int)w + w - i;
                     cv->add_clause({-get_obj_k_aux_var(firstVar, reverse_var), get_obj_k_aux_var(firstVar, reverse_var + 1)});
                     num_obj_k_constraints++;
+                }
+
+                for (int i = 0; i < (int)w - 1; i++)
+                {
+                    int var = stair * (int)g->n + window * (int)w + w - i;
+                    int main = get_obj_k_aux_var(firstVar, var);
+                    int sub = get_obj_k_aux_var(firstVar, var - 1);
+                    cv->add_clause({sub, var, -main});
                 }
 
                 for (int i = (int)w; i > 1; i--)
@@ -414,6 +439,14 @@ namespace SATABP
                 num_obj_k_constraints++;
             }
 
+            for (int i = 0; i < (int)w - 1; i++)
+            {
+                int var = stair * (int)g->n + window * (int)w + w - i;
+                int main = get_obj_k_aux_var(firstVar, var);
+                int sub = get_obj_k_aux_var(firstVar, var - 1);
+                cv->add_clause({sub, var, -main});
+            }
+
             for (int i = (int)w; i > 1; i--)
             {
                 int reverse_var = stair * (int)g->n + window * (int)w + i;
@@ -434,6 +467,15 @@ namespace SATABP
             {
                 int var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-get_obj_k_aux_var(var, lastVar), get_obj_k_aux_var(var - 1, lastVar)});
+                num_obj_k_constraints++;
+            }
+
+            for (int i = 1; i < (int)w; i++)
+            {
+                int var = stair * (int)g->n + window * (int)w + i;
+                int main = get_obj_k_aux_var(var, lastVar);
+                int sub = get_obj_k_aux_var(var + 1, lastVar);
+                cv->add_clause({var, sub, -main});
                 num_obj_k_constraints++;
             }
 
