@@ -380,6 +380,7 @@ namespace SATABP
                     int main = get_obj_k_aux_var(firstVar, var);
                     int sub = get_obj_k_aux_var(firstVar, var - 1);
                     cv->add_clause({sub, var, -main});
+                    num_obj_k_constraints++;
                 }
 
                 for (int i = real_w; i > 1; i--)
@@ -412,6 +413,7 @@ namespace SATABP
                     int main = get_obj_k_aux_var(firstVar, var);
                     int sub = get_obj_k_aux_var(firstVar, var - 1);
                     cv->add_clause({sub, var, -main});
+                    num_obj_k_constraints++;
                 }
 
                 for (int i = (int)w; i > 1; i--)
@@ -448,6 +450,7 @@ namespace SATABP
                 int main = get_obj_k_aux_var(firstVar, var);
                 int sub = get_obj_k_aux_var(firstVar, var - 1);
                 cv->add_clause({sub, var, -main});
+                num_obj_k_constraints++;
             }
 
             for (int i = (int)w; i > 1; i--)
