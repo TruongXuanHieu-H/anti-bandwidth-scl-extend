@@ -75,10 +75,10 @@ namespace SATABP
         // Prevent error when build due to unused variables
         (void)node_pairs;
         (void)w;
-        std::cout << "Labels and Vertices aux var: " << aux_vars.size() << std::endl;
-        std::cout << "Labels and Vertices constraints:  " << num_l_v_constraints << std::endl;
-        std::cout << "Obj k aux var: " << obj_k_aux_vars.size() << std::endl;
-        std::cout << "Obj k constraints: " << num_obj_k_constraints << std::endl;
+        std::cout << "c\tLabels and Vertices aux var: " << aux_vars.size() << std::endl;
+        std::cout << "c\tLabels and Vertices constraints:  " << num_l_v_constraints << std::endl;
+        std::cout << "c\tObj k aux var: " << obj_k_aux_vars.size() << std::endl;
+        std::cout << "c\tObj k constraints: " << num_obj_k_constraints << std::endl;
     };
 
     void DuplexNSCEncoder::encode_vertices()

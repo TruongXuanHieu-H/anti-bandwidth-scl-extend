@@ -108,10 +108,13 @@ namespace SATABP
         }
     };
 
+    // Product then encode by seq
     void DuplexEncoder::product_encode_eo(const std::vector<int> &vars)
     {
         if (vars.size() < 2)
             return;
+
+        // If only have 2 vars, then use binomial encoding
         if (vars.size() == 2)
         {
             // simplifies to vars[0] /\ -1*vars[0], in case vars[0] == vars[1]
@@ -151,6 +154,7 @@ namespace SATABP
             cv->add_clause({-1 * vars[idx], u_vars[j]});
             num_l_v_constraints++;
 
+            // At least one
             or_clause.push_back(vars[idx]);
         }
         cv->add_clause(or_clause);
