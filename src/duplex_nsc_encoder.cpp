@@ -64,6 +64,7 @@ namespace SATABP
 
         num_l_v_constraints = 0;
         num_obj_k_constraints = 0;
+        num_obj_k_glue_staircase_constraint = 0;
 
         vertices_aux_var = g->n * g->n;
         labels_aux_var = vertices_aux_var + g->n * g->n;
@@ -79,6 +80,7 @@ namespace SATABP
         std::cout << "c\tLabels and Vertices constraints:  " << num_l_v_constraints << std::endl;
         std::cout << "c\tObj k aux var: " << obj_k_aux_vars.size() << std::endl;
         std::cout << "c\tObj k constraints: " << num_obj_k_constraints << std::endl;
+        std::cout << "c\tObj k glue staircase constraints: " << num_obj_k_glue_staircase_constraint << std::endl;
     };
 
     void DuplexNSCEncoder::encode_vertices()
@@ -583,6 +585,7 @@ namespace SATABP
                 int secondVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1, stair2 * g->n + subset * w + w);
                 cv->add_clause({-firstVar, -secondVar});
                 num_obj_k_constraints++;
+                num_obj_k_glue_staircase_constraint++;
             }
             else
             {
@@ -592,12 +595,16 @@ namespace SATABP
                 int forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + w + 1, stair2 * g->n + subset * w + w + mod);
                 cv->add_clause({-firstVar, -thirdVar});
                 num_obj_k_constraints++;
+                num_obj_k_glue_staircase_constraint++;
                 cv->add_clause({-firstVar, -forthVar});
                 num_obj_k_constraints++;
+                num_obj_k_glue_staircase_constraint++;
                 cv->add_clause({-secondVar, -thirdVar});
                 num_obj_k_constraints++;
+                num_obj_k_glue_staircase_constraint++;
                 cv->add_clause({-secondVar, -forthVar});
                 num_obj_k_constraints++;
+                num_obj_k_glue_staircase_constraint++;
             }
         }
     }

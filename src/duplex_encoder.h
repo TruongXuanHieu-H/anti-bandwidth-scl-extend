@@ -34,6 +34,7 @@ namespace SATABP
     // Number of OBJ-K's vars and constraints
     int num_obj_k_constraints = 0;
     int num_obj_k_aux_vars = 0;
+    int num_obj_k_glue_staircase_constraint = 0;
 
     void init_members();
 

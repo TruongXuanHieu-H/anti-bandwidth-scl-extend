@@ -35,6 +35,7 @@ namespace SATABP
     {
         num_l_v_constraints = 0;
         num_obj_k_constraints = 0;
+        num_obj_k_glue_staircase_constraint = 0;
         num_l_v_aux_vars = 0;
         num_obj_k_aux_vars = 0;
 
@@ -52,10 +53,11 @@ namespace SATABP
 
         encode_column_eo();
 
-        std::cout << "Labels and Vertices aux var: " << num_l_v_aux_vars << std::endl;
-        std::cout << "Labels and Vertices constraints:  " << num_l_v_constraints << std::endl;
-        std::cout << "Obj k aux var: " << num_obj_k_aux_vars << std::endl;
-        std::cout << "Obj k constraints: " << num_obj_k_constraints << std::endl;
+        std::cout << "c\tLabels and Vertices aux var: " << num_l_v_aux_vars << std::endl;
+        std::cout << "c\tLabels and Vertices constraints:  " << num_l_v_constraints << std::endl;
+        std::cout << "c\tObj k aux var: " << num_obj_k_aux_vars << std::endl;
+        std::cout << "c\tObj k constraints: " << num_obj_k_constraints << std::endl;
+        std::cout << "c\tObj k glue staircase constraints: " << num_obj_k_glue_staircase_constraint << std::endl;
     };
 
     void DuplexEncoder::seq_encode_column_eo()
@@ -430,6 +432,7 @@ namespace SATABP
                 {
                     cv->add_clause({node1_amz_clause[c], node2_amz_clause[d]});
                     num_obj_k_constraints++;
+                    num_obj_k_glue_staircase_constraint++;
                 }
             }
         }
