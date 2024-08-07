@@ -14,8 +14,6 @@
 */
 namespace SATABP
 {
-    bool isUsingProductAndSEQ = true;
-
     DuplexNSCEncoder::DuplexNSCEncoder(Graph *g, ClauseContainer *cc, VarHandler *vh) : Encoder(g, cc, vh)
     {
     }

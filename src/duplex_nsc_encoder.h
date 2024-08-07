@@ -15,6 +15,7 @@ namespace SATABP
 
     private:
         bool is_debug_mode = false;
+        bool isUsingProductAndSEQ = true;
 
         int vertices_aux_var = 0;
         int labels_aux_var = 0;
@@ -29,6 +30,7 @@ namespace SATABP
 
         // Number of LABELS and VERTICES constraints
         int num_l_v_constraints = 0;
+
         // Number of OBJ-K constraints
         int num_obj_k_constraints = 0;
         int num_obj_k_glue_staircase_constraint = 0;
