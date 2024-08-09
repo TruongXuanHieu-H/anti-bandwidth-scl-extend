@@ -35,6 +35,7 @@ namespace SATABP
     {
         num_l_v_constraints = 0;
         num_obj_k_constraints = 0;
+        num_obj_k_glue_staircase_constraint = 0;
         num_l_v_aux_vars = 0;
         num_obj_k_aux_vars = 0;
 
@@ -52,10 +53,11 @@ namespace SATABP
 
         encode_column_eo();
 
-        std::cout << "Labels and Vertices aux var: " << num_l_v_aux_vars << std::endl;
-        std::cout << "Labels and Vertices constraints:  " << num_l_v_constraints << std::endl;
-        std::cout << "Obj k aux var: " << num_obj_k_aux_vars << std::endl;
-        std::cout << "Obj k constraints: " << num_obj_k_constraints << std::endl;
+        std::cout << "c\tLabels and Vertices aux var: " << num_l_v_aux_vars << std::endl;
+        std::cout << "c\tLabels and Vertices constraints:  " << num_l_v_constraints << std::endl;
+        std::cout << "c\tObj k aux var: " << num_obj_k_aux_vars << std::endl;
+        std::cout << "c\tObj k constraints: " << num_obj_k_constraints << std::endl;
+        std::cout << "c\tObj k glue staircase constraints: " << num_obj_k_glue_staircase_constraint << std::endl;
     };
 
     void DuplexEncoder::seq_encode_column_eo()
@@ -108,10 +110,13 @@ namespace SATABP
         }
     };
 
+    // Product then encode by seq
     void DuplexEncoder::product_encode_eo(const std::vector<int> &vars)
     {
         if (vars.size() < 2)
             return;
+
+        // If only have 2 vars, then use binomial encoding
         if (vars.size() == 2)
         {
             // simplifies to vars[0] /\ -1*vars[0], in case vars[0] == vars[1]
@@ -151,6 +156,7 @@ namespace SATABP
             cv->add_clause({-1 * vars[idx], u_vars[j]});
             num_l_v_constraints++;
 
+            // At least one
             or_clause.push_back(vars[idx]);
         }
         cv->add_clause(or_clause);
@@ -426,6 +432,7 @@ namespace SATABP
                 {
                     cv->add_clause({node1_amz_clause[c], node2_amz_clause[d]});
                     num_obj_k_constraints++;
+                    num_obj_k_glue_staircase_constraint++;
                 }
             }
         }

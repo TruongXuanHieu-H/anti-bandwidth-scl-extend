@@ -40,6 +40,9 @@ namespace SATABP
         if (pair != obj_k_aux_vars.end())
             return pair->second;
 
+        if (first == last)
+            return first;
+
         int new_obj_k_aux_var = vh->get_new_var();
         obj_k_aux_vars.insert({{first, last}, new_obj_k_aux_var});
         return new_obj_k_aux_var;
@@ -59,21 +62,23 @@ namespace SATABP
 
         num_l_v_constraints = 0;
         num_obj_k_constraints = 0;
+        num_obj_k_glue_staircase_constraint = 0;
 
         vertices_aux_var = g->n * g->n;
         labels_aux_var = vertices_aux_var + g->n * g->n;
 
         encode_vertices();
-        encode_labels();
+        // encode_labels();
         encode_obj_k(w);
 
         // Prevent error when build due to unused variables
         (void)node_pairs;
         (void)w;
-        std::cout << "Labels and Vertices aux var: " << aux_vars.size() << std::endl;
-        std::cout << "Labels and Vertices constraints:  " << num_l_v_constraints << std::endl;
-        std::cout << "Obj k aux var: " << obj_k_aux_vars.size() << std::endl;
-        std::cout << "Obj k constraints: " << num_obj_k_constraints << std::endl;
+        std::cout << "c\tLabels and Vertices aux var: " << aux_vars.size() << std::endl;
+        std::cout << "c\tLabels and Vertices constraints:  " << num_l_v_constraints << std::endl;
+        std::cout << "c\tObj k aux var: " << obj_k_aux_vars.size() << std::endl;
+        std::cout << "c\tObj k constraints: " << num_obj_k_constraints << std::endl;
+        std::cout << "c\tObj k glue staircase constraints: " << num_obj_k_glue_staircase_constraint << std::endl;
     };
 
     void DuplexNSCEncoder::encode_vertices()
@@ -93,7 +98,13 @@ namespace SATABP
 
             std::generate(node_vertices_eo.begin(), node_vertices_eo.end(), [this, &j, i]()
                           { return (j++ * g->n) + i + 1; });
-            encode_exactly_one_NSC(node_vertices_eo, vertices_aux_var + i * g->n);
+
+            if (isUsingProductAndSEQ)
+            {
+                encode_exactly_one_product(node_vertices_eo);
+            }
+            else
+                encode_exactly_one_NSC(node_vertices_eo, vertices_aux_var + i * g->n);
         }
     }
 
@@ -111,7 +122,13 @@ namespace SATABP
         {
             std::vector<int> node_labels_eo(g->n);
             std::iota(node_labels_eo.begin(), node_labels_eo.end(), (i * g->n) + 1);
-            encode_exactly_one_NSC(node_labels_eo, labels_aux_var + i * g->n);
+
+            if (isUsingProductAndSEQ)
+            {
+                encode_exactly_one_product(node_labels_eo);
+            }
+            else
+                encode_exactly_one_NSC(node_labels_eo, labels_aux_var + i * g->n);
         }
     }
 
@@ -170,6 +187,85 @@ namespace SATABP
         }
     }
 
+    void DuplexNSCEncoder::encode_exactly_one_product(const std::vector<int> &vars)
+    {
+        if (vars.size() < 2)
+            return;
+        if (vars.size() == 2)
+        {
+            // simplifies to vars[0] /\ -1*vars[0], in case vars[0] == vars[1]
+            cv->add_clause({vars[0], vars[1]});
+            num_l_v_constraints++;
+            cv->add_clause({-1 * vars[0], -1 * vars[1]});
+            num_l_v_constraints++;
+            return;
+        }
+
+        int len = vars.size();
+        int p = std::ceil(std::sqrt(len));
+        int q = std::ceil((float)len / (float)p);
+
+        std::vector<int> u_vars;
+        std::vector<int> v_vars;
+        for (int i = 1; i <= p; ++i)
+        {
+            int new_var = vh->get_new_var();
+            u_vars.push_back(new_var);
+            aux_vars.insert({new_var, new_var});
+        }
+        for (int j = 1; j <= q; ++j)
+        {
+            int new_var = vh->get_new_var();
+            v_vars.push_back(new_var);
+            aux_vars.insert({new_var, new_var});
+        }
+
+        int i, j;
+        std::vector<int> or_clause = std::vector<int>();
+        for (unsigned idx = 0; idx < vars.size(); ++idx)
+        {
+            i = std::floor(idx / p);
+            j = idx % p;
+
+            cv->add_clause({-1 * vars[idx], v_vars[i]});
+            num_l_v_constraints++;
+            cv->add_clause({-1 * vars[idx], u_vars[j]});
+            num_l_v_constraints++;
+
+            or_clause.push_back(vars[idx]);
+        }
+        cv->add_clause(or_clause);
+        num_l_v_constraints++;
+
+        encode_amo_seq(u_vars);
+        encode_amo_seq(v_vars);
+    };
+
+    void DuplexNSCEncoder::encode_amo_seq(const std::vector<int> &vars)
+    {
+        if (vars.size() < 2)
+            return;
+
+        int prev = vars[0];
+
+        for (unsigned idx = 1; idx < vars.size() - 1; ++idx)
+        {
+            int curr = vars[idx];
+            int next = vh->get_new_var();
+            aux_vars.insert({next, next});
+            cv->add_clause({-1 * prev, -1 * curr});
+            num_l_v_constraints++;
+            cv->add_clause({-1 * prev, next});
+            num_l_v_constraints++;
+            cv->add_clause({-1 * curr, next});
+            num_l_v_constraints++;
+
+            prev = next;
+        }
+        cv->add_clause({-1 * prev, -1 * vars[vars.size() - 1]});
+        num_l_v_constraints++;
+    };
+
     void DuplexNSCEncoder::encode_obj_k(unsigned w)
     {
         for (int i = 0; i < (int)g->n; i++)
@@ -180,15 +276,6 @@ namespace SATABP
         for (auto edge : g->edges)
         {
             glue_stair(edge.first - 1, edge.second - 1, w);
-        }
-
-        if (is_debug_mode)
-        {
-            std::cout << "OBJ-K aux vars:\n";
-            for (auto var : obj_k_aux_vars)
-            {
-                std::cout << "(" << var.first.first << ", " << var.first.second << ") - " << var.second << std::endl;
-            }
         }
     }
 
@@ -210,10 +297,38 @@ namespace SATABP
                 std::cout << "Glue window " << gw << " with window " << gw + 1 << std::endl;
             glue_window(gw, stair, w);
         }
+
+        std::vector<std::pair<int, int>> windows = {};
+        int number_windows = ceil((float)g->n / w);
+
+        for (int i = 0; i < number_windows; i++)
+        {
+            int stair_anchor = stair * (int)g->n;
+            int window_anchor = i * (int)w;
+            if (window_anchor + w > g->n)
+                windows.push_back({stair_anchor + window_anchor + 1, stair_anchor + g->n});
+            else
+                windows.push_back({stair_anchor + window_anchor + 1, stair_anchor + window_anchor + w});
+        }
+
+        std::vector<int> alo_clause = {};
+        for (int i = 0; i < number_windows; i++)
+        {
+            int first_window_aux_var = get_obj_k_aux_var(windows[i].first, windows[i].second);
+            alo_clause.push_back(first_window_aux_var);
+            for (int j = i + 1; j < number_windows; j++)
+            {
+                int second_window_aux_var = get_obj_k_aux_var(windows[j].first, windows[j].second);
+                cv->add_clause({-first_window_aux_var, -second_window_aux_var});
+                num_l_v_constraints++;
+            }
+        }
+        cv->add_clause(alo_clause);
+        num_l_v_constraints++;
     }
 
     /*
-     * Encode each window seperately.
+     * Encode each window separately.
      * The first window only has lower part.
      * The last window only has upper part.
      * Other windows have both upper part and lower part.
@@ -225,17 +340,26 @@ namespace SATABP
             // Encode the first window, which only have lower part
             int lastVar = stair * (int)g->n + window * (int)w + w;
 
-            for (int i = w; i > 1; i--)
+            for (int i = w - 1; i >= 1; i--)
             {
                 int var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-var, get_obj_k_aux_var(var, lastVar)});
                 num_obj_k_constraints++;
             }
 
-            for (int i = w; i > 2; i--)
+            for (int i = w; i >= 2; i--)
             {
                 int var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-get_obj_k_aux_var(var, lastVar), get_obj_k_aux_var(var - 1, lastVar)});
+                num_obj_k_constraints++;
+            }
+
+            for (int i = 1; i < (int)w; i++)
+            {
+                int var = stair * (int)g->n + window * (int)w + i;
+                int main = get_obj_k_aux_var(var, lastVar);
+                int sub = get_obj_k_aux_var(var + 1, lastVar);
+                cv->add_clause({var, sub, -main});
                 num_obj_k_constraints++;
             }
 
@@ -255,7 +379,7 @@ namespace SATABP
             {
                 int real_w = g->n % w;
                 // Upper part
-                for (int i = 1; i <= real_w; i++)
+                for (int i = 2; i <= real_w; i++)
                 {
                     int reverse_var = stair * (int)g->n + window * (int)w + i;
                     cv->add_clause({-reverse_var, get_obj_k_aux_var(firstVar, reverse_var)});
@@ -269,6 +393,15 @@ namespace SATABP
                     num_obj_k_constraints++;
                 }
 
+                for (int i = 0; i < (int)real_w - 1; i++)
+                {
+                    int var = stair * (int)g->n + window * (int)w + real_w - i;
+                    int main = get_obj_k_aux_var(firstVar, var);
+                    int sub = get_obj_k_aux_var(firstVar, var - 1);
+                    cv->add_clause({sub, var, -main});
+                    num_obj_k_constraints++;
+                }
+
                 for (int i = real_w; i > 1; i--)
                 {
                     int reverse_var = stair * (int)g->n + window * (int)w + i;
@@ -279,17 +412,26 @@ namespace SATABP
             else
             {
                 // Upper part
-                for (int i = 1; i < (int)w; i++)
+                for (int i = 2; i <= (int)w; i++)
                 {
                     int reverse_var = stair * (int)g->n + window * (int)w + i;
                     cv->add_clause({-reverse_var, get_obj_k_aux_var(firstVar, reverse_var)});
                     num_obj_k_constraints++;
                 }
 
-                for (int i = w - 1; i > 1; i--)
+                for (int i = w - 1; i >= 1; i--)
                 {
                     int reverse_var = stair * (int)g->n + window * (int)w + w - i;
                     cv->add_clause({-get_obj_k_aux_var(firstVar, reverse_var), get_obj_k_aux_var(firstVar, reverse_var + 1)});
+                    num_obj_k_constraints++;
+                }
+
+                for (int i = 0; i < (int)w - 1; i++)
+                {
+                    int var = stair * (int)g->n + window * (int)w + w - i;
+                    int main = get_obj_k_aux_var(firstVar, var);
+                    int sub = get_obj_k_aux_var(firstVar, var - 1);
+                    cv->add_clause({sub, var, -main});
                     num_obj_k_constraints++;
                 }
 
@@ -307,17 +449,26 @@ namespace SATABP
 
             // Upper part
             int firstVar = stair * (int)g->n + window * (int)w + 1;
-            for (int i = 1; i < (int)w; i++)
+            for (int i = 2; i <= (int)w; i++)
             {
                 int reverse_var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-reverse_var, get_obj_k_aux_var(firstVar, reverse_var)});
                 num_obj_k_constraints++;
             }
 
-            for (int i = w - 1; i > 1; i--)
+            for (int i = w - 1; i >= 1; i--)
             {
                 int reverse_var = stair * (int)g->n + window * (int)w + w - i;
                 cv->add_clause({-get_obj_k_aux_var(firstVar, reverse_var), get_obj_k_aux_var(firstVar, reverse_var + 1)});
+                num_obj_k_constraints++;
+            }
+
+            for (int i = 0; i < (int)w - 1; i++)
+            {
+                int var = stair * (int)g->n + window * (int)w + w - i;
+                int main = get_obj_k_aux_var(firstVar, var);
+                int sub = get_obj_k_aux_var(firstVar, var - 1);
+                cv->add_clause({sub, var, -main});
                 num_obj_k_constraints++;
             }
 
@@ -330,17 +481,26 @@ namespace SATABP
 
             // Lower part
             int lastVar = stair * (int)g->n + window * (int)w + w;
-            for (int i = w; i > 1; i--)
+            for (int i = w - 1; i >= 1; i--)
             {
                 int var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-var, get_obj_k_aux_var(var, lastVar)});
                 num_obj_k_constraints++;
             }
 
-            for (int i = w; i > 2; i--)
+            for (int i = w; i >= 2; i--)
             {
                 int var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-get_obj_k_aux_var(var, lastVar), get_obj_k_aux_var(var - 1, lastVar)});
+                num_obj_k_constraints++;
+            }
+
+            for (int i = 1; i < (int)w; i++)
+            {
+                int var = stair * (int)g->n + window * (int)w + i;
+                int main = get_obj_k_aux_var(var, lastVar);
+                int sub = get_obj_k_aux_var(var + 1, lastVar);
+                cv->add_clause({var, sub, -main});
                 num_obj_k_constraints++;
             }
 
@@ -417,39 +577,33 @@ namespace SATABP
         {
             int mod = i % w;
             int subset = i / w;
-            int firstVar, secondVar, thirdVar, forthVar;
             if (mod == 0)
             {
-                if (i < number_step - 1)
-                {
-                    firstVar = stair1 * g->n + subset * w + 1;
-                    secondVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 2, stair1 * g->n + subset * w + w);
-                    thirdVar = stair2 * g->n + subset * w + 1;
-                    forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 2, stair2 * g->n + subset * w + w);
-                }
-                else
-                {
-                    firstVar = stair1 * g->n + subset * w + w;
-                    secondVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1, stair1 * g->n + subset * w + w - 1);
-                    thirdVar = stair2 * g->n + subset * w + w;
-                    forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1, stair2 * g->n + subset * w + w - 1);
-                }
+                int firstVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1, stair1 * g->n + subset * w + w);
+                int secondVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1, stair2 * g->n + subset * w + w);
+                cv->add_clause({-firstVar, -secondVar});
+                num_obj_k_constraints++;
+                num_obj_k_glue_staircase_constraint++;
             }
             else
             {
-                firstVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1 + mod, stair1 * g->n + subset * w + w);
-                secondVar = get_obj_k_aux_var(stair1 * g->n + subset * w + w + 1, stair1 * g->n + subset * w + w + mod);
-                thirdVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1 + mod, stair2 * g->n + subset * w + w);
-                forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + w + 1, stair2 * g->n + subset * w + w + mod);
+                int firstVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1 + mod, stair1 * g->n + subset * w + w);
+                int secondVar = get_obj_k_aux_var(stair1 * g->n + subset * w + w + 1, stair1 * g->n + subset * w + w + mod);
+                int thirdVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1 + mod, stair2 * g->n + subset * w + w);
+                int forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + w + 1, stair2 * g->n + subset * w + w + mod);
+                cv->add_clause({-firstVar, -thirdVar});
+                num_obj_k_constraints++;
+                num_obj_k_glue_staircase_constraint++;
+                cv->add_clause({-firstVar, -forthVar});
+                num_obj_k_constraints++;
+                num_obj_k_glue_staircase_constraint++;
+                cv->add_clause({-secondVar, -thirdVar});
+                num_obj_k_constraints++;
+                num_obj_k_glue_staircase_constraint++;
+                cv->add_clause({-secondVar, -forthVar});
+                num_obj_k_constraints++;
+                num_obj_k_glue_staircase_constraint++;
             }
-            cv->add_clause({-firstVar, -thirdVar});
-            num_obj_k_constraints++;
-            cv->add_clause({-firstVar, -forthVar});
-            num_obj_k_constraints++;
-            cv->add_clause({-secondVar, -thirdVar});
-            num_obj_k_constraints++;
-            cv->add_clause({-secondVar, -forthVar});
-            num_obj_k_constraints++;
         }
     }
 }

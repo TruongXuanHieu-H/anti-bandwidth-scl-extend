@@ -15,6 +15,7 @@ namespace SATABP
 
     private:
         bool is_debug_mode = false;
+        bool isUsingProductAndSEQ = true;
 
         int vertices_aux_var = 0;
         int labels_aux_var = 0;
@@ -29,8 +30,10 @@ namespace SATABP
 
         // Number of LABELS and VERTICES constraints
         int num_l_v_constraints = 0;
+
         // Number of OBJ-K constraints
         int num_obj_k_constraints = 0;
+        int num_obj_k_glue_staircase_constraint = 0;
 
         void do_encode_antibandwidth(unsigned w, const std::vector<std::pair<int, int>> &node_pairs) final;
 
@@ -42,6 +45,8 @@ namespace SATABP
         void encode_vertices();
         void encode_labels();
         void encode_exactly_one_NSC(std::vector<int> listVars, int auxVar);
+        void encode_exactly_one_product(const std::vector<int> &vars);
+        void encode_amo_seq(const std::vector<int> &vars);
 
         void encode_obj_k(unsigned w);
         void encode_stair(int stair, unsigned w);

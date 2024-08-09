@@ -1,0 +1,64 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		10000 MB
+[runlim] argv[0]:		/home/hieu/work/StaircaseAMO/cpaior20_duplex_encoder/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/hieu/work/StaircaseAMO/cpaior20_duplex_encoder/AntiBandwidthReconstruct/build/Benchmarks/F-curtis54.mtx.rnd
+[runlim] argv[2]:		--duplex
+[runlim] start:			Mon Jul 29 15:47:46 2024
+[runlim] main pid:		9752
+[runlim] log captured:
+c DuplexEncoder 0.8.
+c Solving strategy: from LB to UB.
+c LB-w = 12 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 13 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 12 ( F-curtis54.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Duplex encoder with n = 54.
+c Encoding starts with w = 12:
+Labels and Vertices aux var: 1404
+Labels and Vertices constraints:  8370
+Obj k aux var: 8856
+Obj k constraints: 48962
+c	Encoding duration: 0s
+c	Number of clauses: 57359
+c	Number of irredundant clauses: 51962
+c	Number of variables: 13176
+c SAT Solving starts:
+c	Solving duration: 168 ms
+c	Answer: 
+s SAT (w = 12)
+c	Solution check:
+p calculated antibandwidth = 12.
+c
+c
+c Antibandwidth problem with w = 13 ( F-curtis54.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Duplex encoder with n = 54.
+c Encoding starts with w = 13:
+Labels and Vertices aux var: 1404
+Labels and Vertices constraints:  8370
+Obj k aux var: 9180
+Obj k constraints: 49114
+c	Encoding duration: 0s
+c	Number of clauses: 57511
+c	Number of irredundant clauses: 52287
+c	Number of variables: 13500
+c SAT Solving starts:
+c	Solving duration: 559 ms
+c	Answer: 
+s SAT (w = 13)
+c	Solution check:
+p calculated antibandwidth = 13.
+c
+c
+[runlim] end:			Mon Jul 29 15:47:47 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			1.36 seconds
+[runlim] time:			0.70 seconds
+[runlim] space:			18.9 MB
+[runlim] samples:		7
