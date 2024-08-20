@@ -159,6 +159,8 @@ int main()
         return -1;
     }
 
+    std::cout << "Start running benchmarks\n";
+
     for (std::string benchmark : benchmarks)
     {
         auto now = std::chrono::system_clock::now();

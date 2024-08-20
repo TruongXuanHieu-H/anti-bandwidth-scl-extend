@@ -55,8 +55,6 @@ namespace SATABP
 
     void DuplexNSCEncoder::do_encode_antibandwidth(unsigned w, const std::vector<std::pair<int, int>> &node_pairs)
     {
-        eo_constraints = 0;
-        obj_k_constraints = 0;
         aux_vars.clear();
         obj_k_aux_vars.clear();
 
@@ -66,6 +64,9 @@ namespace SATABP
 
         vertices_aux_var = g->n * g->n;
         labels_aux_var = vertices_aux_var + g->n * g->n;
+
+        // encode_symmetry_break();
+        encode_symmetry_break_on_maxnode();
 
         encode_vertices();
         // encode_labels();

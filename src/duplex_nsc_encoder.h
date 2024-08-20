@@ -22,11 +22,9 @@ namespace SATABP
 
         // Use to save aux vars of LABELS and VERTICES constraints
         std::map<int, int> aux_vars = {};
-        int eo_constraints = 0;
 
         // Use to save aux vars of OBJ-K constraints
         std::map<std::pair<int, int>, int> obj_k_aux_vars;
-        int obj_k_constraints = 0;
 
         // Number of LABELS and VERTICES constraints
         int num_l_v_constraints = 0;
