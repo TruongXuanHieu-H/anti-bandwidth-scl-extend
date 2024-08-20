@@ -1,0 +1,44 @@
+[runlim] version:		1.10
+[runlim] time limit:		900 seconds
+[runlim] real time limit:	900 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/H-impcol_b.mtx.rnd
+[runlim] argv[2]:		--duplex
+[runlim] start:			Wed Aug 14 06:35:29 2024
+[runlim] main pid:		9485
+[runlim] log captured:
+c DuplexEncoder 0.8.
+c Solving strategy: from LB to UB.
+c LB-w = 8 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 8 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 8 ( H-impcol_b.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Duplex encoder with n = 59.
+c Encoding starts with w = 8:
+c	Labels and Vertices aux var: 1652
+c	Labels and Vertices constraints:  10974
+c	Obj k aux var: 10974
+c	Obj k constraints: 89349
+c	Obj k glue staircase constraints: 52828
+c	Encoding duration: 0s
+c	Number of clauses: 100352
+c	Number of irredundant clauses: 93916
+c	Number of variables: 16107
+c SAT Solving starts:
+c	Solving duration: 59 ms
+c	Answer: 
+s SAT (w = 8)
+c	Solution check:
+p calculated antibandwidth = 8.
+c
+c
+[runlim] end:			Wed Aug 14 06:35:29 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			0.83 seconds
+[runlim] time:			0.00 seconds
+[runlim] space:			0.0 MB
+[runlim] samples:		0

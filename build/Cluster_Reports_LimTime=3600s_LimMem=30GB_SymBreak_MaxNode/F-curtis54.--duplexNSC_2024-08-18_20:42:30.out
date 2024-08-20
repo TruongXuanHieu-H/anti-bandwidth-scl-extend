@@ -1,0 +1,66 @@
+[runlim] version:		1.10
+[runlim] time limit:		3600 seconds
+[runlim] real time limit:	3600 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc_symbreak_max_node
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/F-curtis54.mtx.rnd
+[runlim] argv[2]:		--duplexNSC
+[runlim] start:			Sun Aug 18 20:42:30 2024
+[runlim] main pid:		26346
+[runlim] log captured:
+c DuplexEncoder 0.8.
+c Solving strategy: from LB to UB.
+c LB-w = 12 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 13 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 12 ( F-curtis54.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 54.
+c Encoding starts with w = 12:
+c	Labels and Vertices aux var: 1404
+c	Labels and Vertices constraints:  8370
+c	Obj k aux var: 4266
+c	Obj k constraints: 37876
+c	Obj k glue staircase constraints: 19840
+c	Encoding duration: 0s
+c	Number of clauses: 46273
+c	Number of irredundant clauses: 45929
+c	Number of variables: 8586
+c SAT Solving starts:
+c	Solving duration: 117 ms
+c	Answer: 
+s SAT (w = 12)
+c	Solution check:
+p calculated antibandwidth = 12.
+c
+c
+c Antibandwidth problem with w = 13 ( F-curtis54.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 54.
+c Encoding starts with w = 13:
+c	Labels and Vertices aux var: 1404
+c	Labels and Vertices constraints:  8370
+c	Obj k aux var: 4428
+c	Obj k constraints: 37812
+c	Obj k glue staircase constraints: 19344
+c	Encoding duration: 0s
+c	Number of clauses: 46209
+c	Number of irredundant clauses: 45857
+c	Number of variables: 8748
+c SAT Solving starts:
+c	Solving duration: 112 ms
+c	Answer: 
+s SAT (w = 13)
+c	Solution check:
+p calculated antibandwidth = 13.
+c
+c
+[runlim] end:			Sun Aug 18 20:42:30 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			0.31 seconds
+[runlim] time:			0.19 seconds
+[runlim] space:			12.3 MB
+[runlim] samples:		2

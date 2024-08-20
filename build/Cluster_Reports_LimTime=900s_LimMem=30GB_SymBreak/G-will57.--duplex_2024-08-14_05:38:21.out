@@ -1,0 +1,86 @@
+[runlim] version:		1.10
+[runlim] time limit:		900 seconds
+[runlim] real time limit:	900 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/G-will57.mtx.rnd
+[runlim] argv[2]:		--duplex
+[runlim] start:			Wed Aug 14 05:38:21 2024
+[runlim] main pid:		4334
+[runlim] log captured:
+c DuplexEncoder 0.8.
+c Solving strategy: from LB to UB.
+c LB-w = 12 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 14 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 12 ( G-will57.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Duplex encoder with n = 57.
+c Encoding starts with w = 12:
+c	Labels and Vertices aux var: 1596
+c	Labels and Vertices constraints:  9348
+c	Obj k aux var: 9690
+c	Obj k constraints: 53948
+c	Obj k glue staircase constraints: 21971
+c	Encoding duration: 0s
+c	Number of clauses: 63324
+c	Number of irredundant clauses: 57847
+c	Number of variables: 14535
+c SAT Solving starts:
+c	Solving duration: 683 ms
+c	Answer: 
+s SAT (w = 12)
+c	Solution check:
+p calculated antibandwidth = 12.
+c
+c
+c Antibandwidth problem with w = 13 ( G-will57.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Duplex encoder with n = 57.
+c Encoding starts with w = 13:
+c	Labels and Vertices aux var: 1596
+c	Labels and Vertices constraints:  9348
+c	Obj k aux var: 10032
+c	Obj k constraints: 54124
+c	Obj k glue staircase constraints: 21463
+c	Encoding duration: 0s
+c	Number of clauses: 63500
+c	Number of irredundant clauses: 58138
+c	Number of variables: 14877
+c SAT Solving starts:
+c	Solving duration: 65 ms
+c	Answer: 
+s SAT (w = 13)
+c	Solution check:
+p calculated antibandwidth = 13.
+c
+c
+c Antibandwidth problem with w = 14 ( G-will57.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Duplex encoder with n = 57.
+c Encoding starts with w = 14:
+c	Labels and Vertices aux var: 1596
+c	Labels and Vertices constraints:  9348
+c	Obj k aux var: 10374
+c	Obj k constraints: 54243
+c	Obj k glue staircase constraints: 20955
+c	Encoding duration: 0s
+c	Number of clauses: 63619
+c	Number of irredundant clauses: 58486
+c	Number of variables: 15219
+c SAT Solving starts:
+c	Solving duration: 14 ms
+c	Answer: 
+s UNSAT (w = 14)
+c
+c
+[runlim] end:			Wed Aug 14 05:38:21 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			0.86 seconds
+[runlim] time:			0.79 seconds
+[runlim] space:			18.9 MB
+[runlim] samples:		8
