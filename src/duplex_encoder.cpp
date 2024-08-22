@@ -40,7 +40,8 @@ namespace SATABP
         num_obj_k_aux_vars = 0;
 
         // encode_symmetry_break();
-        encode_symmetry_break_on_maxnode();
+        // encode_symmetry_break_on_maxnode();
+        encode_symmetry_break_on_minnode();
 
         construct_window_bdds(w);
         glue_window_bdds();
