@@ -7,7 +7,7 @@
 namespace SATABP
 {
 
-    AntibandwidthEncoder::AntibandwidthEncoder(){};
+    AntibandwidthEncoder::AntibandwidthEncoder() {};
 
     AntibandwidthEncoder::~AntibandwidthEncoder()
     {
@@ -315,13 +315,13 @@ namespace SATABP
 
     int AntibandwidthEncoder::calculate_sat_solution()
     {
-        std::cout << "c\tSolution check:" << std::endl
-                  << "p calculated antibandwidth = ";
-
         std::vector<int> node_labels = std::vector<int>();
         if (!extract_node_labels(node_labels))
             return 0;
         int min_dist = g->calculate_antibandwidth(node_labels);
+
+        std::cout << "c\tSolution check:" << std::endl
+                  << "p calculated antibandwidth = ";
         std::cout << min_dist << "." << std::endl;
 
         return min_dist;

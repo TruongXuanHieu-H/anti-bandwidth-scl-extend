@@ -14,7 +14,7 @@ namespace SATABP
         virtual ~DuplexNSCEncoder();
 
     private:
-        bool is_debug_mode = false;
+        bool is_debug_mode = true;
         bool isUsingProductAndSEQ = true;
 
         int vertices_aux_var = 0;

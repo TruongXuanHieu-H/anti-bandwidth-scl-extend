@@ -86,6 +86,9 @@ namespace SATABP
             if (distance < min_dist)
             {
                 min_dist = distance;
+                std::cout << "AB is set to " << distance << std::endl;
+                std::cout << "Node " << edge.first << " : " << label1 << std::endl;
+                std::cout << "Node " << edge.second << " : " << label2 << std::endl;
             }
         }
 
