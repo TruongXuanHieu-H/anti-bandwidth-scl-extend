@@ -177,9 +177,13 @@ int main()
                                       " " + "-o" + " " + configMap["report_dir"] + "/" +
                                       benchmark + configMap["abw_enc_config"] + "_" + oss.str() + ".out";
         std::string abw_enc_command = configMap["abw_enc_dir"] + " " + configMap["benchmark_dir"] +
-                                      "/" + benchmark + "mtx.rnd" + " " + configMap["abw_enc_config"];
+                                      "/" + benchmark + "mtx.rnd" + " " + configMap["abw_enc_config"] +
+                                      " " + configMap["additional_abw_enc_config"];
 
         std::string command = run_lim_command + " " + abw_enc_command;
+
+        std::cout << "Run command:" << std::endl;
+        std::cout << command << std::endl; 
 
         int result = system(command.c_str());
 
