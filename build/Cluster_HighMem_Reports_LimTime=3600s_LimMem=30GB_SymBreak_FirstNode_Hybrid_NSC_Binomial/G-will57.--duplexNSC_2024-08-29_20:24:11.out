@@ -1,0 +1,95 @@
+[runlim] version:		1.10
+[runlim] time limit:		3600 seconds
+[runlim] real time limit:	3600 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc_symbreak_first_node_hybrid_NSC_binomial
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/BenchmarksFirstNode/G-will57.mtx.rnd
+[runlim] argv[2]:		--duplexNSC
+[runlim] start:			Thu Aug 29 20:24:11 2024
+[runlim] main pid:		24332
+[runlim] log captured:
+c DuplexEncoder 0.8.
+c Solving strategy: from LB to UB.
+c LB-w = 12 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 14 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 12 ( G-will57.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 57.
+c Encoding starts with w = 12:
+c	Labels and Vertices aux var: 1596
+c	Labels and Vertices constraints:  9348
+c	Obj k aux var: 4617
+c	Obj k constraints: 41623
+c	Obj k glue staircase constraints: 21844
+c	Encoding duration: 0s
+c	Number of clauses: 50999
+c	Number of irredundant clauses: 50812
+c	Number of variables: 9462
+c SAT Solving starts:
+c	Solving duration: 223 ms
+c	Answer: 
+s SAT (w = 12)
+AB is set to 13
+Node 51 : 26
+Node 53 : 13
+AB is set to 12
+Node 50 : 38
+Node 51 : 26
+c	Solution check:
+p calculated antibandwidth = 12.
+c
+c
+c Antibandwidth problem with w = 13 ( G-will57.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 57.
+c Encoding starts with w = 13:
+c	Labels and Vertices aux var: 1596
+c	Labels and Vertices constraints:  9348
+c	Obj k aux var: 4503
+c	Obj k constraints: 41001
+c	Obj k glue staircase constraints: 21336
+c	Encoding duration: 0s
+c	Number of clauses: 50377
+c	Number of irredundant clauses: 50186
+c	Number of variables: 9348
+c SAT Solving starts:
+c	Solving duration: 95 ms
+c	Answer: 
+s SAT (w = 13)
+AB is set to 13
+Node 51 : 34
+Node 53 : 21
+c	Solution check:
+p calculated antibandwidth = 13.
+c
+c
+c Antibandwidth problem with w = 14 ( G-will57.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 57.
+c Encoding starts with w = 14:
+c	Labels and Vertices aux var: 1596
+c	Labels and Vertices constraints:  9348
+c	Obj k aux var: 4389
+c	Obj k constraints: 40379
+c	Obj k glue staircase constraints: 20828
+c	Encoding duration: 0s
+c	Number of clauses: 49755
+c	Number of irredundant clauses: 49561
+c	Number of variables: 9234
+c SAT Solving starts:
+c	Solving duration: 6 ms
+c	Answer: 
+s UNSAT (w = 14)
+c
+c
+[runlim] end:			Thu Aug 29 20:24:11 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			0.44 seconds
+[runlim] time:			0.29 seconds
+[runlim] space:			13.5 MB
+[runlim] samples:		3
