@@ -1,0 +1,1048 @@
+[runlim] version:		1.10
+[runlim] time limit:		3600 seconds
+[runlim] real time limit:	3600 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc_symbreak_min_node_hybrid_NSC_binomial
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/BenchmarksMinNode/R-dwt__503.mtx.rnd
+[runlim] argv[2]:		--duplexNSC
+[runlim] start:			Thu Aug 29 18:24:59 2024
+[runlim] main pid:		15354
+[runlim] log captured:
+c DuplexEncoder 0.8.
+c Solving strategy: from LB to UB.
+c LB-w = 46 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 71 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 46 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 46:
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  597564
+c	Obj k aux var: 446161
+c	Obj k constraints: 6802511
+c	Obj k glue staircase constraints: 4977124
+c	Encoding duration: 4s
+c	Number of clauses: 7400326
+c	Number of irredundant clauses: 7398716
+c	Number of variables: 742428
+c SAT Solving starts:
+c	Solving duration: 5248 ms
+c	Answer: 
+s SAT (w = 46)
+AB is set to 173
+Node 102 : 446
+Node 437 : 273
+AB is set to 49
+Node 82 : 397
+Node 102 : 446
+AB is set to 48
+Node 442 : 72
+Node 474 : 24
+AB is set to 46
+Node 17 : 449
+Node 45 : 403
+c	Solution check:
+p calculated antibandwidth = 46.
+c
+c
+c Antibandwidth problem with w = 47 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 47:
+[runlim] sample:		10.0 time, 10.8 real, 725.2 MB
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  597564
+c	Obj k aux var: 445155
+c	Obj k constraints: 6793475
+c	Obj k glue staircase constraints: 4966076
+c	Encoding duration: 2s
+c	Number of clauses: 7391290
+c	Number of irredundant clauses: 7389670
+c	Number of variables: 741422
+c SAT Solving starts:
+c	Solving duration: 4579 ms
+c	Answer: 
+s SAT (w = 47)
+AB is set to 188
+Node 102 : 327
+Node 437 : 139
+AB is set to 75
+Node 82 : 402
+Node 102 : 327
+AB is set to 53
+Node 385 : 86
+Node 437 : 139
+AB is set to 47
+Node 344 : 104
+Node 469 : 151
+c	Solution check:
+p calculated antibandwidth = 47.
+c
+c
+c Antibandwidth problem with w = 48 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 48:
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  597564
+c	Obj k aux var: 444149
+c	Obj k constraints: 6784439
+c	Obj k glue staircase constraints: 4955028
+c	Encoding duration: 2s
+c	Number of clauses: 7382254
+c	Number of irredundant clauses: 7380624
+c	Number of variables: 740416
+c SAT Solving starts:
+[runlim] sample:		20.0 time, 20.8 real, 869.2 MB
+c	Solving duration: 5111 ms
+c	Answer: 
+s SAT (w = 48)
+AB is set to 313
+Node 102 : 353
+Node 437 : 40
+AB is set to 48
+Node 82 : 401
+Node 102 : 353
+c	Solution check:
+p calculated antibandwidth = 48.
+c
+c
+c Antibandwidth problem with w = 49 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 49:
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  597564
+c	Obj k aux var: 443143
+c	Obj k constraints: 6775403
+c	Obj k glue staircase constraints: 4943980
+c	Encoding duration: 2s
+c	Number of clauses: 7373218
+c	Number of irredundant clauses: 7371578
+c	Number of variables: 739410
+c SAT Solving starts:
+[runlim] sample:		30.0 time, 30.8 real, 1096.0 MB
+c	Solving duration: 5103 ms
+c	Answer: 
+s SAT (w = 49)
+AB is set to 285
+Node 102 : 329
+Node 437 : 44
+AB is set to 64
+Node 82 : 393
+Node 102 : 329
+AB is set to 49
+Node 385 : 93
+Node 437 : 44
+c	Solution check:
+p calculated antibandwidth = 49.
+c
+c
+c Antibandwidth problem with w = 50 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 50:
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  597564
+c	Obj k aux var: 442137
+c	Obj k constraints: 6766367
+c	Obj k glue staircase constraints: 4932932
+c	Encoding duration: 2s
+c	Number of clauses: 7364182
+c	Number of irredundant clauses: 7362533
+c	Number of variables: 738404
+c SAT Solving starts:
+c	Solving duration: 4636 ms
+c	Answer: 
+s SAT (w = 50)
+AB is set to 330
+Node 102 : 428
+Node 437 : 98
+AB is set to 99
+Node 82 : 329
+Node 102 : 428
+AB is set to 62
+Node 4 : 490
+Node 102 : 428
+AB is set to 52
+Node 344 : 39
+Node 469 : 91
+AB is set to 50
+Node 136 : 290
+Node 157 : 240
+c	Solution check:
+p calculated antibandwidth = 50.
+c
+c
+c Antibandwidth problem with w = 51 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 51:
+[runlim] sample:		40.0 time, 40.8 real, 856.7 MB
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  592534
+c	Obj k aux var: 442640
+c	Obj k constraints: 6743988
+c	Obj k glue staircase constraints: 4930170
+c	Encoding duration: 1s
+c	Number of clauses: 7336773
+c	Number of irredundant clauses: 7335164
+c	Number of variables: 738907
+c SAT Solving starts:
+[runlim] sample:		50.0 time, 50.8 real, 1039.1 MB
+c	Solving duration: 12781 ms
+c	Answer: 
+s SAT (w = 51)
+AB is set to 223
+Node 102 : 248
+Node 437 : 471
+AB is set to 61
+Node 82 : 309
+Node 102 : 248
+AB is set to 56
+Node 102 : 248
+Node 385 : 192
+AB is set to 54
+Node 136 : 211
+Node 157 : 265
+AB is set to 52
+Node 165 : 140
+Node 385 : 192
+AB is set to 51
+Node 165 : 140
+Node 344 : 89
+c	Solution check:
+p calculated antibandwidth = 51.
+c
+c
+c Antibandwidth problem with w = 52 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 52:
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  592534
+c	Obj k aux var: 441634
+c	Obj k constraints: 6734449
+c	Obj k glue staircase constraints: 4919122
+c	Encoding duration: 2s
+c	Number of clauses: 7327234
+c	Number of irredundant clauses: 7325616
+c	Number of variables: 737901
+c SAT Solving starts:
+c	Solving duration: 4161 ms
+c	Answer: 
+s SAT (w = 52)
+AB is set to 293
+Node 102 : 376
+Node 437 : 83
+AB is set to 64
+Node 82 : 440
+Node 102 : 376
+AB is set to 57
+Node 385 : 140
+Node 437 : 83
+AB is set to 55
+Node 344 : 48
+Node 469 : 103
+AB is set to 52
+Node 136 : 400
+Node 157 : 348
+c	Solution check:
+p calculated antibandwidth = 52.
+[runlim] sample:		60.0 time, 60.8 real, 827.0 MB
+c
+c
+c Antibandwidth problem with w = 53 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 53:
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  592534
+c	Obj k aux var: 440628
+c	Obj k constraints: 6724910
+c	Obj k glue staircase constraints: 4908074
+c	Encoding duration: 2s
+c	Number of clauses: 7317695
+c	Number of irredundant clauses: 7316068
+c	Number of variables: 736895
+c SAT Solving starts:
+[runlim] sample:		70.0 time, 70.8 real, 1026.6 MB
+[runlim] sample:		80.0 time, 80.8 real, 1066.3 MB
+[runlim] sample:		90.0 time, 90.8 real, 1066.6 MB
+[runlim] sample:		100.0 time, 100.8 real, 1240.8 MB
+[runlim] sample:		110.0 time, 110.8 real, 1067.8 MB
+c	Solving duration: 49014 ms
+c	Answer: 
+s SAT (w = 53)
+AB is set to 204
+Node 102 : 471
+Node 437 : 267
+AB is set to 109
+Node 82 : 362
+Node 102 : 471
+AB is set to 56
+Node 102 : 471
+Node 385 : 415
+AB is set to 53
+Node 254 : 133
+Node 469 : 80
+c	Solution check:
+p calculated antibandwidth = 53.
+c
+c
+c Antibandwidth problem with w = 54 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 54:
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  592534
+c	Obj k aux var: 439622
+c	Obj k constraints: 6715371
+c	Obj k glue staircase constraints: 4897026
+c	Encoding duration: 2s
+c	Number of clauses: 7308156
+c	Number of irredundant clauses: 7306520
+c	Number of variables: 735889
+c SAT Solving starts:
+[runlim] sample:		120.0 time, 120.8 real, 1066.3 MB
+c	Solving duration: 12773 ms
+c	Answer: 
+s SAT (w = 54)
+AB is set to 232
+Node 102 : 271
+Node 437 : 39
+AB is set to 189
+Node 82 : 460
+Node 102 : 271
+AB is set to 178
+Node 102 : 271
+Node 385 : 93
+AB is set to 121
+Node 4 : 392
+Node 102 : 271
+AB is set to 54
+Node 385 : 93
+Node 437 : 39
+c	Solution check:
+p calculated antibandwidth = 54.
+c
+c
+c Antibandwidth problem with w = 55 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 55:
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  592534
+c	Obj k aux var: 438616
+c	Obj k constraints: 6705832
+c	Obj k glue staircase constraints: 4885978
+c	Encoding duration: 1s
+c	Number of clauses: 7298617
+c	Number of irredundant clauses: 7296972
+c	Number of variables: 734883
+c SAT Solving starts:
+[runlim] sample:		130.0 time, 130.8 real, 891.1 MB
+[runlim] sample:		140.0 time, 140.8 real, 1049.4 MB
+[runlim] sample:		150.0 time, 150.8 real, 1067.4 MB
+[runlim] sample:		160.0 time, 160.8 real, 1068.7 MB
+c	Solving duration: 37720 ms
+c	Answer: 
+s SAT (w = 55)
+AB is set to 64
+Node 102 : 265
+Node 437 : 329
+AB is set to 62
+Node 102 : 265
+Node 385 : 203
+AB is set to 60
+Node 102 : 265
+Node 345 : 325
+AB is set to 55
+Node 164 : 63
+Node 442 : 118
+c	Solution check:
+p calculated antibandwidth = 55.
+c
+c
+c Antibandwidth problem with w = 56 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 56:
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  588007
+c	Obj k aux var: 438616
+c	Obj k constraints: 6680435
+c	Obj k glue staircase constraints: 4883216
+c	Encoding duration: 1s
+c	Number of clauses: 7268693
+c	Number of irredundant clauses: 7266120
+c	Number of variables: 734883
+c SAT Solving starts:
+[runlim] sample:		170.0 time, 170.8 real, 818.5 MB
+[runlim] sample:		180.0 time, 180.8 real, 1052.5 MB
+c	Solving duration: 14068 ms
+c	Answer: 
+s SAT (w = 56)
+AB is set to 171
+Node 102 : 55
+Node 437 : 226
+AB is set to 56
+Node 82 : 111
+Node 102 : 55
+c	Solution check:
+p calculated antibandwidth = 56.
+c
+c
+c Antibandwidth problem with w = 57 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 57:
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  588007
+c	Obj k aux var: 438113
+c	Obj k constraints: 6670393
+c	Obj k glue staircase constraints: 4872168
+c	Encoding duration: 2s
+c	Number of clauses: 7258651
+c	Number of irredundant clauses: 7257074
+c	Number of variables: 734380
+c SAT Solving starts:
+[runlim] sample:		190.0 time, 190.8 real, 1051.2 MB
+[runlim] sample:		200.0 time, 200.8 real, 1209.6 MB
+[runlim] sample:		210.0 time, 210.8 real, 1227.5 MB
+[runlim] sample:		220.0 time, 220.8 real, 1057.5 MB
+[runlim] sample:		230.0 time, 230.8 real, 1057.6 MB
+[runlim] sample:		240.0 time, 240.8 real, 1227.5 MB
+[runlim] sample:		250.0 time, 250.8 real, 1018.6 MB
+[runlim] sample:		260.0 time, 260.8 real, 1073.9 MB
+[runlim] sample:		270.0 time, 270.8 real, 1060.6 MB
+[runlim] sample:		280.0 time, 280.8 real, 1118.2 MB
+[runlim] sample:		290.0 time, 290.8 real, 1118.2 MB
+[runlim] sample:		300.0 time, 300.8 real, 1146.5 MB
+[runlim] sample:		310.0 time, 310.8 real, 1059.9 MB
+[runlim] sample:		320.0 time, 320.8 real, 1059.8 MB
+[runlim] sample:		330.0 time, 330.8 real, 1060.7 MB
+[runlim] sample:		340.0 time, 340.8 real, 1059.9 MB
+[runlim] sample:		350.0 time, 350.8 real, 1069.3 MB
+[runlim] sample:		360.0 time, 360.8 real, 1069.3 MB
+[runlim] sample:		370.0 time, 370.8 real, 1063.9 MB
+c	Solving duration: 186738 ms
+c	Answer: 
+s SAT (w = 57)
+AB is set to 340
+Node 102 : 45
+Node 437 : 385
+AB is set to 202
+Node 102 : 45
+Node 385 : 247
+AB is set to 87
+Node 102 : 45
+Node 345 : 132
+AB is set to 84
+Node 254 : 469
+Node 437 : 385
+AB is set to 66
+Node 3 : 181
+Node 385 : 247
+AB is set to 59
+Node 3 : 181
+Node 344 : 122
+AB is set to 57
+Node 157 : 401
+Node 199 : 344
+c	Solution check:
+p calculated antibandwidth = 57.
+c
+c
+c Antibandwidth problem with w = 58 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 58:
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  588007
+c	Obj k aux var: 437107
+c	Obj k constraints: 6660351
+c	Obj k glue staircase constraints: 4861120
+c	Encoding duration: 2s
+c	Number of clauses: 7248609
+c	Number of irredundant clauses: 7247024
+c	Number of variables: 733374
+c SAT Solving starts:
+[runlim] sample:		380.0 time, 380.8 real, 1225.8 MB
+[runlim] sample:		390.0 time, 390.8 real, 1049.7 MB
+[runlim] sample:		400.0 time, 400.8 real, 1222.2 MB
+[runlim] sample:		410.0 time, 410.8 real, 1055.0 MB
+[runlim] sample:		420.0 time, 420.8 real, 1053.7 MB
+[runlim] sample:		430.0 time, 430.8 real, 1052.4 MB
+[runlim] sample:		440.0 time, 440.8 real, 1056.0 MB
+[runlim] sample:		450.0 time, 450.8 real, 1056.0 MB
+[runlim] sample:		460.0 time, 460.8 real, 1056.0 MB
+[runlim] sample:		470.0 time, 470.8 real, 1058.6 MB
+c	Solving duration: 101433 ms
+c	Answer: 
+s SAT (w = 58)
+AB is set to 264
+Node 102 : 149
+Node 437 : 413
+AB is set to 204
+Node 82 : 353
+Node 102 : 149
+AB is set to 58
+Node 102 : 149
+Node 385 : 91
+c	Solution check:
+p calculated antibandwidth = 58.
+c
+c
+c Antibandwidth problem with w = 59 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 59:
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  588007
+c	Obj k aux var: 436101
+c	Obj k constraints: 6650309
+c	Obj k glue staircase constraints: 4850072
+c	Encoding duration: 2s
+c	Number of clauses: 7238567
+c	Number of irredundant clauses: 7236974
+c	Number of variables: 732368
+c SAT Solving starts:
+[runlim] sample:		480.0 time, 480.8 real, 842.3 MB
+[runlim] sample:		490.0 time, 490.8 real, 1061.4 MB
+[runlim] sample:		500.0 time, 500.8 real, 1063.5 MB
+[runlim] sample:		510.0 time, 510.8 real, 1064.0 MB
+[runlim] sample:		520.0 time, 520.8 real, 1025.4 MB
+[runlim] sample:		530.0 time, 530.8 real, 1236.6 MB
+[runlim] sample:		540.0 time, 540.8 real, 1065.2 MB
+[runlim] sample:		550.0 time, 550.8 real, 1065.0 MB
+[runlim] sample:		560.0 time, 560.8 real, 1065.0 MB
+[runlim] sample:		570.0 time, 570.8 real, 1028.6 MB
+[runlim] sample:		580.0 time, 580.8 real, 1029.9 MB
+[runlim] sample:		590.0 time, 590.8 real, 1029.9 MB
+[runlim] sample:		600.0 time, 600.8 real, 1065.1 MB
+[runlim] sample:		610.0 time, 610.8 real, 1072.9 MB
+[runlim] sample:		620.0 time, 620.8 real, 1105.9 MB
+[runlim] sample:		630.0 time, 630.8 real, 1043.2 MB
+[runlim] sample:		640.0 time, 640.8 real, 1034.1 MB
+[runlim] sample:		650.0 time, 650.8 real, 1036.4 MB
+[runlim] sample:		660.0 time, 660.8 real, 1086.2 MB
+[runlim] sample:		670.0 time, 670.8 real, 1034.3 MB
+[runlim] sample:		680.0 time, 680.8 real, 1033.4 MB
+[runlim] sample:		690.0 time, 690.8 real, 1031.4 MB
+[runlim] sample:		700.0 time, 700.8 real, 1080.2 MB
+[runlim] sample:		710.0 time, 710.8 real, 1218.3 MB
+[runlim] sample:		720.0 time, 720.8 real, 1041.2 MB
+[runlim] sample:		730.0 time, 730.8 real, 1045.4 MB
+c	Solving duration: 254625 ms
+c	Answer: 
+s SAT (w = 59)
+AB is set to 87
+Node 102 : 289
+Node 437 : 376
+AB is set to 71
+Node 82 : 447
+Node 437 : 376
+AB is set to 62
+Node 3 : 41
+Node 385 : 103
+AB is set to 60
+Node 254 : 454
+Node 469 : 394
+AB is set to 59
+Node 45 : 224
+Node 486 : 165
+c	Solution check:
+p calculated antibandwidth = 59.
+c
+c
+c Antibandwidth problem with w = 60 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 60:
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  588007
+c	Obj k aux var: 435095
+c	Obj k constraints: 6640267
+c	Obj k glue staircase constraints: 4839024
+c	Encoding duration: 2s
+c	Number of clauses: 7228525
+c	Number of irredundant clauses: 7226924
+c	Number of variables: 731362
+c SAT Solving starts:
+[runlim] sample:		740.0 time, 740.8 real, 983.5 MB
+[runlim] sample:		749.9 time, 750.8 real, 1201.7 MB
+[runlim] sample:		759.9 time, 760.8 real, 1231.8 MB
+[runlim] sample:		769.9 time, 770.8 real, 1068.0 MB
+[runlim] sample:		779.9 time, 780.8 real, 1068.9 MB
+[runlim] sample:		789.9 time, 790.8 real, 1069.8 MB
+[runlim] sample:		799.9 time, 800.8 real, 1070.2 MB
+[runlim] sample:		809.9 time, 810.8 real, 1242.6 MB
+[runlim] sample:		819.9 time, 820.8 real, 1242.3 MB
+[runlim] sample:		829.9 time, 830.8 real, 1073.8 MB
+[runlim] sample:		839.9 time, 840.8 real, 1073.8 MB
+[runlim] sample:		849.9 time, 850.8 real, 1072.1 MB
+[runlim] sample:		859.9 time, 860.8 real, 1077.8 MB
+[runlim] sample:		869.9 time, 870.8 real, 1209.6 MB
+[runlim] sample:		879.9 time, 880.8 real, 1078.9 MB
+[runlim] sample:		889.9 time, 890.8 real, 1081.4 MB
+[runlim] sample:		899.9 time, 900.8 real, 1081.1 MB
+[runlim] sample:		909.9 time, 910.8 real, 996.3 MB
+[runlim] sample:		919.9 time, 920.8 real, 1036.1 MB
+[runlim] sample:		929.9 time, 930.8 real, 1217.0 MB
+[runlim] sample:		939.9 time, 940.8 real, 1040.3 MB
+[runlim] sample:		949.9 time, 950.8 real, 1255.6 MB
+[runlim] sample:		959.9 time, 960.8 real, 1201.1 MB
+[runlim] sample:		969.9 time, 970.8 real, 1252.9 MB
+[runlim] sample:		979.9 time, 980.8 real, 1489.4 MB
+[runlim] sample:		989.9 time, 990.8 real, 1168.8 MB
+[runlim] sample:		999.9 time, 1000.8 real, 1096.6 MB
+[runlim] sample:		1009.9 time, 1010.8 real, 1141.4 MB
+[runlim] sample:		1019.9 time, 1020.8 real, 1158.5 MB
+[runlim] sample:		1029.9 time, 1030.8 real, 1080.0 MB
+c	Solving duration: 299662 ms
+c	Answer: 
+s SAT (w = 60)
+AB is set to 87
+Node 102 : 279
+Node 437 : 366
+AB is set to 77
+Node 82 : 443
+Node 437 : 366
+AB is set to 75
+Node 3 : 32
+Node 254 : 107
+AB is set to 69
+Node 199 : 201
+Node 469 : 270
+AB is set to 62
+Node 157 : 139
+Node 199 : 201
+AB is set to 61
+Node 419 : 460
+Node 486 : 399
+AB is set to 60
+Node 171 : 214
+Node 247 : 274
+c	Solution check:
+p calculated antibandwidth = 60.
+c
+c
+c Antibandwidth problem with w = 61 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 61:
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  588007
+c	Obj k aux var: 434089
+c	Obj k constraints: 6630225
+c	Obj k glue staircase constraints: 4827976
+c	Encoding duration: 1s
+c	Number of clauses: 7218483
+c	Number of irredundant clauses: 7216874
+c	Number of variables: 730356
+c SAT Solving starts:
+[runlim] sample:		1039.9 time, 1040.8 real, 1021.3 MB
+[runlim] sample:		1049.9 time, 1050.8 real, 1044.7 MB
+[runlim] sample:		1059.9 time, 1060.8 real, 1020.7 MB
+[runlim] sample:		1069.9 time, 1070.8 real, 1063.9 MB
+[runlim] sample:		1079.9 time, 1080.8 real, 1064.8 MB
+[runlim] sample:		1089.9 time, 1090.8 real, 1065.2 MB
+[runlim] sample:		1099.9 time, 1100.8 real, 1065.4 MB
+[runlim] sample:		1109.9 time, 1110.8 real, 1065.9 MB
+[runlim] sample:		1119.9 time, 1120.8 real, 1067.3 MB
+[runlim] sample:		1129.9 time, 1130.8 real, 1067.1 MB
+[runlim] sample:		1139.9 time, 1140.8 real, 1069.1 MB
+[runlim] sample:		1149.9 time, 1150.8 real, 1069.1 MB
+[runlim] sample:		1159.9 time, 1160.8 real, 1070.8 MB
+[runlim] sample:		1169.9 time, 1170.8 real, 1078.3 MB
+[runlim] sample:		1179.9 time, 1180.8 real, 1078.3 MB
+[runlim] sample:		1189.9 time, 1190.8 real, 1073.5 MB
+[runlim] sample:		1199.9 time, 1200.8 real, 1071.2 MB
+[runlim] sample:		1209.9 time, 1210.8 real, 1247.4 MB
+[runlim] sample:		1219.9 time, 1220.8 real, 1070.2 MB
+[runlim] sample:		1229.9 time, 1230.8 real, 1070.2 MB
+[runlim] sample:		1239.9 time, 1240.8 real, 1301.0 MB
+[runlim] sample:		1249.9 time, 1250.8 real, 1244.1 MB
+[runlim] sample:		1259.9 time, 1260.8 real, 1071.0 MB
+[runlim] sample:		1269.9 time, 1270.8 real, 1071.0 MB
+[runlim] sample:		1279.9 time, 1280.8 real, 1075.9 MB
+[runlim] sample:		1289.9 time, 1290.8 real, 1079.0 MB
+[runlim] sample:		1299.9 time, 1300.8 real, 1078.9 MB
+[runlim] sample:		1309.9 time, 1310.8 real, 1079.5 MB
+[runlim] sample:		1319.9 time, 1320.8 real, 1081.7 MB
+[runlim] sample:		1329.9 time, 1330.8 real, 1081.6 MB
+c	Solving duration: 300527 ms
+c	Answer: 
+s SAT (w = 61)
+AB is set to 356
+Node 102 : 100
+Node 437 : 456
+AB is set to 261
+Node 82 : 361
+Node 102 : 100
+AB is set to 74
+Node 102 : 100
+Node 385 : 174
+AB is set to 61
+Node 157 : 43
+Node 199 : 104
+c	Solution check:
+p calculated antibandwidth = 61.
+c
+c
+c Antibandwidth problem with w = 62 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 62:
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  588007
+c	Obj k aux var: 433083
+c	Obj k constraints: 6620183
+c	Obj k glue staircase constraints: 4816928
+c	Encoding duration: 2s
+c	Number of clauses: 7208441
+c	Number of irredundant clauses: 7206824
+c	Number of variables: 729350
+c SAT Solving starts:
+[runlim] sample:		1339.9 time, 1340.8 real, 852.8 MB
+[runlim] sample:		1349.9 time, 1350.8 real, 1047.8 MB
+[runlim] sample:		1359.9 time, 1360.8 real, 1059.8 MB
+[runlim] sample:		1369.9 time, 1370.8 real, 1230.3 MB
+[runlim] sample:		1379.9 time, 1380.8 real, 1292.7 MB
+[runlim] sample:		1389.9 time, 1390.8 real, 1067.4 MB
+[runlim] sample:		1399.9 time, 1400.8 real, 1067.8 MB
+[runlim] sample:		1409.9 time, 1410.8 real, 1068.7 MB
+[runlim] sample:		1419.9 time, 1420.8 real, 1068.7 MB
+[runlim] sample:		1429.9 time, 1430.8 real, 1069.0 MB
+[runlim] sample:		1439.9 time, 1440.8 real, 1069.5 MB
+[runlim] sample:		1449.9 time, 1450.8 real, 1071.3 MB
+[runlim] sample:		1459.9 time, 1460.8 real, 1071.3 MB
+[runlim] sample:		1469.9 time, 1470.8 real, 1127.0 MB
+[runlim] sample:		1479.9 time, 1480.8 real, 1070.5 MB
+[runlim] sample:		1489.9 time, 1490.8 real, 1070.4 MB
+[runlim] sample:		1499.9 time, 1500.8 real, 1070.7 MB
+[runlim] sample:		1509.9 time, 1510.8 real, 1246.2 MB
+[runlim] sample:		1519.9 time, 1520.8 real, 1072.7 MB
+[runlim] sample:		1529.9 time, 1530.8 real, 1072.3 MB
+[runlim] sample:		1539.9 time, 1540.8 real, 1072.2 MB
+[runlim] sample:		1549.9 time, 1550.8 real, 1076.7 MB
+[runlim] sample:		1559.9 time, 1560.8 real, 1079.4 MB
+[runlim] sample:		1569.9 time, 1570.8 real, 1108.6 MB
+[runlim] sample:		1579.9 time, 1580.8 real, 1088.4 MB
+[runlim] sample:		1589.9 time, 1590.8 real, 1088.4 MB
+[runlim] sample:		1599.9 time, 1600.8 real, 1088.4 MB
+[runlim] sample:		1609.9 time, 1610.8 real, 1080.9 MB
+[runlim] sample:		1619.9 time, 1620.8 real, 1085.9 MB
+[runlim] sample:		1629.9 time, 1630.8 real, 1085.8 MB
+[runlim] sample:		1639.9 time, 1640.8 real, 1080.9 MB
+[runlim] sample:		1649.9 time, 1650.8 real, 1077.0 MB
+[runlim] sample:		1659.9 time, 1660.8 real, 1076.9 MB
+[runlim] sample:		1669.9 time, 1670.8 real, 1079.1 MB
+[runlim] sample:		1679.9 time, 1680.8 real, 1081.7 MB
+[runlim] sample:		1689.9 time, 1690.8 real, 1079.4 MB
+[runlim] sample:		1699.9 time, 1700.8 real, 1079.3 MB
+[runlim] sample:		1709.9 time, 1710.8 real, 1079.1 MB
+[runlim] sample:		1719.9 time, 1720.8 real, 1079.1 MB
+[runlim] sample:		1729.9 time, 1730.8 real, 1343.4 MB
+[runlim] sample:		1739.9 time, 1740.8 real, 1166.4 MB
+[runlim] sample:		1749.9 time, 1750.8 real, 1166.3 MB
+[runlim] sample:		1759.8 time, 1760.8 real, 1092.2 MB
+[runlim] sample:		1769.8 time, 1770.8 real, 1092.2 MB
+[runlim] sample:		1779.9 time, 1780.8 real, 1089.6 MB
+[runlim] sample:		1789.9 time, 1790.8 real, 1089.6 MB
+[runlim] sample:		1799.9 time, 1800.8 real, 1087.5 MB
+[runlim] sample:		1809.9 time, 1810.8 real, 1087.5 MB
+[runlim] sample:		1819.9 time, 1820.8 real, 1088.8 MB
+[runlim] sample:		1829.8 time, 1830.8 real, 1088.7 MB
+[runlim] sample:		1839.8 time, 1840.8 real, 1042.4 MB
+[runlim] sample:		1849.8 time, 1850.8 real, 1042.4 MB
+[runlim] sample:		1859.9 time, 1860.8 real, 1035.3 MB
+[runlim] sample:		1869.8 time, 1870.8 real, 1035.2 MB
+[runlim] sample:		1879.8 time, 1880.8 real, 1035.2 MB
+[runlim] sample:		1889.8 time, 1890.8 real, 1084.2 MB
+[runlim] sample:		1899.8 time, 1900.8 real, 1084.1 MB
+c	Solving duration: 562977 ms
+c	Answer: 
+s SAT (w = 62)
+AB is set to 343
+Node 102 : 46
+Node 437 : 389
+AB is set to 280
+Node 102 : 46
+Node 385 : 326
+AB is set to 259
+Node 102 : 46
+Node 345 : 305
+AB is set to 186
+Node 4 : 232
+Node 102 : 46
+AB is set to 69
+Node 82 : 458
+Node 437 : 389
+AB is set to 63
+Node 385 : 326
+Node 437 : 389
+AB is set to 62
+Node 157 : 272
+Node 199 : 334
+c	Solution check:
+p calculated antibandwidth = 62.
+c
+c
+c Antibandwidth problem with w = 63 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 63:
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  583983
+c	Obj k aux var: 433083
+c	Obj k constraints: 6590762
+c	Obj k glue staircase constraints: 4814166
+c	Encoding duration: 1s
+c	Number of clauses: 7174996
+c	Number of irredundant clauses: 7172445
+c	Number of variables: 729350
+c SAT Solving starts:
+[runlim] sample:		1909.8 time, 1910.8 real, 1145.1 MB
+[runlim] sample:		1919.8 time, 1920.8 real, 1041.9 MB
+[runlim] sample:		1929.8 time, 1930.8 real, 1045.3 MB
+[runlim] sample:		1939.8 time, 1940.8 real, 1063.5 MB
+[runlim] sample:		1949.8 time, 1950.8 real, 1063.1 MB
+[runlim] sample:		1959.8 time, 1960.8 real, 1063.6 MB
+[runlim] sample:		1969.8 time, 1970.8 real, 1064.0 MB
+[runlim] sample:		1979.8 time, 1980.8 real, 1232.6 MB
+[runlim] sample:		1989.8 time, 1990.8 real, 1064.2 MB
+[runlim] sample:		1999.8 time, 2000.8 real, 1233.2 MB
+[runlim] sample:		2009.8 time, 2010.8 real, 1064.8 MB
+[runlim] sample:		2019.8 time, 2020.8 real, 1064.9 MB
+[runlim] sample:		2029.8 time, 2030.8 real, 1235.3 MB
+[runlim] sample:		2039.8 time, 2040.8 real, 1065.7 MB
+[runlim] sample:		2049.8 time, 2050.8 real, 1066.7 MB
+[runlim] sample:		2059.8 time, 2060.8 real, 1068.6 MB
+[runlim] sample:		2069.8 time, 2070.8 real, 1067.2 MB
+[runlim] sample:		2079.8 time, 2080.8 real, 1067.2 MB
+[runlim] sample:		2089.8 time, 2090.8 real, 1065.8 MB
+[runlim] sample:		2099.8 time, 2100.8 real, 1065.7 MB
+[runlim] sample:		2109.8 time, 2110.8 real, 1066.3 MB
+[runlim] sample:		2119.8 time, 2120.8 real, 1067.3 MB
+[runlim] sample:		2129.8 time, 2130.8 real, 1065.8 MB
+[runlim] sample:		2139.8 time, 2140.8 real, 1081.8 MB
+[runlim] sample:		2149.8 time, 2150.8 real, 1021.3 MB
+[runlim] sample:		2159.8 time, 2160.8 real, 1027.8 MB
+[runlim] sample:		2169.8 time, 2170.8 real, 1023.8 MB
+[runlim] sample:		2179.8 time, 2180.8 real, 1022.8 MB
+[runlim] sample:		2189.8 time, 2190.8 real, 1204.4 MB
+[runlim] sample:		2199.8 time, 2200.8 real, 1023.8 MB
+[runlim] sample:		2209.8 time, 2210.8 real, 1036.2 MB
+[runlim] sample:		2219.8 time, 2220.8 real, 1036.2 MB
+[runlim] sample:		2229.8 time, 2230.8 real, 1022.5 MB
+[runlim] sample:		2239.8 time, 2240.8 real, 1022.4 MB
+[runlim] sample:		2249.8 time, 2250.8 real, 1025.3 MB
+[runlim] sample:		2259.8 time, 2260.8 real, 1025.6 MB
+[runlim] sample:		2269.8 time, 2270.8 real, 1027.6 MB
+[runlim] sample:		2279.8 time, 2280.8 real, 1025.8 MB
+[runlim] sample:		2289.8 time, 2290.8 real, 1072.1 MB
+[runlim] sample:		2299.8 time, 2300.8 real, 1072.1 MB
+[runlim] sample:		2309.8 time, 2310.8 real, 1083.5 MB
+[runlim] sample:		2319.8 time, 2320.8 real, 1076.1 MB
+[runlim] sample:		2329.8 time, 2330.8 real, 1076.1 MB
+[runlim] sample:		2339.8 time, 2340.8 real, 1075.2 MB
+[runlim] sample:		2349.8 time, 2350.8 real, 1071.6 MB
+[runlim] sample:		2359.8 time, 2360.8 real, 1071.5 MB
+[runlim] sample:		2369.8 time, 2370.8 real, 1025.2 MB
+[runlim] sample:		2379.8 time, 2380.8 real, 1029.4 MB
+[runlim] sample:		2389.8 time, 2390.8 real, 1031.5 MB
+[runlim] sample:		2399.8 time, 2400.8 real, 1115.3 MB
+[runlim] sample:		2409.8 time, 2410.8 real, 1071.9 MB
+[runlim] sample:		2419.8 time, 2420.8 real, 1076.5 MB
+[runlim] sample:		2429.8 time, 2430.8 real, 1076.4 MB
+[runlim] sample:		2439.8 time, 2440.8 real, 1073.2 MB
+[runlim] sample:		2449.8 time, 2450.8 real, 1081.7 MB
+[runlim] sample:		2459.8 time, 2460.8 real, 1081.7 MB
+[runlim] sample:		2469.8 time, 2470.8 real, 1102.7 MB
+[runlim] sample:		2479.8 time, 2480.8 real, 1128.7 MB
+[runlim] sample:		2489.8 time, 2490.8 real, 1043.8 MB
+[runlim] sample:		2499.8 time, 2500.8 real, 1079.9 MB
+[runlim] sample:		2509.8 time, 2510.8 real, 1085.6 MB
+[runlim] sample:		2519.8 time, 2520.8 real, 1166.2 MB
+[runlim] sample:		2529.8 time, 2530.8 real, 1166.0 MB
+[runlim] sample:		2539.8 time, 2540.8 real, 1165.9 MB
+[runlim] sample:		2549.8 time, 2550.8 real, 1165.9 MB
+[runlim] sample:		2559.8 time, 2560.8 real, 1169.6 MB
+[runlim] sample:		2569.8 time, 2570.8 real, 1441.3 MB
+[runlim] sample:		2579.8 time, 2580.8 real, 1178.5 MB
+[runlim] sample:		2589.8 time, 2590.8 real, 1166.1 MB
+[runlim] sample:		2599.8 time, 2600.8 real, 1166.1 MB
+[runlim] sample:		2609.8 time, 2610.8 real, 1143.7 MB
+[runlim] sample:		2619.8 time, 2620.8 real, 1131.9 MB
+[runlim] sample:		2629.8 time, 2630.8 real, 1131.9 MB
+[runlim] sample:		2639.8 time, 2640.8 real, 1157.6 MB
+[runlim] sample:		2649.8 time, 2650.8 real, 1157.6 MB
+[runlim] sample:		2659.8 time, 2660.8 real, 1132.9 MB
+[runlim] sample:		2669.8 time, 2670.8 real, 1129.1 MB
+[runlim] sample:		2679.8 time, 2680.8 real, 1129.1 MB
+[runlim] sample:		2689.8 time, 2690.8 real, 1130.2 MB
+[runlim] sample:		2699.8 time, 2700.8 real, 1130.2 MB
+[runlim] sample:		2709.8 time, 2710.8 real, 1135.9 MB
+[runlim] sample:		2719.8 time, 2720.8 real, 1131.8 MB
+[runlim] sample:		2729.8 time, 2730.8 real, 1131.8 MB
+[runlim] sample:		2739.8 time, 2740.8 real, 1138.7 MB
+[runlim] sample:		2749.8 time, 2750.8 real, 1138.7 MB
+[runlim] sample:		2759.8 time, 2760.8 real, 1130.6 MB
+[runlim] sample:		2769.8 time, 2770.8 real, 1162.4 MB
+[runlim] sample:		2779.8 time, 2780.8 real, 1162.4 MB
+[runlim] sample:		2789.8 time, 2790.8 real, 1162.4 MB
+[runlim] sample:		2799.8 time, 2800.8 real, 1168.8 MB
+[runlim] sample:		2809.8 time, 2810.8 real, 1171.0 MB
+[runlim] sample:		2819.8 time, 2820.8 real, 1171.0 MB
+[runlim] sample:		2829.8 time, 2830.8 real, 1140.5 MB
+[runlim] sample:		2839.8 time, 2840.8 real, 1141.4 MB
+[runlim] sample:		2849.8 time, 2850.8 real, 1134.9 MB
+[runlim] sample:		2859.8 time, 2860.8 real, 1134.9 MB
+[runlim] sample:		2869.8 time, 2870.8 real, 1143.7 MB
+[runlim] sample:		2879.8 time, 2880.8 real, 1143.7 MB
+[runlim] sample:		2889.8 time, 2890.8 real, 1147.1 MB
+[runlim] sample:		2899.8 time, 2900.8 real, 1133.4 MB
+[runlim] sample:		2909.8 time, 2910.8 real, 1137.3 MB
+[runlim] sample:		2919.8 time, 2920.8 real, 1137.3 MB
+[runlim] sample:		2929.8 time, 2930.8 real, 1336.4 MB
+[runlim] sample:		2939.8 time, 2940.8 real, 1134.2 MB
+[runlim] sample:		2949.8 time, 2950.8 real, 1134.2 MB
+[runlim] sample:		2959.8 time, 2960.8 real, 1147.3 MB
+[runlim] sample:		2969.8 time, 2970.8 real, 1147.3 MB
+[runlim] sample:		2979.8 time, 2980.8 real, 1179.1 MB
+[runlim] sample:		2989.8 time, 2990.8 real, 1176.0 MB
+[runlim] sample:		2999.8 time, 3000.8 real, 1176.0 MB
+[runlim] sample:		3009.8 time, 3010.8 real, 1144.1 MB
+[runlim] sample:		3019.8 time, 3020.8 real, 1138.6 MB
+[runlim] sample:		3029.8 time, 3030.8 real, 1138.6 MB
+[runlim] sample:		3039.8 time, 3040.8 real, 1133.1 MB
+c	Solving duration: 1137027 ms
+c	Answer: 
+s SAT (w = 63)
+AB is set to 155
+Node 102 : 203
+Node 437 : 48
+AB is set to 133
+Node 82 : 336
+Node 102 : 203
+AB is set to 78
+Node 102 : 203
+Node 385 : 125
+AB is set to 73
+Node 102 : 203
+Node 345 : 130
+AB is set to 67
+Node 3 : 192
+Node 385 : 125
+AB is set to 66
+Node 442 : 120
+Node 474 : 54
+AB is set to 64
+Node 17 : 398
+Node 164 : 334
+AB is set to 63
+Node 18 : 445
+Node 329 : 382
+c	Solution check:
+p calculated antibandwidth = 63.
+c
+c
+c Antibandwidth problem with w = 64 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 503.
+c Encoding starts with w = 64:
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  583983
+c	Obj k aux var: 432580
+c	Obj k constraints: 6580217
+c	Obj k glue staircase constraints: 4803118
+c	Encoding duration: 2s
+c	Number of clauses: 7164451
+c	Number of irredundant clauses: 7162882
+c	Number of variables: 728847
+c SAT Solving starts:
+[runlim] sample:		3049.8 time, 3050.8 real, 994.1 MB
+[runlim] sample:		3059.8 time, 3060.8 real, 1057.4 MB
+[runlim] sample:		3069.8 time, 3070.8 real, 1032.3 MB
+[runlim] sample:		3079.8 time, 3080.8 real, 1060.6 MB
+[runlim] sample:		3089.8 time, 3090.8 real, 1059.9 MB
+[runlim] sample:		3099.8 time, 3100.8 real, 1060.6 MB
+[runlim] sample:		3109.8 time, 3110.8 real, 1060.1 MB
+[runlim] sample:		3119.8 time, 3120.8 real, 1021.1 MB
+[runlim] sample:		3129.8 time, 3130.8 real, 1021.1 MB
+[runlim] sample:		3139.8 time, 3140.8 real, 1023.1 MB
+[runlim] sample:		3149.8 time, 3150.8 real, 1062.9 MB
+[runlim] sample:		3159.8 time, 3160.8 real, 1191.4 MB
+[runlim] sample:		3169.8 time, 3170.8 real, 1022.5 MB
+[runlim] sample:		3179.8 time, 3180.8 real, 980.6 MB
+[runlim] sample:		3189.8 time, 3190.8 real, 979.4 MB
+[runlim] sample:		3199.8 time, 3200.8 real, 1004.3 MB
+[runlim] sample:		3209.8 time, 3210.8 real, 1151.2 MB
+[runlim] sample:		3219.8 time, 3220.8 real, 1020.9 MB
+[runlim] sample:		3229.8 time, 3230.8 real, 981.1 MB
+[runlim] sample:		3239.8 time, 3240.8 real, 982.3 MB
+[runlim] sample:		3249.8 time, 3250.8 real, 1023.0 MB
+[runlim] sample:		3259.8 time, 3260.8 real, 982.0 MB
+[runlim] sample:		3269.8 time, 3270.8 real, 982.0 MB
+[runlim] sample:		3279.8 time, 3280.8 real, 985.2 MB
+[runlim] sample:		3289.8 time, 3290.8 real, 1017.8 MB
+[runlim] sample:		3299.8 time, 3300.8 real, 1197.0 MB
+[runlim] sample:		3309.8 time, 3310.8 real, 1024.2 MB
+[runlim] sample:		3319.8 time, 3320.8 real, 1024.6 MB
+[runlim] sample:		3329.8 time, 3330.8 real, 1019.8 MB
+[runlim] sample:		3339.8 time, 3340.8 real, 1019.8 MB
+[runlim] sample:		3349.8 time, 3350.8 real, 1020.2 MB
+[runlim] sample:		3359.8 time, 3360.8 real, 1019.8 MB
+[runlim] sample:		3369.7 time, 3370.8 real, 1020.4 MB
+[runlim] sample:		3379.7 time, 3380.8 real, 1193.4 MB
+[runlim] sample:		3389.8 time, 3390.8 real, 1019.4 MB
+[runlim] sample:		3399.7 time, 3400.8 real, 1021.7 MB
+[runlim] sample:		3409.8 time, 3410.8 real, 993.6 MB
+[runlim] sample:		3419.7 time, 3420.8 real, 1033.4 MB
+[runlim] sample:		3429.7 time, 3430.8 real, 1033.4 MB
+[runlim] sample:		3439.7 time, 3440.8 real, 1057.4 MB
+[runlim] sample:		3449.7 time, 3450.8 real, 1041.3 MB
+[runlim] sample:		3459.7 time, 3460.8 real, 1071.0 MB
+[runlim] sample:		3469.8 time, 3470.8 real, 1027.4 MB
+[runlim] sample:		3479.7 time, 3480.8 real, 1027.4 MB
+[runlim] sample:		3489.7 time, 3490.8 real, 1033.5 MB
+[runlim] sample:		3499.7 time, 3500.8 real, 1073.3 MB
+[runlim] sample:		3509.7 time, 3510.8 real, 1069.0 MB
+[runlim] sample:		3519.7 time, 3520.8 real, 1027.3 MB
+[runlim] sample:		3529.7 time, 3530.8 real, 1027.3 MB
+[runlim] sample:		3539.7 time, 3540.8 real, 990.1 MB
+[runlim] sample:		3549.7 time, 3550.8 real, 990.1 MB
+[runlim] sample:		3559.7 time, 3560.8 real, 994.9 MB
+[runlim] sample:		3569.7 time, 3570.8 real, 1180.6 MB
+[runlim] sample:		3579.7 time, 3580.8 real, 1038.0 MB
+[runlim] sample:		3589.7 time, 3590.8 real, 1223.4 MB
+c Signal interruption.
+[runlim] end:			Thu Aug 29 19:24:59 2024
+[runlim] status:		out of time
+[runlim] result:		2
+[runlim] children:		0
+[runlim] real:			3600.13 seconds
+[runlim] time:			3599.04 seconds
+[runlim] space:			1544.6 MB
+[runlim] samples:		35993

@@ -1,0 +1,50 @@
+[runlim] version:		1.10
+[runlim] time limit:		3600 seconds
+[runlim] real time limit:	3600 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc_symbreak_min_node_hybrid_NSC_binomial
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/L-bcspwr03.mtx.rnd
+[runlim] argv[2]:		--duplexNSC
+[runlim] start:			Thu Aug 29 05:23:55 2024
+[runlim] main pid:		3266
+[runlim] log captured:
+c DuplexEncoder 0.8.
+c Solving strategy: from LB to UB.
+c LB-w = 39 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 39 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 39 ( L-bcspwr03.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 118.
+c Encoding starts with w = 39:
+c	Labels and Vertices aux var: 4720
+c	Labels and Vertices constraints:  35400
+c	Obj k aux var: 17936
+c	Obj k constraints: 136971
+c	Obj k glue staircase constraints: 55669
+c	Encoding duration: 0s
+c	Number of clauses: 172430
+c	Number of irredundant clauses: 172052
+c	Number of variables: 36580
+c SAT Solving starts:
+c	Solving duration: 1159 ms
+c	Answer: 
+s SAT (w = 39)
+AB is set to 56
+Node 40 : 74
+Node 92 : 18
+AB is set to 39
+Node 30 : 113
+Node 40 : 74
+c	Solution check:
+p calculated antibandwidth = 39.
+c
+c
+[runlim] end:			Thu Aug 29 05:23:56 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			1.30 seconds
+[runlim] time:			1.20 seconds
+[runlim] space:			38.7 MB
+[runlim] samples:		12
