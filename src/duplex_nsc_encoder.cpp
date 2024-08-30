@@ -66,8 +66,8 @@ namespace SATABP
         labels_aux_var = vertices_aux_var + g->n * g->n;
 
         // encode_symmetry_break();
-        encode_symmetry_break_on_maxnode();
-        // encode_symmetry_break_on_minnode();
+        // encode_symmetry_break_on_maxnode();
+        encode_symmetry_break_on_minnode();
 
         encode_vertices();
         // encode_labels();
