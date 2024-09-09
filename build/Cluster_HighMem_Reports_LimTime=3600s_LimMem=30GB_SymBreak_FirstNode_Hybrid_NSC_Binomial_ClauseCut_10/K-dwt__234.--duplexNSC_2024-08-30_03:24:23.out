@@ -1,0 +1,552 @@
+[runlim] version:		1.10
+[runlim] time limit:		3600 seconds
+[runlim] real time limit:	3600 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc_symbreak_first_node_hybrid_NSC_binomial
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/K-dwt__234.mtx.rnd
+[runlim] argv[2]:		--duplexNSC
+[runlim] argv[3]:		-split-size
+[runlim] argv[4]:		10
+[runlim] start:			Fri Aug 30 03:24:23 2024
+[runlim] main pid:		2083
+[runlim] log captured:
+c DuplexEncoder 0.8.
+c Splitting clauses at length 10.
+c Solving strategy: from LB to UB.
+c LB-w = 46 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 58 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 46 ( K-dwt__234.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 117.
+c Encoding starts with w = 46:
+c	Labels and Vertices aux var: 4680
+c	Labels and Vertices constraints:  34515
+c	Obj k aux var: 16263
+c	Obj k constraints: 118575
+c	Obj k glue staircase constraints: 45684
+c	Encoding duration: 0s
+c	Number of clauses: 154786
+c	Number of irredundant clauses: 154390
+c	Number of variables: 36270
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.9 real, 52.2 MB
+[runlim] sample:		20.0 time, 20.9 real, 62.9 MB
+[runlim] sample:		30.0 time, 30.9 real, 117.7 MB
+[runlim] sample:		40.0 time, 40.9 real, 122.7 MB
+[runlim] sample:		50.0 time, 50.9 real, 109.4 MB
+[runlim] sample:		60.0 time, 60.9 real, 123.9 MB
+[runlim] sample:		70.0 time, 70.9 real, 175.1 MB
+c	Solving duration: 77012 ms
+c	Answer: 
+s SAT (w = 46)
+AB is set to 56
+Node 28 : 42
+Node 115 : 98
+AB is set to 48
+Node 19 : 63
+Node 33 : 15
+AB is set to 46
+Node 28 : 42
+Node 107 : 88
+c	Solution check:
+p calculated antibandwidth = 46.
+c
+c
+c Antibandwidth problem with w = 47 ( K-dwt__234.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 117.
+c Encoding starts with w = 47:
+c	Labels and Vertices aux var: 4680
+c	Labels and Vertices constraints:  34515
+c	Obj k aux var: 16029
+c	Obj k constraints: 117459
+c	Obj k glue staircase constraints: 45036
+c	Encoding duration: 0s
+c	Number of clauses: 153670
+c	Number of irredundant clauses: 153272
+c	Number of variables: 36036
+c SAT Solving starts:
+[runlim] sample:		80.0 time, 80.9 real, 126.0 MB
+[runlim] sample:		90.0 time, 90.9 real, 126.0 MB
+[runlim] sample:		100.0 time, 100.9 real, 126.0 MB
+[runlim] sample:		110.0 time, 110.9 real, 161.2 MB
+[runlim] sample:		120.0 time, 120.9 real, 127.1 MB
+[runlim] sample:		130.0 time, 130.9 real, 127.1 MB
+[runlim] sample:		140.0 time, 140.9 real, 195.0 MB
+[runlim] sample:		150.0 time, 150.9 real, 169.3 MB
+[runlim] sample:		160.0 time, 160.9 real, 134.8 MB
+[runlim] sample:		170.0 time, 170.9 real, 117.2 MB
+[runlim] sample:		180.0 time, 180.9 real, 118.9 MB
+[runlim] sample:		190.0 time, 190.9 real, 159.7 MB
+[runlim] sample:		200.0 time, 200.9 real, 171.8 MB
+c	Solving duration: 132814 ms
+c	Answer: 
+s SAT (w = 47)
+AB is set to 48
+Node 28 : 84
+Node 115 : 36
+AB is set to 47
+Node 24 : 60
+Node 111 : 107
+c	Solution check:
+p calculated antibandwidth = 47.
+c
+c
+c Antibandwidth problem with w = 48 ( K-dwt__234.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 117.
+c Encoding starts with w = 48:
+c	Labels and Vertices aux var: 4680
+c	Labels and Vertices constraints:  34515
+c	Obj k aux var: 15795
+c	Obj k constraints: 116343
+c	Obj k glue staircase constraints: 44388
+c	Encoding duration: 0s
+c	Number of clauses: 152554
+c	Number of irredundant clauses: 152154
+c	Number of variables: 35802
+c SAT Solving starts:
+[runlim] sample:		210.0 time, 210.9 real, 102.2 MB
+[runlim] sample:		220.0 time, 220.9 real, 105.7 MB
+[runlim] sample:		230.0 time, 230.9 real, 107.2 MB
+c	Solving duration: 25723 ms
+c	Answer: 
+s SAT (w = 48)
+AB is set to 50
+Node 28 : 17
+Node 115 : 67
+AB is set to 49
+Node 15 : 72
+Node 48 : 23
+AB is set to 48
+Node 28 : 17
+Node 113 : 65
+c	Solution check:
+p calculated antibandwidth = 48.
+c
+c
+c Antibandwidth problem with w = 49 ( K-dwt__234.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 117.
+c Encoding starts with w = 49:
+c	Labels and Vertices aux var: 4680
+c	Labels and Vertices constraints:  34515
+c	Obj k aux var: 15561
+c	Obj k constraints: 115227
+c	Obj k glue staircase constraints: 43740
+c	Encoding duration: 0s
+c	Number of clauses: 151555
+c	Number of irredundant clauses: 151152
+c	Number of variables: 35685
+c SAT Solving starts:
+[runlim] sample:		240.0 time, 240.9 real, 125.5 MB
+[runlim] sample:		250.0 time, 250.9 real, 125.5 MB
+[runlim] sample:		260.0 time, 260.9 real, 125.5 MB
+[runlim] sample:		270.0 time, 270.9 real, 129.9 MB
+[runlim] sample:		280.0 time, 280.9 real, 129.9 MB
+[runlim] sample:		290.0 time, 290.9 real, 149.6 MB
+[runlim] sample:		300.0 time, 300.9 real, 125.9 MB
+[runlim] sample:		310.0 time, 310.9 real, 126.1 MB
+[runlim] sample:		320.0 time, 320.9 real, 126.1 MB
+[runlim] sample:		330.0 time, 330.9 real, 126.1 MB
+[runlim] sample:		340.0 time, 340.9 real, 202.3 MB
+[runlim] sample:		350.0 time, 350.9 real, 144.5 MB
+[runlim] sample:		360.0 time, 360.9 real, 283.0 MB
+[runlim] sample:		370.0 time, 370.9 real, 291.9 MB
+[runlim] sample:		380.0 time, 380.9 real, 189.6 MB
+[runlim] sample:		390.0 time, 390.9 real, 256.4 MB
+[runlim] sample:		400.0 time, 400.9 real, 260.9 MB
+[runlim] sample:		410.0 time, 410.9 real, 189.6 MB
+[runlim] sample:		420.0 time, 420.9 real, 189.6 MB
+[runlim] sample:		430.0 time, 430.9 real, 212.4 MB
+[runlim] sample:		440.0 time, 440.9 real, 137.0 MB
+[runlim] sample:		450.0 time, 450.9 real, 162.9 MB
+[runlim] sample:		460.0 time, 460.9 real, 166.4 MB
+[runlim] sample:		470.0 time, 470.9 real, 202.9 MB
+c	Solving duration: 239083 ms
+c	Answer: 
+s SAT (w = 49)
+AB is set to 53
+Node 28 : 21
+Node 115 : 74
+AB is set to 50
+Node 4 : 71
+Node 28 : 21
+AB is set to 49
+Node 48 : 34
+Node 82 : 83
+c	Solution check:
+p calculated antibandwidth = 49.
+c
+c
+c Antibandwidth problem with w = 50 ( K-dwt__234.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 117.
+c Encoding starts with w = 50:
+c	Labels and Vertices aux var: 4680
+c	Labels and Vertices constraints:  34515
+c	Obj k aux var: 15327
+c	Obj k constraints: 114111
+c	Obj k glue staircase constraints: 43092
+c	Encoding duration: 0s
+c	Number of clauses: 150439
+c	Number of irredundant clauses: 150034
+c	Number of variables: 35451
+c SAT Solving starts:
+[runlim] sample:		480.0 time, 480.9 real, 166.7 MB
+[runlim] sample:		490.0 time, 490.9 real, 166.7 MB
+[runlim] sample:		500.0 time, 500.9 real, 166.7 MB
+[runlim] sample:		510.0 time, 510.9 real, 166.7 MB
+[runlim] sample:		520.0 time, 520.9 real, 166.7 MB
+[runlim] sample:		530.0 time, 530.9 real, 166.7 MB
+[runlim] sample:		540.0 time, 540.9 real, 166.7 MB
+[runlim] sample:		550.0 time, 550.9 real, 166.7 MB
+[runlim] sample:		560.0 time, 560.9 real, 166.7 MB
+[runlim] sample:		570.0 time, 570.9 real, 166.7 MB
+[runlim] sample:		580.0 time, 580.9 real, 166.7 MB
+[runlim] sample:		590.0 time, 590.9 real, 203.5 MB
+[runlim] sample:		600.0 time, 600.9 real, 166.7 MB
+[runlim] sample:		610.0 time, 610.9 real, 200.2 MB
+[runlim] sample:		620.0 time, 620.9 real, 166.7 MB
+[runlim] sample:		630.0 time, 630.9 real, 166.7 MB
+[runlim] sample:		640.0 time, 640.9 real, 292.0 MB
+[runlim] sample:		650.0 time, 650.9 real, 166.7 MB
+[runlim] sample:		660.0 time, 660.9 real, 179.0 MB
+[runlim] sample:		670.0 time, 670.9 real, 198.7 MB
+[runlim] sample:		680.0 time, 680.9 real, 198.7 MB
+[runlim] sample:		690.0 time, 690.9 real, 220.3 MB
+[runlim] sample:		700.0 time, 700.9 real, 155.0 MB
+[runlim] sample:		710.0 time, 710.9 real, 155.1 MB
+[runlim] sample:		720.0 time, 720.9 real, 158.4 MB
+[runlim] sample:		730.0 time, 730.9 real, 216.4 MB
+[runlim] sample:		740.0 time, 740.9 real, 215.3 MB
+[runlim] sample:		750.0 time, 750.9 real, 324.3 MB
+[runlim] sample:		760.0 time, 760.9 real, 380.8 MB
+[runlim] sample:		770.0 time, 770.9 real, 326.0 MB
+[runlim] sample:		780.0 time, 780.9 real, 241.6 MB
+[runlim] sample:		790.0 time, 790.9 real, 227.5 MB
+[runlim] sample:		799.9 time, 800.9 real, 273.6 MB
+[runlim] sample:		810.0 time, 810.9 real, 265.7 MB
+[runlim] sample:		819.9 time, 820.9 real, 300.6 MB
+[runlim] sample:		829.9 time, 830.9 real, 333.5 MB
+[runlim] sample:		839.9 time, 840.9 real, 289.3 MB
+[runlim] sample:		849.9 time, 850.9 real, 227.5 MB
+[runlim] sample:		859.9 time, 860.9 real, 227.5 MB
+[runlim] sample:		869.9 time, 870.9 real, 227.5 MB
+[runlim] sample:		879.9 time, 880.9 real, 227.5 MB
+[runlim] sample:		890.0 time, 890.9 real, 227.5 MB
+[runlim] sample:		900.0 time, 900.9 real, 227.5 MB
+[runlim] sample:		910.0 time, 910.9 real, 227.5 MB
+[runlim] sample:		920.0 time, 920.9 real, 273.9 MB
+[runlim] sample:		929.9 time, 930.9 real, 273.9 MB
+[runlim] sample:		939.9 time, 940.9 real, 227.5 MB
+[runlim] sample:		949.9 time, 950.9 real, 279.2 MB
+[runlim] sample:		960.0 time, 960.9 real, 284.6 MB
+[runlim] sample:		969.9 time, 970.9 real, 283.1 MB
+[runlim] sample:		979.9 time, 980.9 real, 292.4 MB
+[runlim] sample:		989.9 time, 990.9 real, 368.0 MB
+[runlim] sample:		999.9 time, 1000.9 real, 358.1 MB
+[runlim] sample:		1009.9 time, 1010.9 real, 376.4 MB
+[runlim] sample:		1019.9 time, 1020.9 real, 352.3 MB
+[runlim] sample:		1029.9 time, 1030.9 real, 278.8 MB
+[runlim] sample:		1039.9 time, 1040.9 real, 278.2 MB
+[runlim] sample:		1049.9 time, 1050.9 real, 341.9 MB
+[runlim] sample:		1059.9 time, 1060.9 real, 304.7 MB
+[runlim] sample:		1069.9 time, 1070.9 real, 328.8 MB
+[runlim] sample:		1079.9 time, 1080.9 real, 386.7 MB
+[runlim] sample:		1089.9 time, 1090.9 real, 337.0 MB
+[runlim] sample:		1099.9 time, 1100.9 real, 274.6 MB
+[runlim] sample:		1109.9 time, 1110.9 real, 270.5 MB
+[runlim] sample:		1119.9 time, 1120.9 real, 227.5 MB
+[runlim] sample:		1129.9 time, 1130.9 real, 392.9 MB
+[runlim] sample:		1139.9 time, 1140.9 real, 305.2 MB
+[runlim] sample:		1149.9 time, 1150.9 real, 348.5 MB
+[runlim] sample:		1159.9 time, 1160.9 real, 348.5 MB
+[runlim] sample:		1169.9 time, 1170.9 real, 304.6 MB
+[runlim] sample:		1179.9 time, 1180.9 real, 285.5 MB
+[runlim] sample:		1189.9 time, 1190.9 real, 308.1 MB
+[runlim] sample:		1199.9 time, 1200.9 real, 308.1 MB
+[runlim] sample:		1209.9 time, 1210.9 real, 305.1 MB
+[runlim] sample:		1219.9 time, 1220.9 real, 309.8 MB
+[runlim] sample:		1229.9 time, 1230.9 real, 299.0 MB
+[runlim] sample:		1239.9 time, 1240.9 real, 299.0 MB
+[runlim] sample:		1249.9 time, 1250.9 real, 311.1 MB
+[runlim] sample:		1259.9 time, 1260.9 real, 325.7 MB
+[runlim] sample:		1269.9 time, 1270.9 real, 319.7 MB
+[runlim] sample:		1279.9 time, 1280.9 real, 298.0 MB
+[runlim] sample:		1289.9 time, 1290.9 real, 305.2 MB
+[runlim] sample:		1299.9 time, 1300.9 real, 307.3 MB
+[runlim] sample:		1309.9 time, 1310.9 real, 240.2 MB
+[runlim] sample:		1319.9 time, 1320.9 real, 268.7 MB
+[runlim] sample:		1329.9 time, 1330.9 real, 268.7 MB
+[runlim] sample:		1339.9 time, 1340.9 real, 268.7 MB
+[runlim] sample:		1349.9 time, 1350.9 real, 239.3 MB
+[runlim] sample:		1359.9 time, 1360.9 real, 231.8 MB
+[runlim] sample:		1369.9 time, 1370.9 real, 210.6 MB
+[runlim] sample:		1379.9 time, 1380.9 real, 269.8 MB
+[runlim] sample:		1389.9 time, 1390.9 real, 258.4 MB
+[runlim] sample:		1399.9 time, 1400.9 real, 255.3 MB
+[runlim] sample:		1409.9 time, 1410.9 real, 258.6 MB
+[runlim] sample:		1419.9 time, 1420.9 real, 256.3 MB
+[runlim] sample:		1429.9 time, 1430.9 real, 262.1 MB
+[runlim] sample:		1439.9 time, 1440.9 real, 254.8 MB
+[runlim] sample:		1449.9 time, 1450.9 real, 257.3 MB
+[runlim] sample:		1459.9 time, 1460.9 real, 260.2 MB
+[runlim] sample:		1469.9 time, 1470.9 real, 258.0 MB
+[runlim] sample:		1479.9 time, 1480.9 real, 258.9 MB
+[runlim] sample:		1489.9 time, 1490.9 real, 265.4 MB
+[runlim] sample:		1499.9 time, 1500.9 real, 270.0 MB
+[runlim] sample:		1509.9 time, 1510.9 real, 270.0 MB
+[runlim] sample:		1519.9 time, 1520.9 real, 270.7 MB
+[runlim] sample:		1529.9 time, 1530.9 real, 247.9 MB
+[runlim] sample:		1539.9 time, 1540.9 real, 214.2 MB
+[runlim] sample:		1549.9 time, 1550.9 real, 214.2 MB
+[runlim] sample:		1559.9 time, 1560.9 real, 247.2 MB
+[runlim] sample:		1569.9 time, 1570.9 real, 254.1 MB
+[runlim] sample:		1579.9 time, 1580.9 real, 254.1 MB
+[runlim] sample:		1589.9 time, 1590.9 real, 262.7 MB
+[runlim] sample:		1599.9 time, 1600.9 real, 264.8 MB
+[runlim] sample:		1609.9 time, 1610.9 real, 264.8 MB
+[runlim] sample:		1619.9 time, 1620.9 real, 267.8 MB
+[runlim] sample:		1629.9 time, 1630.9 real, 287.0 MB
+[runlim] sample:		1639.9 time, 1640.9 real, 277.1 MB
+[runlim] sample:		1649.9 time, 1650.9 real, 272.9 MB
+[runlim] sample:		1659.9 time, 1660.9 real, 272.9 MB
+[runlim] sample:		1669.9 time, 1670.9 real, 289.5 MB
+[runlim] sample:		1679.9 time, 1680.9 real, 289.5 MB
+[runlim] sample:		1689.9 time, 1690.9 real, 310.5 MB
+[runlim] sample:		1699.9 time, 1700.9 real, 305.1 MB
+[runlim] sample:		1709.9 time, 1710.9 real, 305.1 MB
+[runlim] sample:		1719.9 time, 1720.9 real, 305.0 MB
+[runlim] sample:		1729.9 time, 1730.9 real, 267.9 MB
+[runlim] sample:		1739.9 time, 1740.9 real, 254.6 MB
+[runlim] sample:		1749.9 time, 1750.9 real, 256.0 MB
+[runlim] sample:		1759.9 time, 1760.9 real, 268.8 MB
+[runlim] sample:		1769.9 time, 1770.9 real, 268.9 MB
+[runlim] sample:		1779.9 time, 1780.9 real, 268.9 MB
+[runlim] sample:		1789.9 time, 1790.9 real, 292.0 MB
+[runlim] sample:		1799.9 time, 1800.9 real, 270.9 MB
+[runlim] sample:		1809.9 time, 1810.9 real, 246.7 MB
+[runlim] sample:		1819.9 time, 1820.9 real, 244.5 MB
+[runlim] sample:		1829.9 time, 1830.9 real, 277.6 MB
+[runlim] sample:		1839.9 time, 1840.9 real, 277.6 MB
+[runlim] sample:		1849.9 time, 1850.9 real, 244.5 MB
+[runlim] sample:		1859.9 time, 1860.9 real, 289.0 MB
+[runlim] sample:		1869.9 time, 1870.9 real, 244.5 MB
+[runlim] sample:		1879.9 time, 1880.9 real, 287.7 MB
+[runlim] sample:		1889.9 time, 1890.9 real, 244.5 MB
+[runlim] sample:		1899.9 time, 1900.9 real, 281.5 MB
+[runlim] sample:		1909.9 time, 1910.9 real, 281.5 MB
+[runlim] sample:		1919.9 time, 1920.9 real, 244.5 MB
+[runlim] sample:		1929.9 time, 1930.9 real, 277.5 MB
+[runlim] sample:		1939.9 time, 1940.9 real, 321.7 MB
+[runlim] sample:		1949.9 time, 1950.9 real, 320.2 MB
+[runlim] sample:		1959.9 time, 1960.9 real, 320.2 MB
+[runlim] sample:		1969.9 time, 1970.9 real, 324.0 MB
+[runlim] sample:		1979.9 time, 1980.9 real, 324.0 MB
+[runlim] sample:		1989.9 time, 1990.9 real, 315.0 MB
+[runlim] sample:		1999.9 time, 2000.9 real, 315.0 MB
+[runlim] sample:		2009.9 time, 2010.9 real, 310.2 MB
+[runlim] sample:		2019.9 time, 2020.9 real, 308.0 MB
+[runlim] sample:		2029.9 time, 2030.9 real, 308.0 MB
+[runlim] sample:		2039.9 time, 2040.9 real, 244.5 MB
+[runlim] sample:		2049.9 time, 2050.9 real, 315.7 MB
+[runlim] sample:		2059.9 time, 2060.9 real, 315.7 MB
+[runlim] sample:		2069.9 time, 2070.9 real, 334.0 MB
+[runlim] sample:		2079.9 time, 2080.9 real, 334.0 MB
+[runlim] sample:		2089.9 time, 2090.9 real, 326.1 MB
+[runlim] sample:		2099.9 time, 2100.9 real, 314.3 MB
+[runlim] sample:		2109.9 time, 2110.9 real, 328.5 MB
+[runlim] sample:		2119.9 time, 2120.9 real, 591.8 MB
+[runlim] sample:		2129.9 time, 2130.9 real, 495.8 MB
+[runlim] sample:		2139.9 time, 2140.9 real, 347.8 MB
+[runlim] sample:		2149.9 time, 2150.9 real, 401.0 MB
+[runlim] sample:		2159.9 time, 2160.9 real, 401.0 MB
+[runlim] sample:		2169.9 time, 2170.9 real, 310.8 MB
+[runlim] sample:		2179.9 time, 2180.9 real, 310.8 MB
+[runlim] sample:		2189.9 time, 2190.9 real, 326.9 MB
+[runlim] sample:		2199.9 time, 2200.9 real, 326.9 MB
+[runlim] sample:		2209.9 time, 2210.9 real, 326.9 MB
+[runlim] sample:		2219.9 time, 2220.9 real, 347.9 MB
+[runlim] sample:		2229.9 time, 2230.9 real, 347.9 MB
+[runlim] sample:		2239.9 time, 2240.9 real, 351.8 MB
+[runlim] sample:		2249.9 time, 2250.9 real, 351.8 MB
+[runlim] sample:		2259.9 time, 2260.9 real, 337.2 MB
+[runlim] sample:		2269.9 time, 2270.9 real, 337.2 MB
+[runlim] sample:		2279.9 time, 2280.9 real, 337.2 MB
+[runlim] sample:		2289.9 time, 2290.9 real, 335.2 MB
+[runlim] sample:		2299.9 time, 2300.9 real, 340.9 MB
+[runlim] sample:		2309.9 time, 2310.9 real, 685.5 MB
+[runlim] sample:		2319.9 time, 2320.9 real, 685.5 MB
+[runlim] sample:		2329.9 time, 2330.9 real, 685.8 MB
+[runlim] sample:		2339.9 time, 2340.9 real, 750.8 MB
+[runlim] sample:		2349.9 time, 2350.9 real, 812.4 MB
+[runlim] sample:		2359.9 time, 2360.9 real, 584.4 MB
+[runlim] sample:		2369.9 time, 2370.9 real, 584.4 MB
+[runlim] sample:		2379.9 time, 2380.9 real, 479.1 MB
+[runlim] sample:		2389.9 time, 2390.9 real, 382.2 MB
+[runlim] sample:		2399.9 time, 2400.9 real, 304.6 MB
+[runlim] sample:		2409.9 time, 2410.9 real, 304.6 MB
+[runlim] sample:		2419.9 time, 2420.9 real, 402.6 MB
+[runlim] sample:		2429.9 time, 2430.9 real, 304.7 MB
+[runlim] sample:		2439.9 time, 2440.9 real, 304.7 MB
+[runlim] sample:		2449.9 time, 2450.9 real, 466.9 MB
+[runlim] sample:		2459.9 time, 2460.9 real, 466.9 MB
+[runlim] sample:		2469.9 time, 2470.9 real, 506.8 MB
+[runlim] sample:		2479.9 time, 2480.9 real, 599.4 MB
+[runlim] sample:		2489.9 time, 2490.9 real, 856.3 MB
+[runlim] sample:		2499.9 time, 2500.9 real, 562.9 MB
+[runlim] sample:		2509.9 time, 2510.9 real, 519.7 MB
+[runlim] sample:		2519.9 time, 2520.9 real, 519.7 MB
+[runlim] sample:		2529.9 time, 2530.9 real, 528.7 MB
+[runlim] sample:		2539.9 time, 2540.9 real, 528.7 MB
+[runlim] sample:		2549.9 time, 2550.9 real, 545.7 MB
+[runlim] sample:		2559.9 time, 2560.9 real, 545.7 MB
+[runlim] sample:		2569.9 time, 2570.9 real, 680.6 MB
+[runlim] sample:		2579.9 time, 2580.9 real, 546.2 MB
+[runlim] sample:		2589.9 time, 2590.9 real, 546.2 MB
+[runlim] sample:		2599.9 time, 2600.9 real, 460.1 MB
+[runlim] sample:		2609.9 time, 2610.9 real, 460.1 MB
+[runlim] sample:		2619.9 time, 2620.9 real, 536.2 MB
+[runlim] sample:		2629.9 time, 2630.9 real, 536.2 MB
+[runlim] sample:		2639.9 time, 2640.9 real, 460.1 MB
+[runlim] sample:		2649.9 time, 2650.9 real, 532.7 MB
+[runlim] sample:		2659.9 time, 2660.9 real, 532.7 MB
+[runlim] sample:		2669.9 time, 2670.9 real, 671.3 MB
+[runlim] sample:		2679.9 time, 2680.9 real, 671.3 MB
+[runlim] sample:		2689.9 time, 2690.9 real, 671.3 MB
+[runlim] sample:		2699.9 time, 2700.9 real, 809.3 MB
+[runlim] sample:		2709.9 time, 2710.9 real, 730.0 MB
+[runlim] sample:		2719.9 time, 2720.9 real, 500.5 MB
+[runlim] sample:		2729.9 time, 2730.9 real, 500.5 MB
+[runlim] sample:		2739.9 time, 2740.9 real, 627.0 MB
+[runlim] sample:		2749.9 time, 2750.9 real, 627.0 MB
+[runlim] sample:		2759.9 time, 2760.9 real, 732.0 MB
+[runlim] sample:		2769.9 time, 2770.9 real, 732.0 MB
+[runlim] sample:		2779.9 time, 2780.9 real, 537.6 MB
+[runlim] sample:		2789.9 time, 2790.9 real, 531.9 MB
+[runlim] sample:		2799.9 time, 2800.9 real, 532.6 MB
+[runlim] sample:		2809.9 time, 2810.9 real, 520.5 MB
+[runlim] sample:		2819.9 time, 2820.9 real, 520.5 MB
+[runlim] sample:		2829.9 time, 2830.9 real, 613.9 MB
+[runlim] sample:		2839.9 time, 2840.9 real, 613.9 MB
+c	Solving duration: 2368259 ms
+c	Answer: 
+s SAT (w = 50)
+AB is set to 52
+Node 28 : 33
+Node 115 : 85
+AB is set to 51
+Node 15 : 81
+Node 48 : 30
+AB is set to 50
+Node 28 : 33
+Node 105 : 83
+c	Solution check:
+p calculated antibandwidth = 50.
+c
+c
+c Antibandwidth problem with w = 51 ( K-dwt__234.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 117.
+c Encoding starts with w = 51:
+c	Labels and Vertices aux var: 4680
+c	Labels and Vertices constraints:  34515
+c	Obj k aux var: 15093
+c	Obj k constraints: 112995
+c	Obj k glue staircase constraints: 42444
+c	Encoding duration: 0s
+c	Number of clauses: 149323
+c	Number of irredundant clauses: 148916
+c	Number of variables: 35217
+c SAT Solving starts:
+[runlim] sample:		2849.9 time, 2850.9 real, 333.1 MB
+[runlim] sample:		2859.9 time, 2860.9 real, 333.1 MB
+[runlim] sample:		2869.9 time, 2870.9 real, 333.1 MB
+[runlim] sample:		2879.9 time, 2880.9 real, 333.1 MB
+[runlim] sample:		2889.9 time, 2890.9 real, 333.1 MB
+[runlim] sample:		2899.9 time, 2900.9 real, 333.1 MB
+[runlim] sample:		2909.9 time, 2910.9 real, 333.1 MB
+[runlim] sample:		2919.9 time, 2920.9 real, 333.1 MB
+[runlim] sample:		2929.9 time, 2930.9 real, 333.1 MB
+[runlim] sample:		2939.9 time, 2940.9 real, 333.1 MB
+[runlim] sample:		2949.9 time, 2950.9 real, 333.1 MB
+[runlim] sample:		2959.9 time, 2960.9 real, 333.1 MB
+[runlim] sample:		2969.9 time, 2970.9 real, 333.1 MB
+[runlim] sample:		2979.9 time, 2980.9 real, 333.1 MB
+[runlim] sample:		2989.9 time, 2990.9 real, 333.1 MB
+[runlim] sample:		2999.9 time, 3000.9 real, 333.1 MB
+[runlim] sample:		3009.9 time, 3010.9 real, 333.1 MB
+[runlim] sample:		3019.9 time, 3020.9 real, 333.1 MB
+[runlim] sample:		3029.9 time, 3030.9 real, 333.1 MB
+[runlim] sample:		3039.9 time, 3040.9 real, 333.1 MB
+[runlim] sample:		3049.9 time, 3050.9 real, 333.1 MB
+[runlim] sample:		3059.9 time, 3060.9 real, 333.1 MB
+[runlim] sample:		3069.9 time, 3070.9 real, 333.1 MB
+[runlim] sample:		3079.9 time, 3080.9 real, 333.1 MB
+[runlim] sample:		3089.9 time, 3090.9 real, 333.1 MB
+[runlim] sample:		3099.9 time, 3100.9 real, 333.1 MB
+[runlim] sample:		3109.9 time, 3110.9 real, 333.1 MB
+[runlim] sample:		3119.9 time, 3120.9 real, 333.1 MB
+[runlim] sample:		3129.9 time, 3130.9 real, 333.1 MB
+[runlim] sample:		3139.9 time, 3140.9 real, 333.1 MB
+[runlim] sample:		3149.9 time, 3150.9 real, 333.1 MB
+[runlim] sample:		3159.9 time, 3160.9 real, 333.1 MB
+[runlim] sample:		3169.9 time, 3170.9 real, 333.1 MB
+[runlim] sample:		3179.9 time, 3180.9 real, 333.1 MB
+[runlim] sample:		3189.9 time, 3190.9 real, 333.1 MB
+[runlim] sample:		3199.9 time, 3200.9 real, 333.1 MB
+[runlim] sample:		3209.9 time, 3210.9 real, 333.1 MB
+[runlim] sample:		3219.9 time, 3220.9 real, 333.1 MB
+[runlim] sample:		3229.9 time, 3230.9 real, 333.1 MB
+[runlim] sample:		3239.9 time, 3240.9 real, 333.1 MB
+[runlim] sample:		3249.9 time, 3250.9 real, 333.1 MB
+[runlim] sample:		3259.9 time, 3260.9 real, 333.1 MB
+[runlim] sample:		3269.9 time, 3270.9 real, 333.1 MB
+[runlim] sample:		3279.9 time, 3280.9 real, 333.1 MB
+[runlim] sample:		3289.9 time, 3290.9 real, 333.1 MB
+[runlim] sample:		3299.9 time, 3300.9 real, 333.1 MB
+[runlim] sample:		3309.9 time, 3310.9 real, 333.1 MB
+[runlim] sample:		3319.9 time, 3320.9 real, 333.1 MB
+[runlim] sample:		3329.9 time, 3330.9 real, 333.1 MB
+[runlim] sample:		3339.9 time, 3340.9 real, 333.1 MB
+[runlim] sample:		3349.9 time, 3350.9 real, 333.1 MB
+[runlim] sample:		3359.9 time, 3360.9 real, 333.1 MB
+[runlim] sample:		3369.9 time, 3370.9 real, 369.6 MB
+[runlim] sample:		3379.9 time, 3380.9 real, 333.1 MB
+[runlim] sample:		3389.9 time, 3390.9 real, 333.1 MB
+[runlim] sample:		3399.9 time, 3400.9 real, 333.1 MB
+[runlim] sample:		3409.9 time, 3410.9 real, 333.1 MB
+[runlim] sample:		3419.9 time, 3420.9 real, 333.1 MB
+[runlim] sample:		3429.9 time, 3430.9 real, 333.1 MB
+[runlim] sample:		3439.9 time, 3440.9 real, 333.1 MB
+[runlim] sample:		3449.9 time, 3450.9 real, 382.4 MB
+[runlim] sample:		3459.9 time, 3460.9 real, 333.1 MB
+[runlim] sample:		3469.9 time, 3470.9 real, 333.1 MB
+[runlim] sample:		3479.9 time, 3480.9 real, 395.0 MB
+[runlim] sample:		3489.9 time, 3490.9 real, 333.1 MB
+[runlim] sample:		3499.9 time, 3500.9 real, 390.9 MB
+[runlim] sample:		3509.9 time, 3510.9 real, 333.1 MB
+[runlim] sample:		3519.9 time, 3520.9 real, 391.7 MB
+[runlim] sample:		3529.9 time, 3530.9 real, 333.1 MB
+[runlim] sample:		3539.9 time, 3540.9 real, 333.1 MB
+[runlim] sample:		3549.9 time, 3550.9 real, 399.7 MB
+[runlim] sample:		3559.9 time, 3560.9 real, 333.1 MB
+[runlim] sample:		3569.9 time, 3570.9 real, 397.7 MB
+[runlim] sample:		3579.9 time, 3580.9 real, 397.7 MB
+[runlim] sample:		3589.9 time, 3590.9 real, 333.1 MB
+c Signal interruption.
+[runlim] end:			Fri Aug 30 04:24:23 2024
+[runlim] status:		out of time
+[runlim] result:		2
+[runlim] children:		0
+[runlim] real:			3600.08 seconds
+[runlim] time:			3599.06 seconds
+[runlim] space:			1115.9 MB
+[runlim] samples:		35992

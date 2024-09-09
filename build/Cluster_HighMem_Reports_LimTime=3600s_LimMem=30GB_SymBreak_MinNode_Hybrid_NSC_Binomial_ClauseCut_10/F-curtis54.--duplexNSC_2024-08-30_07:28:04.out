@@ -1,0 +1,84 @@
+[runlim] version:		1.10
+[runlim] time limit:		3600 seconds
+[runlim] real time limit:	3600 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc_symbreak_min_node_hybrid_NSC_binomial
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/F-curtis54.mtx.rnd
+[runlim] argv[2]:		--duplexNSC
+[runlim] argv[3]:		-split-size
+[runlim] argv[4]:		10
+[runlim] start:			Fri Aug 30 07:28:04 2024
+[runlim] main pid:		6377
+[runlim] log captured:
+c DuplexEncoder 0.8.
+c Splitting clauses at length 10.
+c Solving strategy: from LB to UB.
+c LB-w = 12 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 13 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 12 ( F-curtis54.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 54.
+c Encoding starts with w = 12:
+c	Labels and Vertices aux var: 1404
+c	Labels and Vertices constraints:  8370
+c	Obj k aux var: 4050
+c	Obj k constraints: 37444
+c	Obj k glue staircase constraints: 19840
+c	Encoding duration: 0s
+c	Number of clauses: 46111
+c	Number of irredundant clauses: 45911
+c	Number of variables: 8640
+c SAT Solving starts:
+c	Solving duration: 28 ms
+c	Answer: 
+s SAT (w = 12)
+AB is set to 41
+Node 2 : 2
+Node 41 : 43
+AB is set to 29
+Node 2 : 2
+Node 18 : 31
+AB is set to 12
+Node 18 : 31
+Node 41 : 43
+c	Solution check:
+p calculated antibandwidth = 12.
+c
+c
+c Antibandwidth problem with w = 13 ( F-curtis54.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 54.
+c Encoding starts with w = 13:
+c	Labels and Vertices aux var: 1404
+c	Labels and Vertices constraints:  8370
+c	Obj k aux var: 3942
+c	Obj k constraints: 36840
+c	Obj k glue staircase constraints: 19344
+c	Encoding duration: 0s
+c	Number of clauses: 45561
+c	Number of irredundant clauses: 45354
+c	Number of variables: 8586
+c SAT Solving starts:
+c	Solving duration: 58 ms
+c	Answer: 
+s SAT (w = 13)
+AB is set to 32
+Node 2 : 13
+Node 41 : 45
+AB is set to 13
+Node 2 : 13
+Node 18 : 26
+c	Solution check:
+p calculated antibandwidth = 13.
+c
+c
+[runlim] end:			Fri Aug 30 07:28:04 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			0.23 seconds
+[runlim] time:			0.09 seconds
+[runlim] space:			12.3 MB
+[runlim] samples:		1
