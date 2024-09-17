@@ -1,5 +1,5 @@
-#ifndef DUPLEX_NSC_ENCODER
-#define DUPLEX_NSC_ENCODER
+#ifndef LADDER_ENCODER
+#define LADDER_ENCODER
 
 #include "encoder.h"
 #include <map>
@@ -7,11 +7,11 @@
 namespace SATABP
 {
 
-    class DuplexNSCEncoder : public Encoder
+    class LadderEncoder : public Encoder
     {
     public:
-        DuplexNSCEncoder(Graph *g, ClauseContainer *cc, VarHandler *vh);
-        virtual ~DuplexNSCEncoder();
+        LadderEncoder(Graph *g, ClauseContainer *cc, VarHandler *vh);
+        virtual ~LadderEncoder();
 
     private:
         bool is_debug_mode = false;

@@ -7,7 +7,7 @@
 namespace SATABP
 {
 
-    AntibandwidthEncoder::AntibandwidthEncoder(){};
+    AntibandwidthEncoder::AntibandwidthEncoder() {};
 
     AntibandwidthEncoder::~AntibandwidthEncoder()
     {
@@ -290,22 +290,27 @@ namespace SATABP
         case duplex:
             std::cout << "c Initializing a Duplex encoder with n = " << g->n << "." << std::endl;
             enc = new DuplexEncoder(g, cc, vh);
+            enc->symmetry_break_point = symmetry_break_point;
             break;
         case reduced:
             std::cout << "c Initializing a Naive-Reduced encoder with n = " << g->n << "." << std::endl;
             enc = new ReducedEncoder(g, cc, vh);
+            enc->symmetry_break_point = symmetry_break_point;
             break;
         case seq:
             std::cout << "c Initializing a Sequential encoder with n = " << g->n << "." << std::endl;
             enc = new SeqEncoder(g, cc, vh);
+            enc->symmetry_break_point = symmetry_break_point;
             break;
         case product:
             std::cout << "c Initializing a 2-Product encoder with n = " << g->n << "." << std::endl;
             enc = new ProductEncoder(g, cc, vh);
+            enc->symmetry_break_point = symmetry_break_point;
             break;
-        case duplexNSC:
-            std::cout << "c Initializing a DuplexNSC encoder with n = " << g->n << "." << std::endl;
-            enc = new DuplexNSCEncoder(g, cc, vh);
+        case ladder:
+            std::cout << "c Initializing a Ladder encoder with n = " << g->n << "." << std::endl;
+            enc = new LadderEncoder(g, cc, vh);
+            enc->symmetry_break_point = symmetry_break_point;
             break;
         default:
             std::cerr << "c Unrecognized encoder type " << enc_choice << "." << std::endl;

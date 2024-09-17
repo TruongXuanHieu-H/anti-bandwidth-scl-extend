@@ -1,4 +1,4 @@
-#include "duplex_nsc_encoder.h"
+#include "ladder_encoder.h"
 #include "math_extension.h"
 
 #include <iostream>
@@ -14,13 +14,13 @@
 */
 namespace SATABP
 {
-    DuplexNSCEncoder::DuplexNSCEncoder(Graph *g, ClauseContainer *cc, VarHandler *vh) : Encoder(g, cc, vh)
+    LadderEncoder::LadderEncoder(Graph *g, ClauseContainer *cc, VarHandler *vh) : Encoder(g, cc, vh)
     {
     }
 
-    DuplexNSCEncoder::~DuplexNSCEncoder() {}
+    LadderEncoder::~LadderEncoder() {}
 
-    int DuplexNSCEncoder::get_aux_var(int symbolicAuxVar)
+    int LadderEncoder::get_aux_var(int symbolicAuxVar)
     {
         auto pair = aux_vars.find(symbolicAuxVar);
 
@@ -32,7 +32,7 @@ namespace SATABP
         return new_aux_var;
     }
 
-    int DuplexNSCEncoder::get_obj_k_aux_var(int first, int last)
+    int LadderEncoder::get_obj_k_aux_var(int first, int last)
     {
 
         auto pair = obj_k_aux_vars.find({first, last});
@@ -48,12 +48,12 @@ namespace SATABP
         return new_obj_k_aux_var;
     }
 
-    int DuplexNSCEncoder::do_vars_size() const
+    int LadderEncoder::do_vars_size() const
     {
         return vh->size();
     };
 
-    void DuplexNSCEncoder::do_encode_antibandwidth(unsigned w, const std::vector<std::pair<int, int>> &node_pairs)
+    void LadderEncoder::do_encode_antibandwidth(unsigned w, const std::vector<std::pair<int, int>> &node_pairs)
     {
         aux_vars.clear();
         obj_k_aux_vars.clear();
@@ -65,9 +65,23 @@ namespace SATABP
         vertices_aux_var = g->n * g->n;
         labels_aux_var = vertices_aux_var + g->n * g->n;
 
-        // encode_symmetry_break();
-        // encode_symmetry_break_on_maxnode();
-        encode_symmetry_break_on_minnode();
+        if (symmetry_break_point == std::string("f"))
+        {
+            encode_symmetry_break();
+        }
+        else if (symmetry_break_point == std::string("h"))
+        {
+            encode_symmetry_break_on_maxnode();
+        }
+        else if (symmetry_break_point == std::string("l"))
+        {
+            encode_symmetry_break_on_minnode();
+        }
+        else
+        {
+            // No symmetry breaking
+        }
+        std::cout << "c\tEncode symmetry breaking with option: " << symmetry_break_point << "." << std::endl;
 
         encode_vertices();
         // encode_labels();
@@ -83,7 +97,7 @@ namespace SATABP
         std::cout << "c\tObj k glue staircase constraints: " << num_obj_k_glue_staircase_constraint << std::endl;
     };
 
-    void DuplexNSCEncoder::encode_vertices()
+    void LadderEncoder::encode_vertices()
     {
         /*
             Encode that each label can only be assigned to one node.
@@ -110,7 +124,7 @@ namespace SATABP
         }
     }
 
-    void DuplexNSCEncoder::encode_labels()
+    void LadderEncoder::encode_labels()
     {
         /*
             Encode that each vertex can only take one and only one label.
@@ -134,7 +148,7 @@ namespace SATABP
         }
     }
 
-    void DuplexNSCEncoder::encode_exactly_one_NSC(std::vector<int> listVars, int auxVar)
+    void LadderEncoder::encode_exactly_one_NSC(std::vector<int> listVars, int auxVar)
     {
         // Exactly one variables in listVars is True
         // Using NSC to encode AMO and ALO, EO = AMO and ALO
@@ -189,7 +203,7 @@ namespace SATABP
         }
     }
 
-    void DuplexNSCEncoder::encode_exactly_one_product(const std::vector<int> &vars)
+    void LadderEncoder::encode_exactly_one_product(const std::vector<int> &vars)
     {
         if (vars.size() < 2)
             return;
@@ -243,7 +257,7 @@ namespace SATABP
         encode_amo_seq(v_vars);
     };
 
-    void DuplexNSCEncoder::encode_amo_seq(const std::vector<int> &vars)
+    void LadderEncoder::encode_amo_seq(const std::vector<int> &vars)
     {
         if (vars.size() < 2)
             return;
@@ -268,7 +282,7 @@ namespace SATABP
         num_l_v_constraints++;
     };
 
-    void DuplexNSCEncoder::encode_obj_k(unsigned w)
+    void LadderEncoder::encode_obj_k(unsigned w)
     {
         for (int i = 0; i < (int)g->n; i++)
         {
@@ -281,7 +295,7 @@ namespace SATABP
         }
     }
 
-    void DuplexNSCEncoder::encode_stair(int stair, unsigned w)
+    void LadderEncoder::encode_stair(int stair, unsigned w)
     {
         if (is_debug_mode)
             std::cout << "Encode stair " << stair << " with width " << w << std::endl;
@@ -335,7 +349,7 @@ namespace SATABP
      * The last window only has upper part.
      * Other windows have both upper part and lower part.
      */
-    void DuplexNSCEncoder::encode_window(int window, int stair, unsigned w)
+    void LadderEncoder::encode_window(int window, int stair, unsigned w)
     {
         if (window == 0)
         {
@@ -521,7 +535,7 @@ namespace SATABP
      * Using lower part of the previous window and upper part of the next window
      * as anchor points to glue.
      */
-    void DuplexNSCEncoder::glue_window(int window, int stair, unsigned w)
+    void LadderEncoder::glue_window(int window, int stair, unsigned w)
     {
         /*  The stair look like this:
          *      Window 1        Window 2        Window 3        Window 4
@@ -570,7 +584,7 @@ namespace SATABP
         }
     }
 
-    void DuplexNSCEncoder::glue_stair(int stair1, int stair2, unsigned w)
+    void LadderEncoder::glue_stair(int stair1, int stair2, unsigned w)
     {
         if (is_debug_mode)
             std::cout << "Glue stair " << stair1 << " with stair " << stair2 << std::endl;

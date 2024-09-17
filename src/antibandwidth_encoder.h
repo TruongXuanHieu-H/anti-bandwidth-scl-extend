@@ -11,7 +11,7 @@
 #include "sequential_encoder.h"
 #include "product_encoder.h"
 #include "duplex_encoder.h"
-#include "duplex_nsc_encoder.h"
+#include "ladder_encoder.h"
 
 #include "clause_cont.h"
 #include "cadical_clauses.h"
@@ -25,7 +25,7 @@ namespace SATABP
     reduced,
     seq,
     product,
-    duplexNSC,
+    ladder,
   };
   enum EncoderStrategy
   {
@@ -50,6 +50,7 @@ namespace SATABP
     std::string sat_configuration = "sat";
 
     int split_limit = 0;
+    std::string symmetry_break_point = "n";
     int w_cap = 500;
 
     bool overwrite_lb = false;

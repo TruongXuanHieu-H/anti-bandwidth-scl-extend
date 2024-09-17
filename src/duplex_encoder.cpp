@@ -39,9 +39,23 @@ namespace SATABP
         num_l_v_aux_vars = 0;
         num_obj_k_aux_vars = 0;
 
-        // encode_symmetry_break();
-        // encode_symmetry_break_on_maxnode();
-        encode_symmetry_break_on_minnode();
+        if (symmetry_break_point == std::string("f"))
+        {
+            encode_symmetry_break();
+        }
+        else if (symmetry_break_point == std::string("h"))
+        {
+            encode_symmetry_break_on_maxnode();
+        }
+        else if (symmetry_break_point == std::string("l"))
+        {
+            encode_symmetry_break_on_minnode();
+        }
+        else
+        {
+            // No symmetry breaking
+        }
+        std::cout << "c\tEncode symmetry breaking with option: " << symmetry_break_point << "." << std::endl;
 
         construct_window_bdds(w);
         glue_window_bdds();

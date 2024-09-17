@@ -7,40 +7,45 @@
 
 #include "clause_cont.h"
 
-namespace SATABP {
+namespace SATABP
+{
 
-typedef std::vector<int>::iterator vec_int_it;
-typedef std::deque<int>::iterator deq_int_it;
+  typedef std::vector<int>::iterator vec_int_it;
+  typedef std::deque<int>::iterator deq_int_it;
 
-class Encoder {
-public:
-  virtual ~Encoder();
+  class Encoder
+  {
+  public:
+    virtual ~Encoder();
 
-  Encoder(Encoder const &) = delete;
-  Encoder & operator=(Encoder const &) = delete;
+    Encoder(Encoder const &) = delete;
+    Encoder &operator=(Encoder const &) = delete;
 
-  void encode_antibandwidth(unsigned w, const std::vector<std::pair<int,int>>& node_pairs);
+    std::string symmetry_break_point = "n";
 
-  void print_clauses() const;
-  void print_dimacs() const;
-  int size() const;
-  int vars_size() const;
+    void encode_antibandwidth(unsigned w, const std::vector<std::pair<int, int>> &node_pairs);
 
-  ClauseContainer* cv;
-protected:
-  Encoder(Graph* g, ClauseContainer* clause_container, VarHandler* var_handler);
+    void print_clauses() const;
+    void print_dimacs() const;
+    int size() const;
+    int vars_size() const;
 
-  Graph* g;
-  VarHandler* vh;
+    ClauseContainer *cv;
 
-  void encode_symmetry_break();
-  void encode_symmetry_break_on_maxnode();
-  void encode_symmetry_break_on_minnode();
+  protected:
+    Encoder(Graph *g, ClauseContainer *clause_container, VarHandler *var_handler);
 
-private:
-    virtual void do_encode_antibandwidth(unsigned w, std::vector<std::pair<int,int>> const& node_pairs) = 0;
+    Graph *g;
+    VarHandler *vh;
+
+    void encode_symmetry_break();
+    void encode_symmetry_break_on_maxnode();
+    void encode_symmetry_break_on_minnode();
+
+  private:
+    virtual void do_encode_antibandwidth(unsigned w, std::vector<std::pair<int, int>> const &node_pairs) = 0;
     virtual int do_vars_size() const = 0;
-};
+  };
 
 }
 

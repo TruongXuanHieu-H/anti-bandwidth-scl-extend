@@ -10,7 +10,7 @@
 
 using namespace SATABP;
 
-const int ver{8};
+const int ver{0};
 
 static void SIGINT_exit(int);
 
@@ -42,7 +42,7 @@ static const std::map<std::string, std::string> option_list = {
     {"--seq", "Use sequential encoding for staircase constraints [default: false]"},
     {"--product", "Use 2-Product encoding for staircase constraints [default: false]"},
     {"--duplex", "Use duplex encoding for staircase constraints [default: true]"},
-    {"--duplexNSC", "Use duplex encoding for staircase constraints and NSC for At-Most-One constraints [default: false]"},
+    {"--ladder", "Use ladder encoding for staircase constraints and NSC for At-Most-One constraints [default: false]"},
     {"--conf-sat", "Use --sat configuration of CaDiCaL [default: true]"},
     {"--conf-unsat", "Use --unsat configuration of CaDiCaL [default: false]"},
     {"--conf-def", "Use default configuration of CaDiCaL [default: false]"},
@@ -54,6 +54,7 @@ static const std::map<std::string, std::string> option_list = {
     {"-split-size <n>", "Maximal allowed length of clauses, every longer clause is split up into two by introducing a new variable"},
     {"-set-lb <new LB>", "Overwrite predefined LB with <new LB>, has to be at least 2"},
     {"-set-ub <new UB>", "Overwrite predefined UB with <new UB>, has to be positive"},
+    {"-symmetry-break <break point>", "Apply symetry breaking technique in <break point> (f: first node, h: highest degree node, l: lowest degree node, n: none) [default: none]"},
     {"-print-w <w>", "Only encode and print SAT formula of specified width w (where w > 0), without solving it"}};
 
 int get_number_arg(std::string const &arg)
@@ -111,13 +112,13 @@ int main(int argc, char **argv)
 
     if (argc < 2)
     {
-        std::cout << "c DuplexEncoder 0." << ver << "." << std::endl;
+        std::cout << "c LadderEncoder 1." << ver << "." << std::endl;
         std::cerr << "c Error, no graph file was specified." << std::endl;
         print_usage();
         return 1;
     }
 
-    std::cout << "c DuplexEncoder 0." << ver << "." << std::endl;
+    std::cout << "c LadderEncoder 1." << ver << "." << std::endl;
 
     abw_enc = new AntibandwidthEncoder();
 
@@ -149,9 +150,9 @@ int main(int argc, char **argv)
         {
             abw_enc->enc_choice = EncoderType::duplex;
         }
-        else if (argv[i] == std::string("--duplexNSC"))
+        else if (argv[i] == std::string("--ladder"))
         {
-            abw_enc->enc_choice = EncoderType::duplexNSC;
+            abw_enc->enc_choice = EncoderType::ladder;
         }
         else if (argv[i] == std::string("--conf-sat"))
         {
@@ -233,6 +234,37 @@ int main(int argc, char **argv)
             std::cout << "c Splitting clauses at length " << split_size << "." << std::endl;
             abw_enc->split_limit = split_size;
         }
+        else if (argv[i] == std::string("-symetry-break"))
+        {
+            std::string break_point = argv[++i];
+            if (break_point == std::string("f"))
+            {
+                abw_enc->symmetry_break_point = break_point;
+                std::cout << "c Symetry breaking in the first node." << std::endl;
+            }
+            else if (break_point == std::string("h"))
+            {
+                abw_enc->symmetry_break_point = break_point;
+                std::cout << "c Symetry breaking in the highest degree node." << std::endl;
+            }
+            else if (break_point == std::string("l"))
+            {
+                abw_enc->symmetry_break_point = break_point;
+                std::cout << "c Symetry breaking in the lowest degree node." << std::endl;
+            }
+            else if (break_point == std::string("n"))
+            {
+                abw_enc->symmetry_break_point = break_point;
+                std::cout << "c Symetry breaking is not applied." << std::endl;
+            }
+            else
+            {
+                std::cout << "c Invalid symetry breaking point." << std::endl;
+
+                delete abw_enc;
+                return 1;
+            }
+        }
         else
         {
             std::cerr << "Unrecognized option: " << argv[i] << std::endl;
@@ -252,4 +284,5 @@ int main(int argc, char **argv)
     }
 
     delete abw_enc;
+    return 0;
 }
