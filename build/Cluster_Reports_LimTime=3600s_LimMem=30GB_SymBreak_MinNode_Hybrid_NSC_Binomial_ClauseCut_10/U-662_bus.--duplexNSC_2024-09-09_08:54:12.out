@@ -1,0 +1,110 @@
+[runlim] version:		1.10
+[runlim] time limit:		3600 seconds
+[runlim] real time limit:	3600 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc_symbreak_min_node_hybrid_NSC_binomial
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/BenchmarkAdd/U-662_bus.mtx.rnd
+[runlim] argv[2]:		--duplexNSC
+[runlim] argv[3]:		-split-size
+[runlim] argv[4]:		10
+[runlim] start:			Mon Sep  9 08:54:12 2024
+[runlim] main pid:		16159
+[runlim] log captured:
+c DuplexEncoder 0.8.
+c Splitting clauses at length 10.
+c Solving strategy: from LB to UB.
+c LB-w = 219 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 220 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 219 ( U-662_bus.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 662.
+c Encoding starts with w = 219:
+c	Labels and Vertices aux var: 66200
+c	Labels and Vertices constraints:  978436
+c	Obj k aux var: 582560
+c	Obj k constraints: 4220436
+c	Obj k glue staircase constraints: 1600902
+c	Encoding duration: 1s
+c	Number of clauses: 5262755
+c	Number of irredundant clauses: 5260723
+c	Number of variables: 1150556
+c SAT Solving starts:
+c	Solving duration: 4560 ms
+c	Answer: 
+s SAT (w = 219)
+AB is set to 219
+Node 196 : 297
+Node 347 : 516
+c	Solution check:
+p calculated antibandwidth = 219.
+c
+c
+c Antibandwidth problem with w = 220 ( U-662_bus.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 662.
+c Encoding starts with w = 220:
+c	Labels and Vertices aux var: 66200
+c	Labels and Vertices constraints:  978436
+c	Obj k aux var: 581236
+c	Obj k constraints: 4214826
+c	Obj k glue staircase constraints: 1597278
+c	Encoding duration: 1s
+c	Number of clauses: 5257807
+c	Number of irredundant clauses: 5255770
+c	Number of variables: 1149894
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.4 real, 750.7 MB
+[runlim] sample:		20.0 time, 20.4 real, 939.5 MB
+[runlim] sample:		30.0 time, 30.4 real, 930.8 MB
+[runlim] sample:		40.0 time, 40.4 real, 1070.7 MB
+[runlim] sample:		50.0 time, 50.4 real, 926.5 MB
+[runlim] sample:		60.0 time, 60.4 real, 1099.5 MB
+[runlim] sample:		70.0 time, 70.4 real, 959.1 MB
+[runlim] sample:		80.0 time, 80.4 real, 925.8 MB
+[runlim] sample:		90.0 time, 90.4 real, 947.4 MB
+[runlim] sample:		100.0 time, 100.4 real, 947.4 MB
+[runlim] sample:		110.0 time, 110.4 real, 947.4 MB
+[runlim] sample:		120.0 time, 120.4 real, 912.4 MB
+[runlim] sample:		130.0 time, 130.4 real, 943.9 MB
+[runlim] sample:		140.0 time, 140.4 real, 1027.5 MB
+[runlim] sample:		150.0 time, 150.4 real, 1039.4 MB
+[runlim] sample:		160.0 time, 160.4 real, 1003.6 MB
+[runlim] sample:		170.0 time, 170.4 real, 1071.1 MB
+[runlim] sample:		180.0 time, 180.4 real, 1227.3 MB
+[runlim] sample:		189.9 time, 190.4 real, 1032.5 MB
+[runlim] sample:		200.0 time, 200.4 real, 1077.9 MB
+[runlim] sample:		210.0 time, 210.4 real, 1014.9 MB
+[runlim] sample:		220.0 time, 220.4 real, 1056.3 MB
+[runlim] sample:		229.9 time, 230.4 real, 1077.1 MB
+[runlim] sample:		239.9 time, 240.4 real, 1196.2 MB
+[runlim] sample:		249.9 time, 250.4 real, 1013.1 MB
+[runlim] sample:		259.9 time, 260.4 real, 1012.3 MB
+[runlim] sample:		269.9 time, 270.4 real, 1061.4 MB
+[runlim] sample:		279.9 time, 280.4 real, 1062.1 MB
+c	Solving duration: 281851 ms
+c	Answer: 
+s SAT (w = 220)
+AB is set to 293
+Node 196 : 352
+Node 347 : 59
+AB is set to 221
+Node 176 : 465
+Node 657 : 244
+AB is set to 220
+Node 55 : 572
+Node 196 : 352
+c	Solution check:
+p calculated antibandwidth = 220.
+[runlim] sample:		289.9 time, 290.4 real, 1061.0 MB
+c
+c
+[runlim] end:			Mon Sep  9 08:59:02 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			290.71 seconds
+[runlim] time:			290.23 seconds
+[runlim] space:			1370.3 MB
+[runlim] samples:		2903
