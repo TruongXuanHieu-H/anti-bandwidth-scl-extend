@@ -1,0 +1,81 @@
+[runlim] version:		1.10
+[runlim] time limit:		3600 seconds
+[runlim] real time limit:	3600 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc_symbreak_first_node_hybrid_NSC_binomial
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/BenchmarkAdd/U-662_bus.mtx.rnd
+[runlim] argv[2]:		--duplexNSC
+[runlim] argv[3]:		-split-size
+[runlim] argv[4]:		10
+[runlim] start:			Mon Sep  9 08:55:15 2024
+[runlim] main pid:		16212
+[runlim] log captured:
+c DuplexEncoder 0.8.
+c Splitting clauses at length 10.
+c Solving strategy: from LB to UB.
+c LB-w = 219 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 220 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 219 ( U-662_bus.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 662.
+c Encoding starts with w = 219:
+c	Labels and Vertices aux var: 66200
+c	Labels and Vertices constraints:  978436
+c	Obj k aux var: 582560
+c	Obj k constraints: 4220436
+c	Obj k glue staircase constraints: 1600902
+c	Encoding duration: 1s
+c	Number of clauses: 5262755
+c	Number of irredundant clauses: 5260659
+c	Number of variables: 1150556
+c SAT Solving starts:
+c	Solving duration: 4534 ms
+c	Answer: 
+s SAT (w = 219)
+AB is set to 219
+Node 196 : 296
+Node 347 : 515
+c	Solution check:
+p calculated antibandwidth = 219.
+c
+c
+c Antibandwidth problem with w = 220 ( U-662_bus.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 662.
+c Encoding starts with w = 220:
+c	Labels and Vertices aux var: 66200
+c	Labels and Vertices constraints:  978436
+c	Obj k aux var: 581236
+c	Obj k constraints: 4214826
+c	Obj k glue staircase constraints: 1597278
+c	Encoding duration: 1s
+c	Number of clauses: 5257807
+c	Number of irredundant clauses: 5255706
+c	Number of variables: 1149894
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.8 real, 756.9 MB
+[runlim] sample:		20.0 time, 20.8 real, 946.7 MB
+[runlim] sample:		30.0 time, 30.8 real, 942.9 MB
+c	Solving duration: 30931 ms
+c	Answer: 
+s SAT (w = 220)
+AB is set to 469
+Node 196 : 588
+Node 347 : 119
+AB is set to 220
+Node 347 : 119
+Node 580 : 339
+c	Solution check:
+p calculated antibandwidth = 220.
+c
+c
+[runlim] end:			Mon Sep  9 08:55:55 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			40.14 seconds
+[runlim] time:			39.28 seconds
+[runlim] space:			1119.2 MB
+[runlim] samples:		393

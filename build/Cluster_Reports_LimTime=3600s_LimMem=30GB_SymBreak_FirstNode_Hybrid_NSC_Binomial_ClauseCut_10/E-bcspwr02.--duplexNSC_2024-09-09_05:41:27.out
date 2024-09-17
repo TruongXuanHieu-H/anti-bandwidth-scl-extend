@@ -1,0 +1,79 @@
+[runlim] version:		1.10
+[runlim] time limit:		3600 seconds
+[runlim] real time limit:	3600 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc_symbreak_first_node_hybrid_NSC_binomial
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/BenchmarkAdd/E-bcspwr02.mtx.rnd
+[runlim] argv[2]:		--duplexNSC
+[runlim] argv[3]:		-split-size
+[runlim] argv[4]:		10
+[runlim] start:			Mon Sep  9 05:41:27 2024
+[runlim] main pid:		10011
+[runlim] log captured:
+c DuplexEncoder 0.8.
+c Splitting clauses at length 10.
+c Solving strategy: from LB to UB.
+c LB-w = 21 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 22 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 21 ( E-bcspwr02.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 49.
+c Encoding starts with w = 21:
+c	Labels and Vertices aux var: 1176
+c	Labels and Vertices constraints:  6615
+c	Obj k aux var: 2597
+c	Obj k constraints: 18593
+c	Obj k glue staircase constraints: 6490
+c	Encoding duration: 0s
+c	Number of clauses: 25526
+c	Number of irredundant clauses: 25373
+c	Number of variables: 6468
+c SAT Solving starts:
+c	Solving duration: 224 ms
+c	Answer: 
+s SAT (w = 21)
+AB is set to 27
+Node 1 : 11
+Node 29 : 38
+AB is set to 25
+Node 29 : 38
+Node 31 : 13
+AB is set to 22
+Node 37 : 31
+Node 49 : 9
+AB is set to 21
+Node 10 : 37
+Node 25 : 16
+c	Solution check:
+p calculated antibandwidth = 21.
+c
+c
+c Antibandwidth problem with w = 22 ( E-bcspwr02.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 49.
+c Encoding starts with w = 22:
+c	Labels and Vertices aux var: 1176
+c	Labels and Vertices constraints:  6615
+c	Obj k aux var: 2499
+c	Obj k constraints: 18161
+c	Obj k glue staircase constraints: 6254
+c	Encoding duration: 0s
+c	Number of clauses: 25094
+c	Number of irredundant clauses: 24939
+c	Number of variables: 6370
+c SAT Solving starts:
+c	Solving duration: 1300 ms
+c	Answer: 
+s UNSAT (w = 22)
+c
+c
+[runlim] end:			Mon Sep  9 05:41:28 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			1.86 seconds
+[runlim] time:			1.50 seconds
+[runlim] space:			10.9 MB
+[runlim] samples:		15
