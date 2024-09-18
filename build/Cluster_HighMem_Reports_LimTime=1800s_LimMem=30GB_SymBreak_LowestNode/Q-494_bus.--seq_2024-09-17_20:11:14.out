@@ -1,0 +1,49 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/hvanh28/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/hvanh28/AntiBandwidthReconstruct/build/Benchmarks/Q-494_bus.mtx.rnd
+[runlim] argv[2]:		--seq
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		l
+[runlim] start:			Tue Sep 17 20:11:14 2024
+[runlim] main pid:		140240
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the lowest degree node.
+c Solving strategy: from LB to UB.
+c LB-w = 219 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 246 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 219 ( Q-494_bus.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Sequential encoder with n = 494.
+c Encoding starts with w = 219:
+c	Encode symmetry breaking with option: l.
+[runlim] sample:		10.0 time, 10.3 real, 3586.9 MB
+[runlim] sample:		20.0 time, 20.3 real, 7117.9 MB
+[runlim] sample:		30.0 time, 30.3 real, 11124.1 MB
+[runlim] sample:		40.0 time, 40.3 real, 14238.5 MB
+[runlim] sample:		50.0 time, 50.3 real, 17004.0 MB
+[runlim] sample:		60.0 time, 60.3 real, 22085.5 MB
+[runlim] sample:		70.0 time, 70.3 real, 25614.1 MB
+[runlim] sample:		80.0 time, 80.3 real, 28438.5 MB
+c	Encoding duration: 84s
+c	Number of clauses: 213172935
+c	Number of irredundant clauses: 213111286
+c	Number of variables: 71247028
+c SAT Solving starts:
+[runlim] sample:		90.0 time, 90.3 real, 29550.1 MB
+[runlim] sample:		100.0 time, 100.3 real, 29626.7 MB
+[runlim] sample:		110.0 time, 110.3 real, 29828.3 MB
+c Signal interruption.
+[runlim] sample:		120.0 time, 120.3 real, 0.0 MB
+[runlim] end:			Tue Sep 17 20:13:16 2024
+[runlim] status:		out of memory
+[runlim] result:		3
+[runlim] children:		0
+[runlim] real:			122.77 seconds
+[runlim] time:			122.36 seconds
+[runlim] space:			30043.7 MB
+[runlim] samples:		1224

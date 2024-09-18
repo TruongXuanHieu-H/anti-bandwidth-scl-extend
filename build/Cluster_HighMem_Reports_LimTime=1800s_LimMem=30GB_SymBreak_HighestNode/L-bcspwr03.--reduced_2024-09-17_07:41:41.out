@@ -1,0 +1,44 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/hvanh28/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/hvanh28/AntiBandwidthReconstruct/build/Benchmarks/L-bcspwr03.mtx.rnd
+[runlim] argv[2]:		--reduced
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		h
+[runlim] start:			Tue Sep 17 07:41:41 2024
+[runlim] main pid:		130097
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c Solving strategy: from LB to UB.
+c LB-w = 39 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 39 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 39 ( L-bcspwr03.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Naive-Reduced encoder with n = 118.
+c Encoding starts with w = 39:
+c	Encode symmetry breaking with option: h.
+c	Encoding duration: 0s
+c	Number of clauses: 2969397
+c	Number of irredundant clauses: 2923556
+c	Number of variables: 13924
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.8 real, 443.3 MB
+c	Solving duration: 16007 ms
+c	Answer: 
+s SAT (w = 39)
+c	Solution check:
+p calculated antibandwidth = 39.
+c
+c
+[runlim] end:			Tue Sep 17 07:41:58 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			17.64 seconds
+[runlim] time:			16.79 seconds
+[runlim] space:			462.4 MB
+[runlim] samples:		168

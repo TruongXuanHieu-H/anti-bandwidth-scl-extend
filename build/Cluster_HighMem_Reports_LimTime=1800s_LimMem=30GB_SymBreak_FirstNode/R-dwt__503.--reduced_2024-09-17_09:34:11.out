@@ -1,0 +1,70 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/hvanh28/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/hvanh28/AntiBandwidthReconstruct/build/Benchmarks/R-dwt__503.mtx.rnd
+[runlim] argv[2]:		--reduced
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		f
+[runlim] start:			Tue Sep 17 09:34:11 2024
+[runlim] main pid:		130864
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the first node.
+c Solving strategy: from LB to UB.
+c LB-w = 46 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 71 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 46 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Naive-Reduced encoder with n = 503.
+c Encoding starts with w = 46:
+c	Encode symmetry breaking with option: f.
+[runlim] sample:		10.0 time, 11.0 real, 2957.5 MB
+[runlim] sample:		20.0 time, 21.0 real, 5699.8 MB
+[runlim] sample:		30.0 time, 31.0 real, 8268.3 MB
+[runlim] sample:		40.0 time, 41.0 real, 11426.4 MB
+[runlim] sample:		50.0 time, 51.0 real, 14238.9 MB
+[runlim] sample:		60.0 time, 61.0 real, 17327.7 MB
+c	Encoding duration: 64s
+c	Number of clauses: 246330175
+c	Number of irredundant clauses: 245807525
+c	Number of variables: 253009
+c SAT Solving starts:
+[runlim] sample:		70.0 time, 71.0 real, 18549.8 MB
+[runlim] sample:		80.0 time, 81.0 real, 19086.3 MB
+[runlim] sample:		90.0 time, 91.0 real, 19313.0 MB
+[runlim] sample:		100.0 time, 101.0 real, 21199.0 MB
+[runlim] sample:		110.0 time, 111.0 real, 23037.0 MB
+[runlim] sample:		120.0 time, 121.0 real, 24779.9 MB
+[runlim] sample:		130.0 time, 131.0 real, 24780.5 MB
+[runlim] sample:		140.0 time, 141.0 real, 24781.5 MB
+[runlim] sample:		150.0 time, 151.0 real, 26656.7 MB
+[runlim] sample:		160.0 time, 161.0 real, 24781.6 MB
+[runlim] sample:		170.0 time, 171.0 real, 24781.8 MB
+[runlim] sample:		180.0 time, 181.0 real, 24783.6 MB
+[runlim] sample:		190.0 time, 191.0 real, 24798.6 MB
+[runlim] sample:		200.0 time, 201.0 real, 24917.2 MB
+[runlim] sample:		210.0 time, 211.0 real, 24939.9 MB
+[runlim] sample:		220.0 time, 221.0 real, 25001.2 MB
+[runlim] sample:		230.0 time, 231.0 real, 25146.4 MB
+[runlim] sample:		239.9 time, 241.0 real, 25255.4 MB
+[runlim] sample:		250.0 time, 251.0 real, 25255.9 MB
+[runlim] sample:		260.0 time, 261.0 real, 25263.4 MB
+[runlim] sample:		269.9 time, 271.0 real, 25290.0 MB
+[runlim] sample:		279.9 time, 281.0 real, 25290.0 MB
+[runlim] sample:		289.9 time, 291.0 real, 25290.0 MB
+[runlim] sample:		299.9 time, 301.0 real, 25290.0 MB
+[runlim] sample:		309.9 time, 311.0 real, 25290.0 MB
+[runlim] sample:		320.0 time, 321.0 real, 25290.0 MB
+[runlim] sample:		329.9 time, 331.0 real, 25474.7 MB
+c Signal interruption.
+[runlim] end:			Tue Sep 17 09:39:50 2024
+[runlim] status:		out of memory
+[runlim] result:		3
+[runlim] children:		0
+[runlim] real:			339.62 seconds
+[runlim] time:			338.54 seconds
+[runlim] space:			30018.7 MB
+[runlim] samples:		3386

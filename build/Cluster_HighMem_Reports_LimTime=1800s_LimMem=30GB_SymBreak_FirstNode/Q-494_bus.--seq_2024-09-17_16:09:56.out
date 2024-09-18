@@ -1,0 +1,43 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/hvanh28/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/hvanh28/AntiBandwidthReconstruct/build/Benchmarks/Q-494_bus.mtx.rnd
+[runlim] argv[2]:		--seq
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		f
+[runlim] start:			Tue Sep 17 16:09:56 2024
+[runlim] main pid:		135946
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the first node.
+c Solving strategy: from LB to UB.
+c LB-w = 219 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 246 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 219 ( Q-494_bus.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Sequential encoder with n = 494.
+c Encoding starts with w = 219:
+c	Encode symmetry breaking with option: f.
+[runlim] sample:		10.0 time, 10.4 real, 3959.1 MB
+[runlim] sample:		20.0 time, 20.4 real, 7818.1 MB
+[runlim] sample:		30.0 time, 30.4 real, 10469.8 MB
+[runlim] sample:		40.0 time, 40.4 real, 15382.5 MB
+[runlim] sample:		50.0 time, 50.4 real, 18270.2 MB
+[runlim] sample:		60.0 time, 60.4 real, 20306.6 MB
+[runlim] sample:		70.0 time, 70.4 real, 21617.3 MB
+[runlim] sample:		80.0 time, 80.4 real, 22716.1 MB
+[runlim] sample:		90.0 time, 90.4 real, 23893.6 MB
+[runlim] sample:		100.0 time, 100.4 real, 25417.1 MB
+[runlim] sample:		109.9 time, 110.4 real, 29607.1 MB
+c Signal interruption.
+[runlim] end:			Tue Sep 17 16:11:51 2024
+[runlim] status:		out of memory
+[runlim] result:		3
+[runlim] children:		0
+[runlim] real:			115.82 seconds
+[runlim] time:			115.34 seconds
+[runlim] space:			30023.2 MB
+[runlim] samples:		1154

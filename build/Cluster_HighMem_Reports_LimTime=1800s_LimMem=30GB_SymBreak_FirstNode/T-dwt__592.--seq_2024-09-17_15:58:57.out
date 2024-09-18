@@ -1,0 +1,40 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/hvanh28/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/hvanh28/AntiBandwidthReconstruct/build/Benchmarks/T-dwt__592.mtx.rnd
+[runlim] argv[2]:		--seq
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		f
+[runlim] start:			Tue Sep 17 15:58:57 2024
+[runlim] main pid:		135624
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the first node.
+c Solving strategy: from LB to UB.
+c LB-w = 103 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 150 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 103 ( T-dwt__592.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Sequential encoder with n = 592.
+c Encoding starts with w = 103:
+c	Encode symmetry breaking with option: f.
+[runlim] sample:		10.0 time, 10.2 real, 3385.2 MB
+[runlim] sample:		20.0 time, 20.2 real, 6741.2 MB
+[runlim] sample:		30.0 time, 30.2 real, 10650.5 MB
+[runlim] sample:		40.0 time, 40.2 real, 13399.6 MB
+[runlim] sample:		50.0 time, 50.2 real, 18389.9 MB
+[runlim] sample:		60.0 time, 60.2 real, 21198.3 MB
+[runlim] sample:		70.0 time, 70.2 real, 24010.8 MB
+[runlim] sample:		80.0 time, 80.2 real, 26648.5 MB
+c Signal interruption.
+[runlim] end:			Tue Sep 17 16:00:27 2024
+[runlim] status:		out of memory
+[runlim] result:		3
+[runlim] children:		0
+[runlim] real:			90.13 seconds
+[runlim] time:			89.88 seconds
+[runlim] space:			30092.3 MB
+[runlim] samples:		899
