@@ -1,0 +1,48 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/B-ibm32.mtx.rnd
+[runlim] argv[2]:		--ladder
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		l
+[runlim] start:			Tue Sep 17 18:28:51 2024
+[runlim] main pid:		22392
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the lowest degree node.
+c Solving strategy: from LB to UB.
+c LB-w = 9 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 9 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 9 ( B-ibm32.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 32.
+c Encoding starts with w = 9:
+c	Encode symmetry breaking with option: l.
+c	Labels and Vertices aux var: 640
+c	Labels and Vertices constraints:  3136
+c	Obj k aux var: 1344
+c	Obj k constraints: 13622
+c	Obj k glue staircase constraints: 7830
+c	Encoding duration: 0s
+c	Number of clauses: 16774
+c	Number of irredundant clauses: 16639
+c	Number of variables: 3008
+c SAT Solving starts:
+c	Solving duration: 367 ms
+c	Answer: 
+s SAT (w = 9)
+c	Solution check:
+p calculated antibandwidth = 9.
+c
+c
+[runlim] end:			Tue Sep 17 18:28:51 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			0.50 seconds
+[runlim] time:			0.29 seconds
+[runlim] space:			7.7 MB
+[runlim] samples:		3
