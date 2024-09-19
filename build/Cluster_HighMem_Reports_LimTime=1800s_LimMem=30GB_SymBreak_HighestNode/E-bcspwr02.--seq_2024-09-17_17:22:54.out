@@ -1,0 +1,60 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/hvanh28/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/hvanh28/AntiBandwidthReconstruct/build/Benchmarks/E-bcspwr02.mtx.rnd
+[runlim] argv[2]:		--seq
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		h
+[runlim] start:			Tue Sep 17 17:22:54 2024
+[runlim] main pid:		137110
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c Solving strategy: from LB to UB.
+c LB-w = 21 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 22 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 21 ( E-bcspwr02.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Sequential encoder with n = 49.
+c Encoding starts with w = 21:
+c	Encode symmetry breaking with option: h.
+c	Encoding duration: 0s
+c	Number of clauses: 221069
+c	Number of irredundant clauses: 217566
+c	Number of variables: 75447
+c SAT Solving starts:
+c	Solving duration: 5248 ms
+c	Answer: 
+s SAT (w = 21)
+c	Solution check:
+p calculated antibandwidth = 21.
+c
+c
+c Antibandwidth problem with w = 22 ( E-bcspwr02.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Sequential encoder with n = 49.
+c Encoding starts with w = 22:
+c	Encode symmetry breaking with option: h.
+c	Encoding duration: 0s
+c	Number of clauses: 223842
+c	Number of irredundant clauses: 220303
+c	Number of variables: 76391
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.1 real, 59.5 MB
+c	Solving duration: 10121 ms
+c	Answer: 
+s UNSAT (w = 22)
+c
+c
+[runlim] end:			Tue Sep 17 17:23:09 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			15.65 seconds
+[runlim] time:			15.49 seconds
+[runlim] space:			89.5 MB
+[runlim] samples:		155

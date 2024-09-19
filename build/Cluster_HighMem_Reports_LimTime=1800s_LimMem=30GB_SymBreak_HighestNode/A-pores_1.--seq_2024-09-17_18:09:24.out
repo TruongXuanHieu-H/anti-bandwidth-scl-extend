@@ -1,0 +1,67 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/hvanh28/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/hvanh28/AntiBandwidthReconstruct/build/Benchmarks/A-pores_1.mtx.rnd
+[runlim] argv[2]:		--seq
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		h
+[runlim] start:			Tue Sep 17 18:09:24 2024
+[runlim] main pid:		138753
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c Solving strategy: from LB to UB.
+c LB-w = 6 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 8 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 6 ( A-pores_1.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Sequential encoder with n = 30.
+c Encoding starts with w = 6:
+c	Encode symmetry breaking with option: h.
+c	Encoding duration: 0s
+c	Number of clauses: 85000
+c	Number of irredundant clauses: 83676
+c	Number of variables: 28330
+c SAT Solving starts:
+c	Solving duration: 256 ms
+c	Answer: 
+s SAT (w = 6)
+c	Solution check:
+p calculated antibandwidth = 6.
+c
+c
+c Antibandwidth problem with w = 7 ( A-pores_1.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Sequential encoder with n = 30.
+c Encoding starts with w = 7:
+c	Encode symmetry breaking with option: h.
+c	Encoding duration: 0s
+c	Number of clauses: 96639
+c	Number of irredundant clauses: 95146
+c	Number of variables: 32244
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.7 real, 32.0 MB
+[runlim] sample:		20.0 time, 20.7 real, 37.4 MB
+[runlim] sample:		30.0 time, 30.7 real, 45.0 MB
+[runlim] sample:		40.0 time, 40.7 real, 32.2 MB
+[runlim] sample:		50.0 time, 50.7 real, 52.5 MB
+[runlim] sample:		60.0 time, 60.7 real, 55.2 MB
+[runlim] sample:		70.0 time, 70.7 real, 40.9 MB
+[runlim] sample:		80.0 time, 80.7 real, 51.2 MB
+c	Solving duration: 82527 ms
+c	Answer: 
+s UNSAT (w = 7)
+c
+c
+[runlim] end:			Tue Sep 17 18:10:47 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			83.52 seconds
+[runlim] time:			82.78 seconds
+[runlim] space:			55.2 MB
+[runlim] samples:		828
