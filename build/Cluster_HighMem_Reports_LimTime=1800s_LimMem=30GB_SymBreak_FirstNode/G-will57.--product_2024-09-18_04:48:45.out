@@ -1,0 +1,85 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/G-will57.mtx.rnd
+[runlim] argv[2]:		--product
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		f
+[runlim] start:			Wed Sep 18 04:48:45 2024
+[runlim] main pid:		43354
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the first node.
+c Solving strategy: from LB to UB.
+c LB-w = 12 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 14 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 12 ( G-will57.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a 2-Product encoder with n = 57.
+c Encoding starts with w = 12:
+c	Encode symmetry breaking with option: f.
+c	Encoding duration: 0s
+c	Number of clauses: 558810
+c	Number of irredundant clauses: 558130
+c	Number of variables: 171841
+c SAT Solving starts:
+c	Solving duration: 859 ms
+c	Answer: 
+s SAT (w = 12)
+c	Solution check:
+p calculated antibandwidth = 12.
+c
+c
+c Antibandwidth problem with w = 13 ( G-will57.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a 2-Product encoder with n = 57.
+c Encoding starts with w = 13:
+c	Encode symmetry breaking with option: f.
+c	Encoding duration: 0s
+c	Number of clauses: 581416
+c	Number of irredundant clauses: 580704
+c	Number of variables: 174000
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.5 real, 129.0 MB
+[runlim] sample:		20.0 time, 20.5 real, 135.6 MB
+[runlim] sample:		30.0 time, 30.5 real, 139.4 MB
+[runlim] sample:		40.0 time, 40.5 real, 127.9 MB
+[runlim] sample:		50.0 time, 50.5 real, 108.4 MB
+[runlim] sample:		60.0 time, 60.5 real, 104.6 MB
+c	Solving duration: 65107 ms
+c	Answer: 
+s SAT (w = 13)
+c	Solution check:
+p calculated antibandwidth = 13.
+c
+c
+c Antibandwidth problem with w = 14 ( G-will57.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a 2-Product encoder with n = 57.
+c Encoding starts with w = 14:
+c	Encode symmetry breaking with option: f.
+c	Encoding duration: 0s
+c	Number of clauses: 591322
+c	Number of irredundant clauses: 590580
+c	Number of variables: 170317
+c SAT Solving starts:
+[runlim] sample:		70.0 time, 70.5 real, 116.4 MB
+[runlim] sample:		80.0 time, 80.5 real, 137.4 MB
+c	Solving duration: 20825 ms
+c	Answer: 
+s UNSAT (w = 14)
+c
+c
+[runlim] end:			Wed Sep 18 04:50:12 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			87.75 seconds
+[runlim] time:			87.19 seconds
+[runlim] space:			152.8 MB
+[runlim] samples:		872
