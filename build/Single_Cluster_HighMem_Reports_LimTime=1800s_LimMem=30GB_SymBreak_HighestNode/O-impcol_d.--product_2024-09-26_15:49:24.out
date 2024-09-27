@@ -1,0 +1,59 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/O-impcol_d.mtx.rnd
+[runlim] argv[2]:		--product
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		h
+[runlim] start:			Thu Sep 26 15:49:24 2024
+[runlim] main pid:		61562
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c Solving strategy: from LB to UB.
+c LB-w = 91 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 173 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 91 ( O-impcol_d.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a 2-Product encoder with n = 425.
+c Encoding starts with w = 91:
+c	Encode symmetry breaking with option: h.
+[runlim] sample:		10.0 time, 10.2 real, 5860.6 MB
+[runlim] sample:		20.0 time, 20.2 real, 11726.7 MB
+[runlim] sample:		30.0 time, 30.2 real, 18164.6 MB
+c	Encoding duration: 35s
+c	Number of clauses: 198661132
+c	Number of irredundant clauses: 198204162
+c	Number of variables: 25306180
+c SAT Solving starts:
+[runlim] sample:		40.0 time, 40.2 real, 20820.1 MB
+[runlim] sample:		50.0 time, 50.2 real, 21281.6 MB
+[runlim] sample:		60.0 time, 60.2 real, 21286.0 MB
+[runlim] sample:		70.0 time, 70.2 real, 25828.5 MB
+[runlim] sample:		80.0 time, 80.2 real, 25830.0 MB
+[runlim] sample:		90.0 time, 90.2 real, 27342.2 MB
+[runlim] sample:		100.0 time, 100.2 real, 25840.8 MB
+[runlim] sample:		110.0 time, 110.2 real, 26420.1 MB
+[runlim] sample:		120.0 time, 120.2 real, 26051.6 MB
+[runlim] sample:		130.0 time, 130.2 real, 26630.7 MB
+[runlim] sample:		140.0 time, 140.2 real, 26051.7 MB
+[runlim] sample:		150.0 time, 150.2 real, 26074.2 MB
+[runlim] sample:		160.0 time, 160.2 real, 26075.8 MB
+[runlim] sample:		170.0 time, 170.2 real, 26076.4 MB
+[runlim] sample:		180.0 time, 180.2 real, 26096.8 MB
+[runlim] sample:		190.0 time, 190.2 real, 26737.8 MB
+[runlim] sample:		200.0 time, 200.2 real, 26100.0 MB
+[runlim] sample:		210.0 time, 210.2 real, 26679.1 MB
+[runlim] sample:		220.0 time, 220.2 real, 27305.4 MB
+c Signal interruption.
+[runlim] end:			Thu Sep 26 15:53:10 2024
+[runlim] status:		out of memory
+[runlim] result:		3
+[runlim] children:		0
+[runlim] real:			226.02 seconds
+[runlim] time:			225.75 seconds
+[runlim] space:			30043.4 MB
+[runlim] samples:		2258

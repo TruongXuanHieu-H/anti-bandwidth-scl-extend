@@ -1,0 +1,62 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/D-bcsstk01.mtx.rnd
+[runlim] argv[2]:		--product
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		h
+[runlim] start:			Thu Sep 26 14:17:35 2024
+[runlim] main pid:		60688
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c Solving strategy: from LB to UB.
+c LB-w = 8 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 9 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 8 ( D-bcsstk01.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a 2-Product encoder with n = 48.
+c Encoding starts with w = 8:
+c	Encode symmetry breaking with option: h.
+c	Encoding duration: 0s
+c	Number of clauses: 419960
+c	Number of irredundant clauses: 416232
+c	Number of variables: 121792
+c SAT Solving starts:
+c	Solving duration: 111 ms
+c	Answer: 
+s SAT (w = 8)
+c	Solution check:
+p calculated antibandwidth = 8.
+c
+c
+c Antibandwidth problem with w = 9 ( D-bcsstk01.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a 2-Product encoder with n = 48.
+c Encoding starts with w = 9:
+c	Encode symmetry breaking with option: h.
+c	Encoding duration: 0s
+c	Number of clauses: 508664
+c	Number of irredundant clauses: 504584
+c	Number of variables: 161216
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.9 real, 113.0 MB
+c	Solving duration: 9757 ms
+c	Answer: 
+s SAT (w = 9)
+c	Solution check:
+p calculated antibandwidth = 9.
+c
+c
+[runlim] end:			Thu Sep 26 14:17:46 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			11.07 seconds
+[runlim] time:			10.09 seconds
+[runlim] space:			118.6 MB
+[runlim] samples:		101
