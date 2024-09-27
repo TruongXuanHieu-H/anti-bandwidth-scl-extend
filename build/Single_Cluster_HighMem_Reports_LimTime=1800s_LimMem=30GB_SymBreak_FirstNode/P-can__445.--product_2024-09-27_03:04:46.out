@@ -1,0 +1,46 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/P-can__445.mtx.rnd
+[runlim] argv[2]:		--product
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		f
+[runlim] start:			Fri Sep 27 03:04:46 2024
+[runlim] main pid:		70579
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the first node.
+c Solving strategy: from LB to UB.
+c LB-w = 78 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 120 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 78 ( P-can__445.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a 2-Product encoder with n = 445.
+c Encoding starts with w = 78:
+c	Encode symmetry breaking with option: f.
+[runlim] sample:		10.0 time, 10.1 real, 4620.2 MB
+[runlim] sample:		20.0 time, 20.1 real, 8993.5 MB
+[runlim] sample:		30.0 time, 30.1 real, 13863.8 MB
+[runlim] sample:		40.0 time, 40.1 real, 17749.8 MB
+[runlim] sample:		50.0 time, 50.1 real, 23256.7 MB
+c	Encoding duration: 59s
+c	Number of clauses: 253490280
+c	Number of irredundant clauses: 253231536
+c	Number of variables: 34948791
+c SAT Solving starts:
+[runlim] sample:		60.0 time, 60.1 real, 27481.1 MB
+[runlim] sample:		70.0 time, 70.1 real, 27874.5 MB
+[runlim] sample:		80.0 time, 80.1 real, 27875.9 MB
+c Signal interruption.
+[runlim] sample:		90.0 time, 90.1 real, 0.0 MB
+[runlim] end:			Fri Sep 27 03:06:16 2024
+[runlim] status:		out of memory
+[runlim] result:		3
+[runlim] children:		0
+[runlim] real:			90.51 seconds
+[runlim] time:			90.37 seconds
+[runlim] space:			30021.1 MB
+[runlim] samples:		904

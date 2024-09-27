@@ -1,0 +1,37 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/V-nos6.mtx.rnd
+[runlim] argv[2]:		--product
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		f
+[runlim] start:			Fri Sep 27 03:45:05 2024
+[runlim] main pid:		71705
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the first node.
+c Solving strategy: from LB to UB.
+c LB-w = 326 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 337 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 326 ( V-nos6.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a 2-Product encoder with n = 675.
+c Encoding starts with w = 326:
+c	Encode symmetry breaking with option: f.
+[runlim] sample:		10.0 time, 10.2 real, 5695.7 MB
+[runlim] sample:		20.0 time, 20.2 real, 11361.6 MB
+[runlim] sample:		30.0 time, 30.2 real, 17408.6 MB
+[runlim] sample:		40.0 time, 40.2 real, 22695.5 MB
+[runlim] sample:		50.0 time, 50.2 real, 29422.8 MB
+c Signal interruption.
+[runlim] end:			Fri Sep 27 03:45:58 2024
+[runlim] status:		out of memory
+[runlim] result:		3
+[runlim] children:		0
+[runlim] real:			53.19 seconds
+[runlim] time:			52.98 seconds
+[runlim] space:			30046.3 MB
+[runlim] samples:		530
