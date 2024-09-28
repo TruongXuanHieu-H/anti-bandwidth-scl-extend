@@ -1,0 +1,50 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/R-dwt__503.mtx.rnd
+[runlim] argv[2]:		--reduced
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		l
+[runlim] start:			Sat Sep 28 07:36:23 2024
+[runlim] main pid:		107860
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the lowest degree node.
+c Solving strategy: from LB to UB.
+c LB-w = 46 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 71 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 46 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Naive-Reduced encoder with n = 503.
+c Encoding starts with w = 46:
+c	Encode symmetry breaking with option: l.
+[runlim] sample:		10.0 time, 10.5 real, 5645.9 MB
+[runlim] sample:		20.0 time, 20.5 real, 11724.9 MB
+[runlim] sample:		30.0 time, 30.5 real, 17601.9 MB
+c	Encoding duration: 31s
+c	Number of clauses: 246330175
+c	Number of irredundant clauses: 246044630
+c	Number of variables: 253009
+c SAT Solving starts:
+[runlim] sample:		40.0 time, 40.5 real, 19166.9 MB
+[runlim] sample:		50.0 time, 50.5 real, 23221.3 MB
+[runlim] sample:		60.0 time, 60.5 real, 24858.3 MB
+[runlim] sample:		70.0 time, 70.5 real, 26735.5 MB
+[runlim] sample:		80.0 time, 80.5 real, 24845.2 MB
+[runlim] sample:		90.0 time, 90.5 real, 25094.3 MB
+[runlim] sample:		100.0 time, 100.5 real, 25324.2 MB
+[runlim] sample:		110.0 time, 110.5 real, 25335.3 MB
+[runlim] sample:		120.0 time, 120.5 real, 25355.4 MB
+[runlim] sample:		130.0 time, 130.5 real, 28147.6 MB
+c Signal interruption.
+[runlim] end:			Sat Sep 28 07:38:35 2024
+[runlim] status:		out of memory
+[runlim] result:		3
+[runlim] children:		0
+[runlim] real:			132.57 seconds
+[runlim] time:			131.98 seconds
+[runlim] space:			30011.6 MB
+[runlim] samples:		1320
