@@ -1,0 +1,66 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/hvanh28/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/hvanh28/AntiBandwidthReconstruct/build/Benchmarks/C-bcspwr01.mtx.rnd
+[runlim] argv[2]:		--reduced
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		f
+[runlim] start:			Fri Sep 27 04:28:26 2024
+[runlim] main pid:		98873
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the first node.
+c Solving strategy: from LB to UB.
+c LB-w = 16 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 17 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 16 ( C-bcspwr01.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Naive-Reduced encoder with n = 39.
+c Encoding starts with w = 16:
+c	Encode symmetry breaking with option: f.
+c	Encoding duration: 0s
+c	Number of clauses: 100675
+c	Number of irredundant clauses: 98483
+c	Number of variables: 1521
+c SAT Solving starts:
+c	Solving duration: 124 ms
+c	Answer: 
+s SAT (w = 16)
+c	Solution check:
+p calculated antibandwidth = 16.
+c
+c
+c Antibandwidth problem with w = 17 ( C-bcspwr01.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Naive-Reduced encoder with n = 39.
+c Encoding starts with w = 17:
+c	Encode symmetry breaking with option: f.
+c	Encoding duration: 0s
+c	Number of clauses: 102791
+c	Number of irredundant clauses: 100555
+c	Number of variables: 1521
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.4 real, 36.3 MB
+[runlim] sample:		20.0 time, 20.4 real, 38.3 MB
+[runlim] sample:		30.0 time, 30.4 real, 49.3 MB
+[runlim] sample:		40.0 time, 40.4 real, 45.9 MB
+[runlim] sample:		50.0 time, 50.4 real, 50.9 MB
+c	Solving duration: 53099 ms
+c	Answer: 
+s SAT (w = 17)
+c	Solution check:
+p calculated antibandwidth = 17.
+c
+c
+[runlim] end:			Fri Sep 27 04:29:19 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			53.66 seconds
+[runlim] time:			53.18 seconds
+[runlim] space:			56.9 MB
+[runlim] samples:		532

@@ -1,0 +1,79 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/hvanh28/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/hvanh28/AntiBandwidthReconstruct/build/Benchmarks/G-will57.mtx.rnd
+[runlim] argv[2]:		--reduced
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		h
+[runlim] start:			Fri Sep 27 06:09:32 2024
+[runlim] main pid:		100206
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c Solving strategy: from LB to UB.
+c LB-w = 12 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 14 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 12 ( G-will57.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Naive-Reduced encoder with n = 57.
+c Encoding starts with w = 12:
+c	Encode symmetry breaking with option: h.
+c	Encoding duration: 0s
+c	Number of clauses: 324580
+c	Number of irredundant clauses: 316294
+c	Number of variables: 3249
+c SAT Solving starts:
+c	Solving duration: 265 ms
+c	Answer: 
+s SAT (w = 12)
+c	Solution check:
+p calculated antibandwidth = 12.
+c
+c
+c Antibandwidth problem with w = 13 ( G-will57.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Naive-Reduced encoder with n = 57.
+c Encoding starts with w = 13:
+c	Encode symmetry breaking with option: h.
+c	Encoding duration: 0s
+c	Number of clauses: 336010
+c	Number of irredundant clauses: 327284
+c	Number of variables: 3249
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.2 real, 58.6 MB
+c	Solving duration: 11613 ms
+c	Answer: 
+s SAT (w = 13)
+c	Solution check:
+p calculated antibandwidth = 13.
+c
+c
+c Antibandwidth problem with w = 14 ( G-will57.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Naive-Reduced encoder with n = 57.
+c Encoding starts with w = 14:
+c	Encode symmetry breaking with option: h.
+c	Encoding duration: 0s
+c	Number of clauses: 347186
+c	Number of irredundant clauses: 338030
+c	Number of variables: 3249
+c SAT Solving starts:
+[runlim] sample:		20.0 time, 20.2 real, 70.5 MB
+c	Solving duration: 10257 ms
+c	Answer: 
+s UNSAT (w = 14)
+c
+c
+[runlim] end:			Fri Sep 27 06:09:54 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			22.58 seconds
+[runlim] time:			22.28 seconds
+[runlim] space:			73.6 MB
+[runlim] samples:		223
