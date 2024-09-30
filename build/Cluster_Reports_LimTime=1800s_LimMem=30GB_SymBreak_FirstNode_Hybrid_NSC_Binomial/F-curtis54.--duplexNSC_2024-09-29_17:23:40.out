@@ -1,0 +1,81 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc_symbreak_first_node_hybrid_NSC_binomial
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/F-curtis54.mtx.rnd
+[runlim] argv[2]:		--duplexNSC
+[runlim] start:			Sun Sep 29 17:23:40 2024
+[runlim] main pid:		26574
+[runlim] log captured:
+c DuplexEncoder 0.8.
+c Solving strategy: from LB to UB.
+c LB-w = 12 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 13 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 12 ( F-curtis54.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 54.
+c Encoding starts with w = 12:
+c	Labels and Vertices aux var: 1404
+c	Labels and Vertices constraints:  8370
+c	Obj k aux var: 4050
+c	Obj k constraints: 37444
+c	Obj k glue staircase constraints: 19840
+c	Encoding duration: 0s
+c	Number of clauses: 45841
+c	Number of irredundant clauses: 45529
+c	Number of variables: 8370
+c SAT Solving starts:
+c	Solving duration: 31 ms
+c	Answer: 
+s SAT (w = 12)
+AB is set to 42
+Node 2 : 2
+Node 41 : 44
+AB is set to 30
+Node 2 : 2
+Node 18 : 32
+AB is set to 12
+Node 18 : 32
+Node 41 : 44
+c	Solution check:
+p calculated antibandwidth = 12.
+c
+c
+c Antibandwidth problem with w = 13 ( F-curtis54.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 54.
+c Encoding starts with w = 13:
+c	Labels and Vertices aux var: 1404
+c	Labels and Vertices constraints:  8370
+c	Obj k aux var: 3942
+c	Obj k constraints: 36840
+c	Obj k glue staircase constraints: 19344
+c	Encoding duration: 0s
+c	Number of clauses: 45237
+c	Number of irredundant clauses: 44919
+c	Number of variables: 8262
+c SAT Solving starts:
+c	Solving duration: 183 ms
+c	Answer: 
+s SAT (w = 13)
+AB is set to 19
+Node 2 : 30
+Node 41 : 11
+AB is set to 13
+Node 2 : 30
+Node 18 : 43
+c	Solution check:
+p calculated antibandwidth = 13.
+c
+c
+[runlim] end:			Sun Sep 29 17:23:40 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			0.33 seconds
+[runlim] time:			0.19 seconds
+[runlim] space:			12.6 MB
+[runlim] samples:		2

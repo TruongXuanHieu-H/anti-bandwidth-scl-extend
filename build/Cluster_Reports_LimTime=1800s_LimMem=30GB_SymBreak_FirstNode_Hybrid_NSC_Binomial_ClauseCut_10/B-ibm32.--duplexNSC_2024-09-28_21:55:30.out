@@ -1,0 +1,59 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc_symbreak_first_node_hybrid_NSC_binomial
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/B-ibm32.mtx.rnd
+[runlim] argv[2]:		--duplexNSC
+[runlim] argv[3]:		-split-size
+[runlim] argv[4]:		10
+[runlim] start:			Sat Sep 28 21:55:30 2024
+[runlim] main pid:		126311
+[runlim] log captured:
+c DuplexEncoder 0.8.
+c Splitting clauses at length 10.
+c Solving strategy: from LB to UB.
+c LB-w = 9 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 9 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 9 ( B-ibm32.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 32.
+c Encoding starts with w = 9:
+c	Labels and Vertices aux var: 640
+c	Labels and Vertices constraints:  3136
+c	Obj k aux var: 1280
+c	Obj k constraints: 13494
+c	Obj k glue staircase constraints: 7830
+c	Encoding duration: 0s
+c	Number of clauses: 16742
+c	Number of irredundant clauses: 16591
+c	Number of variables: 3040
+c SAT Solving starts:
+c	Solving duration: 685 ms
+c	Answer: 
+s SAT (w = 9)
+AB is set to 17
+Node 18 : 15
+Node 26 : 32
+AB is set to 14
+Node 16 : 1
+Node 18 : 15
+AB is set to 12
+Node 18 : 15
+Node 22 : 27
+AB is set to 9
+Node 18 : 15
+Node 23 : 24
+c	Solution check:
+p calculated antibandwidth = 9.
+c
+c
+[runlim] end:			Sat Sep 28 21:55:30 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			0.82 seconds
+[runlim] time:			0.59 seconds
+[runlim] space:			9.4 MB
+[runlim] samples:		6

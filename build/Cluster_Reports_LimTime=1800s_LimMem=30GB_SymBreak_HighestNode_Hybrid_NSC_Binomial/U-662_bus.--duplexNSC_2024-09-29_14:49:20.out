@@ -1,0 +1,98 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc_symbreak_max_node_hybrid_NSC_binomial
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/U-662_bus.mtx.rnd
+[runlim] argv[2]:		--duplexNSC
+[runlim] start:			Sun Sep 29 14:49:20 2024
+[runlim] main pid:		22433
+[runlim] log captured:
+c DuplexEncoder 0.8.
+c Solving strategy: from LB to UB.
+c LB-w = 219 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 220 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 219 ( U-662_bus.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 662.
+c Encoding starts with w = 219:
+c	Labels and Vertices aux var: 66200
+c	Labels and Vertices constraints:  978436
+c	Obj k aux var: 582560
+c	Obj k constraints: 4220436
+c	Obj k glue staircase constraints: 1600902
+c	Encoding duration: 1s
+c	Number of clauses: 5199203
+c	Number of irredundant clauses: 5197066
+c	Number of variables: 1087004
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.5 real, 882.7 MB
+c	Solving duration: 15068 ms
+c	Answer: 
+s SAT (w = 219)
+AB is set to 219
+Node 196 : 293
+Node 347 : 512
+c	Solution check:
+p calculated antibandwidth = 219.
+c
+c
+c Antibandwidth problem with w = 220 ( U-662_bus.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 662.
+c Encoding starts with w = 220:
+c	Labels and Vertices aux var: 66200
+c	Labels and Vertices constraints:  978436
+c	Obj k aux var: 581236
+c	Obj k constraints: 4214826
+c	Obj k glue staircase constraints: 1597278
+c	Encoding duration: 1s
+c	Number of clauses: 5193593
+c	Number of irredundant clauses: 5191452
+c	Number of variables: 1085680
+c SAT Solving starts:
+[runlim] sample:		20.0 time, 20.5 real, 736.6 MB
+[runlim] sample:		30.0 time, 30.5 real, 928.4 MB
+[runlim] sample:		40.0 time, 40.5 real, 1036.2 MB
+[runlim] sample:		50.0 time, 50.5 real, 927.6 MB
+[runlim] sample:		60.0 time, 60.5 real, 927.6 MB
+[runlim] sample:		70.0 time, 70.5 real, 900.4 MB
+[runlim] sample:		80.0 time, 80.5 real, 926.8 MB
+[runlim] sample:		90.0 time, 90.5 real, 926.8 MB
+[runlim] sample:		100.0 time, 100.5 real, 869.8 MB
+[runlim] sample:		110.0 time, 110.5 real, 917.9 MB
+[runlim] sample:		120.0 time, 120.5 real, 915.0 MB
+[runlim] sample:		130.0 time, 130.5 real, 994.3 MB
+[runlim] sample:		140.0 time, 140.5 real, 979.0 MB
+[runlim] sample:		150.0 time, 150.5 real, 987.0 MB
+[runlim] sample:		160.0 time, 160.5 real, 901.9 MB
+[runlim] sample:		170.0 time, 170.5 real, 1071.9 MB
+[runlim] sample:		180.0 time, 180.5 real, 925.5 MB
+[runlim] sample:		190.0 time, 190.5 real, 942.3 MB
+[runlim] sample:		200.0 time, 200.5 real, 962.7 MB
+c	Solving duration: 184123 ms
+c	Answer: 
+s SAT (w = 220)
+AB is set to 249
+Node 196 : 180
+Node 347 : 429
+AB is set to 226
+Node 347 : 429
+Node 580 : 203
+AB is set to 220
+Node 657 : 52
+Node 658 : 272
+c	Solution check:
+p calculated antibandwidth = 220.
+c
+c
+[runlim] end:			Sun Sep 29 14:52:43 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			203.40 seconds
+[runlim] time:			202.88 seconds
+[runlim] space:			1199.7 MB
+[runlim] samples:		2029
