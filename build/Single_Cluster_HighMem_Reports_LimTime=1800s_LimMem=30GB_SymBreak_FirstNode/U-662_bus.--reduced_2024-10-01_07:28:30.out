@@ -1,0 +1,40 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/U-662_bus.mtx.rnd
+[runlim] argv[2]:		--reduced
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		f
+[runlim] start:			Tue Oct  1 07:28:30 2024
+[runlim] main pid:		56501
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the first node.
+c Solving strategy: from LB to UB.
+c LB-w = 219 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 220 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 219 ( U-662_bus.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Naive-Reduced encoder with n = 662.
+c Encoding starts with w = 219:
+c	Encode symmetry breaking with option: f.
+[runlim] sample:		10.0 time, 10.7 real, 4466.2 MB
+[runlim] sample:		20.0 time, 20.7 real, 8857.8 MB
+[runlim] sample:		30.0 time, 30.7 real, 12927.0 MB
+[runlim] sample:		40.0 time, 40.7 real, 16147.8 MB
+[runlim] sample:		50.0 time, 50.7 real, 19282.3 MB
+[runlim] sample:		60.0 time, 60.7 real, 21367.6 MB
+[runlim] sample:		70.0 time, 70.7 real, 25082.7 MB
+[runlim] sample:		80.0 time, 80.7 real, 28828.4 MB
+c Signal interruption.
+[runlim] end:			Tue Oct  1 07:29:56 2024
+[runlim] status:		out of memory
+[runlim] result:		3
+[runlim] children:		0
+[runlim] real:			86.08 seconds
+[runlim] time:			85.28 seconds
+[runlim] space:			30028.2 MB
+[runlim] samples:		853

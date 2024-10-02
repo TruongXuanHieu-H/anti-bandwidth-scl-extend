@@ -1,0 +1,61 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/F-curtis54.mtx.rnd
+[runlim] argv[2]:		--reduced
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		f
+[runlim] start:			Tue Oct  1 05:47:38 2024
+[runlim] main pid:		55517
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the first node.
+c Solving strategy: from LB to UB.
+c LB-w = 12 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 13 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 12 ( F-curtis54.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Naive-Reduced encoder with n = 54.
+c Encoding starts with w = 12:
+c	Encode symmetry breaking with option: f.
+c	Encoding duration: 0s
+c	Number of clauses: 285627
+c	Number of irredundant clauses: 278337
+c	Number of variables: 2916
+c SAT Solving starts:
+c	Solving duration: 78 ms
+c	Answer: 
+s SAT (w = 12)
+c	Solution check:
+p calculated antibandwidth = 12.
+c
+c
+c Antibandwidth problem with w = 13 ( F-curtis54.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Naive-Reduced encoder with n = 54.
+c Encoding starts with w = 13:
+c	Encode symmetry breaking with option: f.
+c	Encoding duration: 0s
+c	Number of clauses: 296043
+c	Number of irredundant clauses: 288375
+c	Number of variables: 2916
+c SAT Solving starts:
+c	Solving duration: 430 ms
+c	Answer: 
+s SAT (w = 13)
+c	Solution check:
+p calculated antibandwidth = 13.
+c
+c
+[runlim] end:			Tue Oct  1 05:47:39 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			1.52 seconds
+[runlim] time:			0.50 seconds
+[runlim] space:			41.3 MB
+[runlim] samples:		5

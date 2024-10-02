@@ -1,0 +1,37 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/S-sherman4.mtx.rnd
+[runlim] argv[2]:		--reduced
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		f
+[runlim] start:			Tue Oct  1 05:51:38 2024
+[runlim] main pid:		55670
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the first node.
+c Solving strategy: from LB to UB.
+c LB-w = 256 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 272 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 256 ( S-sherman4.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Naive-Reduced encoder with n = 546.
+c Encoding starts with w = 256:
+c	Encode symmetry breaking with option: f.
+[runlim] sample:		10.0 time, 10.8 real, 6276.8 MB
+[runlim] sample:		20.0 time, 20.8 real, 11624.9 MB
+[runlim] sample:		30.0 time, 30.8 real, 16557.5 MB
+[runlim] sample:		40.0 time, 40.8 real, 21686.2 MB
+[runlim] sample:		50.0 time, 50.8 real, 27028.2 MB
+c Signal interruption.
+[runlim] end:			Tue Oct  1 05:52:36 2024
+[runlim] status:		out of memory
+[runlim] result:		3
+[runlim] children:		0
+[runlim] real:			58.78 seconds
+[runlim] time:			57.89 seconds
+[runlim] space:			30016.2 MB
+[runlim] samples:		579
