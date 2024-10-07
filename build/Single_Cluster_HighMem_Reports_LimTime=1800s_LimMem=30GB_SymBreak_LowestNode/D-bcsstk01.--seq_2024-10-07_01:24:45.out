@@ -1,0 +1,61 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/D-bcsstk01.mtx.rnd
+[runlim] argv[2]:		--seq
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		l
+[runlim] start:			Mon Oct  7 01:24:45 2024
+[runlim] main pid:		40326
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the lowest degree node.
+c Solving strategy: from LB to UB.
+c LB-w = 8 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 9 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 8 ( D-bcsstk01.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Sequential encoder with n = 48.
+c Encoding starts with w = 8:
+c	Encode symmetry breaking with option: l.
+c	Encoding duration: 0s
+c	Number of clauses: 323752
+c	Number of irredundant clauses: 322396
+c	Number of variables: 107744
+c SAT Solving starts:
+c	Solving duration: 305 ms
+c	Answer: 
+s SAT (w = 8)
+c	Solution check:
+p calculated antibandwidth = 8.
+c
+c
+c Antibandwidth problem with w = 9 ( D-bcsstk01.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Sequential encoder with n = 48.
+c Encoding starts with w = 9:
+c	Encode symmetry breaking with option: l.
+c	Encoding duration: 0s
+c	Number of clauses: 358424
+c	Number of irredundant clauses: 356937
+c	Number of variables: 119360
+c SAT Solving starts:
+c	Solving duration: 6624 ms
+c	Answer: 
+s SAT (w = 9)
+c	Solution check:
+p calculated antibandwidth = 9.
+c
+c
+[runlim] end:			Mon Oct  7 01:24:52 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			7.27 seconds
+[runlim] time:			6.99 seconds
+[runlim] space:			115.0 MB
+[runlim] samples:		70

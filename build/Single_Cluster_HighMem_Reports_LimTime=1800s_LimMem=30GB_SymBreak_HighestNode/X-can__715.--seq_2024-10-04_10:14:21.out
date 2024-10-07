@@ -1,0 +1,36 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/X-can__715.mtx.rnd
+[runlim] argv[2]:		--seq
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		h
+[runlim] start:			Fri Oct  4 10:14:21 2024
+[runlim] main pid:		5679
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c Solving strategy: from LB to UB.
+c LB-w = 112 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 142 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 112 ( X-can__715.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Sequential encoder with n = 715.
+c Encoding starts with w = 112:
+c	Encode symmetry breaking with option: h.
+[runlim] sample:		10.0 time, 11.0 real, 6131.4 MB
+[runlim] sample:		20.0 time, 21.0 real, 12187.9 MB
+[runlim] sample:		30.0 time, 31.0 real, 19348.0 MB
+[runlim] sample:		40.0 time, 41.0 real, 24054.7 MB
+c Signal interruption.
+[runlim] end:			Fri Oct  4 10:15:08 2024
+[runlim] status:		out of memory
+[runlim] result:		3
+[runlim] children:		0
+[runlim] real:			47.14 seconds
+[runlim] time:			46.09 seconds
+[runlim] space:			30232.4 MB
+[runlim] samples:		461

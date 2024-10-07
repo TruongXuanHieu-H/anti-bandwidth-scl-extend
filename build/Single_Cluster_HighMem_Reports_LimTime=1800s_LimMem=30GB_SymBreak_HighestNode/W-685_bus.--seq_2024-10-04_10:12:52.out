@@ -1,0 +1,37 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/W-685_bus.mtx.rnd
+[runlim] argv[2]:		--seq
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		h
+[runlim] start:			Fri Oct  4 10:12:52 2024
+[runlim] main pid:		5628
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c Solving strategy: from LB to UB.
+c LB-w = 136 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 136 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 136 ( W-685_bus.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Sequential encoder with n = 685.
+c Encoding starts with w = 136:
+c	Encode symmetry breaking with option: h.
+[runlim] sample:		10.0 time, 10.1 real, 6437.0 MB
+[runlim] sample:		20.0 time, 20.1 real, 12817.8 MB
+[runlim] sample:		30.0 time, 30.1 real, 20820.1 MB
+[runlim] sample:		40.0 time, 40.1 real, 25622.3 MB
+c Signal interruption.
+[runlim] sample:		50.0 time, 50.1 real, 0.0 MB
+[runlim] end:			Fri Oct  4 10:13:42 2024
+[runlim] status:		out of memory
+[runlim] result:		3
+[runlim] children:		0
+[runlim] real:			50.75 seconds
+[runlim] time:			50.58 seconds
+[runlim] space:			30040.8 MB
+[runlim] samples:		506

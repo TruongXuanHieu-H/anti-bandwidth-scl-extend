@@ -1,0 +1,47 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/L-bcspwr03.mtx.rnd
+[runlim] argv[2]:		--seq
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		f
+[runlim] start:			Fri Oct  4 04:38:56 2024
+[runlim] main pid:		1981
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the first node.
+c Solving strategy: from LB to UB.
+c LB-w = 39 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 39 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 39 ( L-bcspwr03.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Sequential encoder with n = 118.
+c Encoding starts with w = 39:
+c	Encode symmetry breaking with option: f.
+c	Encoding duration: 0s
+c	Number of clauses: 3361939
+c	Number of irredundant clauses: 3355447
+c	Number of variables: 1129620
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.1 real, 569.8 MB
+[runlim] sample:		20.0 time, 20.1 real, 603.0 MB
+[runlim] sample:		30.0 time, 30.1 real, 608.8 MB
+[runlim] sample:		40.0 time, 40.1 real, 594.2 MB
+c	Solving duration: 46767 ms
+c	Answer: 
+s SAT (w = 39)
+c	Solution check:
+p calculated antibandwidth = 39.
+c
+c
+[runlim] end:			Fri Oct  4 04:39:43 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			47.67 seconds
+[runlim] time:			47.49 seconds
+[runlim] space:			856.6 MB
+[runlim] samples:		475

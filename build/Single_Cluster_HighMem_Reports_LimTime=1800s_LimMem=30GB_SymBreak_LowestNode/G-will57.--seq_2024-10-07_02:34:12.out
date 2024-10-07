@@ -1,0 +1,79 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/G-will57.mtx.rnd
+[runlim] argv[2]:		--seq
+[runlim] argv[3]:		-symetry-break
+[runlim] argv[4]:		l
+[runlim] start:			Mon Oct  7 02:34:12 2024
+[runlim] main pid:		41045
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the lowest degree node.
+c Solving strategy: from LB to UB.
+c LB-w = 12 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 14 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 12 ( G-will57.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Sequential encoder with n = 57.
+c Encoding starts with w = 12:
+c	Encode symmetry breaking with option: l.
+c	Encoding duration: 0s
+c	Number of clauses: 410480
+c	Number of irredundant clauses: 409818
+c	Number of variables: 138043
+c SAT Solving starts:
+c	Solving duration: 2368 ms
+c	Answer: 
+s SAT (w = 12)
+c	Solution check:
+p calculated antibandwidth = 12.
+c
+c
+c Antibandwidth problem with w = 13 ( G-will57.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Sequential encoder with n = 57.
+c Encoding starts with w = 13:
+c	Encode symmetry breaking with option: l.
+c	Encoding duration: 0s
+c	Number of clauses: 436261
+c	Number of irredundant clauses: 435566
+c	Number of variables: 146679
+c SAT Solving starts:
+c	Solving duration: 6829 ms
+c	Answer: 
+s SAT (w = 13)
+c	Solution check:
+p calculated antibandwidth = 13.
+c
+c
+c Antibandwidth problem with w = 14 ( G-will57.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Sequential encoder with n = 57.
+c Encoding starts with w = 14:
+c	Encode symmetry breaking with option: l.
+c	Encoding duration: 0s
+c	Number of clauses: 460518
+c	Number of irredundant clauses: 459792
+c	Number of variables: 154807
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.6 real, 107.2 MB
+[runlim] sample:		20.0 time, 20.6 real, 137.8 MB
+c	Solving duration: 14050 ms
+c	Answer: 
+s UNSAT (w = 14)
+c
+c
+[runlim] end:			Mon Oct  7 02:34:36 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			24.12 seconds
+[runlim] time:			23.48 seconds
+[runlim] space:			137.8 MB
+[runlim] samples:		235
