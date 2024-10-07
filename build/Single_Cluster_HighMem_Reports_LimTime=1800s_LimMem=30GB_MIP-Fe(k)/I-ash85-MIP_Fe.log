@@ -1,0 +1,214 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		python
+[runlim] argv[1]:		FE.py
+[runlim] argv[2]:		I-ash85.mtx.rnd
+[runlim] start:			Thu Oct  3 13:59:31 2024
+[runlim] main pid:		411771
+[runlim] log captured:
+27
+19
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
+CPXPARAM_Simplex_PGradient                       4
+CPXPARAM_Read_DataCheck                          1
+CPXPARAM_MIP_Strategy_File                       3
+CPXPARAM_TimeLimit                               1800
+CPXPARAM_WorkMem                                 122880
+Tried aggregator 1 time.
+MIP Presolve eliminated 6625 rows and 43 columns.
+MIP Presolve modified 8066 coefficients.
+Reduced MIP has 8261 rows, 7182 columns, and 439822 nonzeros.
+Reduced MIP has 7182 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 3.92 sec. (4005.38 ticks)
+Probing time = 0.02 sec. (4.46 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 8261 rows, 7182 columns, and 439822 nonzeros.
+Reduced MIP has 7182 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.57 sec. (489.06 ticks)
+Probing time = 0.02 sec. (4.46 ticks)
+Clique table members: 8261.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 8 threads.
+
+Root node processing (before b&c):
+  Real time             =    7.63 sec. (6586.26 ticks)
+Parallel b&c, 8 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    7.63 sec. (6586.26 ticks)
+Trạng thái giải pháp: integer optimal solution
+Giá trị Antibandwidth: 19
+Giá trị Antibandwidth: 19
+Các nhãn: [35, 74, 46, 34, 47, 9, 56, 24, 29, 42, 1, 55, 2, 4, 38, 76, 18, 25, 40, 50, 51, 8, 62, 26, 64, 27, 28, 20, 5, 31, 12, 13, 15, 14, 75, 70, 10, 43, 36, 30, 85, 52, 17, 49, 44, 33, 58, 11, 22, 72, 6, 60, 83, 82, 48, 39, 79, 66, 67, 65, 16, 53, 77, 41, 37, 81, 63, 84, 68, 73, 54, 59, 80, 45, 61, 19, 23, 78, 32, 3, 69, 21, 57, 71, 7]
+Bài toán Antibandwidth
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
+CPXPARAM_Simplex_PGradient                       4
+CPXPARAM_Read_DataCheck                          1
+CPXPARAM_MIP_Strategy_File                       3
+CPXPARAM_TimeLimit                               1800
+CPXPARAM_WorkMem                                 122880
+Tried aggregator 1 time.
+[runlim] sample:		25.3 time, 10.9 real, 155.4 MB
+MIP Presolve eliminated 6515 rows and 43 columns.
+MIP Presolve modified 7958 coefficients.
+Reduced MIP has 8152 rows, 7182 columns, and 455901 nonzeros.
+Reduced MIP has 7182 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 4.31 sec. (4483.53 ticks)
+Probing time = 0.02 sec. (4.50 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 8152 rows, 7182 columns, and 455901 nonzeros.
+Reduced MIP has 7182 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.58 sec. (517.44 ticks)
+Probing time = 0.02 sec. (4.51 ticks)
+Clique table members: 8152.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 8 threads.
+
+Root node processing (before b&c):
+  Real time             =    6.53 sec. (6201.38 ticks)
+Parallel b&c, 8 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    6.53 sec. (6201.38 ticks)
+Trạng thái giải pháp: integer optimal solution
+Giá trị Antibandwidth: 20
+Giá trị Antibandwidth: 20
+Các nhãn: [34, 83, 35, 81, 17, 14, 79, 65, 11, 28, 1, 68, 80, 41, 30, 5, 48, 78, 39, 33, 45, 9, 71, 84, 77, 21, 31, 37, 10, 47, 7, 73, 67, 72, 19, 42, 46, 44, 27, 13, 63, 25, 82, 62, 43, 50, 4, 26, 66, 74, 58, 69, 2, 20, 51, 32, 3, 8, 57, 61, 54, 38, 55, 36, 76, 12, 23, 85, 29, 60, 70, 52, 24, 16, 64, 15, 40, 59, 49, 6, 18, 22, 75, 56, 53]
+Bài toán Antibandwidth
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
+CPXPARAM_Simplex_PGradient                       4
+CPXPARAM_Read_DataCheck                          1
+CPXPARAM_MIP_Strategy_File                       3
+CPXPARAM_TimeLimit                               1800
+CPXPARAM_WorkMem                                 122880
+Tried aggregator 1 time.
+MIP Presolve eliminated 6371 rows and 43 columns.
+MIP Presolve modified 7884 coefficients.
+Reduced MIP has 8077 rows, 7182 columns, and 471573 nonzeros.
+Reduced MIP has 7182 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 4.71 sec. (4988.70 ticks)
+[runlim] sample:		43.4 time, 20.9 real, 121.8 MB
+Probing time = 0.02 sec. (4.56 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 8077 rows, 7182 columns, and 471573 nonzeros.
+Reduced MIP has 7182 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.61 sec. (547.60 ticks)
+Probing time = 0.02 sec. (4.57 ticks)
+Clique table members: 9414.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 8 threads.
+Root relaxation solution time = 8.07 sec. (5258.42 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000   576                      0.0000        8         
+[runlim] sample:		92.4 time, 30.9 real, 322.4 MB
+[runlim] sample:		122.4 time, 40.9 real, 349.4 MB
+[runlim] sample:		152.4 time, 50.9 real, 349.9 MB
+[runlim] sample:		182.4 time, 60.9 real, 349.9 MB
+[runlim] sample:		212.4 time, 70.9 real, 351.3 MB
+[runlim] sample:		242.4 time, 80.9 real, 351.8 MB
+[runlim] sample:		272.4 time, 90.9 real, 351.8 MB
+[runlim] sample:		302.4 time, 100.9 real, 352.8 MB
+[runlim] sample:		332.4 time, 110.9 real, 352.8 MB
+[runlim] sample:		362.4 time, 120.9 real, 353.3 MB
+[runlim] sample:		392.4 time, 130.9 real, 353.3 MB
+[runlim] sample:		422.4 time, 140.9 real, 353.3 MB
+[runlim] sample:		452.4 time, 150.9 real, 353.3 MB
+      0     0        0.0000   874                    Cuts: 96    51382         
+[runlim] sample:		482.3 time, 160.9 real, 365.7 MB
+[runlim] sample:		512.3 time, 170.9 real, 372.3 MB
+[runlim] sample:		542.3 time, 180.9 real, 373.8 MB
+[runlim] sample:		572.3 time, 190.9 real, 374.1 MB
+[runlim] sample:		602.3 time, 200.9 real, 398.9 MB
+[runlim] sample:		632.3 time, 210.9 real, 408.6 MB
+[runlim] sample:		662.3 time, 220.9 real, 408.8 MB
+[runlim] sample:		692.3 time, 230.9 real, 409.5 MB
+[runlim] sample:		722.3 time, 240.9 real, 411.1 MB
+[runlim] sample:		752.3 time, 250.9 real, 415.9 MB
+[runlim] sample:		782.3 time, 260.9 real, 417.4 MB
+[runlim] sample:		812.3 time, 270.9 real, 420.5 MB
+[runlim] sample:		842.3 time, 280.9 real, 422.3 MB
+[runlim] sample:		872.3 time, 290.9 real, 425.6 MB
+[runlim] sample:		902.3 time, 300.9 real, 427.5 MB
+[runlim] sample:		932.2 time, 310.9 real, 427.8 MB
+[runlim] sample:		962.2 time, 320.9 real, 427.8 MB
+[runlim] sample:		992.2 time, 330.9 real, 428.1 MB
+[runlim] sample:		1022.2 time, 340.9 real, 436.5 MB
+[runlim] sample:		1052.2 time, 350.9 real, 436.5 MB
+[runlim] sample:		1082.2 time, 360.9 real, 436.5 MB
+[runlim] sample:		1112.2 time, 370.9 real, 436.5 MB
+[runlim] sample:		1142.2 time, 380.9 real, 436.5 MB
+[runlim] sample:		1172.2 time, 390.9 real, 436.5 MB
+[runlim] sample:		1202.2 time, 400.9 real, 436.5 MB
+[runlim] sample:		1232.2 time, 410.9 real, 436.5 MB
+[runlim] sample:		1262.2 time, 420.9 real, 436.5 MB
+[runlim] sample:		1292.2 time, 430.9 real, 436.5 MB
+[runlim] sample:		1322.2 time, 440.9 real, 436.5 MB
+[runlim] sample:		1352.2 time, 450.9 real, 436.5 MB
+[runlim] sample:		1382.2 time, 460.9 real, 436.5 MB
+[runlim] sample:		1412.2 time, 470.9 real, 436.5 MB
+[runlim] sample:		1442.2 time, 480.9 real, 436.5 MB
+[runlim] sample:		1472.2 time, 490.9 real, 436.5 MB
+[runlim] sample:		1502.2 time, 500.9 real, 436.5 MB
+[runlim] sample:		1532.2 time, 510.9 real, 436.5 MB
+[runlim] sample:		1556.8 time, 520.9 real, 436.5 MB
+[runlim] sample:		1576.8 time, 530.9 real, 436.5 MB
+[runlim] sample:		1596.8 time, 540.9 real, 436.5 MB
+[runlim] sample:		1616.8 time, 550.9 real, 436.5 MB
+[runlim] sample:		1636.8 time, 560.9 real, 436.5 MB
+[runlim] sample:		1656.8 time, 570.9 real, 436.5 MB
+[runlim] sample:		1676.8 time, 580.9 real, 436.5 MB
+[runlim] sample:		1696.8 time, 590.9 real, 436.5 MB
+[runlim] sample:		1716.8 time, 600.9 real, 436.5 MB
+[runlim] sample:		1736.8 time, 610.9 real, 436.5 MB
+[runlim] sample:		1756.8 time, 620.9 real, 436.5 MB
+[runlim] sample:		1776.8 time, 630.9 real, 436.5 MB
+[runlim] sample:		1796.8 time, 640.9 real, 436.5 MB
+*     0+    0                            0.0000        0.0000             0.00%
+      0     0        cutoff              0.0000        0.0000    51922    0.00%
+Elapsed time = 625.14 sec. (548444.97 ticks, tree = 0.01 MB, solutions = 1)
+
+Clique cuts applied:  30
+
+Root node processing (before b&c):
+  Real time             =  625.14 sec. (548445.19 ticks)
+Parallel b&c, 8 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =  625.14 sec. (548445.19 ticks)
+Trạng thái giải pháp: integer optimal solution
+Giá trị Antibandwidth: 21
+Giá trị Antibandwidth: 21
+Các nhãn: [53, 61, 14, 18, 15, 65, 5, 67, 31, 68, 45, 47, 71, 10, 25, 59, 41, 77, 8, 12, 13, 79, 49, 85, 16, 35, 27, 66, 33, 75, 76, 51, 82, 74, 37, 11, 70, 24, 32, 83, 36, 21, 69, 58, 3, 30, 72, 28, 22, 60, 6, 43, 55, 26, 9, 23, 4, 46, 38, 63, 78, 81, 44, 19, 20, 48, 1, 40, 54, 57, 52, 2, 7, 39, 62, 64, 17, 29, 73, 84, 50, 34, 56, 42, 80]
+Bài toán Antibandwidth
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
+CPXPARAM_Simplex_PGradient                       4
+CPXPARAM_Read_DataCheck                          1
+CPXPARAM_MIP_Strategy_File                       3
+CPXPARAM_TimeLimit                               1800
+CPXPARAM_WorkMem                                 122880
+Tried aggregator 1 time.
+[runlim] end:			Thu Oct  3 14:10:13 2024
+[runlim] status:		out of time
+[runlim] result:		2
+[runlim] children:		0
+[runlim] real:			642.96 seconds
+[runlim] time:			1800.14 seconds
+[runlim] space:			436.5 MB
+[runlim] samples:		6420

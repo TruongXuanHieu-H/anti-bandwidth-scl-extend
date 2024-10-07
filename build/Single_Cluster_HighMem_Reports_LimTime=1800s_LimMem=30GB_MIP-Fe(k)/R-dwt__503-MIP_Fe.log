@@ -1,0 +1,125 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		python
+[runlim] argv[1]:		FE.py
+[runlim] argv[2]:		R-dwt__503.mtx.rnd
+[runlim] start:			Thu Oct  3 15:35:52 2024
+[runlim] main pid:		412505
+[runlim] log captured:
+[runlim] sample:		10.0 time, 10.3 real, 356.5 MB
+[runlim] sample:		20.0 time, 20.3 real, 626.3 MB
+[runlim] sample:		30.0 time, 30.3 real, 890.1 MB
+[runlim] sample:		40.0 time, 40.3 real, 1179.4 MB
+[runlim] sample:		50.0 time, 50.3 real, 1459.8 MB
+[runlim] sample:		60.0 time, 60.3 real, 1720.5 MB
+[runlim] sample:		70.0 time, 70.3 real, 2023.0 MB
+[runlim] sample:		80.0 time, 80.3 real, 2743.9 MB
+[runlim] sample:		90.0 time, 90.3 real, 3467.9 MB
+71
+46
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
+CPXPARAM_Simplex_PGradient                       4
+CPXPARAM_Read_DataCheck                          1
+CPXPARAM_MIP_Strategy_File                       3
+CPXPARAM_TimeLimit                               1800
+CPXPARAM_WorkMem                                 122880
+[runlim] sample:		100.0 time, 100.3 real, 3555.2 MB
+[runlim] sample:		110.0 time, 110.3 real, 4210.4 MB
+[runlim] sample:		120.0 time, 120.3 real, 5340.0 MB
+[runlim] sample:		130.0 time, 130.3 real, 5340.0 MB
+Presolve has eliminated 459 rows and 252 columns...
+[runlim] sample:		140.0 time, 140.3 real, 5340.8 MB
+Tried aggregator 1 time.
+[runlim] sample:		152.1 time, 150.3 real, 7651.3 MB
+[runlim] sample:		172.1 time, 160.3 real, 8496.8 MB
+[runlim] sample:		192.1 time, 170.3 real, 8508.8 MB
+[runlim] sample:		212.1 time, 180.3 real, 8508.8 MB
+[runlim] sample:		232.1 time, 190.3 real, 8508.8 MB
+[runlim] sample:		252.1 time, 200.3 real, 8508.8 MB
+[runlim] sample:		272.1 time, 210.3 real, 8509.3 MB
+[runlim] sample:		292.1 time, 220.3 real, 8511.3 MB
+[runlim] sample:		312.1 time, 230.3 real, 8511.3 MB
+[runlim] sample:		332.1 time, 240.3 real, 8512.3 MB
+[runlim] sample:		352.0 time, 250.3 real, 8515.8 MB
+[runlim] sample:		372.0 time, 260.3 real, 8518.4 MB
+[runlim] sample:		392.0 time, 270.3 real, 8520.4 MB
+[runlim] sample:		412.0 time, 280.3 real, 8522.4 MB
+[runlim] sample:		432.0 time, 290.3 real, 8526.4 MB
+[runlim] sample:		452.0 time, 300.3 real, 8528.4 MB
+[runlim] sample:		472.0 time, 310.3 real, 8530.4 MB
+[runlim] sample:		492.0 time, 320.3 real, 8534.4 MB
+[runlim] sample:		512.0 time, 330.3 real, 8536.4 MB
+[runlim] sample:		532.0 time, 340.3 real, 8536.4 MB
+[runlim] sample:		552.0 time, 350.3 real, 8538.4 MB
+[runlim] sample:		572.0 time, 360.3 real, 8540.4 MB
+[runlim] sample:		592.0 time, 370.3 real, 8542.1 MB
+[runlim] sample:		612.0 time, 380.3 real, 8550.4 MB
+[runlim] sample:		632.0 time, 390.3 real, 8550.4 MB
+[runlim] sample:		652.0 time, 400.3 real, 8551.1 MB
+[runlim] sample:		672.0 time, 410.3 real, 8555.9 MB
+[runlim] sample:		692.0 time, 420.3 real, 8561.9 MB
+[runlim] sample:		712.0 time, 430.3 real, 8565.9 MB
+[runlim] sample:		732.0 time, 440.3 real, 8565.9 MB
+[runlim] sample:		752.0 time, 450.3 real, 8565.9 MB
+[runlim] sample:		772.0 time, 460.3 real, 8565.9 MB
+[runlim] sample:		792.0 time, 470.3 real, 8567.9 MB
+[runlim] sample:		812.0 time, 480.3 real, 8571.9 MB
+[runlim] sample:		832.0 time, 490.3 real, 8573.9 MB
+[runlim] sample:		852.0 time, 500.3 real, 8577.9 MB
+[runlim] sample:		872.0 time, 510.3 real, 8577.9 MB
+[runlim] sample:		892.0 time, 520.3 real, 8579.9 MB
+[runlim] sample:		912.0 time, 530.3 real, 8581.9 MB
+[runlim] sample:		932.0 time, 540.3 real, 8581.9 MB
+[runlim] sample:		952.0 time, 550.3 real, 8587.2 MB
+[runlim] sample:		972.0 time, 560.3 real, 8591.7 MB
+[runlim] sample:		992.0 time, 570.3 real, 8598.0 MB
+[runlim] sample:		1012.0 time, 580.3 real, 8600.0 MB
+[runlim] sample:		1032.0 time, 590.3 real, 8600.0 MB
+[runlim] sample:		1052.0 time, 600.3 real, 8604.0 MB
+[runlim] sample:		1072.0 time, 610.3 real, 8604.0 MB
+[runlim] sample:		1092.0 time, 620.3 real, 8609.7 MB
+[runlim] sample:		1112.0 time, 630.3 real, 8611.7 MB
+[runlim] sample:		1132.0 time, 640.3 real, 8612.5 MB
+[runlim] sample:		1152.0 time, 650.3 real, 8615.3 MB
+[runlim] sample:		1172.0 time, 660.3 real, 8617.3 MB
+[runlim] sample:		1192.0 time, 670.3 real, 8619.5 MB
+[runlim] sample:		1212.0 time, 680.3 real, 8619.5 MB
+[runlim] sample:		1232.0 time, 690.3 real, 8621.5 MB
+[runlim] sample:		1252.0 time, 700.3 real, 8625.5 MB
+[runlim] sample:		1272.0 time, 710.3 real, 8627.5 MB
+[runlim] sample:		1292.0 time, 720.3 real, 8632.5 MB
+[runlim] sample:		1312.0 time, 730.3 real, 8635.6 MB
+[runlim] sample:		1332.0 time, 740.3 real, 8643.6 MB
+[runlim] sample:		1352.0 time, 750.3 real, 8647.6 MB
+[runlim] sample:		1372.0 time, 760.3 real, 8647.6 MB
+[runlim] sample:		1392.0 time, 770.3 real, 8647.6 MB
+[runlim] sample:		1412.0 time, 780.3 real, 8649.6 MB
+[runlim] sample:		1432.0 time, 790.3 real, 8653.8 MB
+[runlim] sample:		1452.0 time, 800.3 real, 8653.8 MB
+[runlim] sample:		1471.9 time, 810.3 real, 8655.8 MB
+[runlim] sample:		1491.9 time, 820.3 real, 8657.8 MB
+[runlim] sample:		1511.9 time, 830.3 real, 8657.8 MB
+[runlim] sample:		1531.9 time, 840.3 real, 8659.8 MB
+[runlim] sample:		1551.9 time, 850.3 real, 8661.8 MB
+[runlim] sample:		1571.9 time, 860.3 real, 8663.8 MB
+[runlim] sample:		1591.9 time, 870.3 real, 8663.8 MB
+[runlim] sample:		1611.9 time, 880.3 real, 8667.8 MB
+[runlim] sample:		1631.9 time, 890.3 real, 8671.6 MB
+[runlim] sample:		1651.9 time, 900.3 real, 8673.6 MB
+[runlim] sample:		1671.9 time, 910.3 real, 8675.6 MB
+[runlim] sample:		1691.9 time, 920.3 real, 8678.3 MB
+[runlim] sample:		1711.9 time, 930.3 real, 8683.6 MB
+[runlim] sample:		1731.9 time, 940.3 real, 8683.6 MB
+[runlim] sample:		1751.9 time, 950.3 real, 8687.6 MB
+[runlim] sample:		1771.9 time, 960.3 real, 8691.6 MB
+[runlim] sample:		1791.9 time, 970.3 real, 8691.6 MB
+[runlim] end:			Thu Oct  3 15:52:06 2024
+[runlim] status:		out of time
+[runlim] result:		2
+[runlim] children:		0
+[runlim] real:			974.53 seconds
+[runlim] time:			1800.22 seconds
+[runlim] space:			8695.6 MB
+[runlim] samples:		9742
