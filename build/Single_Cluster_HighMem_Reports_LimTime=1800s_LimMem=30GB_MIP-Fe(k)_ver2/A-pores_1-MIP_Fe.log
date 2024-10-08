@@ -1,0 +1,112 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		python
+[runlim] argv[1]:		FE.py
+[runlim] argv[2]:		A-pores_1.mtx.rnd
+[runlim] start:			Mon Oct  7 17:58:18 2024
+[runlim] main pid:		553792
+[runlim] log captured:
+8
+6
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
+CPXPARAM_Simplex_PGradient                       4
+CPXPARAM_Read_DataCheck                          1
+CPXPARAM_MIP_Strategy_File                       3
+CPXPARAM_TimeLimit                               1800
+CPXPARAM_WorkMem                                 122880
+Tried aggregator 1 time.
+MIP Presolve eliminated 2030 rows and 15 columns.
+MIP Presolve modified 560 coefficients.
+Reduced MIP has 620 rows, 885 columns, and 14858 nonzeros.
+Reduced MIP has 885 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.04 sec. (35.85 ticks)
+Probing time = 0.01 sec. (1.48 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 620 rows, 885 columns, and 14858 nonzeros.
+Reduced MIP has 885 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (11.53 ticks)
+Probing time = 0.01 sec. (1.48 ticks)
+Clique table members: 620.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 8 threads.
+Root relaxation solution time = 0.03 sec. (31.91 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000   191                      0.0000      532         
+*     0+    0                            0.0000        0.0000             0.00%
+      0     0        cutoff              0.0000        0.0000      532    0.00%
+Elapsed time = 0.79 sec. (686.53 ticks, tree = 0.01 MB, solutions = 1)
+
+Root node processing (before b&c):
+  Real time             =    0.79 sec. (686.55 ticks)
+Parallel b&c, 8 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.79 sec. (686.55 ticks)
+Trạng thái giải pháp: integer optimal solution
+Giá trị Antibandwidth: 6
+Giá trị Antibandwidth: 6
+Các nhãn: [14, 5, 7, 26, 6, 1, 22, 18, 17, 8, 2, 21, 25, 27, 23, 12, 20, 15, 24, 16, 13, 4, 28, 29, 11, 9, 3, 10, 19, 30]
+Bài toán Antibandwidth
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
+CPXPARAM_Simplex_PGradient                       4
+CPXPARAM_Read_DataCheck                          1
+CPXPARAM_MIP_Strategy_File                       3
+CPXPARAM_TimeLimit                               1800
+CPXPARAM_WorkMem                                 122880
+Tried aggregator 1 time.
+MIP Presolve eliminated 1947 rows and 15 columns.
+MIP Presolve modified 540 coefficients.
+Reduced MIP has 600 rows, 885 columns, and 16478 nonzeros.
+Reduced MIP has 885 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.05 sec. (45.95 ticks)
+Probing time = 0.00 sec. (1.65 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 600 rows, 885 columns, and 16478 nonzeros.
+Reduced MIP has 885 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (12.77 ticks)
+Probing time = 0.01 sec. (1.65 ticks)
+Clique table members: 600.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 8 threads.
+Root relaxation solution time = 0.04 sec. (48.08 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000   232                      0.0000      635         
+      0     0        0.0000   233                    Cuts: 25     1058         
+      0     0        cutoff                                       1191         
+Elapsed time = 3.46 sec. (2979.96 ticks, tree = 0.01 MB, solutions = 0)
+
+Clique cuts applied:  25
+Zero-half cuts applied:  1
+Lift and project cuts applied:  1
+
+Root node processing (before b&c):
+  Real time             =    3.46 sec. (2979.97 ticks)
+Parallel b&c, 8 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    3.46 sec. (2979.97 ticks)
+Trạng thái giải pháp: integer infeasible
+[runlim] end:			Mon Oct  7 17:58:22 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			4.58 seconds
+[runlim] time:			20.92 seconds
+[runlim] space:			79.0 MB
+[runlim] samples:		44

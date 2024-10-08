@@ -1,0 +1,151 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		python
+[runlim] argv[1]:		FE.py
+[runlim] argv[2]:		W-685_bus.mtx.rnd
+[runlim] start:			Mon Oct  7 20:57:06 2024
+[runlim] main pid:		554612
+[runlim] log captured:
+[runlim] sample:		10.0 time, 10.1 real, 724.6 MB
+[runlim] sample:		20.0 time, 20.1 real, 1339.7 MB
+[runlim] sample:		30.0 time, 30.1 real, 1948.6 MB
+[runlim] sample:		40.0 time, 40.1 real, 2619.7 MB
+[runlim] sample:		50.0 time, 50.1 real, 3254.1 MB
+[runlim] sample:		60.0 time, 60.1 real, 4006.0 MB
+[runlim] sample:		70.0 time, 70.1 real, 4744.0 MB
+[runlim] sample:		80.0 time, 80.1 real, 5489.7 MB
+136
+136
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
+CPXPARAM_Simplex_PGradient                       4
+CPXPARAM_Read_DataCheck                          1
+CPXPARAM_MIP_Strategy_File                       3
+CPXPARAM_TimeLimit                               1800
+CPXPARAM_WorkMem                                 122880
+[runlim] sample:		90.0 time, 90.1 real, 5776.9 MB
+[runlim] sample:		100.0 time, 100.1 real, 5776.9 MB
+[runlim] sample:		110.0 time, 110.1 real, 7997.8 MB
+[runlim] sample:		120.0 time, 120.1 real, 7999.8 MB
+[runlim] sample:		130.0 time, 130.1 real, 7999.8 MB
+[runlim] sample:		140.0 time, 140.1 real, 8000.5 MB
+[runlim] sample:		150.0 time, 150.1 real, 8000.6 MB
+Presolve has eliminated 343 rows and 343 columns...
+Tried aggregator 1 time.
+[runlim] sample:		160.0 time, 160.1 real, 8769.5 MB
+[runlim] sample:		174.2 time, 170.1 real, 14373.7 MB
+[runlim] sample:		185.2 time, 180.1 real, 7999.6 MB
+[runlim] sample:		195.2 time, 190.1 real, 7999.6 MB
+[runlim] sample:		205.2 time, 200.1 real, 7999.6 MB
+[runlim] sample:		215.2 time, 210.1 real, 7999.6 MB
+[runlim] sample:		225.2 time, 220.1 real, 7999.6 MB
+[runlim] sample:		235.2 time, 230.1 real, 7999.6 MB
+[runlim] sample:		245.2 time, 240.1 real, 7999.6 MB
+[runlim] sample:		255.2 time, 250.1 real, 7999.6 MB
+[runlim] sample:		265.2 time, 260.1 real, 7999.6 MB
+[runlim] sample:		275.2 time, 270.1 real, 7999.6 MB
+[runlim] sample:		285.2 time, 280.1 real, 7999.6 MB
+[runlim] sample:		295.2 time, 290.1 real, 7999.6 MB
+[runlim] sample:		305.2 time, 300.1 real, 7999.6 MB
+[runlim] sample:		315.2 time, 310.1 real, 7999.6 MB
+[runlim] sample:		325.2 time, 320.1 real, 7999.6 MB
+[runlim] sample:		335.2 time, 330.1 real, 7999.6 MB
+[runlim] sample:		345.2 time, 340.1 real, 7999.6 MB
+[runlim] sample:		355.2 time, 350.1 real, 7999.6 MB
+Presolve has eliminated 343 rows and 343 columns...
+MIP Presolve eliminated 343 rows and 343 columns.
+MIP Presolve modified 268736 coefficients.
+Reduced MIP has 704494 rows, 468882 columns, and 192006612 nonzeros.
+Reduced MIP has 468882 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 250.19 sec. (214589.12 ticks)
+[runlim] sample:		365.2 time, 360.1 real, 7991.5 MB
+[runlim] sample:		375.2 time, 370.1 real, 9174.4 MB
+[runlim] sample:		385.2 time, 380.1 real, 10305.6 MB
+[runlim] sample:		395.2 time, 390.1 real, 19241.9 MB
+[runlim] sample:		405.2 time, 400.1 real, 19275.8 MB
+[runlim] sample:		415.2 time, 410.1 real, 19275.8 MB
+[runlim] sample:		425.2 time, 420.1 real, 19314.4 MB
+[runlim] sample:		435.2 time, 430.1 real, 19325.4 MB
+[runlim] sample:		445.2 time, 440.1 real, 21795.3 MB
+[runlim] sample:		455.2 time, 450.1 real, 19334.8 MB
+[runlim] sample:		465.2 time, 460.1 real, 19334.8 MB
+[runlim] sample:		475.2 time, 470.1 real, 19334.8 MB
+[runlim] sample:		485.2 time, 480.1 real, 19334.8 MB
+[runlim] sample:		495.2 time, 490.1 real, 19334.8 MB
+[runlim] sample:		505.2 time, 500.1 real, 19334.8 MB
+[runlim] sample:		515.2 time, 510.1 real, 19334.8 MB
+[runlim] sample:		525.2 time, 520.1 real, 19334.8 MB
+[runlim] sample:		535.2 time, 530.1 real, 19334.8 MB
+[runlim] sample:		545.2 time, 540.1 real, 19334.8 MB
+[runlim] sample:		555.2 time, 550.1 real, 19334.8 MB
+[runlim] sample:		565.2 time, 560.1 real, 19334.8 MB
+[runlim] sample:		575.2 time, 570.1 real, 19334.8 MB
+[runlim] sample:		585.1 time, 580.1 real, 19334.8 MB
+[runlim] sample:		595.1 time, 590.1 real, 19334.8 MB
+[runlim] sample:		605.2 time, 600.1 real, 19334.8 MB
+[runlim] sample:		615.2 time, 610.1 real, 19334.8 MB
+[runlim] sample:		625.1 time, 620.1 real, 19334.8 MB
+[runlim] sample:		635.1 time, 630.1 real, 19334.8 MB
+[runlim] sample:		645.1 time, 640.1 real, 19334.8 MB
+[runlim] sample:		655.1 time, 650.1 real, 19334.8 MB
+[runlim] sample:		665.1 time, 660.1 real, 19334.8 MB
+[runlim] sample:		675.1 time, 670.1 real, 12587.8 MB
+[runlim] sample:		685.1 time, 680.1 real, 12593.0 MB
+[runlim] sample:		695.1 time, 690.1 real, 12593.0 MB
+Probing time = 2.99 sec. (135.54 ticks)
+[runlim] sample:		709.2 time, 700.1 real, 15109.2 MB
+[runlim] sample:		719.2 time, 710.1 real, 17457.2 MB
+[runlim] sample:		729.2 time, 720.1 real, 17457.2 MB
+[runlim] sample:		739.2 time, 730.1 real, 17461.9 MB
+[runlim] sample:		749.2 time, 740.1 real, 17489.6 MB
+Presolve has eliminated 0 rows and 0 columns...
+Tried aggregator 1 time.
+[runlim] sample:		759.2 time, 750.1 real, 18418.5 MB
+[runlim] sample:		772.0 time, 760.1 real, 22142.1 MB
+[runlim] sample:		786.2 time, 770.1 real, 17469.9 MB
+[runlim] sample:		796.2 time, 780.1 real, 17469.9 MB
+[runlim] sample:		806.2 time, 790.1 real, 17469.9 MB
+[runlim] sample:		816.2 time, 800.1 real, 17469.9 MB
+[runlim] sample:		826.2 time, 810.1 real, 17469.9 MB
+[runlim] sample:		836.2 time, 820.1 real, 17469.9 MB
+[runlim] sample:		846.2 time, 830.1 real, 17469.9 MB
+[runlim] sample:		856.1 time, 840.1 real, 17469.9 MB
+[runlim] sample:		866.1 time, 850.1 real, 17469.9 MB
+[runlim] sample:		876.1 time, 860.1 real, 17469.9 MB
+[runlim] sample:		886.1 time, 870.1 real, 17469.9 MB
+[runlim] sample:		896.1 time, 880.1 real, 17469.9 MB
+[runlim] sample:		906.1 time, 890.1 real, 17469.9 MB
+[runlim] sample:		916.1 time, 900.1 real, 17469.9 MB
+[runlim] sample:		926.1 time, 910.1 real, 17469.9 MB
+[runlim] sample:		936.1 time, 920.1 real, 17469.9 MB
+[runlim] sample:		946.1 time, 930.1 real, 17469.9 MB
+[runlim] sample:		956.1 time, 940.1 real, 17469.9 MB
+[runlim] sample:		966.1 time, 950.1 real, 17469.9 MB
+Presolve has eliminated 0 rows and 0 columns...
+[runlim] sample:		976.1 time, 960.1 real, 20911.8 MB
+Detecting symmetries...
+[runlim] sample:		986.1 time, 970.1 real, 20552.2 MB
+MIP Presolve modified 35360 coefficients.
+Reduced MIP has 704234 rows, 468882 columns, and 191971252 nonzeros.
+Reduced MIP has 468882 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 276.39 sec. (230021.97 ticks)
+[runlim] sample:		996.1 time, 980.1 real, 11034.8 MB
+[runlim] sample:		1023.6 time, 990.1 real, 20195.3 MB
+[runlim] sample:		1053.6 time, 1000.1 real, 24701.3 MB
+Probing time = 1.63 sec. (135.46 ticks)
+Clique table members: 704234.
+[runlim] sample:		1084.7 time, 1010.1 real, 24832.9 MB
+[runlim] sample:		1108.5 time, 1020.1 real, 22654.6 MB
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 8 threads.
+[runlim] sample:		1147.0 time, 1030.1 real, 24933.5 MB
+[runlim] end:			Mon Oct  7 21:14:22 2024
+[runlim] status:		out of memory
+[runlim] result:		3
+[runlim] children:		0
+[runlim] real:			1036.79 seconds
+[runlim] time:			1179.22 seconds
+[runlim] space:			30010.6 MB
+[runlim] samples:		10366
