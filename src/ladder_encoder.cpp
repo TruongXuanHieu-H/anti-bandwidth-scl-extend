@@ -497,36 +497,106 @@ namespace SATABP
 
             // Lower part
             int lastVar = stair * (int)g->n + window * (int)w + w;
-            for (int i = w - 1; i >= 1; i--)
+            if (window == ceil((float)g->n / w) - 2 && (window + 2) * w > g->n)
             {
-                int var = stair * (int)g->n + window * (int)w + i;
-                cv->add_clause({-var, get_obj_k_aux_var(var, lastVar)});
-                num_obj_k_constraints++;
-            }
+                // This block is adjacent to the last block and the last block is an incomplete block.
+                // So instead of building a complete NSC, we only build necessary part and using
+                // binary encoding to build the incomplete part.
+                /* Eg:
+                 *      Window 1        Window 2        Window 3
+                 *      1    2   3   4   5   |                       |
+                 *           2   3   4   5   |   6                   |
+                 *               3   4   5   |   6   7               |
+                 *                   4   5   |   6   7   8           |
+                 *                       5   |   6   7   8   9       |
+                 *                           |   6   7   8   9   10  |
+                 *                           |       7   8   9   10  |   11
+                 *                           |           8   9   10  |   11  12
+                 */
+                // In the example above, we only build NSC of {7, 8, 9, 10} and {6, 7, 8, 9, 10}
+                // {8, 9 ,10} then is built using binary, so we don't need to build {9, 10} and {10}
+                int last_line_width = w - g->n % w;
 
-            for (int i = w; i >= 2; i--)
+                // Build incomplete part {8, 9, 10}
+                std::vector<int> binary_alo = {};
+                int firstVar = stair * (int)g->n + window * (int)w + w - last_line_width + 1;
+                for (int var = firstVar; var <= lastVar; var++)
+                {
+                    binary_alo.push_back(var);
+                    cv->add_clause({-var, get_obj_k_aux_var(firstVar, lastVar)});
+                    num_obj_k_constraints++;
+                }
+                binary_alo.push_back(-get_obj_k_aux_var(firstVar, lastVar));
+                cv->add_clause(binary_alo);
+                num_obj_k_constraints++;
+
+                // Build complete part {7, 8, 9, 10} and {6, 7, 8, 9, 10}
+                for (int i = w - last_line_width; i >= 1; i--)
+                {
+                    int var = stair * (int)g->n + window * (int)w + i;
+                    cv->add_clause({-var, get_obj_k_aux_var(var, lastVar)});
+                    num_obj_k_constraints++;
+                }
+
+                for (int i = w - last_line_width + 1; i >= 2; i--)
+                {
+                    int var = stair * (int)g->n + window * (int)w + i;
+                    cv->add_clause({-get_obj_k_aux_var(var, lastVar), get_obj_k_aux_var(var - 1, lastVar)});
+                    num_obj_k_constraints++;
+                }
+
+                for (int i = 1; i < ((int)w - last_line_width + 1); i++)
+                {
+                    int var = stair * (int)g->n + window * (int)w + i;
+                    int main = get_obj_k_aux_var(var, lastVar);
+                    int sub = get_obj_k_aux_var(var + 1, lastVar);
+                    cv->add_clause({var, sub, -main});
+                    num_obj_k_constraints++;
+                }
+
+                // Can be disable
+                // for (int i = 1; i < (int)w - last_line_width + 1; i++)
+                // {
+                //     int var = stair * (int)g->n + window * (int)w + i;
+                //     cv->add_clause({-var, -GetEncodedAuxVar(auxStartVarLP + var + 1)});
+                //     num_obj_k_constraints++;
+                // }
+            }
+            else
             {
-                int var = stair * (int)g->n + window * (int)w + i;
-                cv->add_clause({-get_obj_k_aux_var(var, lastVar), get_obj_k_aux_var(var - 1, lastVar)});
-                num_obj_k_constraints++;
-            }
+                // This block is not adjacent to the last block or the last block is not an incomplete block.
+                // In this case, we build a complete NSC.
+                for (int i = w - 1; i >= 1; i--)
+                {
+                    int var = stair * (int)g->n + window * (int)w + i;
+                    cv->add_clause({-var, get_obj_k_aux_var(var, lastVar)});
+                    num_obj_k_constraints++;
+                }
 
-            for (int i = 1; i < (int)w; i++)
-            {
-                int var = stair * (int)g->n + window * (int)w + i;
-                int main = get_obj_k_aux_var(var, lastVar);
-                int sub = get_obj_k_aux_var(var + 1, lastVar);
-                cv->add_clause({var, sub, -main});
-                num_obj_k_constraints++;
-            }
+                for (int i = w; i >= 2; i--)
+                {
+                    int var = stair * (int)g->n + window * (int)w + i;
+                    cv->add_clause({-get_obj_k_aux_var(var, lastVar), get_obj_k_aux_var(var - 1, lastVar)});
+                    num_obj_k_constraints++;
+                }
 
-            // Can be disable
-            // for (int i = 1; i < (int)w; i++)
-            // {
-            //     int var = stair * (int)g->n + window * (int)w + i;
-            //     cv->add_clause({-var, -GetEncodedAuxVar(auxStartVarLP + var + 1)});
-            //     num_obj_k_constraints++;
-            // }
+                for (int i = 1; i < (int)w; i++)
+                {
+                    int var = stair * (int)g->n + window * (int)w + i;
+                    int main = get_obj_k_aux_var(var, lastVar);
+                    int sub = get_obj_k_aux_var(var + 1, lastVar);
+                    cv->add_clause({var, sub, -main});
+                    num_obj_k_constraints++;
+                }
+
+                // Can be disable
+                // for (int i = 1; i < (int)w; i++)
+                // {
+                //     int var = stair * (int)g->n + window * (int)w + i;
+                //     cv->add_clause({-var, -GetEncodedAuxVar(auxStartVarLP + var + 1)});
+                //     num_obj_k_constraints++;
+                // }
+            }
         }
     }
 
