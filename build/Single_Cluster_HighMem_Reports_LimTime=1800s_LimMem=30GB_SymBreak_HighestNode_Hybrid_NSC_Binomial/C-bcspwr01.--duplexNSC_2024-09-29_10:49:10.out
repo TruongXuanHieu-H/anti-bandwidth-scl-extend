@@ -1,0 +1,81 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc_symbreak_max_node_hybrid_NSC_binomial
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/C-bcspwr01.mtx.rnd
+[runlim] argv[2]:		--duplexNSC
+[runlim] start:			Sun Sep 29 10:49:10 2024
+[runlim] main pid:		11767
+[runlim] log captured:
+c DuplexEncoder 0.8.
+c Solving strategy: from LB to UB.
+c LB-w = 16 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 17 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 16 ( C-bcspwr01.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 39.
+c Encoding starts with w = 16:
+c	Labels and Vertices aux var: 858
+c	Labels and Vertices constraints:  4368
+c	Obj k aux var: 1677
+c	Obj k constraints: 11823
+c	Obj k glue staircase constraints: 4140
+c	Encoding duration: 0s
+c	Number of clauses: 16210
+c	Number of irredundant clauses: 16056
+c	Number of variables: 4056
+c SAT Solving starts:
+c	Solving duration: 581 ms
+c	Answer: 
+s SAT (w = 16)
+AB is set to 17
+Node 1 : 30
+Node 30 : 13
+AB is set to 16
+Node 5 : 29
+Node 30 : 13
+c	Solution check:
+p calculated antibandwidth = 16.
+c
+c
+c Antibandwidth problem with w = 17 ( C-bcspwr01.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a DuplexNSC encoder with n = 39.
+c Encoding starts with w = 17:
+c	Labels and Vertices aux var: 858
+c	Labels and Vertices constraints:  4368
+c	Obj k aux var: 1599
+c	Obj k constraints: 11483
+c	Obj k glue staircase constraints: 3956
+c	Encoding duration: 0s
+c	Number of clauses: 15870
+c	Number of irredundant clauses: 15714
+c	Number of variables: 3978
+c SAT Solving starts:
+c	Solving duration: 3938 ms
+c	Answer: 
+s SAT (w = 17)
+AB is set to 23
+Node 1 : 10
+Node 30 : 33
+AB is set to 22
+Node 1 : 10
+Node 6 : 32
+AB is set to 17
+Node 5 : 16
+Node 30 : 33
+c	Solution check:
+p calculated antibandwidth = 17.
+c
+c
+[runlim] end:			Sun Sep 29 10:49:15 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			5.41 seconds
+[runlim] time:			4.49 seconds
+[runlim] space:			18.9 MB
+[runlim] samples:		45
