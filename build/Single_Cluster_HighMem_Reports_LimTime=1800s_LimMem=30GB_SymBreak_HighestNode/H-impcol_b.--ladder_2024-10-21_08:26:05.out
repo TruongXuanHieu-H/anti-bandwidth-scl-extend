@@ -2,13 +2,13 @@
 [runlim] time limit:		1800 seconds
 [runlim] real time limit:	1800 seconds
 [runlim] space limit:		30000 MB
-[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/abw_enc
-[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthReconstruct/build/Benchmarks/H-impcol_b.mtx.rnd
+[runlim] argv[0]:		/home/truongxuanhieu/AntiBandwidthSCL/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/AntiBandwidthSCL/build/BenchmarkH/H-impcol_b.mtx.rnd
 [runlim] argv[2]:		--ladder
 [runlim] argv[3]:		-symetry-break
 [runlim] argv[4]:		h
-[runlim] start:			Wed Sep 25 21:03:30 2024
-[runlim] main pid:		47940
+[runlim] start:			Mon Oct 21 08:26:05 2024
+[runlim] main pid:		3967
 [runlim] log captured:
 c LadderEncoder 1.0.
 c Symetry breaking in the highest degree node.
@@ -31,18 +31,18 @@ c	Number of clauses: 85675
 c	Number of irredundant clauses: 85010
 c	Number of variables: 10266
 c SAT Solving starts:
-c	Solving duration: 112 ms
+c	Solving duration: 116 ms
 c	Answer: 
 s SAT (w = 8)
 c	Solution check:
 p calculated antibandwidth = 8.
 c
 c
-[runlim] end:			Wed Sep 25 21:03:31 2024
+[runlim] end:			Mon Oct 21 08:26:05 2024
 [runlim] status:		ok
 [runlim] result:		0
 [runlim] children:		0
-[runlim] real:			1.04 seconds
-[runlim] time:			0.09 seconds
-[runlim] space:			17.6 MB
-[runlim] samples:		1
+[runlim] real:			0.23 seconds
+[runlim] time:			0.14 seconds
+[runlim] space:			18.0 MB
+[runlim] samples:		14
