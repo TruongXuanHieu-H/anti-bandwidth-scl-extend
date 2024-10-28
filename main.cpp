@@ -234,7 +234,7 @@ int main(int argc, char **argv)
             std::cout << "c Splitting clauses at length " << split_size << "." << std::endl;
             abw_enc->split_limit = split_size;
         }
-        else if (argv[i] == std::string("-symetry-break"))
+        else if (argv[i] == std::string("-symmetry-break"))
         {
             std::string break_point = argv[++i];
             if (break_point == std::string("f"))
