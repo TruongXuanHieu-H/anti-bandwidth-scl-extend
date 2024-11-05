@@ -210,8 +210,8 @@ namespace SATABP
         if (vars.size() == 2)
         {
             // simplifies to vars[0] /\ -1*vars[0], in case vars[0] == vars[1]
-            cv->add_clause({vars[0], vars[1]});
-            num_l_v_constraints++;
+            // cv->add_clause({vars[0], vars[1]});
+            // num_l_v_constraints++;
             cv->add_clause({-1 * vars[0], -1 * vars[1]});
             num_l_v_constraints++;
             return;
@@ -237,7 +237,7 @@ namespace SATABP
         }
 
         int i, j;
-        std::vector<int> or_clause = std::vector<int>();
+        // std::vector<int> or_clause = std::vector<int>();
         for (unsigned idx = 0; idx < vars.size(); ++idx)
         {
             i = std::floor(idx / p);
@@ -248,10 +248,10 @@ namespace SATABP
             cv->add_clause({-1 * vars[idx], u_vars[j]});
             num_l_v_constraints++;
 
-            or_clause.push_back(vars[idx]);
+            // or_clause.push_back(vars[idx]);
         }
-        cv->add_clause(or_clause);
-        num_l_v_constraints++;
+        // cv->add_clause(or_clause);
+        // num_l_v_constraints++;
 
         encode_amo_seq(u_vars);
         encode_amo_seq(v_vars);
