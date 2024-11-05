@@ -212,49 +212,49 @@ namespace SATABP
             // simplifies to vars[0] /\ -1*vars[0], in case vars[0] == vars[1]
             cv->add_clause({vars[0], vars[1]});
             num_l_v_constraints++;
-            cv->add_clause({-1 * vars[0], -1 * vars[1]});
-            num_l_v_constraints++;
+            // cv->add_clause({-1 * vars[0], -1 * vars[1]});
+            // num_l_v_constraints++;
             return;
         }
 
-        int len = vars.size();
-        int p = std::ceil(std::sqrt(len));
-        int q = std::ceil((float)len / (float)p);
+        // int len = vars.size();
+        // int p = std::ceil(std::sqrt(len));
+        // int q = std::ceil((float)len / (float)p);
 
-        std::vector<int> u_vars;
-        std::vector<int> v_vars;
-        for (int i = 1; i <= p; ++i)
-        {
-            int new_var = vh->get_new_var();
-            u_vars.push_back(new_var);
-            aux_vars.insert({new_var, new_var});
-        }
-        for (int j = 1; j <= q; ++j)
-        {
-            int new_var = vh->get_new_var();
-            v_vars.push_back(new_var);
-            aux_vars.insert({new_var, new_var});
-        }
+        // std::vector<int> u_vars;
+        // std::vector<int> v_vars;
+        // for (int i = 1; i <= p; ++i)
+        // {
+        //     int new_var = vh->get_new_var();
+        //     u_vars.push_back(new_var);
+        //     aux_vars.insert({new_var, new_var});
+        // }
+        // for (int j = 1; j <= q; ++j)
+        // {
+        //     int new_var = vh->get_new_var();
+        //     v_vars.push_back(new_var);
+        //     aux_vars.insert({new_var, new_var});
+        // }
 
-        int i, j;
+        // int i, j;
         std::vector<int> or_clause = std::vector<int>();
         for (unsigned idx = 0; idx < vars.size(); ++idx)
         {
-            i = std::floor(idx / p);
-            j = idx % p;
+            // i = std::floor(idx / p);
+            // j = idx % p;
 
-            cv->add_clause({-1 * vars[idx], v_vars[i]});
-            num_l_v_constraints++;
-            cv->add_clause({-1 * vars[idx], u_vars[j]});
-            num_l_v_constraints++;
+            // cv->add_clause({-1 * vars[idx], v_vars[i]});
+            // num_l_v_constraints++;
+            // cv->add_clause({-1 * vars[idx], u_vars[j]});
+            // num_l_v_constraints++;
 
             or_clause.push_back(vars[idx]);
         }
         cv->add_clause(or_clause);
         num_l_v_constraints++;
 
-        encode_amo_seq(u_vars);
-        encode_amo_seq(v_vars);
+        // encode_amo_seq(u_vars);
+        // encode_amo_seq(v_vars);
     };
 
     void LadderEncoder::encode_amo_seq(const std::vector<int> &vars)
