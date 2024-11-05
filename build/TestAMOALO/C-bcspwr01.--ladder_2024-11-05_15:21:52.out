@@ -1,0 +1,76 @@
+[runlim] version:		1.10
+[runlim] time limit:		60 seconds
+[runlim] real time limit:	60 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/hieu/work/StaircaseAMO/cpaior20_duplex_encoder/AntiBandwidthReconstruct/build/abw_enc
+[runlim] argv[1]:		/home/hieu/work/StaircaseAMO/cpaior20_duplex_encoder/AntiBandwidthReconstruct/build/BenchmarkA/C-bcspwr01.mtx.rnd
+[runlim] argv[2]:		--ladder
+[runlim] argv[3]:		-symmetry-break
+[runlim] argv[4]:		f
+[runlim] start:			Tue Nov  5 15:21:52 2024
+[runlim] main pid:		8748
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the first node.
+c Solving strategy: from LB to UB.
+c LB-w = 16 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 17 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 16 ( C-bcspwr01.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 39.
+c Encoding starts with w = 16:
+c	Encode symmetry breaking with option: f.
+c	Labels and Vertices aux var: 858
+c	Labels and Vertices constraints:  4212
+c	Obj k aux var: 1950
+c	Obj k constraints: 12369
+c	Obj k glue staircase constraints: 4140
+c	Encoding duration: 0s
+c	Number of clauses: 16600
+c	Number of irredundant clauses: 16482
+c	Number of variables: 4329
+c SAT Solving starts:
+c	Solving duration: 89 ms
+c	Answer: 
+s SAT (w = 16)
+c	Solution check:
+p calculated antibandwidth = 16.
+c
+c
+c Antibandwidth problem with w = 17 ( C-bcspwr01.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 39.
+c Encoding starts with w = 17:
+c	Encode symmetry breaking with option: f.
+c	Labels and Vertices aux var: 858
+c	Labels and Vertices constraints:  4212
+c	Obj k aux var: 1989
+c	Obj k constraints: 12263
+c	Obj k glue staircase constraints: 3956
+c	Encoding duration: 0s
+c	Number of clauses: 16494
+c	Number of irredundant clauses: 16374
+c	Number of variables: 4368
+c SAT Solving starts:
+[runlim] sample:		1.0 time, 1.1 real, 9.1 MB
+[runlim] sample:		2.0 time, 2.1 real, 10.9 MB
+[runlim] sample:		3.0 time, 3.1 real, 12.5 MB
+[runlim] sample:		4.0 time, 4.1 real, 12.9 MB
+[runlim] sample:		5.0 time, 5.1 real, 16.1 MB
+c	Solving duration: 5429 ms
+c	Answer: 
+s SAT (w = 17)
+c	Solution check:
+p calculated antibandwidth = 17.
+c
+c
+[runlim] end:			Tue Nov  5 15:21:57 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			5.60 seconds
+[runlim] time:			5.50 seconds
+[runlim] space:			16.1 MB
+[runlim] samples:		55
