@@ -4,97 +4,83 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
 
-#include "utils.h"
-
-#include "reduced_encoder.h"
-#include "sequential_encoder.h"
-#include "product_encoder.h"
-#include "duplex_encoder.h"
-#include "ladder_encoder.h"
-
-#include "clause_cont.h"
-#include "cadical_clauses.h"
+#include "encoder.h"
 
 namespace SATABP
 {
 
-  enum EncoderType
-  {
-    duplex,
-    reduced,
-    seq,
-    product,
-    ladder,
-  };
-  enum EncoderStrategy
-  {
-    from_lb,
-    from_ub,
-    bin_search,
-  };
+	enum EncoderStrategy
+	{
+		duplex,
+		reduced,
+		seq,
+		product,
+		ladder,
+	};
 
-  class AntibandwidthEncoder
-  {
-  public:
-    AntibandwidthEncoder();
-    virtual ~AntibandwidthEncoder();
+	enum IterativeStrategy
+	{
+		from_lb,
+		from_ub,
+		bin_search,
+	};
 
-    EncoderType enc_choice = duplex;
-    EncoderStrategy enc_strategy = from_lb;
+	class AntibandwidthEncoder
+	{
+	public:
+		AntibandwidthEncoder();
+		virtual ~AntibandwidthEncoder();
 
-    bool verbose = true;
-    bool check_solution = true;
+		Graph *graph;
+		int threadCompleted = 0;
+		int max_width_SAT = -1;
+		int min_width_UNSAT = -1;
 
-    bool force_phase = false;
-    std::string sat_configuration = "sat";
+		EncoderStrategy enc_choice = duplex;
+		IterativeStrategy iterative_strategy = from_lb;
 
-    int split_limit = 0;
-    std::string symmetry_break_point = "n";
-    int w_cap = 500;
+		// Solver configurations
+		bool force_phase = false;
+		bool verbose = true;
+		std::string sat_configuration = "sat";
 
-    bool overwrite_lb = false;
-    bool overwrite_ub = false;
-    int forced_lb = 0;
-    int forced_ub = 0;
+		bool enable_solution_verification = true;
+		int split_limit = 0;
+		std::string symmetry_break_strategy = "n";
 
-    void read_graph(std::string graph_file_name);
-    void encode_and_solve_abws();
-    void encode_and_print_abw_problem(int w);
+		int thread_count = 1;
 
-  protected:
-    Graph *g;
-    VarHandler *vh;
-    Encoder *enc;
-    ClauseContainer *cc;
-    CaDiCaL::Solver *solver;
+		bool overwrite_lb = false;
+		bool overwrite_ub = false;
+		int forced_lb = 0;
+		int forced_ub = 0;
 
-    int SAT_res = 0;
+		void read_graph(std::string graph_file_name);
+		void encode_and_solve_abws();
+		void encode_and_print_abw_problem(int w);
 
-  private:
-    void encode_and_solve_abw_problems_from_lb();
-    void encode_and_solve_abw_problems_from_ub();
-    void encode_and_solve_abw_problems_bin_search();
+	private:
+		std::unordered_map<int, std::thread> threads;
+		std::mutex mtx;
+		std::condition_variable cv;
 
-    void encode_and_solve_abw_problems(int w_from, int w_to, int prev_res, int stop_w);
-    bool encode_and_solve_antibandwidth_problem(int w);
+		void encode_and_solve_abw_problems_from_lb();
+		void encode_and_solve_abw_problems_from_ub();
+		void encode_and_solve_abw_problems_bin_search();
 
-    int calculate_sat_solution();
-    bool extract_node_labels(std::vector<int> &node_labels);
+		void encode_and_solve_abw_problems(int w_from, int w_to, int stop_w);
+		bool encode_and_solve_antibandwidth_problem(int w);
 
-    void setup_for_solving();
-    void cleanup_solving();
-    void setup_for_print();
-    void cleanup_print();
+		void lookup_bounds(int &lb, int &ub);
+		void setup_bounds(int &w_from, int &w_to);
 
-    void setup_cadical();
-    void setup_encoder();
-    void lookup_bounds(int &lb, int &ub);
-    void setup_bounds(int &w_from, int &w_to);
-
-    static std::unordered_map<std::string, int> abw_LBs;
-    static std::unordered_map<std::string, int> abw_UBs;
-  };
+		static std::unordered_map<std::string, int> abw_LBs;
+		static std::unordered_map<std::string, int> abw_UBs;
+	};
 
 }
 
