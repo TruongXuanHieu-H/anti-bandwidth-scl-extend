@@ -1,14 +1,14 @@
 [runlim] version:		1.10
-[runlim] time limit:		60 seconds
-[runlim] real time limit:	60 seconds
-[runlim] space limit:		30000 MB
-[runlim] argv[0]:		/home/hieu/work/StaircaseAMO/cpaior20_duplex_encoder/AntiBandwidthReconstruct/build/abw_enc
-[runlim] argv[1]:		/home/hieu/work/StaircaseAMO/cpaior20_duplex_encoder/AntiBandwidthReconstruct/build/BenchmarkA/G-will57.mtx.rnd
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		60000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/Benchmarks/G-will57.mtx.rnd
 [runlim] argv[2]:		--ladder
 [runlim] argv[3]:		-symmetry-break
 [runlim] argv[4]:		f
-[runlim] start:			Thu Oct 31 11:37:25 2024
-[runlim] main pid:		25209
+[runlim] start:			Wed Nov 20 11:40:43 2024
+[runlim] main pid:		75428
 [runlim] log captured:
 c LadderEncoder 1.0.
 c Symetry breaking in the first node.
@@ -31,7 +31,7 @@ c	Number of clauses: 50543
 c	Number of irredundant clauses: 50364
 c	Number of variables: 9519
 c SAT Solving starts:
-c	Solving duration: 74 ms
+c	Solving duration: 78 ms
 c	Answer: 
 s SAT (w = 12)
 c	Solution check:
@@ -54,8 +54,7 @@ c	Number of clauses: 50491
 c	Number of irredundant clauses: 50308
 c	Number of variables: 9690
 c SAT Solving starts:
-[runlim] sample:		1.0 time, 1.2 real, 15.8 MB
-c	Solving duration: 1144 ms
+c	Solving duration: 1142 ms
 c	Answer: 
 s SAT (w = 13)
 c	Solution check:
@@ -78,16 +77,16 @@ c	Number of clauses: 50439
 c	Number of irredundant clauses: 50257
 c	Number of variables: 9861
 c SAT Solving starts:
-c	Solving duration: 19 ms
+c	Solving duration: 12 ms
 c	Answer: 
 s UNSAT (w = 14)
 c
 c
-[runlim] end:			Thu Oct 31 11:37:26 2024
+[runlim] end:			Wed Nov 20 11:40:45 2024
 [runlim] status:		ok
 [runlim] result:		0
 [runlim] children:		0
-[runlim] real:			1.44 seconds
-[runlim] time:			1.28 seconds
-[runlim] space:			16.6 MB
-[runlim] samples:		129
+[runlim] real:			2.25 seconds
+[runlim] time:			1.19 seconds
+[runlim] space:			16.3 MB
+[runlim] samples:		12

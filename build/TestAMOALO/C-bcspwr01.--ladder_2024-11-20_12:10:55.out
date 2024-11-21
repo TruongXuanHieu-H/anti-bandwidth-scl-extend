@@ -1,14 +1,14 @@
 [runlim] version:		1.10
-[runlim] time limit:		60 seconds
-[runlim] real time limit:	60 seconds
-[runlim] space limit:		30000 MB
-[runlim] argv[0]:		/home/hieu/work/StaircaseAMO/cpaior20_duplex_encoder/AntiBandwidthReconstruct/build/abw_enc
-[runlim] argv[1]:		/home/hieu/work/StaircaseAMO/cpaior20_duplex_encoder/AntiBandwidthReconstruct/build/BenchmarkA/C-bcspwr01.mtx.rnd
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		60000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/Benchmarks/C-bcspwr01.mtx.rnd
 [runlim] argv[2]:		--ladder
 [runlim] argv[3]:		-symmetry-break
 [runlim] argv[4]:		f
-[runlim] start:			Thu Oct 31 11:37:27 2024
-[runlim] main pid:		25250
+[runlim] start:			Wed Nov 20 12:10:55 2024
+[runlim] main pid:		75539
 [runlim] log captured:
 c LadderEncoder 1.0.
 c Symetry breaking in the first node.
@@ -31,7 +31,7 @@ c	Number of clauses: 16639
 c	Number of irredundant clauses: 16521
 c	Number of variables: 4329
 c SAT Solving starts:
-c	Solving duration: 79 ms
+c	Solving duration: 87 ms
 c	Answer: 
 s SAT (w = 16)
 c	Solution check:
@@ -54,22 +54,18 @@ c	Number of clauses: 16533
 c	Number of irredundant clauses: 16413
 c	Number of variables: 4368
 c SAT Solving starts:
-[runlim] sample:		1.0 time, 1.1 real, 14.1 MB
-[runlim] sample:		2.0 time, 2.1 real, 17.3 MB
-[runlim] sample:		3.0 time, 3.1 real, 21.0 MB
-[runlim] sample:		4.0 time, 4.1 real, 22.7 MB
-c	Solving duration: 4027 ms
+c	Solving duration: 4201 ms
 c	Answer: 
 s SAT (w = 17)
 c	Solution check:
 p calculated antibandwidth = 17.
 c
 c
-[runlim] end:			Thu Oct 31 11:37:31 2024
+[runlim] end:			Wed Nov 20 12:10:59 2024
 [runlim] status:		ok
 [runlim] result:		0
 [runlim] children:		0
-[runlim] real:			4.22 seconds
-[runlim] time:			4.12 seconds
-[runlim] space:			22.7 MB
-[runlim] samples:		413
+[runlim] real:			4.42 seconds
+[runlim] time:			4.30 seconds
+[runlim] space:			21.6 MB
+[runlim] samples:		43

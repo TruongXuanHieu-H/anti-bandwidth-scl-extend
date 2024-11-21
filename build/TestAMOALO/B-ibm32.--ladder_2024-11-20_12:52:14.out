@@ -1,14 +1,14 @@
 [runlim] version:		1.10
-[runlim] time limit:		60 seconds
-[runlim] real time limit:	60 seconds
-[runlim] space limit:		30000 MB
-[runlim] argv[0]:		/home/hieu/work/StaircaseAMO/cpaior20_duplex_encoder/AntiBandwidthReconstruct/build/abw_enc
-[runlim] argv[1]:		/home/hieu/work/StaircaseAMO/cpaior20_duplex_encoder/AntiBandwidthReconstruct/build/BenchmarkA/B-ibm32.mtx.rnd
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		60000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/Benchmarks/B-ibm32.mtx.rnd
 [runlim] argv[2]:		--ladder
 [runlim] argv[3]:		-symmetry-break
 [runlim] argv[4]:		f
-[runlim] start:			Thu Oct 31 11:37:25 2024
-[runlim] main pid:		25205
+[runlim] start:			Wed Nov 20 12:52:14 2024
+[runlim] main pid:		75687
 [runlim] log captured:
 c LadderEncoder 1.0.
 c Symetry breaking in the first node.
@@ -31,18 +31,18 @@ c	Number of clauses: 16582
 c	Number of irredundant clauses: 16447
 c	Number of variables: 3008
 c SAT Solving starts:
-c	Solving duration: 60 ms
+c	Solving duration: 66 ms
 c	Answer: 
 s SAT (w = 9)
 c	Solution check:
 p calculated antibandwidth = 9.
 c
 c
-[runlim] end:			Thu Oct 31 11:37:25 2024
+[runlim] end:			Wed Nov 20 12:52:14 2024
 [runlim] status:		ok
 [runlim] result:		0
 [runlim] children:		0
-[runlim] real:			0.15 seconds
-[runlim] time:			0.06 seconds
-[runlim] space:			7.8 MB
-[runlim] samples:		6
+[runlim] real:			0.18 seconds
+[runlim] time:			0.00 seconds
+[runlim] space:			0.0 MB
+[runlim] samples:		0
