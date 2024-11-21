@@ -112,9 +112,7 @@ namespace SATABP
             return 0;
         int min_dist = graph->calculate_antibandwidth(node_labels);
 
-        std::cout << "c " + get_signature() + " Solution check:" << std::endl
-                  << "p " + get_signature() + "\t Calculated antibandwidth = "
-                  << min_dist << "." << std::endl;
+        std::cout << "c " + get_signature() + " Solution check = " << min_dist << "." << std::endl;
 
         return min_dist;
     }

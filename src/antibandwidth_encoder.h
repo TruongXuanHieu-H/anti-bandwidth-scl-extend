@@ -4,9 +4,10 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
-#include <thread>
+#include <pthread.h>
 #include <mutex>
 #include <condition_variable>
+#include <climits>
 
 #include "encoder.h"
 
@@ -36,9 +37,10 @@ namespace SATABP
 		virtual ~AntibandwidthEncoder();
 
 		Graph *graph;
+		int thread_count = 1;
 		int threadCompleted = 0;
-		int max_width_SAT = -1;
-		int min_width_UNSAT = -1;
+		static int max_width_SAT;
+		static int min_width_UNSAT;
 
 		EncoderStrategy enc_choice = duplex;
 		IterativeStrategy iterative_strategy = from_lb;
@@ -52,8 +54,6 @@ namespace SATABP
 		int split_limit = 0;
 		std::string symmetry_break_strategy = "n";
 
-		int thread_count = 1;
-
 		bool overwrite_lb = false;
 		bool overwrite_ub = false;
 		int forced_lb = 0;
@@ -63,8 +63,16 @@ namespace SATABP
 		void encode_and_solve_abws();
 		void encode_and_print_abw_problem(int w);
 
+		static void *thread_function(void *args);
+
+		struct ThreadParams
+		{
+			AntibandwidthEncoder *abw_enc;
+			int current_width;
+		};
+
 	private:
-		std::unordered_map<int, std::thread> threads;
+		static std::unordered_map<int, pthread_t> threads;
 		std::mutex mtx;
 		std::condition_variable cv;
 

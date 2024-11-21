@@ -4,9 +4,15 @@
 #include <iostream>
 #include <assert.h>
 #include <chrono>
+#include <unistd.h>
+#include <signal.h>
 
 namespace SATABP
 {
+    int AntibandwidthEncoder::max_width_SAT = INT_MIN;
+    int AntibandwidthEncoder::min_width_UNSAT = INT_MAX;
+    std::unordered_map<int, pthread_t> AntibandwidthEncoder::threads;
+
     AntibandwidthEncoder::AntibandwidthEncoder() {};
 
     AntibandwidthEncoder::~AntibandwidthEncoder() {};
@@ -55,6 +61,52 @@ namespace SATABP
         std::cerr << "e Iterative strategy bin has not yet implemented.\n";
     };
 
+    void *AntibandwidthEncoder::thread_function(void *args)
+    {
+        auto *params = static_cast<ThreadParams *>(args);
+        AntibandwidthEncoder *abw_enc = params->abw_enc;
+        int current_width = params->current_width;
+
+        ABPEncoder *abp_enc = new ABPEncoder(abw_enc->graph, current_width);
+        int result = abp_enc->encode_and_solve_abp();
+        delete abp_enc;
+
+        // Handle results as in the original logic
+        switch (result)
+        {
+        case 0:
+            std::cout << "c Graph is valid with any width.\n";
+            break;
+        case 10:
+            if (current_width > max_width_SAT)
+            {
+                std::cout << "c Max width SAT is set to " << current_width << "\n";
+                max_width_SAT = current_width;
+            }
+            break;
+        case 20:
+            if (current_width < min_width_UNSAT)
+            {
+                std::cout << "c Min width UNSAT is set to " << current_width << "\n";
+                min_width_UNSAT = current_width;
+            }
+            break;
+        case -10:
+            std::cout << "e Get an incorrect answer.\n";
+            break;
+        case -20:
+            std::cout << "e Get an invalid answer.\n";
+            break;
+        default:
+            break;
+        }
+
+        abw_enc->threadCompleted = current_width;
+        abw_enc->cv.notify_all();
+        delete params;
+        pthread_exit(nullptr);
+    }
+
     void AntibandwidthEncoder::encode_and_solve_abw_problems(int start_w, int step, int stop_w)
     {
         int current_width = start_w;
@@ -63,99 +115,68 @@ namespace SATABP
         // Init threads
         for (int i = 0; i < thread_count && i < number_width; i += step)
         {
-            threads[current_width] = std::thread([this, current_width]()
-                                                 {
-                ABPEncoder *abp_enc = new ABPEncoder(graph, current_width);
-                abp_enc->encode_and_solve_abp(); 
-                delete abp_enc;
-                std::cout << "Previous thread complete: " << threadCompleted << "\n";
-                threadCompleted = current_width;
-                cv.notify_all();
-                std::cout << "Thread complete: " << threadCompleted << "\n"; });
+            auto *params = new ThreadParams{this, current_width};
+            pthread_t thread_id;
+            pthread_create(&thread_id, nullptr, thread_function, params);
+            threads[current_width] = thread_id;
 
-            std::cout << "Started new thread " << current_width << "\n";
+            std::cout << "c Started new thread " << current_width << "\n";
             current_width += step;
+
+            sleep(1);
         }
 
         while (true)
         {
             std::unique_lock<std::mutex> lock(mtx);
-            std::cout << "Check thread complete: " << threadCompleted << "\n";
             // Wait for a thread to complete
             cv.wait(lock, [this]
                     { return threadCompleted > 0; });
-            std::this_thread::sleep_for(std::chrono::seconds(1));
+            sleep(1);
 
             // Check which thread completed and join it
-            std::thread &it = threads[threadCompleted];
-            if (it.joinable())
+            int completed_width = threadCompleted;
+            auto it = threads.find(completed_width);
+            if (it != threads.end())
             {
-                std::cout << "Thread " << threadCompleted << " joined\n";
-                it.join();
+                pthread_join(it->second, nullptr);
 
                 // Remove completed thread from map
-                std::cout << "Thread " << threadCompleted << " is completed. Remove it\n";
-                threads.erase(threadCompleted);
+                threads.erase(it);
+                std::cout << "c Thread " << completed_width << " is completed. Removed it.\n";
+
                 if (current_width < stop_w)
                 {
                     // Start a new thread
-                    threads[current_width] = std::thread([this, current_width]()
-                                                         {
-                        ABPEncoder *abp_enc = new ABPEncoder(graph, current_width);
-                        int result = abp_enc->encode_and_solve_abp(); 
-                        switch (result)
-                        {
-                        case 0:
-                            std::cout << "r Graph is valid with any width.\n";
-                            break;
-                        case 10:
-                            break;
-                        case 20:
-                            break;
-                        case -10:
-                            std::cout << "r Get an incorrect answer.\n";
-                            break;
-                        case -20:
-                            std::cout << "r Get an invalid answer.\n";
-                            break;
-                        default:
-                            break;
-                        }
-                        delete abp_enc; 
-                        std::cout << "Previous thread complete: " << threadCompleted << "\n";
-                        threadCompleted = current_width;
-                        cv.notify_all();
-                        std::cout << "Thread complete: " << threadCompleted << "\n"; });
+                    auto *params = new ThreadParams{this, current_width};
+                    pthread_t thread_id;
+                    pthread_create(&thread_id, nullptr, thread_function, params);
+                    threads[current_width] = thread_id;
 
-                    std::cout << "Started new thread " << current_width << "\n";
+                    std::cout << "c Started new thread " << current_width << "\n";
                     current_width += step;
                 }
                 else
                 {
-                    std::cout << "Reach the end of width.\n";
+                    std::cout << "c Reached the end of width.\n";
                 }
             }
             else
             {
-                std::cout << "Thread " << threadCompleted << " is not joinable\n";
+                std::cout << "e Thread " << completed_width << " is not joinable or doesn't exist\n";
             }
 
-            std::cout << "Reset thread complete.\n";
             threadCompleted = 0;
-
-            if (threads.size() == 0)
+            if (threads.empty())
                 break;
         }
 
         // Join all threads to ensure they complete before exiting the function
         for (auto &pair : threads)
         {
-            if (pair.second.joinable())
-            {
-                pair.second.join();
-            }
+            pthread_join(pair.second, nullptr);
         }
-        std::cout << "All threads have completed." << std::endl;
+        std::cout << "c All threads have completed." << std::endl;
     };
 
     void AntibandwidthEncoder::encode_and_print_abw_problem(int w)
@@ -183,8 +204,7 @@ namespace SATABP
             int tmp = w_from;
             w_from = w_to;
             w_to = tmp;
-            std::cout << "c Flipped LB and UB to avoid LB > UB ";
-            std::cout << "(LB = " << w_from << ", UB = " << w_to << ").\n";
+            std::cout << "c Flipped LB and UB to avoid LB > UB: (LB = " << w_from << ", UB = " << w_to << ").\n";
         }
 
         assert((w_from <= w_to) && (w_from >= 1));
