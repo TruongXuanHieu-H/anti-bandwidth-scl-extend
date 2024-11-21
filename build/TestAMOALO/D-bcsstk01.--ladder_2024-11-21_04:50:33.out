@@ -1,0 +1,71 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		60000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/Benchmarks/D-bcsstk01.mtx.rnd
+[runlim] argv[2]:		--ladder
+[runlim] argv[3]:		-symmetry-break
+[runlim] argv[4]:		h
+[runlim] start:			Thu Nov 21 04:50:33 2024
+[runlim] main pid:		2870
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c Solving strategy: from LB to UB.
+c LB-w = 8 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 9 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 8 ( D-bcsstk01.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 48.
+c Encoding starts with w = 8:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 1152
+c	Labels and Vertices constraints:  6240
+c	Obj k aux var: 3168
+c	Obj k constraints: 39472
+c	Obj k glue staircase constraints: 25696
+c	Encoding duration: 0s
+c	Number of clauses: 45736
+c	Number of irredundant clauses: 45368
+c	Number of variables: 6624
+c SAT Solving starts:
+c	Solving duration: 51 ms
+c	Answer: 
+s SAT (w = 8)
+c	Solution check:
+p calculated antibandwidth = 8.
+c
+c
+c Antibandwidth problem with w = 9 ( D-bcsstk01.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 48.
+c Encoding starts with w = 9:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 1152
+c	Labels and Vertices constraints:  6240
+c	Obj k aux var: 3360
+c	Obj k constraints: 39872
+c	Obj k glue staircase constraints: 25520
+c	Encoding duration: 0s
+c	Number of clauses: 46136
+c	Number of irredundant clauses: 45762
+c	Number of variables: 6816
+c SAT Solving starts:
+c	Solving duration: 173 ms
+c	Answer: 
+s SAT (w = 9)
+c	Solution check:
+p calculated antibandwidth = 9.
+c
+c
+[runlim] end:			Thu Nov 21 04:50:33 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			0.49 seconds
+[runlim] time:			0.19 seconds
+[runlim] space:			13.6 MB
+[runlim] samples:		2
