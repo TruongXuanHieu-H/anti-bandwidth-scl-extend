@@ -38,6 +38,7 @@ namespace SATABP
         int do_vars_size() const final;
 
         int get_aux_var(int symbolicAuxVar);
+        bool is_obj_k_aux_var(int first, int last);
         int get_obj_k_aux_var(int first, int last);
 
         void encode_vertices();

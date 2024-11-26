@@ -48,6 +48,10 @@ namespace SATABP
         return new_obj_k_aux_var;
     }
 
+    bool LadderEncoder::is_obj_k_aux_var(int first, int last){
+        return obj_k_aux_vars.find({first, last}) != obj_k_aux_vars.end();
+    }
+
     int LadderEncoder::do_vars_size() const
     {
         return vh->size();
@@ -603,20 +607,44 @@ namespace SATABP
             }
             else
             {
-                int firstVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1 + mod, stair1 * g->n + subset * w + w);
-                int secondVar = get_obj_k_aux_var(stair1 * g->n + subset * w + w + 1, stair1 * g->n + subset * w + w + mod);
-                int thirdVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1 + mod, stair2 * g->n + subset * w + w);
-                int forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + w + 1, stair2 * g->n + subset * w + w + mod);
-                cv->add_clause({-firstVar, -thirdVar});
-                num_obj_k_constraints++;
-                num_obj_k_glue_staircase_constraint++;
-                cv->add_clause({-firstVar, -forthVar});
-                num_obj_k_constraints++;
-                num_obj_k_glue_staircase_constraint++;
-                cv->add_clause({-secondVar, -thirdVar});
-                num_obj_k_constraints++;
-                num_obj_k_glue_staircase_constraint++;
-                cv->add_clause({-secondVar, -forthVar});
+                // Check if CombinedFirstVar is constructed. If not, construct it later.
+                bool isCombineFirstVar = is_obj_k_aux_var(stair1 * g->n + subset * w + 1 + mod, stair1 * g->n + subset * w + w + mod);
+
+                // Check if CombinedSecondVar is constructed. If not, construct it later.
+                bool isCombinedSecondVar = is_obj_k_aux_var(stair2 * g->n + subset * w + 1 + mod, stair2 * g->n + subset * w + w + mod);
+
+                int combineFirstVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1 + mod, stair1 * g->n + subset * w + w + mod);
+                int combineSecondVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1 + mod, stair2 * g->n + subset * w + w + mod);
+                
+                if (!isCombineFirstVar){
+                    int firstVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1 + mod, stair1 * g->n + subset * w + w);
+                    int secondVar = get_obj_k_aux_var(stair1 * g->n + subset * w + w + 1, stair1 * g->n + subset * w + w + mod);
+                    cv->add_clause({firstVar, secondVar, -combineFirstVar});
+                    num_obj_k_constraints++;
+                    num_obj_k_glue_staircase_constraint++;
+                    cv->add_clause({combineFirstVar, -firstVar});
+                    num_obj_k_constraints++;
+                    num_obj_k_glue_staircase_constraint++;
+                    cv->add_clause({combineFirstVar, -secondVar});
+                    num_obj_k_constraints++;
+                    num_obj_k_glue_staircase_constraint++;
+                }
+                
+                if (!isCombinedSecondVar) {
+                    int thirdVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1 + mod, stair2 * g->n + subset * w + w);
+                    int forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + w + 1, stair2 * g->n + subset * w + w + mod);
+                    cv->add_clause({thirdVar, forthVar, -combineSecondVar});
+                    num_obj_k_constraints++;
+                    num_obj_k_glue_staircase_constraint++;
+                    cv->add_clause({combineSecondVar, -thirdVar});
+                    num_obj_k_constraints++;
+                    num_obj_k_glue_staircase_constraint++;
+                    cv->add_clause({combineSecondVar, -forthVar});
+                    num_obj_k_constraints++;
+                    num_obj_k_glue_staircase_constraint++;
+                }
+
+                cv->add_clause({-combineFirstVar , -combineSecondVar});
                 num_obj_k_constraints++;
                 num_obj_k_glue_staircase_constraint++;
             }
