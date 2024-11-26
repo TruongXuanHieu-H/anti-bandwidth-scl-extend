@@ -8,6 +8,10 @@
 #include <mutex>
 #include <condition_variable>
 #include <climits>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <signal.h>
 
 #include "encoder.h"
 
@@ -38,7 +42,7 @@ namespace SATABP
 
 		Graph *graph;
 		int thread_count = 1;
-		int threadCompleted = 0;
+
 		static int max_width_SAT;
 		static int min_width_UNSAT;
 
@@ -63,7 +67,7 @@ namespace SATABP
 		void encode_and_solve_abws();
 		void encode_and_print_abw_problem(int w);
 
-		static void *thread_function(void *args);
+		void do_child_pid_task(int width);
 
 		struct ThreadParams
 		{
@@ -72,9 +76,7 @@ namespace SATABP
 		};
 
 	private:
-		static std::unordered_map<int, pthread_t> threads;
-		std::mutex mtx;
-		std::condition_variable cv;
+		std::unordered_map<int, pid_t> child_pids;
 
 		void encode_and_solve_abw_problems_from_lb();
 		void encode_and_solve_abw_problems_from_ub();

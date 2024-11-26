@@ -11,7 +11,6 @@ namespace SATABP
 {
     int AntibandwidthEncoder::max_width_SAT = INT_MIN;
     int AntibandwidthEncoder::min_width_UNSAT = INT_MAX;
-    std::unordered_map<int, pthread_t> AntibandwidthEncoder::threads;
 
     AntibandwidthEncoder::AntibandwidthEncoder() {};
 
@@ -61,50 +60,69 @@ namespace SATABP
         std::cerr << "e Iterative strategy bin has not yet implemented.\n";
     };
 
-    void *AntibandwidthEncoder::thread_function(void *args)
+    void AntibandwidthEncoder::do_child_pid_task(int width)
     {
-        auto *params = static_cast<ThreadParams *>(args);
-        AntibandwidthEncoder *abw_enc = params->abw_enc;
-        int current_width = params->current_width;
+        std::cout << "c [w = " << width << "] " << width << " starting." << std::endl;
 
-        ABPEncoder *abp_enc = new ABPEncoder(abw_enc->graph, current_width);
+        // Dynamically allocate and use ABPEncoder in child process
+        ABPEncoder *abp_enc = new ABPEncoder(graph, width);
         int result = abp_enc->encode_and_solve_abp();
+
+        std::cout << "c [w = " << width << "] Result: " << result << "\n";
+
+        // Clean up dynamically allocated memory
         delete abp_enc;
 
         // Handle results as in the original logic
         switch (result)
         {
         case 0:
-            std::cout << "c Graph is valid with any width.\n";
+            std::cout << "c [w = " << width << "] Graph is valid with any width.\n";
             break;
         case 10:
-            if (current_width > max_width_SAT)
+            if (width > max_width_SAT)
             {
-                std::cout << "c Max width SAT is set to " << current_width << "\n";
-                max_width_SAT = current_width;
+                std::cout << "c [w = " << width << "] Max width SAT is set to " << width << "\n";
+                max_width_SAT = width;
+            }
+
+            for (auto it = child_pids.begin(); it != child_pids.end(); ++it)
+            {
+                if (it->first < width)
+                {
+                    kill(it->second, SIGTERM);
+                }
             }
             break;
         case 20:
-            if (current_width < min_width_UNSAT)
+            if (width < min_width_UNSAT)
             {
-                std::cout << "c Min width UNSAT is set to " << current_width << "\n";
-                min_width_UNSAT = current_width;
+                std::cout << "c [w = " << width << "] Min width UNSAT is set to " << width << "\n";
+                min_width_UNSAT = width;
+            }
+
+            std::cout << "d [w = " << width << "] Child pids coutn: " << child_pids.size() << "\n";
+
+            for (auto it = child_pids.begin(); it != child_pids.end(); ++it)
+            {
+                std::cout << "d [w = " << width << "] Travel child " << it->first << " - " << width << "\n";
+                // if (it->first > width)
+                // {
+                //     kill(it->second, SIGTERM);
+                // }
             }
             break;
         case -10:
-            std::cout << "e Get an incorrect answer.\n";
+            std::cout << "e [w = " << width << "] Get an incorrect answer.\n";
             break;
         case -20:
-            std::cout << "e Get an invalid answer.\n";
+            std::cout << "e [w = " << width << "] Get an invalid answer.\n";
             break;
         default:
             break;
         }
 
-        abw_enc->threadCompleted = current_width;
-        abw_enc->cv.notify_all();
-        delete params;
-        pthread_exit(nullptr);
+        std::cout << "c [w = " << width << "] Child " << width << " completed task." << std::endl;
     }
 
     void AntibandwidthEncoder::encode_and_solve_abw_problems(int start_w, int step, int stop_w)
@@ -112,71 +130,67 @@ namespace SATABP
         int current_width = start_w;
         int number_width = stop_w - start_w;
 
-        // Init threads
         for (int i = 0; i < thread_count && i < number_width; i += step)
         {
-            auto *params = new ThreadParams{this, current_width};
-            pthread_t thread_id;
-            pthread_create(&thread_id, nullptr, thread_function, params);
-            threads[current_width] = thread_id;
+            pid_t pid = fork();
 
-            std::cout << "c Started new thread " << current_width << "\n";
-            current_width += step;
-
-            sleep(1);
-        }
-
-        while (true)
-        {
-            std::unique_lock<std::mutex> lock(mtx);
-            // Wait for a thread to complete
-            cv.wait(lock, [this]
-                    { return threadCompleted > 0; });
-            sleep(1);
-
-            // Check which thread completed and join it
-            int completed_width = threadCompleted;
-            auto it = threads.find(completed_width);
-            if (it != threads.end())
+            if (pid < 0)
             {
-                pthread_join(it->second, nullptr);
+                std::cerr << "c [w = " << current_width << "] Fork failed!\n";
+            }
+            else if (pid == 0)
+            {
+                sleep(1);
 
-                // Remove completed thread from map
-                threads.erase(it);
-                std::cout << "c Thread " << completed_width << " is completed. Removed it.\n";
+                // Child process: perform the task
+                do_child_pid_task(current_width);
 
-                if (current_width < stop_w)
-                {
-                    // Start a new thread
-                    auto *params = new ThreadParams{this, current_width};
-                    pthread_t thread_id;
-                    pthread_create(&thread_id, nullptr, thread_function, params);
-                    threads[current_width] = thread_id;
-
-                    std::cout << "c Started new thread " << current_width << "\n";
-                    current_width += step;
-                }
-                else
-                {
-                    std::cout << "c Reached the end of width.\n";
-                }
+                exit(0);
             }
             else
             {
-                std::cout << "e Thread " << completed_width << " is not joinable or doesn't exist\n";
+                // Parent process stores the child's PID
+                child_pids[current_width] = pid;
+
+                std::cout << "c [w = " << current_width << "] Fork failed!\n";
             }
 
-            threadCompleted = 0;
-            if (threads.empty())
-                break;
+            current_width += step;
         }
 
-        // Join all threads to ensure they complete before exiting the function
-        for (auto &pair : threads)
+        // Parent process waits until all child processes finish
+        while (!child_pids.empty())
         {
-            pthread_join(pair.second, nullptr);
+            int status;
+            pid_t finished_pid = wait(&status); // Wait for any child to complete
+
+            if (finished_pid != -1)
+            {
+                // Remove the finished child from the map
+                for (auto it = child_pids.begin(); it != child_pids.end(); ++it)
+                {
+                    if (it->second == finished_pid)
+                    {
+                        std::cout << "Child pid " << it->first << " - " << finished_pid << " ends with status " << status << "\n";
+                        child_pids.erase(it);
+                        break;
+                    }
+                }
+
+                std::string log_remaining_child_pids = "Remaining child pids:\n";
+                for (auto it = child_pids.begin(); it != child_pids.end(); ++it)
+                {
+                    log_remaining_child_pids.append("\tPid ");
+                    log_remaining_child_pids.append(std::to_string(it->first));
+                    log_remaining_child_pids.append(" - ");
+                    log_remaining_child_pids.append(std::to_string(it->second));
+                    log_remaining_child_pids.append("\n");
+                }
+                std::cout << log_remaining_child_pids;
+            }
         }
-        std::cout << "c All threads have completed." << std::endl;
+
+        std::cout << "Parent: All children have completed their tasks or were terminated." << std::endl;
     };
 
     void AntibandwidthEncoder::encode_and_print_abw_problem(int w)
@@ -291,5 +305,4 @@ namespace SATABP
         {"V-nos6.mtx.rnd", 337},
         {"W-685_bus.mtx.rnd", 136},
         {"X-can__715.mtx.rnd", 142}};
-
 }
