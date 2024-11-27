@@ -1,0 +1,71 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		60000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/C-bcspwr01.mtx.rnd
+[runlim] argv[2]:		--ladder
+[runlim] argv[3]:		-symmetry-break
+[runlim] argv[4]:		h
+[runlim] start:			Tue Nov 26 12:37:34 2024
+[runlim] main pid:		39736
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c Solving strategy: from LB to UB.
+c LB-w = 16 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 17 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 16 ( C-bcspwr01.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 39.
+c Encoding starts with w = 16:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 858
+c	Labels and Vertices constraints:  4368
+c	Obj k aux var: 2808
+c	Obj k constraints: 11907
+c	Obj k glue staircase constraints: 3678
+c	Encoding duration: 0s
+c	Number of clauses: 16294
+c	Number of irredundant clauses: 16182
+c	Number of variables: 5187
+c SAT Solving starts:
+c	Solving duration: 16 ms
+c	Answer: 
+s SAT (w = 16)
+c	Solution check:
+p calculated antibandwidth = 16.
+c
+c
+c Antibandwidth problem with w = 17 ( C-bcspwr01.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 39.
+c Encoding starts with w = 17:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 858
+c	Labels and Vertices constraints:  4368
+c	Obj k aux var: 2808
+c	Obj k constraints: 11822
+c	Obj k glue staircase constraints: 3515
+c	Encoding duration: 0s
+c	Number of clauses: 16209
+c	Number of irredundant clauses: 16095
+c	Number of variables: 5187
+c SAT Solving starts:
+c	Solving duration: 4347 ms
+c	Answer: 
+s SAT (w = 17)
+c	Solution check:
+p calculated antibandwidth = 17.
+c
+c
+[runlim] end:			Tue Nov 26 12:37:38 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			4.45 seconds
+[runlim] time:			4.29 seconds
+[runlim] space:			18.4 MB
+[runlim] samples:		43

@@ -1,0 +1,69 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		60000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/E-bcspwr02.mtx.rnd
+[runlim] argv[2]:		--ladder
+[runlim] argv[3]:		-symmetry-break
+[runlim] argv[4]:		h
+[runlim] start:			Tue Nov 26 09:37:22 2024
+[runlim] main pid:		37276
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c Solving strategy: from LB to UB.
+c LB-w = 21 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 22 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 21 ( E-bcspwr02.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 49.
+c Encoding starts with w = 21:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 1176
+c	Labels and Vertices constraints:  6615
+c	Obj k aux var: 4508
+c	Obj k constraints: 18959
+c	Obj k glue staircase constraints: 5680
+c	Encoding duration: 0s
+c	Number of clauses: 25598
+c	Number of irredundant clauses: 25456
+c	Number of variables: 8085
+c SAT Solving starts:
+c	Solving duration: 216 ms
+c	Answer: 
+s SAT (w = 21)
+c	Solution check:
+p calculated antibandwidth = 21.
+c
+c
+c Antibandwidth problem with w = 22 ( E-bcspwr02.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 49.
+c Encoding starts with w = 22:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 1176
+c	Labels and Vertices constraints:  6615
+c	Obj k aux var: 4508
+c	Obj k constraints: 18851
+c	Obj k glue staircase constraints: 5474
+c	Encoding duration: 0s
+c	Number of clauses: 25490
+c	Number of irredundant clauses: 25346
+c	Number of variables: 8085
+c SAT Solving starts:
+c	Solving duration: 946 ms
+c	Answer: 
+s UNSAT (w = 22)
+c
+c
+[runlim] end:			Tue Nov 26 09:37:23 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			1.51 seconds
+[runlim] time:			1.10 seconds
+[runlim] space:			12.0 MB
+[runlim] samples:		11
