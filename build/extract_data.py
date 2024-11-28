@@ -11,6 +11,9 @@ def parse_file(input_file):
     problem_name = ""
     encoding_type = ""
     rows = []
+    total_real_time = ""
+    total_solve_time = ""
+    total_space = ""
 
     for line in lines:
         line = line.strip()
@@ -67,14 +70,27 @@ def parse_file(input_file):
             elif ("out of memory" in line):
                 result = "MO"
                 solve_time = "-"
+                num_clauses = "-"
+                num_vars = "-"
                 if problem_name and encoding_type and n_value and w_value:
                     rows.append([problem_name, encoding_type, lb_value, ub_value, n_value, w_value, num_clauses, num_vars, result, solve_time])
-            
+        elif line.startswith("[runlim] real:"):
+            total_real_time = line.split(":")[1].strip()
+        elif line.startswith("[runlim] time:"):
+            total_solve_time = line.split(":")[1].strip()
+        elif line.startswith("[runlim] space:"):
+            total_space = line.split(":")[1].strip()
+    
+    for row in rows:
+        row.append(total_real_time)
+        row.append(total_solve_time)
+        row.append(total_space)
+        
     print(rows)
     return rows
 
 def save_to_excel(data, output_file):
-    columns_title = ["Problem Name", "Encoding Type", "LB", "UB", "n", "w", "Number clauses", "Number variables", "Result", "Solve time"]
+    columns_title = ["Problem Name", "Encoding Type", "LB", "UB", "n", "w", "Number clauses", "Number variables", "Result", "Solve time", "Total real time", "Total solve time", "Total space"]
     
     if (os.path.exists(output_file)):
         df_existing = pd.read_excel(output_file)
