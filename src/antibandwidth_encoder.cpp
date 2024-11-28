@@ -6,6 +6,8 @@
 #include <chrono>
 #include <unistd.h>
 #include <regex>
+#include <sstream>
+#include <cmath>
 
 namespace SATABP
 {
@@ -67,36 +69,181 @@ namespace SATABP
         std::cerr << "e Iterative strategy bin has not yet implemented.\n";
     };
 
-    void AntibandwidthEncoder::create_child_pid(int width)
+    std::vector<int> AntibandwidthEncoder::get_child_pids(int ppid)
     {
-        std::cout << "p PID: " << getpid() << ", PPID: " << getppid() << "\n";
+        std::vector<int> childPIDs;
+        std::ifstream file("/proc/" + std::to_string(ppid) + "/task/" + std::to_string(ppid) + "/children");
+
+        if (!file.is_open())
+        {
+            std::cerr << "Unable to open /proc/" << ppid << "/task/" << ppid << "/children" << std::endl;
+            return childPIDs;
+        }
+
+        std::string line;
+        if (std::getline(file, line))
+        {
+            std::istringstream iss(line);
+            int childPID;
+            while (iss >> childPID)
+            {
+                childPIDs.push_back(childPID);
+            }
+        }
+        file.close();
+        return childPIDs;
+    }
+
+    std::vector<int> AntibandwidthEncoder::get_descendant_pids(int ppid)
+    {
+        std::vector<int> descendantPIDs;
+
+        std::vector<int> childPIDs = get_child_pids(ppid);
+
+        for (int childPID : childPIDs)
+        {
+            descendantPIDs.push_back(childPID);
+
+            std::vector<int> grandChildPIDs = get_descendant_pids(childPID);
+            descendantPIDs.insert(descendantPIDs.end(), grandChildPIDs.begin(), grandChildPIDs.end());
+        }
+
+        return descendantPIDs;
+    }
+
+    size_t AntibandwidthEncoder::get_total_memory_usage(int pid)
+    {
+        size_t totalMemoryUsage = get_memory_usage(pid);
+
+        std::vector<int> descendant_pids = get_descendant_pids(pid);
+        for (int descendant_pid : descendant_pids)
+        {
+            totalMemoryUsage += get_memory_usage(descendant_pid);
+        }
+
+        // std::cout << "c [Lim] Process " << pid << " consumed total " << totalMemoryUsage / 1024.0 << " MB.\n";
+        return totalMemoryUsage;
+    }
+
+    size_t AntibandwidthEncoder::get_memory_usage(int pid)
+    {
+        std::ifstream file("/proc/" + std::to_string(pid) + "/status");
+        if (!file.is_open())
+        {
+            std::cerr << "Unable to open /proc/" << pid << "/status" << std::endl;
+            return 0;
+        }
+
+        std::string line;
+        size_t memoryUsage = 0;
+
+        while (std::getline(file, line))
+        {
+            if (line.find("VmRSS:") == 0)
+            { // Look for the VmRSS field
+                std::istringstream iss(line);
+                std::string key, value, unit;
+                iss >> key >> value >> unit;     // VmRSS: value unit
+                memoryUsage = std::stoul(value); // Memory usage in kilobytes (KB)
+                break;
+            }
+        }
+
+        file.close();
+        // std::cout << "c [Lim] Process " << pid << " consumed " << memoryUsage / 1024.0 << " MB.\n";
+        return memoryUsage;
+    }
+
+    /*
+     *  Check if limit conditions are satified or not
+     *  Return:
+     *      0   if all the conditions is satified.
+     *      -1  if out of memory.
+     *      -2  if out of real time.
+     *      -3  if out of elapsed time.
+     */
+    int AntibandwidthEncoder::is_limit_satified()
+    {
+        if (consumed_memory > memory_limit)
+            return -1;
+
+        if (consumed_real_time > real_time_limit)
+            return -2;
+
+        if (consumed_elapsed_time > elapsed_time_limit)
+            return -3;
+
+        return 0;
+    }
+
+    void AntibandwidthEncoder::create_limit_pid()
+    {
+        lim_pid = fork();
+        if (lim_pid < 0)
+        {
+            std::cerr << "e [Lim] Fork Failed!\n";
+            exit(-1);
+        }
+        else if (lim_pid == 0)
+        {
+            pid_t main_pid = getppid();
+            int limit_state = is_limit_satified();
+
+            while (limit_state == 0)
+            {
+                consumed_memory = std::round(get_total_memory_usage(main_pid) * 10 / 1024.0) / 10;
+                consumed_real_time += std::round((float)sample_rate * 10 / 1000000.0) / 10;
+                consumed_elapsed_time += (float)(sample_rate * (get_descendant_pids(main_pid).size() - 1)) / 1000000.0;
+
+                sampler_count++;
+                if (sampler_count >= report_rate)
+                {
+                    std::cout << "c [Lim] Sampler:\t\t" << "Memory: " << consumed_memory << " MB\t\tReal time: "
+                              << consumed_real_time << "s\t\tElapsed time: " << consumed_elapsed_time << "s\n";
+                    sampler_count = 0;
+                }
+                usleep(sample_rate);
+
+                limit_state = is_limit_satified();
+            }
+
+            exit(limit_state);
+        }
+        else
+        {
+            // std::cout << "c Lim pid is forked at " << lim_pid << "\n";
+        }
+    }
+
+    void AntibandwidthEncoder::create_abp_pid(int width)
+    {
+        // std::cout << "p PID: " << getpid() << ", PPID: " << getppid() << "\n";
         pid_t pid = fork();
-        std::cout << "q PID: " << getpid() << ", PPID: " << getppid() << "\n";
+        // std::cout << "q PID: " << getpid() << ", PPID: " << getppid() << "\n";
 
         if (pid < 0)
         {
-            std::cerr << "c [w = " << width << "] Fork failed!\n";
+            std::cerr << "e [w = " << width << "] Fork failed!\n";
+            exit(-1);
         }
         else if (pid == 0)
         {
-            sleep(1);
-
             std::cout << "c [w = " << width << "] Start task in PID: " << getpid() << ".\n";
 
             // Child process: perform the task
-            int result = do_child_pid_task(width);
+            int result = do_abp_pid_task(width);
 
             exit(result);
         }
         else
         {
             // Parent process stores the child's PID
-            std::cout << "c Child pid " << width << " - " << pid << " is tracked in PID: " << getpid() << ".\n";
-            child_pids[width] = pid;
+            // std::cout << "c Child pid " << width << " - " << pid << " is tracked in PID: " << getpid() << ".\n";
+            abp_pids[width] = pid;
         }
     }
 
-    int AntibandwidthEncoder::do_child_pid_task(int width)
+    int AntibandwidthEncoder::do_abp_pid_task(int width)
     {
         // Dynamically allocate and use ABPEncoder in child process
         ABPEncoder *abp_enc = new ABPEncoder(symmetry_break_strategy, graph, width);
@@ -107,35 +254,46 @@ namespace SATABP
         // Clean up dynamically allocated memory
         delete abp_enc;
 
-        std::cout << "c [w = " << width << "] Child " << width << " completed task." << std::endl;
+        // std::cout << "c [w = " << width << "] Child " << width << " completed task." << std::endl;
         return result;
     }
 
     void AntibandwidthEncoder::encode_and_solve_abw_problems(int start_w, int step, int stop_w)
     {
+        create_limit_pid();
+
         int current_width = start_w;
         int number_width = stop_w - start_w;
 
         for (int i = 0; i < process_count && i < number_width; i += step)
         {
-            create_child_pid(current_width);
+            create_abp_pid(current_width);
             current_width += step;
         }
 
         // Parent process waits until all child processes finish
-        while (!child_pids.empty())
+        while (!abp_pids.empty())
         {
             int status;
             pid_t finished_pid = wait(&status); // Wait for any child to complete
 
-            if (WIFEXITED(status))
+            if (finished_pid == lim_pid)
+            {
+                std::cout << "c [Lim] End with result: " << status << "\n";
+                while (!abp_pids.empty())
+                {
+                    kill(abp_pids.begin()->second, SIGTERM);
+                    abp_pids.erase(abp_pids.begin());
+                }
+            }
+            else if (WIFEXITED(status))
             {
                 // Remove the finished child from the map
-                for (auto it = child_pids.begin(); it != child_pids.end(); ++it)
+                for (auto it = abp_pids.begin(); it != abp_pids.end(); ++it)
                 {
                     if (it->second == finished_pid)
                     {
-                        std::cout << "c Child pid " << it->first << " - " << it->second << " exited with status " << WEXITSTATUS(status) << "\n";
+                        // std::cout << "c Child pid " << it->first << " - " << it->second << " exited with status " << WEXITSTATUS(status) << "\n";
 
                         switch (WEXITSTATUS(status))
                         {
@@ -146,7 +304,7 @@ namespace SATABP
                                 std::cout << "c Max width SAT is set to " << it->first << "\n";
                             }
 
-                            for (auto ita = child_pids.begin(); ita != child_pids.end(); ita++)
+                            for (auto ita = abp_pids.begin(); ita != abp_pids.end(); ita++)
                             {
                                 // Pid with lower width than SAT pid is also SAT.
                                 if (ita->first < it->first)
@@ -159,10 +317,10 @@ namespace SATABP
                             if (it->first < min_width_UNSAT)
                             {
                                 min_width_UNSAT = it->first;
-                                std::cout << "c Min width UNSAT is set to " << it->first << "\n";
+                                // std::cout << "c Min width UNSAT is set to " << it->first << "\n";
                             }
 
-                            for (auto ita = child_pids.begin(); ita != child_pids.end(); ita++)
+                            for (auto ita = abp_pids.begin(); ita != abp_pids.end(); ita++)
                             {
                                 // Pid with higher width than UNSAT pid is also UNSAT.
                                 if (ita->first > it->first)
@@ -175,8 +333,11 @@ namespace SATABP
                             break;
                         }
 
-                        child_pids.erase(it);
-
+                        abp_pids.erase(it);
+                        if (abp_pids.empty() && kill(lim_pid, 0) == 0)
+                        {
+                            kill(lim_pid, SIGTERM);
+                        }
                         break;
                     }
                 }
@@ -184,43 +345,66 @@ namespace SATABP
             else if (WIFSIGNALED(status))
             {
                 // Remove the terminated child from the map
-                for (auto it = child_pids.begin(); it != child_pids.end(); ++it)
+                for (auto it = abp_pids.begin(); it != abp_pids.end(); ++it)
                 {
                     if (it->second == finished_pid)
                     {
                         std::cout << "c Child pid " << it->first << " - " << it->second << " terminated by signal " << WTERMSIG(status) << "\n";
-                        child_pids.erase(it);
+                        abp_pids.erase(it);
+                        if (abp_pids.empty() && kill(lim_pid, 0) == 0)
+                        {
+                            kill(lim_pid, SIGTERM);
+                        }
                         break;
                     }
                 }
             }
             else
             {
-                for (auto it = child_pids.begin(); it != child_pids.end(); ++it)
+                for (auto it = abp_pids.begin(); it != abp_pids.end(); ++it)
                 {
                     if (it->second == finished_pid)
                     {
                         std::cerr << "e Child pid " << it->first << " - " << it->second << " stopped or otherwise terminated.\n";
-                        child_pids.erase(it);
+                        abp_pids.erase(it);
+                        if (abp_pids.empty() && kill(lim_pid, 0) == 0)
+                        {
+                            kill(lim_pid, SIGTERM);
+                        }
                         break;
                     }
                 }
             }
 
-            std::string log_remaining_child_pids = "c Remaining child pids: " + std::to_string(child_pids.size()) + "\n";
-            for (auto it = child_pids.begin(); it != child_pids.end(); ++it)
-            {
-                log_remaining_child_pids.append("c - Pid ");
-                log_remaining_child_pids.append(std::to_string(it->first));
-                log_remaining_child_pids.append(" - ");
-                log_remaining_child_pids.append(std::to_string(it->second));
-                log_remaining_child_pids.append("\n");
-            }
-            std::cout << log_remaining_child_pids;
+            // std::string log_remaining_child_pids = "c Remaining child pids: " + std::to_string(abp_pids.size()) + "\n";
+            // for (auto it = abp_pids.begin(); it != abp_pids.end(); ++it)
+            // {
+            //     log_remaining_child_pids.append("c - Pid ");
+            //     log_remaining_child_pids.append(std::to_string(it->first));
+            //     log_remaining_child_pids.append(" - ");
+            //     log_remaining_child_pids.append(std::to_string(it->second));
+            //     log_remaining_child_pids.append("\n");
+            // }
+            // std::cout << log_remaining_child_pids;
 
-            while (int(child_pids.size()) < process_count && current_width < stop_w && current_width < min_width_UNSAT)
+            /*
+             *   Debug get_child_pids(int) and get_memory_usage functions.
+             */
+            // auto saved_child_pids = get_child_pids(getpid());
+            // std::string log_saved_child_pids = "c Saved child pids: " + std::to_string(saved_child_pids.size()) + "\n";
+            // for (auto pid : saved_child_pids)
+            // {
+            //     log_saved_child_pids.append("c - Saved pid ");
+            //     log_saved_child_pids.append(std::to_string(pid));
+            //     log_saved_child_pids.append(": ");
+            //     log_saved_child_pids.append(std::to_string(get_memory_usage(pid)));
+            //     log_saved_child_pids.append(" KB.\n");
+            // }
+            // std::cout << log_saved_child_pids;
+
+            while (int(abp_pids.size()) < process_count && current_width < stop_w && current_width < min_width_UNSAT)
             {
-                create_child_pid(current_width);
+                create_abp_pid(current_width);
                 current_width += step;
             }
         }

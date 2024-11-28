@@ -91,7 +91,7 @@ namespace SATABP
 
         cleanup_solving();
 
-        std::cout << "c " + get_signature() + " Closed." << std::endl;
+        // std::cout << "c " + get_signature() + " Closed." << std::endl;
         return SAT_res;
     };
 

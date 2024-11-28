@@ -53,6 +53,11 @@ static const std::map<std::string, std::string> option_list = {
     {"-split-size <n>", "Maximal allowed length of clauses, every longer clause is split up into two by introducing a new variable"},
     {"-set-lb <new LB>", "Overwrite predefined LB with <new LB>, has to be at least 2"},
     {"-set-ub <new UB>", "Overwrite predefined UB with <new UB>, has to be positive"},
+    {"-limit-memory <MB>", "Overwrite memory consumption restriction [default: FLOAT_MAX]"},
+    {"-limit-real-time <seconds>", "Overwrite real time consumption restriction [default: FLOAT_MAX]"},
+    {"-limit-elapsed-time <seconds>", "Overwrite elapsed time consumption restriction [default: FLOAT_MAX]"},
+    {"-sample-rate <microseconds>", "Overwrite sampler interval [default: 100000]"},
+    {"-report-rate <sampler>", "Overwrite elapsed time interval [default: 100 samplers generates 1 report]"},
     {"-symmetry-break <break point>", "Apply symetry breaking technique in <break point> (f: first node, h: highest degree node, l: lowest degree node, n: none) [default: none]"},
     {"-print-w <w>", "Only encode and print SAT formula of specified width w (where w > 0), without solving it"},
     {"-process-count <number process>", "Number processes used to solve"}};
@@ -107,8 +112,6 @@ int main(int argc, char **argv)
 
     bool just_print_dimacs = false;
     int spec_width = 2;
-
-    int split_size = 0;
 
     if (argc < 2)
     {
@@ -222,9 +225,69 @@ int main(int argc, char **argv)
             abw_enc->overwrite_ub = true;
             std::cout << "c UB is predefined as " << abw_enc->forced_ub << "." << std::endl;
         }
+        else if (argv[i] == std::string("-limit-memory"))
+        {
+            int lim_mem = get_number_arg(argv[++i]);
+            if (lim_mem <= 0)
+            {
+                std::cout << "Error, memory limit has to be positive." << std::endl;
+                delete abw_enc;
+                return 1;
+            }
+            std::cout << "c Memory limit is set to " << lim_mem << "." << std::endl;
+            abw_enc->memory_limit = lim_mem;
+        }
+        else if (argv[i] == std::string("-limit-real-time"))
+        {
+            int limit_real_time = get_number_arg(argv[++i]);
+            if (limit_real_time <= 0)
+            {
+                std::cout << "Error, real time limit has to be positive." << std::endl;
+                delete abw_enc;
+                return 1;
+            }
+            std::cout << "c Real time limit is set to " << limit_real_time << "." << std::endl;
+            abw_enc->real_time_limit = limit_real_time;
+        }
+        else if (argv[i] == std::string("-limit-elapsed-time"))
+        {
+            int limit_elapsed_time = get_number_arg(argv[++i]);
+            if (limit_elapsed_time <= 0)
+            {
+                std::cout << "Error, elapsed time limit has to be positive." << std::endl;
+                delete abw_enc;
+                return 1;
+            }
+            std::cout << "c Elapsed time limit is set to " << limit_elapsed_time << "." << std::endl;
+            abw_enc->elapsed_time_limit = limit_elapsed_time;
+        }
+        else if (argv[i] == std::string("-sample-rate"))
+        {
+            int sample_rate = get_number_arg(argv[++i]);
+            if (sample_rate <= 0)
+            {
+                std::cout << "Error, sample rate has to be positive." << std::endl;
+                delete abw_enc;
+                return 1;
+            }
+            std::cout << "c Sample rate is set to " << sample_rate << "." << std::endl;
+            abw_enc->sample_rate = sample_rate;
+        }
+        else if (argv[i] == std::string("-report-rate"))
+        {
+            int report_rate = get_number_arg(argv[++i]);
+            if (report_rate <= 0)
+            {
+                std::cout << "Error, sample rate has to be positive." << std::endl;
+                delete abw_enc;
+                return 1;
+            }
+            std::cout << "c Sample rate is set to " << report_rate << "." << std::endl;
+            abw_enc->report_rate = report_rate;
+        }
         else if (argv[i] == std::string("-split-size"))
         {
-            split_size = get_number_arg(argv[++i]);
+            int split_size = get_number_arg(argv[++i]);
             if (split_size < 0)
             {
                 std::cout << "Error, split size has to be positive." << std::endl;
@@ -250,8 +313,6 @@ int main(int argc, char **argv)
             return 1;
         }
     }
-
-    std::cout << "c Call the encoder.\n";
 
     if (just_print_dimacs)
     {
