@@ -16,7 +16,7 @@ namespace SATABP
     class ABPEncoder
     {
     public:
-        ABPEncoder(Graph *graph, int width);
+        ABPEncoder(std::string symmetry_break_strategy, Graph *graph, int width);
         virtual ~ABPEncoder();
 
         EncoderStrategy enc_strategy = ladder; // Default strategy

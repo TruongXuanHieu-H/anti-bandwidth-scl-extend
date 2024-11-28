@@ -55,7 +55,7 @@ static const std::map<std::string, std::string> option_list = {
     {"-set-ub <new UB>", "Overwrite predefined UB with <new UB>, has to be positive"},
     {"-symmetry-break <break point>", "Apply symetry breaking technique in <break point> (f: first node, h: highest degree node, l: lowest degree node, n: none) [default: none]"},
     {"-print-w <w>", "Only encode and print SAT formula of specified width w (where w > 0), without solving it"},
-    {"-thread-count <number thread>", "Number threads used to solve"}};
+    {"-process-count <number process>", "Number processes used to solve"}};
 
 int get_number_arg(std::string const &arg)
 {
@@ -237,25 +237,10 @@ int main(int argc, char **argv)
         else if (argv[i] == std::string("-symmetry-break"))
         {
             abw_enc->symmetry_break_strategy = argv[++i];
-            if (abw_enc->symmetry_break_strategy == std::string("f"))
-                std::cout << "c Symetry breaking in the first node." << std::endl;
-            else if (abw_enc->symmetry_break_strategy == std::string("h"))
-                std::cout << "c Symetry breaking in the highest degree node." << std::endl;
-            else if (abw_enc->symmetry_break_strategy == std::string("l"))
-                std::cout << "c Symetry breaking in the lowest degree node." << std::endl;
-            else if (abw_enc->symmetry_break_strategy == std::string("n"))
-                std::cout << "c Symetry breaking is not applied." << std::endl;
-            else
-            {
-                std::cout << "c Invalid symetry breaking point." << std::endl;
-
-                delete abw_enc;
-                return 1;
-            }
         }
-        else if (argv[i] == std::string("-thread-count"))
+        else if (argv[i] == std::string("-process-count"))
         {
-            abw_enc->thread_count = get_number_arg(argv[++i]);
+            abw_enc->process_count = get_number_arg(argv[++i]);
         }
         else
         {
@@ -265,6 +250,8 @@ int main(int argc, char **argv)
             return 1;
         }
     }
+
+    std::cout << "c Call the encoder.\n";
 
     if (just_print_dimacs)
     {

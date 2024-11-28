@@ -5,16 +5,23 @@
 #include <assert.h>
 #include <chrono>
 #include <unistd.h>
-#include <signal.h>
+#include <regex>
 
 namespace SATABP
 {
-    int AntibandwidthEncoder::max_width_SAT = INT_MIN;
-    int AntibandwidthEncoder::min_width_UNSAT = INT_MAX;
 
-    AntibandwidthEncoder::AntibandwidthEncoder() {};
+    AntibandwidthEncoder::AntibandwidthEncoder() {
+    };
 
-    AntibandwidthEncoder::~AntibandwidthEncoder() {};
+    AntibandwidthEncoder::~AntibandwidthEncoder()
+    {
+        std::cout << "r\n";
+        std::cout << "r Final results: \n";
+        std::cout << "r Max width SAT:  \t" << max_width_SAT << "\n";
+        std::cout << "r Min width UNSAT:\t" << min_width_UNSAT << "\n";
+        std::cout << "r\n";
+        std::cout << "r\n";
+    };
 
     void AntibandwidthEncoder::read_graph(std::string graph_file_name)
     {
@@ -60,12 +67,39 @@ namespace SATABP
         std::cerr << "e Iterative strategy bin has not yet implemented.\n";
     };
 
-    void AntibandwidthEncoder::do_child_pid_task(int width)
+    void AntibandwidthEncoder::create_child_pid(int width)
     {
-        std::cout << "c [w = " << width << "] " << width << " starting." << std::endl;
+        std::cout << "p PID: " << getpid() << ", PPID: " << getppid() << "\n";
+        pid_t pid = fork();
+        std::cout << "q PID: " << getpid() << ", PPID: " << getppid() << "\n";
 
+        if (pid < 0)
+        {
+            std::cerr << "c [w = " << width << "] Fork failed!\n";
+        }
+        else if (pid == 0)
+        {
+            sleep(1);
+
+            std::cout << "c [w = " << width << "] Start task in PID: " << getpid() << ".\n";
+
+            // Child process: perform the task
+            int result = do_child_pid_task(width);
+
+            exit(result);
+        }
+        else
+        {
+            // Parent process stores the child's PID
+            std::cout << "c Child pid " << width << " - " << pid << " is tracked in PID: " << getpid() << ".\n";
+            child_pids[width] = pid;
+        }
+    }
+
+    int AntibandwidthEncoder::do_child_pid_task(int width)
+    {
         // Dynamically allocate and use ABPEncoder in child process
-        ABPEncoder *abp_enc = new ABPEncoder(graph, width);
+        ABPEncoder *abp_enc = new ABPEncoder(symmetry_break_strategy, graph, width);
         int result = abp_enc->encode_and_solve_abp();
 
         std::cout << "c [w = " << width << "] Result: " << result << "\n";
@@ -73,56 +107,8 @@ namespace SATABP
         // Clean up dynamically allocated memory
         delete abp_enc;
 
-        // Handle results as in the original logic
-        switch (result)
-        {
-        case 0:
-            std::cout << "c [w = " << width << "] Graph is valid with any width.\n";
-            break;
-        case 10:
-            if (width > max_width_SAT)
-            {
-                std::cout << "c [w = " << width << "] Max width SAT is set to " << width << "\n";
-                max_width_SAT = width;
-            }
-
-            for (auto it = child_pids.begin(); it != child_pids.end(); ++it)
-            {
-                if (it->first < width)
-                {
-                    kill(it->second, SIGTERM);
-                }
-            }
-            break;
-        case 20:
-            if (width < min_width_UNSAT)
-            {
-                std::cout << "c [w = " << width << "] Min width UNSAT is set to " << width << "\n";
-                min_width_UNSAT = width;
-            }
-
-            std::cout << "d [w = " << width << "] Child pids coutn: " << child_pids.size() << "\n";
-
-            for (auto it = child_pids.begin(); it != child_pids.end(); ++it)
-            {
-                std::cout << "d [w = " << width << "] Travel child " << it->first << " - " << width << "\n";
-                // if (it->first > width)
-                // {
-                //     kill(it->second, SIGTERM);
-                // }
-            }
-            break;
-        case -10:
-            std::cout << "e [w = " << width << "] Get an incorrect answer.\n";
-            break;
-        case -20:
-            std::cout << "e [w = " << width << "] Get an invalid answer.\n";
-            break;
-        default:
-            break;
-        }
-
         std::cout << "c [w = " << width << "] Child " << width << " completed task." << std::endl;
+        return result;
     }
 
     void AntibandwidthEncoder::encode_and_solve_abw_problems(int start_w, int step, int stop_w)
@@ -130,31 +116,9 @@ namespace SATABP
         int current_width = start_w;
         int number_width = stop_w - start_w;
 
-        for (int i = 0; i < thread_count && i < number_width; i += step)
+        for (int i = 0; i < process_count && i < number_width; i += step)
         {
-            pid_t pid = fork();
-
-            if (pid < 0)
-            {
-                std::cerr << "c [w = " << current_width << "] Fork failed!\n";
-            }
-            else if (pid == 0)
-            {
-                sleep(1);
-
-                // Child process: perform the task
-                do_child_pid_task(current_width);
-
-                exit(0);
-            }
-            else
-            {
-                // Parent process stores the child's PID
-                child_pids[current_width] = pid;
-
-                std::cout << "c [w = " << current_width << "] Fork failed!\n";
-            }
-
+            create_child_pid(current_width);
             current_width += step;
         }
 
@@ -164,33 +128,103 @@ namespace SATABP
             int status;
             pid_t finished_pid = wait(&status); // Wait for any child to complete
 
-            if (finished_pid != -1)
+            if (WIFEXITED(status))
             {
                 // Remove the finished child from the map
                 for (auto it = child_pids.begin(); it != child_pids.end(); ++it)
                 {
                     if (it->second == finished_pid)
                     {
-                        std::cout << "Child pid " << it->first << " - " << finished_pid << " ends with status " << status << "\n";
+                        std::cout << "c Child pid " << it->first << " - " << it->second << " exited with status " << WEXITSTATUS(status) << "\n";
+
+                        switch (WEXITSTATUS(status))
+                        {
+                        case 10:
+                            if (it->first > max_width_SAT)
+                            {
+                                max_width_SAT = it->first;
+                                std::cout << "c Max width SAT is set to " << it->first << "\n";
+                            }
+
+                            for (auto ita = child_pids.begin(); ita != child_pids.end(); ita++)
+                            {
+                                // Pid with lower width than SAT pid is also SAT.
+                                if (ita->first < it->first)
+                                {
+                                    kill(ita->second, SIGTERM);
+                                }
+                            }
+                            break;
+                        case 20:
+                            if (it->first < min_width_UNSAT)
+                            {
+                                min_width_UNSAT = it->first;
+                                std::cout << "c Min width UNSAT is set to " << it->first << "\n";
+                            }
+
+                            for (auto ita = child_pids.begin(); ita != child_pids.end(); ita++)
+                            {
+                                // Pid with higher width than UNSAT pid is also UNSAT.
+                                if (ita->first > it->first)
+                                {
+                                    kill(ita->second, SIGTERM);
+                                }
+                            }
+                            break;
+                        default:
+                            break;
+                        }
+
+                        child_pids.erase(it);
+
+                        break;
+                    }
+                }
+            }
+            else if (WIFSIGNALED(status))
+            {
+                // Remove the terminated child from the map
+                for (auto it = child_pids.begin(); it != child_pids.end(); ++it)
+                {
+                    if (it->second == finished_pid)
+                    {
+                        std::cout << "c Child pid " << it->first << " - " << it->second << " terminated by signal " << WTERMSIG(status) << "\n";
                         child_pids.erase(it);
                         break;
                     }
                 }
-
-                std::string log_remaining_child_pids = "Remaining child pids:\n";
+            }
+            else
+            {
                 for (auto it = child_pids.begin(); it != child_pids.end(); ++it)
                 {
-                    log_remaining_child_pids.append("\tPid ");
-                    log_remaining_child_pids.append(std::to_string(it->first));
-                    log_remaining_child_pids.append(" - ");
-                    log_remaining_child_pids.append(std::to_string(it->second));
-                    log_remaining_child_pids.append("\n");
+                    if (it->second == finished_pid)
+                    {
+                        std::cerr << "e Child pid " << it->first << " - " << it->second << " stopped or otherwise terminated.\n";
+                        child_pids.erase(it);
+                        break;
+                    }
                 }
-                std::cout << log_remaining_child_pids;
+            }
+
+            std::string log_remaining_child_pids = "c Remaining child pids: " + std::to_string(child_pids.size()) + "\n";
+            for (auto it = child_pids.begin(); it != child_pids.end(); ++it)
+            {
+                log_remaining_child_pids.append("c - Pid ");
+                log_remaining_child_pids.append(std::to_string(it->first));
+                log_remaining_child_pids.append(" - ");
+                log_remaining_child_pids.append(std::to_string(it->second));
+                log_remaining_child_pids.append("\n");
+            }
+            std::cout << log_remaining_child_pids;
+
+            while (int(child_pids.size()) < process_count && current_width < stop_w && current_width < min_width_UNSAT)
+            {
+                create_child_pid(current_width);
+                current_width += step;
             }
         }
-
-        std::cout << "Parent: All children have completed their tasks or were terminated." << std::endl;
+        std::cout << "c All children have completed their tasks or were terminated." << std::endl;
     };
 
     void AntibandwidthEncoder::encode_and_print_abw_problem(int w)

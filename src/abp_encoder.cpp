@@ -11,7 +11,7 @@
 
 namespace SATABP
 {
-    ABPEncoder::ABPEncoder(Graph *graph, int width) : width(width), graph(graph) {};
+    ABPEncoder::ABPEncoder(std::string symmetry_break_strategy, Graph *graph, int width) : symmetry_break_strategy(symmetry_break_strategy), width(width), graph(graph) {};
 
     ABPEncoder::~ABPEncoder() {};
 
