@@ -1,4 +1,4 @@
-# Makefile for autoRL.cpp
+# Makefile for autoABP.cpp
 
 # Compiler to use
 CXX = g++
@@ -7,10 +7,10 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
 # Name of the executable
-TARGET = autoRL
+TARGET = autoABP
 
 # Source files
-SRCS = autoRL.cpp
+SRCS = autoABP.cpp
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)

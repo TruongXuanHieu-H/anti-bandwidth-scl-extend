@@ -173,28 +173,25 @@ int main()
         std::ostringstream oss;
         oss << std::put_time(local_tm, "%Y-%m-%d_%H:%M:%S");
 
-        std::string run_lim_command = configMap["run_lim_dir"] + " " + configMap["run_lim_config"] +
-                                      " " + "-o" + " " + configMap["report_dir"] + "/" +
-                                      benchmark + configMap["abw_enc_config"] + "_" + oss.str() + ".out";
         std::string abw_enc_command = configMap["abw_enc_dir"] + " " + configMap["benchmark_dir"] +
                                       "/" + benchmark + "mtx.rnd" + " " + configMap["abw_enc_config"] +
                                       " " + configMap["additional_abw_enc_config"];
 
-        std::string command = run_lim_command + " " + abw_enc_command;
+        std::string command = abw_enc_command;
 
         std::cout << "Run command:" << std::endl;
-        std::cout << command << std::endl; 
+        std::cout << command << std::endl;
 
-        int result = system(command.c_str());
+        // int result = system(command.c_str());
 
-        if (result == -1)
-        {
-            std::cerr << "Error executing command: " << benchmark << std::endl;
-        }
-        else
-        {
-            std::cout << "Command executed successfully: " << benchmark << std::endl;
-        }
+        // if (result == -1)
+        // {
+        //     std::cerr << "Error executing command: " << benchmark << std::endl;
+        // }
+        // else
+        // {
+        //     std::cout << "Command executed successfully: " << benchmark << std::endl;
+        // }
     }
 
     return 0;
