@@ -17,10 +17,15 @@ namespace SATABP
 
     AntibandwidthEncoder::~AntibandwidthEncoder()
     {
+        end_time = std::chrono::high_resolution_clock::now();
+        auto encode_duration = std::chrono::duration_cast<std::chrono::seconds>(t2 - t1).count();
+
         std::cout << "r\n";
         std::cout << "r Final results: \n";
-        std::cout << "r Max width SAT:  \t" << max_width_SAT << "\n";
-        std::cout << "r Min width UNSAT:\t" << min_width_UNSAT << "\n";
+        std::cout << "r Max width SAT:  \t" << (max_width_SAT == std::numeric_limits<int>::min()? "-" : std::to_string(max_width_SAT)) << "\n";
+        std::cout << "r Min width UNSAT:\t" << (min_width_UNSAT == std::numeric_limits<int>::max()? "-" : std::to_string(min_width_UNSAT)) << "\n";
+        std::cout << "r Total real time: " << encode_duration << "s\n";
+        std::cout << "r Total memomy: " << consumed_memory << "MB\n";
         std::cout << "r\n";
         std::cout << "r\n";
     };
@@ -260,6 +265,7 @@ namespace SATABP
 
     void AntibandwidthEncoder::encode_and_solve_abw_problems(int start_w, int step, int stop_w)
     {
+        start_time = std::chrono::high_resolution_clock::now();
         create_limit_pid();
 
         int current_width = start_w;
@@ -309,6 +315,7 @@ namespace SATABP
                                 // Pid with lower width than SAT pid is also SAT.
                                 if (ita->first < it->first)
                                 {
+                                    std::cout << "c Kill lower pid " << ita->first << ".\n"; 
                                     kill(ita->second, SIGTERM);
                                 }
                             }
@@ -317,7 +324,7 @@ namespace SATABP
                             if (it->first < min_width_UNSAT)
                             {
                                 min_width_UNSAT = it->first;
-                                // std::cout << "c Min width UNSAT is set to " << it->first << "\n";
+                                std::cout << "c Min width UNSAT is set to " << it->first << "\n";
                             }
 
                             for (auto ita = abp_pids.begin(); ita != abp_pids.end(); ita++)
@@ -325,6 +332,7 @@ namespace SATABP
                                 // Pid with higher width than UNSAT pid is also UNSAT.
                                 if (ita->first > it->first)
                                 {
+                                    std::cout << "c Kill higher pid " << ita->first << ".\n"; 
                                     kill(ita->second, SIGTERM);
                                 }
                             }

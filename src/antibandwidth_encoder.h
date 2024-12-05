@@ -47,6 +47,9 @@ namespace SATABP
 		EncoderStrategy enc_choice = duplex;
 		IterativeStrategy iterative_strategy = from_lb;
 
+		std::chrono::time_point<std::chrono::high_resolution_clock> start_time;
+		std::chrono::time_point<std::chrono::high_resolution_clock> end_time;
+
 		// Solver configurations
 		bool force_phase = false;
 		bool verbose = true;

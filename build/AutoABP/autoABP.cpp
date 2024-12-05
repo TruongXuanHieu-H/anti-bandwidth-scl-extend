@@ -182,16 +182,16 @@ int main()
         std::cout << "Run command:" << std::endl;
         std::cout << command << std::endl;
 
-        // int result = system(command.c_str());
+        int result = system(command.c_str());
 
-        // if (result == -1)
-        // {
-        //     std::cerr << "Error executing command: " << benchmark << std::endl;
-        // }
-        // else
-        // {
-        //     std::cout << "Command executed successfully: " << benchmark << std::endl;
-        // }
+        if (result == -1)
+        {
+            std::cerr << "Error executing command: " << benchmark << std::endl;
+        }
+        else
+        {
+            std::cout << "Command executed successfully: " << benchmark << std::endl;
+        }
     }
 
     return 0;
