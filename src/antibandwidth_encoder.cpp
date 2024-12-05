@@ -212,8 +212,8 @@ namespace SATABP
                 sampler_count++;
                 if (sampler_count >= report_rate)
                 {
-                    std::cout << "c [Lim] Sampler:\t\t" << "Memory: " << consumed_memory << " MB\t\tReal time: "
-                              << consumed_real_time << "s\t\tElapsed time: " << consumed_elapsed_time << "s\n";
+                    std::cout << "c [Lim] Sampler:\t" << "Memory: " << consumed_memory << " MB\tReal time: "
+                              << consumed_real_time << "s\tElapsed time: " << consumed_elapsed_time << "s\n";
                     sampler_count = 0;
                 }
                 usleep(sample_rate);
