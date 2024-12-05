@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <assert.h>
-#include <chrono>
 #include <unistd.h>
 #include <regex>
 #include <sstream>
@@ -18,14 +17,13 @@ namespace SATABP
     AntibandwidthEncoder::~AntibandwidthEncoder()
     {
         end_time = std::chrono::high_resolution_clock::now();
-        auto encode_duration = std::chrono::duration_cast<std::chrono::seconds>(t2 - t1).count();
+        auto encode_duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
 
         std::cout << "r\n";
         std::cout << "r Final results: \n";
         std::cout << "r Max width SAT:  \t" << (max_width_SAT == std::numeric_limits<int>::min()? "-" : std::to_string(max_width_SAT)) << "\n";
         std::cout << "r Min width UNSAT:\t" << (min_width_UNSAT == std::numeric_limits<int>::max()? "-" : std::to_string(min_width_UNSAT)) << "\n";
-        std::cout << "r Total real time: " << encode_duration << "s\n";
-        std::cout << "r Total memomy: " << consumed_memory << "MB\n";
+        std::cout << "r Total real time: " << encode_duration << " ms\n";
         std::cout << "r\n";
         std::cout << "r\n";
     };
@@ -199,6 +197,11 @@ namespace SATABP
                 consumed_memory = std::round(get_total_memory_usage(main_pid) * 10 / 1024.0) / 10;
                 consumed_real_time += std::round((float)sample_rate * 10 / 1000000.0) / 10;
                 consumed_elapsed_time += (float)(sample_rate * (get_descendant_pids(main_pid).size() - 1)) / 1000000.0;
+
+                if (consumed_memory > max_consumed_memory){
+                    max_consumed_memory = consumed_memory;
+                    std::cout << "[Lim] Memory consumed: " << max_consumed_memory << " MB\n";
+                }
 
                 sampler_count++;
                 if (sampler_count >= report_rate)

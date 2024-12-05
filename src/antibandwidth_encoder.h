@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <signal.h>
+#include <chrono>
 #include <fstream>
 
 #include "encoder.h"
@@ -85,6 +86,7 @@ namespace SATABP
 		float real_time_limit = std::numeric_limits<float>::max();	  // bound of time consumed by main process, in seconds
 		float elapsed_time_limit = std::numeric_limits<float>::max(); // bound of total time consumed by all the process, in seconds
 
+		float max_consumed_memory = 0;
 		float consumed_memory = 0;		 // total memory consumed by all the processes, in megabyte
 		float consumed_real_time = 0;	 // time consumed by main process, in seconds
 		float consumed_elapsed_time = 0; // total time consumed by all the process, in seconds
