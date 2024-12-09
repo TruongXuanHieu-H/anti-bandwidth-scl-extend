@@ -1,0 +1,158 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		60000 MB
+[runlim] argv[0]:		/home/vanh/Documents/ABP/AntibandwidthExtend/anti-bandwidth-scl-extend/build/abw_enc
+[runlim] argv[1]:		/home/vanh/Documents/ABP/AntibandwidthExtend/anti-bandwidth-scl-extend/build/BenchmarkA/K-dwt__234.mtx.rnd
+[runlim] argv[2]:		--ladder
+[runlim] argv[3]:		-symmetry-break
+[runlim] argv[4]:		h
+[runlim] argv[5]:		-split-size
+[runlim] argv[6]:		3
+[runlim] start:			Thu Nov 28 10:12:10 2024
+[runlim] main pid:		6108
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c Splitting clauses at length 3.
+c Solving strategy: from LB to UB.
+c LB-w = 46 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 58 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 46 ( K-dwt__234.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 117.
+c Encoding starts with w = 46:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 4680
+c	Labels and Vertices constraints:  34164
+c	Obj k aux var: 18486
+c	Obj k constraints: 123021
+c	Obj k glue staircase constraints: 45684
+c	Encoding duration: 0s
+c	Number of clauses: 163912
+c	Number of irredundant clauses: 163550
+c	Number of variables: 43524
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.4 real, 71.0 MB
+[runlim] sample:		20.0 time, 20.4 real, 76.4 MB
+c	Solving duration: 29830 ms
+c	Answer: 
+s SAT (w = 46)
+c	Solution check:
+p calculated antibandwidth = 46.
+c
+c
+c Antibandwidth problem with w = 47 ( K-dwt__234.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 117.
+c Encoding starts with w = 47:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 4680
+c	Labels and Vertices constraints:  34164
+c	Obj k aux var: 18603
+c	Obj k constraints: 122607
+c	Obj k glue staircase constraints: 45036
+c	Encoding duration: 0s
+c	Number of clauses: 163498
+c	Number of irredundant clauses: 163134
+c	Number of variables: 43641
+c SAT Solving starts:
+[runlim] sample:		30.0 time, 30.4 real, 80.9 MB
+[runlim] sample:		40.0 time, 40.4 real, 80.9 MB
+[runlim] sample:		50.0 time, 50.4 real, 125.8 MB
+[runlim] sample:		60.0 time, 60.4 real, 97.9 MB
+c	Solving duration: 32645 ms
+c	Answer: 
+s SAT (w = 47)
+c	Solution check:
+p calculated antibandwidth = 47.
+c
+c
+c Antibandwidth problem with w = 48 ( K-dwt__234.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 117.
+c Encoding starts with w = 48:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 4680
+c	Labels and Vertices constraints:  34164
+c	Obj k aux var: 18720
+c	Obj k constraints: 122193
+c	Obj k glue staircase constraints: 44388
+c	Encoding duration: 0s
+c	Number of clauses: 163084
+c	Number of irredundant clauses: 162718
+c	Number of variables: 43758
+c SAT Solving starts:
+[runlim] sample:		70.0 time, 70.4 real, 99.3 MB
+[runlim] sample:		80.0 time, 80.4 real, 107.8 MB
+[runlim] sample:		90.0 time, 90.4 real, 107.8 MB
+c	Solving duration: 37034 ms
+c	Answer: 
+s SAT (w = 48)
+c	Solution check:
+p calculated antibandwidth = 48.
+c
+c
+c Antibandwidth problem with w = 49 ( K-dwt__234.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 117.
+c Encoding starts with w = 49:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 4680
+c	Labels and Vertices constraints:  34164
+c	Obj k aux var: 18837
+c	Obj k constraints: 121779
+c	Obj k glue staircase constraints: 43740
+c	Encoding duration: 0s
+c	Number of clauses: 162670
+c	Number of irredundant clauses: 162302
+c	Number of variables: 43875
+c SAT Solving starts:
+[runlim] sample:		100.0 time, 100.4 real, 107.8 MB
+[runlim] sample:		110.0 time, 110.4 real, 107.8 MB
+[runlim] sample:		120.0 time, 120.4 real, 107.8 MB
+[runlim] sample:		130.0 time, 130.4 real, 107.8 MB
+[runlim] sample:		140.0 time, 140.4 real, 161.5 MB
+[runlim] sample:		150.0 time, 150.4 real, 121.2 MB
+c	Solving duration: 51435 ms
+c	Answer: 
+s SAT (w = 49)
+c	Solution check:
+p calculated antibandwidth = 49.
+c
+c
+c Antibandwidth problem with w = 50 ( K-dwt__234.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 117.
+c Encoding starts with w = 50:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 4680
+c	Labels and Vertices constraints:  34164
+c	Obj k aux var: 18954
+c	Obj k constraints: 121365
+c	Obj k glue staircase constraints: 43092
+c	Encoding duration: 0s
+c	Number of clauses: 162256
+c	Number of irredundant clauses: 161886
+c	Number of variables: 43992
+c SAT Solving starts:
+[runlim] sample:		160.0 time, 160.4 real, 121.2 MB
+[runlim] sample:		170.0 time, 170.4 real, 121.2 MB
+[runlim] sample:		180.0 time, 180.4 real, 121.2 MB
+[runlim] sample:		190.0 time, 190.4 real, 128.0 MB
+[runlim] sample:		200.0 time, 200.4 real, 144.8 MB
+[runlim] sample:		210.0 time, 210.4 real, 133.5 MB
+c Signal interruption.
+[runlim] end:			Thu Nov 28 10:43:12 2024
+[runlim] status:		out of time
+[runlim] result:		2
+[runlim] children:		0
+[runlim] real:			1862.73 seconds
+[runlim] time:			212.07 seconds
+[runlim] space:			238.1 MB
+[runlim] samples:		2122
