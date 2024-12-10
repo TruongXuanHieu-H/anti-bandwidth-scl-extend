@@ -1,0 +1,63 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		60000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard_A_to_L/L-bcspwr03.mtx.rnd
+[runlim] argv[2]:		--ladder
+[runlim] argv[3]:		-symmetry-break
+[runlim] argv[4]:		h
+[runlim] start:			Tue Dec 10 05:27:46 2024
+[runlim] main pid:		63384
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c Solving strategy: from LB to UB.
+c LB-w = 39 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 39 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 39 ( L-bcspwr03.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 118.
+c Encoding starts with w = 39:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 0
+c	Labels and Vertices constraints:  944
+c	Obj k aux var: 22184
+c	Obj k constraints: 145467
+c	Obj k glue staircase constraints: 55669
+c	Encoding duration: 0s
+c	Number of clauses: 146470
+c	Number of irredundant clauses: 146137
+c	Number of variables: 36108
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.1 real, 84.9 MB
+[runlim] sample:		20.0 time, 20.1 real, 139.7 MB
+[runlim] sample:		30.0 time, 30.1 real, 133.6 MB
+[runlim] sample:		40.0 time, 40.1 real, 134.9 MB
+[runlim] sample:		50.0 time, 50.1 real, 133.2 MB
+[runlim] sample:		60.0 time, 60.1 real, 150.2 MB
+[runlim] sample:		70.0 time, 70.1 real, 161.8 MB
+[runlim] sample:		80.0 time, 80.1 real, 179.8 MB
+[runlim] sample:		90.0 time, 90.1 real, 191.1 MB
+[runlim] sample:		100.0 time, 100.1 real, 157.9 MB
+[runlim] sample:		110.0 time, 110.1 real, 179.6 MB
+[runlim] sample:		120.0 time, 120.1 real, 218.8 MB
+[runlim] sample:		130.0 time, 130.1 real, 226.8 MB
+[runlim] sample:		140.0 time, 140.1 real, 228.0 MB
+[runlim] sample:		150.0 time, 150.1 real, 262.5 MB
+c	Solving duration: 158867 ms
+c	Answer: 
+s SAT (w = 39)
+c	Solution check:
+p calculated antibandwidth = 39.
+c
+c
+[runlim] end:			Tue Dec 10 05:30:25 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			159.04 seconds
+[runlim] time:			158.86 seconds
+[runlim] space:			369.1 MB
+[runlim] samples:		1589
