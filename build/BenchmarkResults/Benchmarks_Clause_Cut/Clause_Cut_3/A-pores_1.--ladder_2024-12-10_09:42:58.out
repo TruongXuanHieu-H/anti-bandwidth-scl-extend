@@ -1,0 +1,79 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		60000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard_A_to_L/A-pores_1.mtx.rnd
+[runlim] argv[2]:		--ladder
+[runlim] argv[3]:		-symmetry-break
+[runlim] argv[4]:		h
+[runlim] argv[5]:		-split-size
+[runlim] argv[6]:		3
+[runlim] start:			Tue Dec 10 09:42:58 2024
+[runlim] main pid:		68087
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c Splitting clauses at length 3.
+c Solving strategy: from LB to UB.
+c LB-w = 6 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 8 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 6 ( A-pores_1.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 30.
+c Encoding starts with w = 6:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 540
+c	Labels and Vertices constraints:  2820
+c	Obj k aux var: 1110
+c	Obj k constraints: 13705
+c	Obj k glue staircase constraints: 8755
+c	Encoding duration: 0s
+c	Number of clauses: 16570
+c	Number of irredundant clauses: 16332
+c	Number of variables: 2580
+c SAT Solving starts:
+c	Solving duration: 72 ms
+c	Answer: 
+s SAT (w = 6)
+c	Solution check:
+p calculated antibandwidth = 6.
+c
+c
+c Antibandwidth problem with w = 7 ( A-pores_1.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 30.
+c Encoding starts with w = 7:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 540
+c	Labels and Vertices constraints:  2820
+c	Obj k aux var: 1200
+c	Obj k constraints: 13872
+c	Obj k glue staircase constraints: 8652
+c	Encoding duration: 0s
+c	Number of clauses: 16737
+c	Number of irredundant clauses: 16529
+c	Number of variables: 2670
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.1 real, 18.2 MB
+[runlim] sample:		20.0 time, 20.1 real, 24.0 MB
+[runlim] sample:		30.0 time, 30.1 real, 24.5 MB
+[runlim] sample:		40.0 time, 40.1 real, 32.0 MB
+[runlim] sample:		50.0 time, 50.1 real, 38.5 MB
+[runlim] sample:		60.0 time, 60.1 real, 39.3 MB
+[runlim] sample:		70.0 time, 70.1 real, 27.7 MB
+c	Solving duration: 77456 ms
+c	Answer: 
+s UNSAT (w = 7)
+c
+c
+[runlim] end:			Tue Dec 10 09:44:15 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			77.61 seconds
+[runlim] time:			77.48 seconds
+[runlim] space:			46.1 MB
+[runlim] samples:		775
