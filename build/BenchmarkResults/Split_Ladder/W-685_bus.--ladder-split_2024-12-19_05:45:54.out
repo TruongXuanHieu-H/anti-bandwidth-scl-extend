@@ -1,0 +1,49 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		60000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/Benchmarks/W-685_bus.mtx.rnd
+[runlim] argv[2]:		--ladder-split
+[runlim] argv[3]:		-symmetry-break
+[runlim] argv[4]:		f
+[runlim] start:			Thu Dec 19 05:45:54 2024
+[runlim] main pid:		1897
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the first node.
+c Solving strategy: from LB to UB.
+c LB-w = 136 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 136 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c Antibandwidth problem with w = 136 ( W-685_bus.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder Split encoder with n = 685.
+c Encoding starts with w = 136:
+c	Encode symmetry breaking with option: f.
+c	Labels and Vertices aux var: 69870
+c	Labels and Vertices constraints:  1079560
+c	Obj k aux var: 868580
+c	Obj k constraints: 0
+c	Obj k glue staircase constraints: 0
+c	Encoding duration: 5s
+c	Number of clauses: 17213956
+c	Number of irredundant clauses: 17210940
+c	Number of variables: 1407675
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.1 real, 2307.8 MB
+c	Solving duration: 6434 ms
+c	Answer: 
+s SAT (w = 136)
+c	Solution check:
+p calculated antibandwidth = 136.
+c
+c
+[runlim] end:			Thu Dec 19 05:46:06 2024
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			12.08 seconds
+[runlim] time:			11.88 seconds
+[runlim] space:			2438.9 MB
+[runlim] samples:		119
