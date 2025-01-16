@@ -291,7 +291,7 @@ namespace SATABP
 
         for (auto edge : g->edges)
         {
-            glue_stair(edge.first - 1, edge.second - 1, w);
+            glue_stair(edge.first - 1, edge.second - 1, w - 1);
         }
     }
 
@@ -300,47 +300,56 @@ namespace SATABP
         if (is_debug_mode)
             std::cout << "Encode stair " << stair << " with width " << w << std::endl;
 
-        for (int gw = 0; gw < ceil((float)g->n / w); gw++)
+        for (int gw = 0; gw < ceil((float)g->n / (w-1)); gw++)
         {
             if (is_debug_mode)
                 std::cout << "Encode window " << gw << std::endl;
-            encode_window(gw, stair, w);
+            encode_window(gw, stair, w - 1);
         }
 
-        for (int gw = 0; gw < ceil((float)g->n / w) - 1; gw++)
+        for (int gw = 0; gw < ceil((float)g->n / (w-1)) - 1; gw++)
         {
             if (is_debug_mode)
                 std::cout << "Glue window " << gw << " with window " << gw + 1 << std::endl;
-            glue_window(gw, stair, w);
+            glue_window(gw, stair, w - 1);
         }
 
+        //std::cout << "Done" << std::endl;
         std::vector<std::pair<int, int>> windows = {};
-        int number_windows = ceil((float)g->n / w);
+        int number_windows = ceil((float)g->n / (w-1));
 
         for (int i = 0; i < number_windows; i++)
         {
             int stair_anchor = stair * (int)g->n;
-            int window_anchor = i * (int)w;
-            if (window_anchor + w > g->n)
+            int window_anchor = i * ((int)w - 1);
+            if (window_anchor + (w-1) > g->n) {
+                //std::cout << stair_anchor + window_anchor + 1 << " " << stair_anchor + g->n<< std::endl;
                 windows.push_back({stair_anchor + window_anchor + 1, stair_anchor + g->n});
-            else
-                windows.push_back({stair_anchor + window_anchor + 1, stair_anchor + window_anchor + w});
+            }
+            else {
+                //std::cout << stair_anchor + window_anchor + 1 << " " << stair_anchor + window_anchor + (w-1)<< std::endl;
+                windows.push_back({stair_anchor + window_anchor + 1, stair_anchor + window_anchor + (w-1)});
+            }
         }
 
         std::vector<int> alo_clause = {};
         for (int i = 0; i < number_windows; i++)
         {
+            // std::cout << "Start" << std::endl;
+            // std::cout << windows[i].first << " " << windows[i].second << std::endl;
             int first_window_aux_var = get_obj_k_aux_var(windows[i].first, windows[i].second);
             alo_clause.push_back(first_window_aux_var);
-            // for (int j = i + 1; j < number_windows; j++)
-            // {
-            //     int second_window_aux_var = get_obj_k_aux_var(windows[j].first, windows[j].second);
-            //     cv->add_clause({-first_window_aux_var, -second_window_aux_var});
-            //     num_l_v_constraints++;
-            // }
+            for (int j = i + 1; j < number_windows; j++)
+            {
+                // std::cout << windows[j].first << " " << windows[j].second << std::endl;
+                int second_window_aux_var = get_obj_k_aux_var(windows[j].first, windows[j].second);
+                cv->add_clause({-first_window_aux_var, -second_window_aux_var});
+                num_l_v_constraints++;
+            }
         }
         cv->add_clause(alo_clause);
         num_l_v_constraints++;
+        //std::cout << "Done" << std::endl;
     }
 
     /*
@@ -539,12 +548,12 @@ namespace SATABP
     {
         /*  The stair look like this:
          *      Window 1        Window 2        Window 3        Window 4
-         *      1   2   3   |               |               |
-         *          2   3   |   4           |               |
-         *              3   |   4   5       |               |
-         *                  |   4   5   6   |               |
-         *                  |       5   6   |   7           |
-         *                  |           6   |   7   8       |
+         *      1   2   3   |   4              |               |
+         *          2   3   |   5   6        |               |
+         *              3   |   5   6   7   |               |
+         *                  |       5   6   |   7   8         |
+         *                  |           6   |   7   8   9     |
+         *                  |               |   7   8   9   |
          *                  |               |   7   8   9   |
          *                  |               |       8   9   |   10
          *                  |               |           9   |   10  11
@@ -570,13 +579,13 @@ namespace SATABP
         }
         else
         {
-            for (int i = 1; i < (int)w; i++)
+            for (int i = 0; i < (int)w; i++)
             {
-                int first_reverse_var = stair * (int)g->n + (window + 1) * (int)w + 1;
-                int last_var = stair * (int)g->n + window * (int)w + w;
+                int first_reverse_var = stair * (int)g->n + (window + 1) * (int)w + 1; // 4
+                int last_var = stair * (int)g->n + window * (int)w + w; // 3
 
-                int reverse_var = stair * (int)g->n + (window + 1) * (int)w + i;
-                int var = stair * (int)g->n + window * (int)w + i + 1;
+                int reverse_var = stair * (int)g->n + (window + 1) * (int)w + 1 + i;
+                int var = stair * (int)g->n + window * (int)w + i + 1; // 1
 
                 cv->add_clause({-get_obj_k_aux_var(var, last_var), -get_obj_k_aux_var(first_reverse_var, reverse_var)});
                 num_obj_k_constraints++;
@@ -588,38 +597,33 @@ namespace SATABP
     {
         if (is_debug_mode)
             std::cout << "Glue stair " << stair1 << " with stair " << stair2 << std::endl;
-        int number_step = g->n - w + 1;
+        int number_step = g->n - w;
         for (int i = 0; i < number_step; i++)
         {
             int mod = i % w;
             int subset = i / w;
-            if (mod == 0)
-            {
-                int firstVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1, stair1 * g->n + subset * w + w);
-                int secondVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1, stair2 * g->n + subset * w + w);
-                cv->add_clause({-firstVar, -secondVar});
-                num_obj_k_constraints++;
-                num_obj_k_glue_staircase_constraint++;
-            }
-            else
-            {
-                int firstVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1 + mod, stair1 * g->n + subset * w + w);
-                int secondVar = get_obj_k_aux_var(stair1 * g->n + subset * w + w + 1, stair1 * g->n + subset * w + w + mod);
-                int thirdVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1 + mod, stair2 * g->n + subset * w + w);
-                int forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + w + 1, stair2 * g->n + subset * w + w + mod);
-                cv->add_clause({-firstVar, -thirdVar});
-                num_obj_k_constraints++;
-                num_obj_k_glue_staircase_constraint++;
-                cv->add_clause({-firstVar, -forthVar});
-                num_obj_k_constraints++;
-                num_obj_k_glue_staircase_constraint++;
-                cv->add_clause({-secondVar, -thirdVar});
-                num_obj_k_constraints++;
-                num_obj_k_glue_staircase_constraint++;
-                cv->add_clause({-secondVar, -forthVar});
-                num_obj_k_constraints++;
-                num_obj_k_glue_staircase_constraint++;
-            }
+
+            // std::cout << stair1 * g->n + subset * w + 1 + mod << " " << stair1 * g->n + subset * w + w << std::endl;
+            // std::cout << stair1 * g->n + subset * w + w + 1 << " " << stair1 * g->n + subset * w + w + mod + 1 << std::endl;
+            // std::cout << stair2 * g->n + subset * w + 1 + mod << " " << stair2 * g->n + subset * w + w << std::endl;
+            // std::cout << stair2 * g->n + subset * w + w + 1 << " " << stair2 * g->n + subset * w + w + mod + 1 << std::endl;
+            int firstVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1 + mod, stair1 * g->n + subset * w + w); 
+            int secondVar = get_obj_k_aux_var(stair1 * g->n + subset * w + w + 1, stair1 * g->n + subset * w + w + mod + 1);
+            int thirdVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1 + mod, stair2 * g->n + subset * w + w);
+            int forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + w + 1, stair2 * g->n + subset * w + w + mod + 1);
+            cv->add_clause({-firstVar, -thirdVar});
+            num_obj_k_constraints++;
+            num_obj_k_glue_staircase_constraint++;
+            cv->add_clause({-firstVar, -forthVar});
+            num_obj_k_constraints++;
+            num_obj_k_glue_staircase_constraint++;
+            cv->add_clause({-secondVar, -thirdVar});
+            num_obj_k_constraints++;
+            num_obj_k_glue_staircase_constraint++;
+            cv->add_clause({-secondVar, -forthVar});
+            num_obj_k_constraints++;
+            num_obj_k_glue_staircase_constraint++;
+
         }
     }
 }
