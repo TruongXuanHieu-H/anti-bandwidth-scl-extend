@@ -47,10 +47,16 @@ namespace SATABP
         void encode_amo_seq(const std::vector<int> &vars);
 
         void encode_obj_k(unsigned w);
+
         void encode_stair(int stair, unsigned w);
         void encode_window(int window, int stair, unsigned w);
         void glue_window(int window, int stair, unsigned w);
         void glue_stair(int stair1, int stair2, unsigned w);
+
+        void encode_new_width_stair(int stair, unsigned w);
+        void encode_new_width_window(int window, int stair, unsigned w);
+        void glue_new_width_window(int window, int stair, unsigned w);
+        void glue_new_width_stair(int stair1, int stair2, unsigned w);
     };
 }
 

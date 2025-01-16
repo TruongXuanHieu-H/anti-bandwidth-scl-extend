@@ -284,15 +284,28 @@ namespace SATABP
 
     void LadderEncoder::encode_obj_k(unsigned w)
     {
-        
-        for (int i = 0; i < (int)g->n; i++)
-        {
-            encode_stair(i, w - 1);
-        }
+        int check = (int)g->n % w;
+        // std::cout << "Check: " << check << std::endl;
+        if (check == 0) {
+            for (int i = 0; i < (int)g->n; i++)
+            {
+                encode_stair(i, w);
+            }
 
-        for (auto edge : g->edges)
-        {
-            glue_stair(edge.first - 1, edge.second - 1, w - 1);
+            for (auto edge : g->edges)
+            {
+                glue_stair(edge.first - 1, edge.second - 1, w);
+            }
+        } else {
+            for (int i = 0; i < (int)g->n; i++)
+            {
+                encode_new_width_stair(i, w - 1);
+            }
+
+            for (auto edge : g->edges)
+            {
+                glue_new_width_stair(edge.first - 1, edge.second - 1, w - 1);
+            }
         }
     }
 
@@ -315,34 +328,26 @@ namespace SATABP
             glue_window(gw, stair, w);
         }
 
-        //std::cout << "Done" << std::endl;
         std::vector<std::pair<int, int>> windows = {};
         int number_windows = ceil((float)g->n / w);
 
         for (int i = 0; i < number_windows; i++)
         {
             int stair_anchor = stair * (int)g->n;
-            int window_anchor = i * ((int)w);
-            if (window_anchor + w > g->n) {
-                //std::cout << stair_anchor + window_anchor + 1 << " " << stair_anchor + g->n<< std::endl;
+            int window_anchor = i * (int)w;
+            if (window_anchor + w > g->n)
                 windows.push_back({stair_anchor + window_anchor + 1, stair_anchor + g->n});
-            }
-            else {
-                //std::cout << stair_anchor + window_anchor + 1 << " " << stair_anchor + window_anchor + (w-1)<< std::endl;
+            else
                 windows.push_back({stair_anchor + window_anchor + 1, stair_anchor + window_anchor + w});
-            }
         }
 
         std::vector<int> alo_clause = {};
         for (int i = 0; i < number_windows; i++)
         {
-            // std::cout << "Start" << std::endl;
-            // std::cout << windows[i].first << " " << windows[i].second << std::endl;
             int first_window_aux_var = get_obj_k_aux_var(windows[i].first, windows[i].second);
             alo_clause.push_back(first_window_aux_var);
             for (int j = i + 1; j < number_windows; j++)
             {
-                // std::cout << windows[j].first << " " << windows[j].second << std::endl;
                 int second_window_aux_var = get_obj_k_aux_var(windows[j].first, windows[j].second);
                 cv->add_clause({-first_window_aux_var, -second_window_aux_var});
                 num_l_v_constraints++;
@@ -350,7 +355,6 @@ namespace SATABP
         }
         cv->add_clause(alo_clause);
         num_l_v_constraints++;
-        //std::cout << "Done" << std::endl;
     }
 
     /*
@@ -549,6 +553,343 @@ namespace SATABP
     {
         /*  The stair look like this:
          *      Window 1        Window 2        Window 3        Window 4
+         *      1   2   3   |               |               |
+         *          2   3   |   4           |               |
+         *              3   |   4   5       |               |
+         *                  |   4   5   6   |               |
+         *                  |       5   6   |   7           |
+         *                  |           6   |   7   8       |
+         *                  |               |   7   8   9   |
+         *                  |               |       8   9   |   10
+         *                  |               |           9   |   10  11
+         *
+         * If the next window has width of w, then we only encode w - 1 register bits (because
+         * NSC only define w - 1 register bits), else we encode using number of register bit
+         * equal to width of the next window.
+         */
+        if ((window + 2) * w > g->n)
+        {
+            int real_w = g->n % w;
+            for (int i = 1; i <= real_w; i++)
+            {
+                int first_reverse_var = stair * (int)g->n + (window + 1) * (int)w + 1;
+                int last_var = stair * (int)g->n + window * (int)w + w;
+
+                int reverse_var = stair * (int)g->n + (window + 1) * (int)w + i;
+                int var = stair * (int)g->n + window * (int)w + i + 1;
+
+                cv->add_clause({-get_obj_k_aux_var(var, last_var), -get_obj_k_aux_var(first_reverse_var, reverse_var)});
+                num_obj_k_constraints++;
+            }
+        }
+        else
+        {
+            for (int i = 1; i < (int)w; i++)
+            {
+                int first_reverse_var = stair * (int)g->n + (window + 1) * (int)w + 1;
+                int last_var = stair * (int)g->n + window * (int)w + w;
+
+                int reverse_var = stair * (int)g->n + (window + 1) * (int)w + i;
+                int var = stair * (int)g->n + window * (int)w + i + 1;
+
+                cv->add_clause({-get_obj_k_aux_var(var, last_var), -get_obj_k_aux_var(first_reverse_var, reverse_var)});
+                num_obj_k_constraints++;
+            }
+        }
+    }
+
+    void LadderEncoder::glue_stair(int stair1, int stair2, unsigned w)
+    {
+        if (is_debug_mode)
+            std::cout << "Glue stair " << stair1 << " with stair " << stair2 << std::endl;
+        int number_step = g->n - w + 1;
+        for (int i = 0; i < number_step; i++)
+        {
+            int mod = i % w;
+            int subset = i / w;
+            if (mod == 0)
+            {
+                int firstVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1, stair1 * g->n + subset * w + w);
+                int secondVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1, stair2 * g->n + subset * w + w);
+                cv->add_clause({-firstVar, -secondVar});
+                num_obj_k_constraints++;
+                num_obj_k_glue_staircase_constraint++;
+            }
+            else
+            {
+                int firstVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1 + mod, stair1 * g->n + subset * w + w);
+                int secondVar = get_obj_k_aux_var(stair1 * g->n + subset * w + w + 1, stair1 * g->n + subset * w + w + mod);
+                int thirdVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1 + mod, stair2 * g->n + subset * w + w);
+                int forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + w + 1, stair2 * g->n + subset * w + w + mod);
+                cv->add_clause({-firstVar, -thirdVar});
+                num_obj_k_constraints++;
+                num_obj_k_glue_staircase_constraint++;
+                cv->add_clause({-firstVar, -forthVar});
+                num_obj_k_constraints++;
+                num_obj_k_glue_staircase_constraint++;
+                cv->add_clause({-secondVar, -thirdVar});
+                num_obj_k_constraints++;
+                num_obj_k_glue_staircase_constraint++;
+                cv->add_clause({-secondVar, -forthVar});
+                num_obj_k_constraints++;
+                num_obj_k_glue_staircase_constraint++;
+            }
+        }
+    }
+
+    void LadderEncoder::encode_new_width_stair(int stair, unsigned w)
+    {
+        if (is_debug_mode)
+            std::cout << "Encode stair " << stair << " with width " << w << std::endl;
+
+        for (int gw = 0; gw < ceil((float)g->n / w); gw++)
+        {
+            if (is_debug_mode)
+                std::cout << "Encode window " << gw << std::endl;
+            encode_new_width_window(gw, stair, w);
+        }
+
+        for (int gw = 0; gw < ceil((float)g->n / w) - 1; gw++)
+        {
+            if (is_debug_mode)
+                std::cout << "Glue window " << gw << " with window " << gw + 1 << std::endl;
+            glue_new_width_window(gw, stair, w);
+        }
+
+        //std::cout << "Done" << std::endl;
+        std::vector<std::pair<int, int>> windows = {};
+        int number_windows = ceil((float)g->n / w);
+
+        for (int i = 0; i < number_windows; i++)
+        {
+            int stair_anchor = stair * (int)g->n;
+            int window_anchor = i * ((int)w);
+            if (window_anchor + w > g->n) {
+                //std::cout << stair_anchor + window_anchor + 1 << " " << stair_anchor + g->n<< std::endl;
+                windows.push_back({stair_anchor + window_anchor + 1, stair_anchor + g->n});
+            }
+            else {
+                //std::cout << stair_anchor + window_anchor + 1 << " " << stair_anchor + window_anchor + (w-1)<< std::endl;
+                windows.push_back({stair_anchor + window_anchor + 1, stair_anchor + window_anchor + w});
+            }
+        }
+
+        std::vector<int> alo_clause = {};
+        for (int i = 0; i < number_windows; i++)
+        {
+            // std::cout << "Start" << std::endl;
+            // std::cout << windows[i].first << " " << windows[i].second << std::endl;
+            int first_window_aux_var = get_obj_k_aux_var(windows[i].first, windows[i].second);
+            alo_clause.push_back(first_window_aux_var);
+            for (int j = i + 1; j < number_windows; j++)
+            {
+                // std::cout << windows[j].first << " " << windows[j].second << std::endl;
+                int second_window_aux_var = get_obj_k_aux_var(windows[j].first, windows[j].second);
+                cv->add_clause({-first_window_aux_var, -second_window_aux_var});
+                num_l_v_constraints++;
+            }
+        }
+        cv->add_clause(alo_clause);
+        num_l_v_constraints++;
+        //std::cout << "Done" << std::endl;
+    }
+
+    /*
+     * Encode each window separately.
+     * The first window only has lower part.
+     * The last window only has upper part.
+     * Other windows have both upper part and lower part.
+     */
+    void LadderEncoder::encode_new_width_window(int window, int stair, unsigned w)
+    {
+        if (window == 0)
+        {
+            // Encode the first window, which only have lower part
+            int lastVar = stair * (int)g->n + window * (int)w + w;
+
+            for (int i = w - 1; i >= 1; i--)
+            {
+                int var = stair * (int)g->n + window * (int)w + i;
+                cv->add_clause({-var, get_obj_k_aux_var(var, lastVar)});
+                num_obj_k_constraints++;
+            }
+
+            for (int i = w; i >= 2; i--)
+            {
+                int var = stair * (int)g->n + window * (int)w + i;
+                cv->add_clause({-get_obj_k_aux_var(var, lastVar), get_obj_k_aux_var(var - 1, lastVar)});
+                num_obj_k_constraints++;
+            }
+
+            for (int i = 1; i < (int)w; i++)
+            {
+                int var = stair * (int)g->n + window * (int)w + i;
+                int main = get_obj_k_aux_var(var, lastVar);
+                int sub = get_obj_k_aux_var(var + 1, lastVar);
+                cv->add_clause({var, sub, -main});
+                num_obj_k_constraints++;
+            }
+
+            for (int i = 1; i < (int)w; i++)
+            {
+                int var = stair * (int)g->n + window * (int)w + i;
+                cv->add_clause({-var, -get_obj_k_aux_var(var + 1, lastVar)});
+                num_obj_k_constraints++;
+            }
+        }
+        else if (window == ceil((float)g->n / w) - 1)
+        {
+            // Encode the last window, which only have upper part and may have width lower than w
+            int firstVar = stair * (int)g->n + window * (int)w + 1;
+
+            if ((window + 1) * w > g->n)
+            {
+                int real_w = g->n % w;
+                // Upper part
+                for (int i = 2; i <= real_w; i++)
+                {
+                    int reverse_var = stair * (int)g->n + window * (int)w + i;
+                    cv->add_clause({-reverse_var, get_obj_k_aux_var(firstVar, reverse_var)});
+                    num_obj_k_constraints++;
+                }
+
+                for (int i = real_w - 1; i > 0; i--)
+                {
+                    int reverse_var = stair * (int)g->n + window * (int)w + real_w - i;
+                    cv->add_clause({-get_obj_k_aux_var(firstVar, reverse_var), get_obj_k_aux_var(firstVar, reverse_var + 1)});
+                    num_obj_k_constraints++;
+                }
+
+                for (int i = 0; i < (int)real_w - 1; i++)
+                {
+                    int var = stair * (int)g->n + window * (int)w + real_w - i;
+                    int main = get_obj_k_aux_var(firstVar, var);
+                    int sub = get_obj_k_aux_var(firstVar, var - 1);
+                    cv->add_clause({sub, var, -main});
+                    num_obj_k_constraints++;
+                }
+
+                for (int i = real_w; i > 1; i--)
+                {
+                    int reverse_var = stair * (int)g->n + window * (int)w + i;
+                    cv->add_clause({-reverse_var, -get_obj_k_aux_var(firstVar, reverse_var - 1)});
+                    num_obj_k_constraints++;
+                }
+            }
+            else
+            {
+                // Upper part
+                for (int i = 2; i <= (int)w; i++)
+                {
+                    int reverse_var = stair * (int)g->n + window * (int)w + i;
+                    cv->add_clause({-reverse_var, get_obj_k_aux_var(firstVar, reverse_var)});
+                    num_obj_k_constraints++;
+                }
+
+                for (int i = w - 1; i >= 1; i--)
+                {
+                    int reverse_var = stair * (int)g->n + window * (int)w + w - i;
+                    cv->add_clause({-get_obj_k_aux_var(firstVar, reverse_var), get_obj_k_aux_var(firstVar, reverse_var + 1)});
+                    num_obj_k_constraints++;
+                }
+
+                for (int i = 0; i < (int)w - 1; i++)
+                {
+                    int var = stair * (int)g->n + window * (int)w + w - i;
+                    int main = get_obj_k_aux_var(firstVar, var);
+                    int sub = get_obj_k_aux_var(firstVar, var - 1);
+                    cv->add_clause({sub, var, -main});
+                    num_obj_k_constraints++;
+                }
+
+                for (int i = (int)w; i > 1; i--)
+                {
+                    int reverse_var = stair * (int)g->n + window * (int)w + i;
+                    cv->add_clause({-reverse_var, -get_obj_k_aux_var(firstVar, reverse_var - 1)});
+                    num_obj_k_constraints++;
+                }
+            }
+        }
+        else
+        {
+            // Encode the middle windows, which have both upper and lower path, and always have width w
+
+            // Upper part
+            int firstVar = stair * (int)g->n + window * (int)w + 1;
+            for (int i = 2; i <= (int)w; i++)
+            {
+                int reverse_var = stair * (int)g->n + window * (int)w + i;
+                cv->add_clause({-reverse_var, get_obj_k_aux_var(firstVar, reverse_var)});
+                num_obj_k_constraints++;
+            }
+
+            for (int i = w - 1; i >= 1; i--)
+            {
+                int reverse_var = stair * (int)g->n + window * (int)w + w - i;
+                cv->add_clause({-get_obj_k_aux_var(firstVar, reverse_var), get_obj_k_aux_var(firstVar, reverse_var + 1)});
+                num_obj_k_constraints++;
+            }
+
+            for (int i = 0; i < (int)w - 1; i++)
+            {
+                int var = stair * (int)g->n + window * (int)w + w - i;
+                int main = get_obj_k_aux_var(firstVar, var);
+                int sub = get_obj_k_aux_var(firstVar, var - 1);
+                cv->add_clause({sub, var, -main});
+                num_obj_k_constraints++;
+            }
+
+            for (int i = (int)w; i > 1; i--)
+            {
+                int reverse_var = stair * (int)g->n + window * (int)w + i;
+                cv->add_clause({-reverse_var, -get_obj_k_aux_var(firstVar, reverse_var - 1)});
+                num_obj_k_constraints++;
+            }
+
+            // Lower part
+            int lastVar = stair * (int)g->n + window * (int)w + w;
+            for (int i = w - 1; i >= 1; i--)
+            {
+                int var = stair * (int)g->n + window * (int)w + i;
+                cv->add_clause({-var, get_obj_k_aux_var(var, lastVar)});
+                num_obj_k_constraints++;
+            }
+
+            for (int i = w; i >= 2; i--)
+            {
+                int var = stair * (int)g->n + window * (int)w + i;
+                cv->add_clause({-get_obj_k_aux_var(var, lastVar), get_obj_k_aux_var(var - 1, lastVar)});
+                num_obj_k_constraints++;
+            }
+
+            for (int i = 1; i < (int)w; i++)
+            {
+                int var = stair * (int)g->n + window * (int)w + i;
+                int main = get_obj_k_aux_var(var, lastVar);
+                int sub = get_obj_k_aux_var(var + 1, lastVar);
+                cv->add_clause({var, sub, -main});
+                num_obj_k_constraints++;
+            }
+
+            // Can be disable
+            // for (int i = 1; i < (int)w; i++)
+            // {
+            //     int var = stair * (int)g->n + window * (int)w + i;
+            //     cv->add_clause({-var, -GetEncodedAuxVar(auxStartVarLP + var + 1)});
+            //     num_obj_k_constraints++;
+            // }
+        }
+    }
+
+    /*
+     * Glue adjacent windows with each other.
+     * Using lower part of the previous window and upper part of the next window
+     * as anchor points to glue.
+     */
+    void LadderEncoder::glue_new_width_window(int window, int stair, unsigned w)
+    {
+        /*  The stair look like this:
+         *      Window 1        Window 2        Window 3        Window 4
          *      1   2   3   |   4              |               |
          *          2   3   |   5   6        |               |
          *              3   |   5   6   7   |               |
@@ -594,7 +935,7 @@ namespace SATABP
         }
     }
 
-    void LadderEncoder::glue_stair(int stair1, int stair2, unsigned w)
+    void LadderEncoder::glue_new_width_stair(int stair1, int stair2, unsigned w)
     {
         if (is_debug_mode)
             std::cout << "Glue stair " << stair1 << " with stair " << stair2 << std::endl;
