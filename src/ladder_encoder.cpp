@@ -284,9 +284,10 @@ namespace SATABP
 
     void LadderEncoder::encode_obj_k(unsigned w)
     {
+        if (g->n )
         for (int i = 0; i < (int)g->n; i++)
         {
-            encode_stair(i, w);
+            encode_stair(i, w - 1);
         }
 
         for (auto edge : g->edges)
@@ -300,35 +301,35 @@ namespace SATABP
         if (is_debug_mode)
             std::cout << "Encode stair " << stair << " with width " << w << std::endl;
 
-        for (int gw = 0; gw < ceil((float)g->n / (w-1)); gw++)
+        for (int gw = 0; gw < ceil((float)g->n / w); gw++)
         {
             if (is_debug_mode)
                 std::cout << "Encode window " << gw << std::endl;
-            encode_window(gw, stair, w - 1);
+            encode_window(gw, stair, w);
         }
 
-        for (int gw = 0; gw < ceil((float)g->n / (w-1)) - 1; gw++)
+        for (int gw = 0; gw < ceil((float)g->n / w) - 1; gw++)
         {
             if (is_debug_mode)
                 std::cout << "Glue window " << gw << " with window " << gw + 1 << std::endl;
-            glue_window(gw, stair, w - 1);
+            glue_window(gw, stair, w);
         }
 
         //std::cout << "Done" << std::endl;
         std::vector<std::pair<int, int>> windows = {};
-        int number_windows = ceil((float)g->n / (w-1));
+        int number_windows = ceil((float)g->n / w);
 
         for (int i = 0; i < number_windows; i++)
         {
             int stair_anchor = stair * (int)g->n;
-            int window_anchor = i * ((int)w - 1);
-            if (window_anchor + (w-1) > g->n) {
+            int window_anchor = i * ((int)w);
+            if (window_anchor + w > g->n) {
                 //std::cout << stair_anchor + window_anchor + 1 << " " << stair_anchor + g->n<< std::endl;
                 windows.push_back({stair_anchor + window_anchor + 1, stair_anchor + g->n});
             }
             else {
                 //std::cout << stair_anchor + window_anchor + 1 << " " << stair_anchor + window_anchor + (w-1)<< std::endl;
-                windows.push_back({stair_anchor + window_anchor + 1, stair_anchor + window_anchor + (w-1)});
+                windows.push_back({stair_anchor + window_anchor + 1, stair_anchor + window_anchor + w});
             }
         }
 
