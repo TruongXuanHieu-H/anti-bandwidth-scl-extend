@@ -284,7 +284,7 @@ namespace SATABP
 
     void LadderEncoder::encode_obj_k(unsigned w)
     {
-        if (g->n )
+        
         for (int i = 0; i < (int)g->n; i++)
         {
             encode_stair(i, w - 1);
