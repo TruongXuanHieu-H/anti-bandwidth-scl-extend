@@ -286,6 +286,8 @@ namespace SATABP
             current_width += step;
         }
 
+        bool limit_violated = false;
+
         // Parent process waits until all child processes finish
         while (!abp_pids.empty())
         {
@@ -294,6 +296,7 @@ namespace SATABP
 
             if (finished_pid == lim_pid)
             {
+                limit_violated = true;
                 std::cout << "c [Lim] End with result: " << status << "\n";
                 while (!abp_pids.empty())
                 {
@@ -419,11 +422,14 @@ namespace SATABP
             // }
             // std::cout << log_saved_child_pids;
 
-            while (int(abp_pids.size()) < process_count && current_width < stop_w && current_width < min_width_UNSAT)
-            {
-                create_abp_pid(current_width);
-                current_width += step;
+            if (!limit_violated){
+                while (int(abp_pids.size()) < process_count && current_width < stop_w && current_width < min_width_UNSAT)
+                {
+                    create_abp_pid(current_width);
+                    current_width += step;
+                }
             }
+            
         }
         std::cout << "c All children have completed their tasks or were terminated." << std::endl;
     };
