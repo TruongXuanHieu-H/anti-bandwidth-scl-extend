@@ -1,23 +1,31 @@
-# /home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=78.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 78 -set-ub 78
-# /home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=79.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 79 -set-ub 79
-# /home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=80.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 80 -set-ub 80
-# /home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=81.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 81 -set-ub 81
-# /home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=82.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 82 -set-ub 82
-# /home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=83.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 83 -set-ub 83
-# /home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=84.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 84 -set-ub 84
-# /home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=85.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 85 -set-ub 85
-# /home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=86.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 86 -set-ub 86
-# /home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=87.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 87 -set-ub 87
-# /home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=88.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 88 -set-ub 88
-# /home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=89.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 89 -set-ub 89
-# /home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=90.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 90 -set-ub 90
-# /home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=91.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 91 -set-ub 91
-# /home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=92.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 92 -set-ub 92
-# /home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=93.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 93 -set-ub 93
-/home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=94.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 94 -set-ub 94
-/home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=95.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 95 -set-ub 95
-/home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=96.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 96 -set-ub 96
-/home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=97.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 97 -set-ub 97
-/home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=98.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 98 -set-ub 98
-/home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=99.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 99 -set-ub 99
-/home/truongxuanhieu/anti-bandwidth-scl-extend/build/runlim -t 1800 -r 1800 -s 30000 -o /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkResults/SpecificWidth/P-can__445.--ladder_w=100.out /home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc /home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd --ladder -symmetry-break h -set-lb 100 -set-ub 100
+#!/bin/bash
+
+# Kiểm tra xem có đủ 3 tham số không
+if [ "$#" -ne 3 ]; then
+    echo "Usage: $0 <problem_name> <LB> <UB>"
+    exit 1
+fi
+
+PROBLEM_NAME=$1
+LB=$2
+UB=$3
+
+BASE_DIR="/home/truongxuanhieu/anti-bandwidth-scl-extend/build"
+RUNLIM="$BASE_DIR/runlim"
+ENCODER="$BASE_DIR/abw_enc"
+BENCHMARK_SET="$BASE_DIR/BenchmarkSets/Benchmarks_Standard/${PROBLEM_NAME}.mtx.rnd"
+OUTPUT_DIR="$BASE_DIR/BenchmarkResults/SpecificWidth/Symmetry_highest"
+
+# Kiểm tra xem LB và UB có hợp lệ không
+if [ "$LB" -gt "$UB" ]; then
+    echo "Error: LB ($LB) must be less than or equal to UB ($UB)"
+    exit 1
+fi
+
+# Chạy từ LB đến UB
+for ((w=LB; w<=UB; w++)); do
+    OUTPUT_FILE="${OUTPUT_DIR}/${PROBLEM_NAME}--ladder_w=${w}.out"
+    
+    $RUNLIM -t 1800 -r 1800 -s 30000 -o "$OUTPUT_FILE" \
+        $ENCODER "$BENCHMARK_SET" --ladder -symmetry-break h -set-lb $w -set-ub $w
+done
