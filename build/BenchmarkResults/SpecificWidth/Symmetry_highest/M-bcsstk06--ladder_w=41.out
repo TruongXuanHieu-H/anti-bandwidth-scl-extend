@@ -1,0 +1,73 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/M-bcsstk06.mtx.rnd
+[runlim] argv[2]:		--ladder
+[runlim] argv[3]:		-symmetry-break
+[runlim] argv[4]:		h
+[runlim] argv[5]:		-set-lb
+[runlim] argv[6]:		41
+[runlim] argv[7]:		-set-ub
+[runlim] argv[8]:		41
+[runlim] start:			Wed Mar  5 08:27:39 2025
+[runlim] main pid:		20749
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c LB is predefined as 41.
+c UB is predefined as 41.
+c Solving strategy: from LB to UB.
+c LB-w = 28 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 72 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c LB 28 is overwritten with 41.
+c UB 72 is overwritten with 41.
+c Antibandwidth problem with w = 41 ( M-bcsstk06.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 420.
+c Encoding starts with w = 41:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 32760
+c	Labels and Vertices constraints:  424200
+c	Obj k aux var: 319200
+c	Obj k constraints: 6838920
+c	Obj k glue staircase constraints: 5542800
+c	Encoding duration: 2s
+c	Number of clauses: 7263330
+c	Number of irredundant clauses: 7261085
+c	Number of variables: 528360
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.9 real, 944.9 MB
+[runlim] sample:		20.0 time, 20.9 real, 1112.1 MB
+[runlim] sample:		30.0 time, 30.9 real, 948.6 MB
+[runlim] sample:		40.0 time, 40.9 real, 957.1 MB
+[runlim] sample:		50.0 time, 50.9 real, 933.5 MB
+[runlim] sample:		60.0 time, 60.9 real, 957.2 MB
+[runlim] sample:		70.0 time, 70.9 real, 1127.2 MB
+[runlim] sample:		80.0 time, 80.9 real, 959.3 MB
+[runlim] sample:		90.0 time, 90.9 real, 914.9 MB
+[runlim] sample:		100.0 time, 100.9 real, 964.2 MB
+[runlim] sample:		110.0 time, 110.9 real, 917.6 MB
+[runlim] sample:		120.0 time, 120.9 real, 892.4 MB
+[runlim] sample:		129.9 time, 130.9 real, 963.1 MB
+[runlim] sample:		139.9 time, 140.9 real, 938.3 MB
+[runlim] sample:		149.9 time, 150.9 real, 917.5 MB
+[runlim] sample:		159.9 time, 160.9 real, 1087.1 MB
+[runlim] sample:		169.9 time, 170.9 real, 940.6 MB
+[runlim] sample:		179.9 time, 180.9 real, 1063.4 MB
+[runlim] sample:		189.9 time, 190.9 real, 894.2 MB
+c	Solving duration: 195327 ms
+c	Answer: 
+s UNSAT (w = 41)
+c
+c
+[runlim] end:			Wed Mar  5 08:30:57 2025
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			198.71 seconds
+[runlim] time:			197.73 seconds
+[runlim] space:			1188.9 MB
+[runlim] samples:		1978

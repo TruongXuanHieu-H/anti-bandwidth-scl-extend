@@ -1,0 +1,136 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/T-dwt__592.mtx.rnd
+[runlim] argv[2]:		--ladder
+[runlim] argv[3]:		-symmetry-break
+[runlim] argv[4]:		h
+[runlim] argv[5]:		-set-lb
+[runlim] argv[6]:		103
+[runlim] argv[7]:		-set-ub
+[runlim] argv[8]:		103
+[runlim] start:			Thu Mar  6 05:03:33 2025
+[runlim] main pid:		2782
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c LB is predefined as 103.
+c UB is predefined as 103.
+c Solving strategy: from LB to UB.
+c LB-w = 103 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 150 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c LB 103 is overwritten with 103.
+c UB 150 is overwritten with 103.
+c Antibandwidth problem with w = 103 ( T-dwt__592.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 592.
+c Encoding starts with w = 103:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 55648
+c	Labels and Vertices constraints:  792096
+c	Obj k aux var: 586080
+c	Obj k constraints: 6787296
+c	Obj k glue staircase constraints: 4387920
+c	Encoding duration: 2s
+c	Number of clauses: 7579688
+c	Number of irredundant clauses: 7577696
+c	Number of variables: 992192
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.5 real, 1075.2 MB
+[runlim] sample:		20.0 time, 20.5 real, 1092.7 MB
+[runlim] sample:		30.0 time, 30.5 real, 1284.6 MB
+[runlim] sample:		40.0 time, 40.5 real, 1101.2 MB
+[runlim] sample:		50.0 time, 50.5 real, 1176.6 MB
+[runlim] sample:		60.0 time, 60.5 real, 1163.5 MB
+[runlim] sample:		70.0 time, 70.5 real, 1163.5 MB
+[runlim] sample:		80.0 time, 80.5 real, 1155.5 MB
+[runlim] sample:		90.0 time, 90.5 real, 1082.8 MB
+[runlim] sample:		100.0 time, 100.5 real, 1082.8 MB
+[runlim] sample:		110.0 time, 110.5 real, 1135.7 MB
+[runlim] sample:		120.0 time, 120.5 real, 1118.9 MB
+[runlim] sample:		130.0 time, 130.5 real, 1119.5 MB
+[runlim] sample:		140.0 time, 140.5 real, 1095.6 MB
+[runlim] sample:		150.0 time, 150.5 real, 1056.0 MB
+[runlim] sample:		160.0 time, 160.5 real, 1064.6 MB
+[runlim] sample:		170.0 time, 170.5 real, 1110.0 MB
+[runlim] sample:		180.0 time, 180.5 real, 1107.3 MB
+[runlim] sample:		190.0 time, 190.5 real, 1252.4 MB
+[runlim] sample:		200.0 time, 200.5 real, 1049.6 MB
+[runlim] sample:		210.0 time, 210.5 real, 1092.3 MB
+[runlim] sample:		220.0 time, 220.5 real, 1092.3 MB
+[runlim] sample:		230.0 time, 230.5 real, 1104.3 MB
+[runlim] sample:		240.0 time, 240.5 real, 1110.3 MB
+[runlim] sample:		250.0 time, 250.5 real, 1115.9 MB
+[runlim] sample:		260.0 time, 260.5 real, 1116.4 MB
+[runlim] sample:		269.9 time, 270.5 real, 1306.9 MB
+[runlim] sample:		279.9 time, 280.5 real, 1273.2 MB
+[runlim] sample:		289.9 time, 290.5 real, 1099.4 MB
+[runlim] sample:		299.9 time, 300.5 real, 1159.1 MB
+[runlim] sample:		309.9 time, 310.5 real, 1081.3 MB
+[runlim] sample:		319.9 time, 320.5 real, 1081.3 MB
+[runlim] sample:		329.9 time, 330.5 real, 1052.3 MB
+[runlim] sample:		339.9 time, 340.5 real, 1056.4 MB
+[runlim] sample:		349.9 time, 350.5 real, 1056.9 MB
+[runlim] sample:		359.9 time, 360.5 real, 1070.4 MB
+[runlim] sample:		369.9 time, 370.5 real, 1080.7 MB
+[runlim] sample:		379.9 time, 380.5 real, 1090.8 MB
+[runlim] sample:		389.9 time, 390.5 real, 1078.3 MB
+[runlim] sample:		399.9 time, 400.5 real, 1386.5 MB
+[runlim] sample:		409.9 time, 410.5 real, 1185.3 MB
+[runlim] sample:		419.9 time, 420.5 real, 1078.6 MB
+[runlim] sample:		429.9 time, 430.5 real, 1078.6 MB
+[runlim] sample:		439.9 time, 440.5 real, 1254.3 MB
+[runlim] sample:		449.9 time, 450.5 real, 1063.3 MB
+[runlim] sample:		459.9 time, 460.5 real, 1106.7 MB
+[runlim] sample:		469.9 time, 470.5 real, 1106.7 MB
+[runlim] sample:		479.9 time, 480.5 real, 1114.9 MB
+[runlim] sample:		489.9 time, 490.5 real, 1023.6 MB
+[runlim] sample:		499.9 time, 500.5 real, 1049.9 MB
+[runlim] sample:		509.9 time, 510.5 real, 1025.1 MB
+[runlim] sample:		519.9 time, 520.5 real, 1025.1 MB
+[runlim] sample:		529.9 time, 530.5 real, 1092.2 MB
+[runlim] sample:		539.9 time, 540.5 real, 1393.4 MB
+[runlim] sample:		549.9 time, 550.5 real, 1098.5 MB
+[runlim] sample:		559.9 time, 560.5 real, 1146.3 MB
+[runlim] sample:		569.9 time, 570.5 real, 1181.3 MB
+[runlim] sample:		579.9 time, 580.5 real, 1205.0 MB
+[runlim] sample:		589.9 time, 590.5 real, 1159.9 MB
+[runlim] sample:		599.9 time, 600.5 real, 1064.3 MB
+[runlim] sample:		609.9 time, 610.5 real, 1180.0 MB
+[runlim] sample:		619.9 time, 620.5 real, 1412.2 MB
+[runlim] sample:		629.9 time, 630.5 real, 1256.9 MB
+[runlim] sample:		639.9 time, 640.5 real, 1388.3 MB
+[runlim] sample:		649.9 time, 650.5 real, 1496.6 MB
+[runlim] sample:		659.9 time, 660.5 real, 1274.0 MB
+[runlim] sample:		669.9 time, 670.5 real, 1273.9 MB
+[runlim] sample:		679.9 time, 680.5 real, 1313.8 MB
+[runlim] sample:		689.9 time, 690.5 real, 1340.5 MB
+[runlim] sample:		699.9 time, 700.5 real, 1633.8 MB
+[runlim] sample:		709.9 time, 710.5 real, 1372.0 MB
+[runlim] sample:		719.9 time, 720.5 real, 1362.7 MB
+[runlim] sample:		729.9 time, 730.5 real, 1362.7 MB
+[runlim] sample:		739.9 time, 740.5 real, 1362.6 MB
+[runlim] sample:		749.9 time, 750.5 real, 1356.2 MB
+[runlim] sample:		759.9 time, 760.5 real, 1356.2 MB
+[runlim] sample:		769.9 time, 770.5 real, 1315.8 MB
+[runlim] sample:		779.9 time, 780.5 real, 1327.2 MB
+[runlim] sample:		789.9 time, 790.5 real, 1327.2 MB
+[runlim] sample:		799.9 time, 800.5 real, 1327.2 MB
+c	Solving duration: 803609 ms
+c	Answer: 
+s SAT (w = 103)
+c	Solution check:
+p calculated antibandwidth = 103.
+c
+c
+[runlim] end:			Thu Mar  6 05:16:59 2025
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			806.89 seconds
+[runlim] time:			806.17 seconds
+[runlim] space:			1918.0 MB
+[runlim] samples:		8063

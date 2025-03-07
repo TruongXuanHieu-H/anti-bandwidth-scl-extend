@@ -1,0 +1,54 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/K-dwt__234.mtx.rnd
+[runlim] argv[2]:		--ladder
+[runlim] argv[3]:		-symmetry-break
+[runlim] argv[4]:		h
+[runlim] argv[5]:		-set-lb
+[runlim] argv[6]:		57
+[runlim] argv[7]:		-set-ub
+[runlim] argv[8]:		57
+[runlim] start:			Wed Mar  5 05:06:10 2025
+[runlim] main pid:		19221
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c LB is predefined as 57.
+c UB is predefined as 57.
+c Solving strategy: from LB to UB.
+c LB-w = 46 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 58 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c LB 46 is overwritten with 57.
+c UB 58 is overwritten with 57.
+c Antibandwidth problem with w = 57 ( K-dwt__234.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 117.
+c Encoding starts with w = 57:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 4680
+c	Labels and Vertices constraints:  34515
+c	Obj k aux var: 19773
+c	Obj k constraints: 118467
+c	Obj k glue staircase constraints: 38556
+c	Encoding duration: 0s
+c	Number of clauses: 153040
+c	Number of irredundant clauses: 152656
+c	Number of variables: 38142
+c SAT Solving starts:
+c	Solving duration: 140 ms
+c	Answer: 
+s UNSAT (w = 57)
+c
+c
+[runlim] end:			Wed Mar  5 05:06:10 2025
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			0.89 seconds
+[runlim] time:			0.19 seconds
+[runlim] space:			27.7 MB
+[runlim] samples:		2
