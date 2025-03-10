@@ -1,0 +1,56 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/Q-494_bus.mtx.rnd
+[runlim] argv[2]:		--ladder
+[runlim] argv[3]:		-symmetry-break
+[runlim] argv[4]:		h
+[runlim] argv[5]:		-set-lb
+[runlim] argv[6]:		244
+[runlim] argv[7]:		-set-ub
+[runlim] argv[8]:		244
+[runlim] start:			Sat Mar  8 22:48:03 2025
+[runlim] main pid:		56280
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c LB is predefined as 244.
+c UB is predefined as 244.
+c Solving strategy: from LB to UB.
+c LB-w = 219 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 246 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c LB 219 is overwritten with 244.
+c UB 246 is overwritten with 244.
+c Antibandwidth problem with w = 244 ( Q-494_bus.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 494.
+c Encoding starts with w = 244:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 42484
+c	Labels and Vertices constraints:  552292
+c	Obj k aux var: 362102
+c	Obj k constraints: 2038176
+c	Obj k glue staircase constraints: 584828
+c	Encoding duration: 0s
+c	Number of clauses: 2590715
+c	Number of irredundant clauses: 2589200
+c	Number of variables: 648622
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.8 real, 548.4 MB
+[runlim] sample:		20.0 time, 20.8 real, 522.4 MB
+c	Solving duration: 28394 ms
+c	Answer: 
+s UNSAT (w = 244)
+c
+c
+[runlim] end:			Sat Mar  8 22:48:33 2025
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			30.19 seconds
+[runlim] time:			29.39 seconds
+[runlim] space:			677.1 MB
+[runlim] samples:		294

@@ -1,0 +1,57 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/M-bcsstk06.mtx.rnd
+[runlim] argv[2]:		--ladder
+[runlim] argv[3]:		-symmetry-break
+[runlim] argv[4]:		h
+[runlim] argv[5]:		-set-lb
+[runlim] argv[6]:		28
+[runlim] argv[7]:		-set-ub
+[runlim] argv[8]:		28
+[runlim] start:			Mon Mar 10 10:00:28 2025
+[runlim] main pid:		103819
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c LB is predefined as 28.
+c UB is predefined as 28.
+c Solving strategy: from LB to UB.
+c LB-w = 28 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 72 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c LB 28 is overwritten with 28.
+c UB 72 is overwritten with 28.
+c Antibandwidth problem with w = 28 ( M-bcsstk06.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 420.
+c Encoding starts with w = 28:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 32760
+c	Labels and Vertices constraints:  445200
+c	Obj k aux var: 312060
+c	Obj k constraints: 6961860
+c	Obj k glue staircase constraints: 5680440
+c	Encoding duration: 4s
+c	Number of clauses: 7407270
+c	Number of irredundant clauses: 7404491
+c	Number of variables: 521220
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.9 real, 1146.9 MB
+c	Solving duration: 10187 ms
+c	Answer: 
+s SAT (w = 28)
+c	Solution check:
+p calculated antibandwidth = 28.
+c
+c
+[runlim] end:			Mon Mar 10 10:00:44 2025
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			16.38 seconds
+[runlim] time:			15.39 seconds
+[runlim] space:			1146.9 MB
+[runlim] samples:		154

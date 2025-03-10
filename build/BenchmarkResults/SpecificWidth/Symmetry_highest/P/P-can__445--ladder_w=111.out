@@ -1,0 +1,56 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/P-can__445.mtx.rnd
+[runlim] argv[2]:		--ladder
+[runlim] argv[3]:		-symmetry-break
+[runlim] argv[4]:		h
+[runlim] argv[5]:		-set-lb
+[runlim] argv[6]:		111
+[runlim] argv[7]:		-set-ub
+[runlim] argv[8]:		111
+[runlim] start:			Sat Mar  8 11:01:04 2025
+[runlim] main pid:		45888
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c LB is predefined as 111.
+c UB is predefined as 111.
+c Solving strategy: from LB to UB.
+c LB-w = 78 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 120 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c LB 78 is overwritten with 111.
+c UB 120 is overwritten with 111.
+c Antibandwidth problem with w = 111 ( P-can__445.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 445.
+c Encoding starts with w = 111:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 36490
+c	Labels and Vertices constraints:  454345
+c	Obj k aux var: 341315
+c	Obj k constraints: 3604741
+c	Obj k glue staircase constraints: 2233696
+c	Encoding duration: 1s
+c	Number of clauses: 4059308
+c	Number of irredundant clauses: 4057848
+c	Number of variables: 575830
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.1 real, 684.1 MB
+[runlim] sample:		20.0 time, 20.1 real, 674.1 MB
+c	Solving duration: 28590 ms
+c	Answer: 
+s UNSAT (w = 111)
+c
+c
+[runlim] end:			Sat Mar  8 11:01:34 2025
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			30.06 seconds
+[runlim] time:			29.88 seconds
+[runlim] space:			809.0 MB
+[runlim] samples:		299

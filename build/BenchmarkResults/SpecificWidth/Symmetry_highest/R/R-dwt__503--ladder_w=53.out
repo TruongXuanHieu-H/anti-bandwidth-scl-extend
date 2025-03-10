@@ -1,0 +1,58 @@
+[runlim] version:		1.10
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/abw_enc
+[runlim] argv[1]:		/home/truongxuanhieu/anti-bandwidth-scl-extend/build/BenchmarkSets/Benchmarks_Standard/R-dwt__503.mtx.rnd
+[runlim] argv[2]:		--ladder
+[runlim] argv[3]:		-symmetry-break
+[runlim] argv[4]:		h
+[runlim] argv[5]:		-set-lb
+[runlim] argv[6]:		53
+[runlim] argv[7]:		-set-ub
+[runlim] argv[8]:		53
+[runlim] start:			Mon Mar 10 11:20:16 2025
+[runlim] main pid:		105956
+[runlim] log captured:
+c LadderEncoder 1.0.
+c Symetry breaking in the highest degree node.
+c LB is predefined as 53.
+c UB is predefined as 53.
+c Solving strategy: from LB to UB.
+c LB-w = 46 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 71 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c LB 46 is overwritten with 53.
+c UB 71 is overwritten with 53.
+c Antibandwidth problem with w = 53 ( R-dwt__503.mtx.rnd ):
+c Initializing CaDiCaL (version 1.2.1).
+c	Configuring CaDiCaL as --sat (1).
+c Initializing a Ladder encoder with n = 503.
+c Encoding starts with w = 53:
+c	Encode symmetry breaking with option: h.
+c	Labels and Vertices aux var: 43258
+c	Labels and Vertices constraints:  592534
+c	Obj k aux var: 453203
+c	Obj k constraints: 6750060
+c	Obj k glue staircase constraints: 4908074
+c	Encoding duration: 2s
+c	Number of clauses: 7342845
+c	Number of irredundant clauses: 7340478
+c	Number of variables: 749470
+c SAT Solving starts:
+[runlim] sample:		10.0 time, 10.3 real, 985.9 MB
+[runlim] sample:		20.0 time, 20.3 real, 1021.8 MB
+c	Solving duration: 25163 ms
+c	Answer: 
+s SAT (w = 53)
+c	Solution check:
+p calculated antibandwidth = 53.
+c
+c
+[runlim] end:			Mon Mar 10 11:20:44 2025
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			28.12 seconds
+[runlim] time:			27.79 seconds
+[runlim] space:			1247.3 MB
+[runlim] samples:		278
