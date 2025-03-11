@@ -60,7 +60,8 @@ static const std::map<std::string, std::string> option_list = {
     {"-report-rate <sampler>", "Overwrite elapsed time interval [default: 100 samplers generates 1 report]"},
     {"-symmetry-break <break point>", "Apply symetry breaking technique in <break point> (f: first node, h: highest degree node, l: lowest degree node, n: none) [default: none]"},
     {"-print-w <w>", "Only encode and print SAT formula of specified width w (where w > 0), without solving it"},
-    {"-process-count <number process>", "Number processes used to solve"}};
+    {"-process-count <number process>", "Number processes used to solve[default: 1]"},
+    {"-process-range <range value>", "The search range of each process [default: 1]"}};
 
 int get_number_arg(std::string const &arg)
 {
@@ -304,6 +305,10 @@ int main(int argc, char **argv)
         else if (argv[i] == std::string("-process-count"))
         {
             abw_enc->process_count = get_number_arg(argv[++i]);
+        }
+        else if (argv[i] == std::string("-process-range"))
+        {
+            abw_enc->process_range = get_number_arg(argv[++i]);
         }
         else
         {

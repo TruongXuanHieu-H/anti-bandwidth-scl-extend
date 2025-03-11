@@ -41,6 +41,7 @@ namespace SATABP
 
 		Graph *graph;
 		int process_count = 1;
+		int process_range = 1;
 
 		int max_width_SAT = std::numeric_limits<int>::min();
 		int min_width_UNSAT = std::numeric_limits<int>::max();
