@@ -1,0 +1,143 @@
+Set parameter LicenseID to value 2609176
+Set parameter TimeLimit to value 1800
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Debian GNU/Linux 12 (bookworm)")
+
+CPU model: AMD EPYC 7B12, instruction set [SSE2|AVX|AVX2]
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+
+Optimize a model with 5985 rows, 3249 columns and 146735 nonzeros
+Model fingerprint: 0xbe8d66f2
+Variable types: 0 continuous, 3249 integer (3249 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 1256 rows and 29 columns
+Presolve time: 0.33s
+Presolved: 4729 rows, 3220 columns, 138596 nonzeros
+Variable types: 0 continuous, 3220 integer (3220 binary)
+Error: invalid user locale; possible fix is to set the system environment
+       variable 'LC_ALL' to a valid locale (e.g., to 'C')
+
+Root relaxation: objective 0.000000e+00, 1021 iterations, 0.14 seconds (0.19 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0  133          -    0.00000      -     -    1s
+     0     0    0.00000    0  225          -    0.00000      -     -    2s
+     0     0    0.00000    0  220          -    0.00000      -     -    2s
+H    0     0                       0.0000000    0.00000  0.00%     -    3s
+     0     0    0.00000    0   49    0.00000    0.00000  0.00%     -    3s
+
+Cutting planes:
+  Clique: 70
+  Zero half: 25
+
+Explored 1 nodes (16352 simplex iterations) in 3.88 seconds (5.16 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+Giá trị Antibandwidth: 12
+Các nhãn: [15, 32, 38, 20, 57, 45, 33, 3, 29, 23, 31, 52, 36, 53, 17, 50, 4, 22, 40, 16, 1, 27, 24, 26, 34, 41, 19, 10, 2, 44, 21, 30, 5, 7, 14, 13, 35, 48, 55, 28, 6, 18, 56, 12, 46, 43, 49, 42, 51, 9, 39, 47, 54, 37, 25, 11, 8]
+Bài toán Antibandwidth
+Set parameter TimeLimit to value 1800
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Debian GNU/Linux 12 (bookworm)")
+
+CPU model: AMD EPYC 7B12, instruction set [SSE2|AVX|AVX2]
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+
+Optimize a model with 5858 rows, 3249 columns and 155117 nonzeros
+Model fingerprint: 0x7d89abe7
+Variable types: 0 continuous, 3249 integer (3249 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 801 rows and 29 columns
+Presolve time: 0.33s
+Presolved: 5057 rows, 3220 columns, 155240 nonzeros
+Variable types: 0 continuous, 3220 integer (3220 binary)
+
+Root relaxation: objective 0.000000e+00, 900 iterations, 0.12 seconds (0.17 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0  182          -    0.00000      -     -    1s
+     0     0    0.00000    0  227          -    0.00000      -     -    2s
+     0     0    0.00000    0  188          -    0.00000      -     -    2s
+     0     0    0.00000    0  131          -    0.00000      -     -    4s
+     0     0    0.00000    0  177          -    0.00000      -     -    4s
+     0     0    0.00000    0  180          -    0.00000      -     -    7s
+     0     0    0.00000    0  200          -    0.00000      -     -    7s
+     0     0    0.00000    0  137          -    0.00000      -     -    9s
+     0     0    0.00000    0  195          -    0.00000      -     -    9s
+     0     0    0.00000    0  184          -    0.00000      -     -   11s
+     0     0    0.00000    0  172          -    0.00000      -     -   11s
+H    0     0                       0.0000000    0.00000  0.00%     -   11s
+     0     0    0.00000    0  205    0.00000    0.00000  0.00%     -   11s
+
+Cutting planes:
+  Clique: 75
+  Zero half: 24
+
+Explored 1 nodes (46092 simplex iterations) in 11.42 seconds (14.08 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+Giá trị Antibandwidth: 13
+Các nhãn: [23, 26, 56, 3, 30, 57, 43, 17, 42, 32, 10, 34, 18, 15, 53, 28, 55, 49, 47, 29, 14, 6, 5, 1, 39, 2, 4, 24, 19, 11, 7, 31, 20, 33, 40, 50, 45, 48, 27, 22, 36, 8, 35, 9, 52, 54, 16, 44, 25, 12, 51, 38, 37, 41, 13, 46, 21]
+Bài toán Antibandwidth
+Set parameter TimeLimit to value 1800
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Debian GNU/Linux 12 (bookworm)")
+
+CPU model: AMD EPYC 7B12, instruction set [SSE2|AVX|AVX2]
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+
+Optimize a model with 5731 rows, 3249 columns and 162991 nonzeros
+Model fingerprint: 0x108e457d
+Variable types: 0 continuous, 3249 integer (3249 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 755 rows and 29 columns
+Presolve time: 0.34s
+Presolved: 4976 rows, 3220 columns, 163139 nonzeros
+Variable types: 0 continuous, 3220 integer (3220 binary)
+
+Root relaxation: objective 0.000000e+00, 1145 iterations, 0.16 seconds (0.23 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0  192          -    0.00000      -     -    1s
+     0     0    0.00000    0  263          -    0.00000      -     -    2s
+     0     0    0.00000    0  233          -    0.00000      -     -    2s
+     0     0    0.00000    0  252          -    0.00000      -     -    4s
+     0     0    0.00000    0  233          -    0.00000      -     -    4s
+     0     0 infeasible    0               - infeasible      -     -    4s
+
+Cutting planes:
+  Clique: 145
+  MIR: 3
+  Zero half: 20
+
+Explored 1 nodes (16448 simplex iterations) in 4.79 seconds (6.23 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 0
+
+Model is infeasible
+Best objective -, best bound -, gap -
+Không tìm thấy lời giải với giá trị AB = 14.

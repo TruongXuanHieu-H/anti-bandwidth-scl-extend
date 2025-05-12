@@ -1,0 +1,23 @@
+[runlim] version:		1.10
+[runlim] time limit:		311040000 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		python3
+[runlim] argv[1]:		gurobi.py
+[runlim] argv[2]:		L-bcspwr03.mtx.rnd
+[runlim] start:			Mon May 12 04:00:51 2025
+[runlim] main pid:		737522
+[runlim] sample:		12.1 time, 10.1 real, 286.7 MB
+[runlim] sample:		22.3 time, 20.1 real, 255.2 MB
+[runlim] sample:		32.5 time, 30.1 real, 311.9 MB
+[runlim] sample:		42.7 time, 40.1 real, 316.5 MB
+[runlim] sample:		52.9 time, 50.1 real, 279.1 MB
+[runlim] sample:		63.1 time, 60.1 real, 293.1 MB
+[runlim] end:			Mon May 12 04:01:56 2025
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			65.95 seconds
+[runlim] time:			68.98 seconds
+[runlim] space:			321.3 MB
+[runlim] samples:		658

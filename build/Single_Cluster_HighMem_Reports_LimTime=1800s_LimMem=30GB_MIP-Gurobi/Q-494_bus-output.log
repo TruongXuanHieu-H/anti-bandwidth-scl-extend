@@ -1,0 +1,90 @@
+Set parameter LicenseID to value 2609176
+Set parameter TimeLimit to value 1800
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Debian GNU/Linux 12 (bookworm)")
+
+CPU model: AMD EPYC 7B12, instruction set [SSE2|AVX|AVX2]
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+
+Optimize a model with 162971 rows, 244036 columns and 71328687 nonzeros
+Model fingerprint: 0x0e49693f
+Variable types: 0 continuous, 244036 integer (244036 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 247 rows and 247 columns (presolve time = 5s) ...
+Presolve removed 247 rows and 247 columns (presolve time = 10s) ...
+Presolve removed 247 rows and 247 columns (presolve time = 15s) ...
+Presolve removed 247 rows and 247 columns (presolve time = 20s) ...
+Presolve removed 247 rows and 247 columns (presolve time = 25s) ...
+Presolve removed 247 rows and 247 columns (presolve time = 30s) ...
+Presolve removed 247 rows and 247 columns (presolve time = 35s) ...
+Presolve removed 508 rows and 247 columns (presolve time = 40s) ...
+Presolve removed 508 rows and 247 columns (presolve time = 46s) ...
+Presolve removed 508 rows and 247 columns (presolve time = 50s) ...
+Presolve removed 508 rows and 247 columns (presolve time = 56s) ...
+Presolve removed 508 rows and 247 columns (presolve time = 60s) ...
+Presolve removed 508 rows and 247 columns (presolve time = 65s) ...
+Presolve removed 508 rows and 247 columns (presolve time = 70s) ...
+Presolve removed 508 rows and 247 columns (presolve time = 75s) ...
+Presolve removed 508 rows and 247 columns (presolve time = 80s) ...
+Presolve removed 508 rows and 247 columns (presolve time = 85s) ...
+Presolve removed 508 rows and 247 columns (presolve time = 90s) ...
+Presolve removed 508 rows and 247 columns (presolve time = 95s) ...
+Presolve removed 508 rows and 247 columns (presolve time = 100s) ...
+Presolve removed 508 rows and 247 columns (presolve time = 105s) ...
+Presolve removed 508 rows and 247 columns (presolve time = 110s) ...
+Presolve removed 508 rows and 247 columns (presolve time = 115s) ...
+Sparsify removed 97587 nonzeros (0%)
+Presolve removed 508 rows and 247 columns
+Presolve time: 118.99s
+Presolved: 162463 rows, 243789 columns, 70901202 nonzeros
+Variable types: 0 continuous, 243789 integer (243789 binary)
+Error: invalid user locale; possible fix is to set the system environment
+       variable 'LC_ALL' to a valid locale (e.g., to 'C')
+Deterministic concurrent LP optimizer: primal simplex, dual simplex, and barrier
+Showing barrier log only...
+
+Root barrier log...
+
+Elapsed ordering time = 5s
+Elapsed ordering time = 10s
+Elapsed ordering time = 15s
+Elapsed ordering time = 21s
+Elapsed ordering time = 25s
+Elapsed ordering time = 30s
+Elapsed ordering time = 36s
+Elapsed ordering time = 40s
+Elapsed ordering time = 45s
+Ordering time: 50.16s
+
+Barrier statistics:
+ AA' NZ     : 1.510e+08
+ Factor NZ  : 2.719e+08 (roughly 2.3 GB of memory)
+ Factor Ops : 5.569e+11 (roughly 27 seconds per iteration)
+ Threads    : 1
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   0.00000000e+00  0.00000000e+00  4.53e+02 0.00e+00  3.63e-02   282s
+   1   0.00000000e+00 -8.57799521e+01  1.86e+02 1.95e-02  1.45e-02   316s
+   2   0.00000000e+00 -6.89781394e+01  5.09e+01 4.20e-03  3.92e-03   348s
+   3   0.00000000e+00 -8.10011960e+01  1.80e+01 8.81e-04  1.42e-03   381s
+   4   0.00000000e+00 -6.97969903e+01  2.50e+00 2.16e-05  2.63e-04   421s
+   5   0.00000000e+00 -4.26835123e+01  5.81e-01 0.00e+00  9.18e-05   457s
+   6   0.00000000e+00 -7.69004670e+00  5.22e-14 0.00e+00  1.19e-05   507s
+
+Barrier performed 6 iterations in 513.64 seconds (1000.42 work units)
+Barrier solve interrupted - model solved by another algorithm
+
+Concurrent spin time: 1.41s
+
+Solved with dual simplex
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   34018    0.0000000e+00   0.000000e+00   0.000000e+00    514s
+
+Root relaxation: objective 0.000000e+00, 34018 iterations, 380.91 seconds (414.73 work units)

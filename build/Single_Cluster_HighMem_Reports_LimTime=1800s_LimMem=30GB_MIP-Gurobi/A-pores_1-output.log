@@ -1,0 +1,97 @@
+Set parameter LicenseID to value 2609176
+Set parameter TimeLimit to value 1800
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Debian GNU/Linux 12 (bookworm)")
+
+CPU model: AMD EPYC 7B12, instruction set [SSE2|AVX|AVX2]
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+
+Optimize a model with 2650 rows, 900 columns and 32715 nonzeros
+Model fingerprint: 0x16234184
+Variable types: 0 continuous, 900 integer (900 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 2018 rows and 15 columns
+Presolve time: 0.06s
+Presolved: 632 rows, 885 columns, 15074 nonzeros
+Variable types: 0 continuous, 885 integer (885 binary)
+Error: invalid user locale; possible fix is to set the system environment
+       variable 'LC_ALL' to a valid locale (e.g., to 'C')
+
+Root relaxation: objective 0.000000e+00, 534 iterations, 0.02 seconds (0.03 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0   39          -    0.00000      -     -    0s
+     0     0    0.00000    0  146          -    0.00000      -     -    0s
+H    0     0                       0.0000000    0.00000  0.00%     -    0s
+
+Cutting planes:
+  Gomory: 13
+  Clique: 27
+  Zero half: 5
+
+Explored 1 nodes (2886 simplex iterations) in 0.33 seconds (0.34 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+Giá trị Antibandwidth: 6
+Các nhãn: [5, 26, 8, 24, 25, 15, 11, 13, 3, 29, 17, 14, 19, 21, 23, 7, 4, 2, 28, 30, 12, 27, 20, 18, 10, 1, 16, 9, 6, 22]
+Bài toán Antibandwidth
+Set parameter TimeLimit to value 1800
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Debian GNU/Linux 12 (bookworm)")
+
+CPU model: AMD EPYC 7B12, instruction set [SSE2|AVX|AVX2]
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+
+Optimize a model with 2547 rows, 900 columns and 36423 nonzeros
+Model fingerprint: 0xf123d264
+Variable types: 0 continuous, 900 integer (900 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 1924 rows and 15 columns
+Presolve time: 0.07s
+Presolved: 623 rows, 885 columns, 16938 nonzeros
+Variable types: 0 continuous, 885 integer (885 binary)
+
+Root relaxation: objective 0.000000e+00, 855 iterations, 0.05 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0   69          -    0.00000      -     -    0s
+     0     0    0.00000    0  179          -    0.00000      -     -    0s
+     0     0    0.00000    0   69          -    0.00000      -     -    0s
+     0     0    0.00000    0   70          -    0.00000      -     -    0s
+     0     0    0.00000    0   78          -    0.00000      -     -    1s
+     0     0    0.00000    0  115          -    0.00000      -     -    1s
+     0     0    0.00000    0  143          -    0.00000      -     -    1s
+     0     0    0.00000    0  142          -    0.00000      -     -    1s
+     0     0    0.00000    0  142          -    0.00000      -     -    1s
+     0     2    0.00000    0  142          -    0.00000      -     -    2s
+   282    17 infeasible   11               -    0.00000      -   465    5s
+
+Cutting planes:
+  Cover: 14
+  Clique: 126
+  MIR: 1
+  Inf proof: 1
+  Zero half: 33
+
+Explored 797 nodes (365473 simplex iterations) in 8.89 seconds (17.70 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 0
+
+Model is infeasible
+Best objective -, best bound -, gap -
+Không tìm thấy lời giải với giá trị AB = 7.

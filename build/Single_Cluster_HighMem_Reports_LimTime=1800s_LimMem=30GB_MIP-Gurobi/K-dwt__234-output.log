@@ -1,0 +1,370 @@
+Set parameter LicenseID to value 2609176
+Set parameter TimeLimit to value 1800
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Debian GNU/Linux 12 (bookworm)")
+
+CPU model: AMD EPYC 7B12, instruction set [SSE2|AVX|AVX2]
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+
+Optimize a model with 11957 rows, 13689 columns and 1100525 nonzeros
+Model fingerprint: 0x39969c36
+Variable types: 0 continuous, 13689 integer (13689 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Sparsify removed 872103 nonzeros (81%)
+Presolve added 0 rows and 3783 columns
+Presolve removed 185 rows and 0 columns
+Presolve time: 2.05s
+Presolved: 11772 rows, 17472 columns, 207338 nonzeros
+Variable types: 0 continuous, 17472 integer (14476 binary)
+Error: invalid user locale; possible fix is to set the system environment
+       variable 'LC_ALL' to a valid locale (e.g., to 'C')
+Deterministic concurrent LP optimizer: primal and dual simplex
+Showing primal log only...
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   11767    0.0000000e+00   2.649521e+00   3.784817e+09      5s
+Concurrent spin time: 1.02s (can be avoided by choosing Method=3)
+
+Solved with dual simplex
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+    5317    0.0000000e+00   0.000000e+00   0.000000e+00      6s
+
+Root relaxation: objective 0.000000e+00, 5317 iterations, 3.25 seconds (2.85 work units)
+Total elapsed time = 13.45s (DegenMoves)
+Total elapsed time = 22.06s (DegenMoves)
+Total elapsed time = 29.44s (DegenMoves)
+Total elapsed time = 38.16s (DegenMoves)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0 1762          -    0.00000      -     -   45s
+     0     0    0.00000    0 2502          -    0.00000      -     -   49s
+     0     0    0.00000    0 2485          -    0.00000      -     -   49s
+     0     0    0.00000    0 2516          -    0.00000      -     -   51s
+     0     0    0.00000    0  851          -    0.00000      -     -  114s
+     0     0    0.00000    0 1371          -    0.00000      -     -  116s
+     0     0    0.00000    0  693          -    0.00000      -     -  198s
+     0     0    0.00000    0 1384          -    0.00000      -     -  202s
+     0     0    0.00000    0 1222          -    0.00000      -     -  275s
+     0     0    0.00000    0 1426          -    0.00000      -     -  277s
+     0     0    0.00000    0 1257          -    0.00000      -     -  342s
+     0     0    0.00000    0 1485          -    0.00000      -     -  345s
+     0     0    0.00000    0 1196          -    0.00000      -     -  389s
+     0     0    0.00000    0 1534          -    0.00000      -     -  391s
+     0     0    0.00000    0 1156          -    0.00000      -     -  434s
+     0     0    0.00000    0 1156          -    0.00000      -     -  445s
+     0     2    0.00000    0 1156          -    0.00000      -     -  480s
+     3     8    0.00000    2 2914          -    0.00000      -  8583  513s
+     7    12    0.00000    3 3154          -    0.00000      -  5102  515s
+    23    32    0.00000    5 2909          -    0.00000      -  3017  520s
+    48    64    0.00000   10 1223          -    0.00000      -  3439  552s
+    63   113    0.00000   11 1383          -    0.00000      -  4392  564s
+   120   180    0.00000   27 1126          -    0.00000      -  3202  583s
+*  149   180              22       0.0000000    0.00000  0.00%  2939  583s
+
+Cutting planes:
+  Cover: 1
+  Implied bound: 9
+  Clique: 89
+  MIR: 26
+  GUB cover: 9
+  Zero half: 118
+  Network: 2
+  RLT: 189
+  Relax-and-lift: 31
+
+Explored 219 nodes (1259671 simplex iterations) in 583.35 seconds (786.72 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+Giá trị Antibandwidth: 46
+Các nhãn: [14, 110, 62, 114, 106, 74, 32, 27, 28, 75, 6, 98, 92, 101, 50, 8, 72, 60, 34, 9, 94, 79, 54, 84, 56, 96, 47, 63, 48, 107, 42, 3, 80, 51, 112, 73, 13, 82, 76, 111, 87, 95, 58, 40, 81, 25, 86, 1, 19, 53, 41, 5, 105, 57, 44, 113, 90, 11, 35, 89, 7, 93, 66, 97, 49, 29, 30, 33, 15, 91, 39, 83, 43, 21, 102, 88, 85, 99, 68, 18, 64, 108, 71, 52, 78, 10, 77, 24, 59, 116, 22, 117, 67, 100, 46, 20, 26, 37, 23, 104, 55, 69, 38, 45, 109, 61, 4, 70, 16, 103, 31, 65, 12, 2, 17, 115, 36]
+Bài toán Antibandwidth
+Set parameter TimeLimit to value 1800
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Debian GNU/Linux 12 (bookworm)")
+
+CPU model: AMD EPYC 7B12, instruction set [SSE2|AVX|AVX2]
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+
+Optimize a model with 11795 rows, 13689 columns and 1108625 nonzeros
+Model fingerprint: 0x44c4b835
+Variable types: 0 continuous, 13689 integer (13689 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Sparsify removed 880607 nonzeros (81%)
+Presolve added 0 rows and 3759 columns
+Presolve removed 176 rows and 0 columns
+Presolve time: 1.99s
+Presolved: 11619 rows, 17448 columns, 207114 nonzeros
+Variable types: 24 continuous, 17424 integer (14488 binary)
+Deterministic concurrent LP optimizer: primal and dual simplex
+Showing primal log only...
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   11668    0.0000000e+00   5.028456e+00   8.922235e+09      5s
+Concurrent spin time: 1.25s (can be avoided by choosing Method=3)
+
+Solved with dual simplex
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+    5771    0.0000000e+00   0.000000e+00   0.000000e+00      6s
+
+Root relaxation: objective 0.000000e+00, 5771 iterations, 3.75 seconds (3.41 work units)
+Total elapsed time = 14.25s (DegenMoves)
+Total elapsed time = 21.97s (DegenMoves)
+Total elapsed time = 30.98s (DegenMoves)
+Total elapsed time = 40.18s (DegenMoves)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0 1478          -    0.00000      -     -   48s
+     0     0    0.00000    0 2169          -    0.00000      -     -   54s
+     0     0    0.00000    0 2393          -    0.00000      -     -   56s
+     0     0    0.00000    0 1664          -    0.00000      -     -  133s
+     0     0    0.00000    0 1816          -    0.00000      -     -  135s
+H    0     0                       0.0000000    0.00000  0.00%     -  173s
+     0     0    0.00000    0 1795    0.00000    0.00000  0.00%     -  173s
+
+Cutting planes:
+  Clique: 52
+  MIR: 20
+  Zero half: 217
+  RLT: 174
+  Relax-and-lift: 14
+
+Explored 1 nodes (291674 simplex iterations) in 173.49 seconds (197.90 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+Giá trị Antibandwidth: 47
+Các nhãn: [5, 83, 71, 13, 56, 68, 19, 43, 3, 91, 32, 55, 101, 37, 69, 41, 67, 103, 18, 42, 28, 94, 89, 111, 78, 52, 99, 60, 75, 81, 34, 14, 73, 58, 24, 92, 115, 53, 74, 70, 80, 15, 84, 7, 64, 77, 72, 22, 4, 21, 47, 61, 95, 48, 105, 110, 97, 6, 87, 98, 8, 51, 54, 44, 113, 20, 33, 100, 39, 57, 36, 86, 25, 9, 76, 93, 109, 50, 35, 23, 117, 85, 27, 79, 90, 12, 82, 17, 40, 116, 104, 96, 59, 65, 45, 106, 16, 38, 2, 29, 112, 49, 26, 88, 107, 31, 114, 66, 10, 30, 62, 63, 108, 1, 11, 102, 46]
+Bài toán Antibandwidth
+Set parameter TimeLimit to value 1800
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Debian GNU/Linux 12 (bookworm)")
+
+CPU model: AMD EPYC 7B12, instruction set [SSE2|AVX|AVX2]
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+
+Optimize a model with 11633 rows, 13689 columns and 1116077 nonzeros
+Model fingerprint: 0x5b2efbb5
+Variable types: 0 continuous, 13689 integer (13689 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Sparsify removed 887813 nonzeros (81%)
+Presolve added 0 rows and 3616 columns
+Presolve removed 167 rows and 0 columns
+Presolve time: 1.98s
+Presolved: 11466 rows, 17305 columns, 207567 nonzeros
+Variable types: 24 continuous, 17281 integer (14479 binary)
+Deterministic concurrent LP optimizer: primal and dual simplex
+Showing primal log only...
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   12660    0.0000000e+00   1.864737e+00   4.625324e+09      5s
+Concurrent spin time: 0.89s (can be avoided by choosing Method=3)
+
+Solved with dual simplex
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+    4909    0.0000000e+00   0.000000e+00   0.000000e+00      5s
+
+Root relaxation: objective 0.000000e+00, 4909 iterations, 2.84 seconds (2.55 work units)
+Total elapsed time = 13.60s (DegenMoves)
+Total elapsed time = 21.02s (DegenMoves)
+Total elapsed time = 28.08s (DegenMoves)
+Total elapsed time = 33.88s (DegenMoves)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0 1506          -    0.00000      -     -   38s
+     0     0    0.00000    0 1968          -    0.00000      -     -   41s
+     0     0    0.00000    0 2126          -    0.00000      -     -   42s
+     0     0    0.00000    0 1272          -    0.00000      -     -  103s
+     0     0    0.00000    0 1402          -    0.00000      -     -  105s
+     0     0    0.00000    0 1722          -    0.00000      -     -  161s
+     0     0    0.00000    0 1830          -    0.00000      -     -  163s
+     0     0    0.00000    0 1805          -    0.00000      -     -  220s
+     0     0    0.00000    0 1970          -    0.00000      -     -  222s
+H    0     0                       0.0000000    0.00000  0.00%     -  275s
+     0     0    0.00000    0 1715    0.00000    0.00000  0.00%     -  275s
+
+Cutting planes:
+  Clique: 122
+  MIR: 26
+  Zero half: 82
+  RLT: 232
+  Relax-and-lift: 18
+
+Explored 1 nodes (472019 simplex iterations) in 275.34 seconds (319.46 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+Giá trị Antibandwidth: 48
+Các nhãn: [117, 72, 52, 80, 108, 103, 67, 63, 55, 112, 37, 107, 109, 84, 97, 40, 92, 34, 9, 41, 113, 7, 86, 56, 79, 69, 89, 20, 64, 74, 36, 18, 94, 49, 110, 13, 44, 45, 104, 16, 78, 77, 61, 47, 106, 58, 4, 39, 22, 57, 38, 10, 68, 53, 60, 11, 75, 35, 31, 91, 24, 5, 29, 95, 6, 14, 19, 100, 25, 105, 43, 83, 21, 28, 115, 99, 73, 71, 66, 30, 90, 98, 3, 87, 111, 42, 81, 17, 116, 114, 15, 101, 96, 76, 59, 32, 27, 33, 51, 54, 50, 2, 46, 62, 85, 23, 82, 65, 48, 12, 8, 93, 102, 1, 70, 88, 26]
+Bài toán Antibandwidth
+Set parameter TimeLimit to value 1800
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Debian GNU/Linux 12 (bookworm)")
+
+CPU model: AMD EPYC 7B12, instruction set [SSE2|AVX|AVX2]
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+
+Optimize a model with 11471 rows, 13689 columns and 1122881 nonzeros
+Model fingerprint: 0x3dfc42bf
+Variable types: 0 continuous, 13689 integer (13689 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Sparsify removed 892350 nonzeros (81%)
+Presolve added 0 rows and 3328 columns
+Presolve removed 158 rows and 0 columns
+Presolve time: 1.97s
+Presolved: 11313 rows, 17017 columns, 210068 nonzeros
+Variable types: 24 continuous, 16993 integer (14475 binary)
+Deterministic concurrent LP optimizer: primal and dual simplex
+Showing primal log only...
+
+Warning: Markowitz tolerance tightened to 0.03125
+Concurrent spin time: 0.00s
+
+Solved with primal simplex
+
+Root relaxation: objective 0.000000e+00, 9177 iterations, 2.61 seconds (2.58 work units)
+Total elapsed time = 12.39s (DegenMoves)
+Total elapsed time = 20.51s (DegenMoves)
+Total elapsed time = 28.77s (DegenMoves)
+Total elapsed time = 37.97s (DegenMoves)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0 1416          -    0.00000      -     -   45s
+     0     0    0.00000    0 1896          -    0.00000      -     -   50s
+     0     0    0.00000    0 2226          -    0.00000      -     -   52s
+     0     0    0.00000    0  978          -    0.00000      -     -  132s
+     0     0    0.00000    0 1365          -    0.00000      -     -  135s
+     0     0    0.00000    0 1295          -    0.00000      -     -  209s
+     0     0    0.00000    0 1662          -    0.00000      -     -  213s
+     0     0    0.00000    0 1708          -    0.00000      -     -  279s
+     0     0    0.00000    0 1864          -    0.00000      -     -  280s
+     0     0    0.00000    0 1249          -    0.00000      -     -  306s
+     0     0    0.00000    0 1114          -    0.00000      -     -  326s
+     0     2    0.00000    0 1114          -    0.00000      -     -  359s
+     1     4    0.00000    1  963          -    0.00000      - 20247  362s
+     3     8    0.00000    2 2475          -    0.00000      -  9602  386s
+    11    16    0.00000    3 2602          -    0.00000      -  4647  391s
+    30    50    0.00000    7 2509          -    0.00000      -  2514  413s
+    49    69    0.00000   11  738          -    0.00000      -  2642  456s
+    72   123    0.00000   13  926          -    0.00000      -  4194  479s
+   128   278    0.00000   21  959          -    0.00000      -  3388  519s
+*  302   278              27       0.0000000    0.00000  0.00%  2335  519s
+
+Cutting planes:
+  Implied bound: 4
+  Clique: 81
+  MIR: 19
+  GUB cover: 2
+  Zero half: 67
+  Network: 2
+  RLT: 199
+  Relax-and-lift: 32
+
+Explored 351 nodes (1288282 simplex iterations) in 519.71 seconds (768.51 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+Giá trị Antibandwidth: 49
+Các nhãn: [2, 86, 74, 99, 14, 10, 57, 21, 62, 73, 31, 6, 103, 54, 92, 46, 7, 69, 26, 29, 17, 111, 96, 77, 85, 56, 83, 30, 93, 88, 33, 28, 84, 53, 12, 71, 67, 52, 115, 8, 110, 66, 65, 63, 112, 78, 113, 24, 44, 49, 36, 42, 79, 58, 95, 50, 76, 38, 104, 90, 34, 13, 51, 16, 117, 48, 19, 102, 41, 11, 39, 81, 27, 64, 106, 98, 70, 68, 47, 40, 101, 89, 20, 87, 75, 32, 72, 5, 18, 107, 97, 109, 114, 9, 1, 61, 59, 37, 3, 45, 105, 60, 22, 91, 108, 23, 82, 55, 43, 25, 15, 116, 94, 4, 80, 100, 35]
+Bài toán Antibandwidth
+Set parameter TimeLimit to value 1800
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Debian GNU/Linux 12 (bookworm)")
+
+CPU model: AMD EPYC 7B12, instruction set [SSE2|AVX|AVX2]
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+
+Optimize a model with 11309 rows, 13689 columns and 1129037 nonzeros
+Model fingerprint: 0x48dfc9ad
+Variable types: 0 continuous, 13689 integer (13689 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Sparsify removed 897720 nonzeros (81%)
+Presolve added 0 rows and 3333 columns
+Presolve removed 149 rows and 0 columns
+Presolve time: 2.03s
+Presolved: 11160 rows, 17022 columns, 211115 nonzeros
+Variable types: 0 continuous, 17022 integer (14481 binary)
+Deterministic concurrent LP optimizer: primal and dual simplex
+Showing primal log only...
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   11841    0.0000000e+00   1.762246e+00   4.509879e+09      5s
+Warning: Markowitz tolerance tightened to 0.125
+   14259    0.0000000e+00   0.000000e+00   0.000000e+00      6s
+Concurrent spin time: 0.00s
+
+Solved with primal simplex
+
+Root relaxation: objective 0.000000e+00, 14259 iterations, 3.51 seconds (3.34 work units)
+Total elapsed time = 11.97s (DegenMoves)
+Total elapsed time = 17.21s (DegenMoves)
+Total elapsed time = 23.53s (DegenMoves)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0 1618          -    0.00000      -     -   27s
+     0     0    0.00000    0 1831          -    0.00000      -     -   30s
+     0     0    0.00000    0 1923          -    0.00000      -     -   31s
+     0     0    0.00000    0 1215          -    0.00000      -     -   75s
+     0     0    0.00000    0 1295          -    0.00000      -     -   76s
+     0     0    0.00000    0 1090          -    0.00000      -     -  121s
+     0     0    0.00000    0 1259          -    0.00000      -     -  123s
+     0     0    0.00000    0  602          -    0.00000      -     -  184s
+     0     0    0.00000    0  869          -    0.00000      -     -  188s

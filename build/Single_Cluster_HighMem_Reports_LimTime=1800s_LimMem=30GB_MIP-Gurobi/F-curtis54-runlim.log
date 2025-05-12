@@ -1,0 +1,18 @@
+[runlim] version:		1.10
+[runlim] time limit:		311040000 seconds
+[runlim] real time limit:	1800 seconds
+[runlim] space limit:		30000 MB
+[runlim] argv[0]:		python3
+[runlim] argv[1]:		gurobi.py
+[runlim] argv[2]:		F-curtis54.mtx.rnd
+[runlim] start:			Mon May 12 02:30:08 2025
+[runlim] main pid:		724871
+[runlim] sample:		24.6 time, 10.3 real, 246.8 MB
+[runlim] end:			Mon May 12 02:30:22 2025
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			14.35 seconds
+[runlim] time:			36.61 seconds
+[runlim] space:			255.0 MB
+[runlim] samples:		140

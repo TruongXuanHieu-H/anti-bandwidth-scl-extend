@@ -1,0 +1,48 @@
+Set parameter LicenseID to value 2609176
+Set parameter TimeLimit to value 1800
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Debian GNU/Linux 12 (bookworm)")
+
+CPU model: AMD EPYC 7B12, instruction set [SSE2|AVX|AVX2]
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+
+Optimize a model with 14760 rows, 3481 columns and 240784 nonzeros
+Model fingerprint: 0xb4aac76f
+Variable types: 0 continuous, 3481 integer (3481 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 4600 rows and 30 columns
+Presolve time: 0.50s
+Presolved: 10160 rows, 3451 columns, 194249 nonzeros
+Variable types: 0 continuous, 3451 integer (3451 binary)
+Error: invalid user locale; possible fix is to set the system environment
+       variable 'LC_ALL' to a valid locale (e.g., to 'C')
+
+Root relaxation: objective 0.000000e+00, 1155 iterations, 0.21 seconds (0.29 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0   96          -    0.00000      -     -    3s
+     0     0    0.00000    0  180          -    0.00000      -     -    3s
+     0     0    0.00000    0  169          -    0.00000      -     -    4s
+     0     0    0.00000    0  102          -    0.00000      -     -    6s
+H    0     0                       0.0000000    0.00000  0.00%     -    7s
+     0     0    0.00000    0  164    0.00000    0.00000  0.00%     -    7s
+
+Cutting planes:
+  Clique: 27
+  Zero half: 4
+
+Explored 1 nodes (27367 simplex iterations) in 7.05 seconds (9.91 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+Giá trị Antibandwidth: 8
+Các nhãn: [54, 32, 52, 4, 13, 7, 59, 3, 2, 11, 21, 8, 19, 12, 15, 14, 17, 53, 44, 43, 30, 36, 9, 24, 41, 35, 48, 6, 45, 39, 1, 49, 5, 46, 58, 55, 42, 40, 37, 26, 47, 34, 57, 38, 23, 20, 10, 56, 27, 22, 16, 18, 28, 51, 33, 29, 50, 25, 31]
+Bài toán Antibandwidth
