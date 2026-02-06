@@ -38,7 +38,7 @@ namespace SATABP
         {
             // No symmetry breaking
         }
-        std::cout << "c\tEncode symmetry breaking with option: " << symmetry_break_point << "." << std::endl;
+        // std::cout << "c\tEncode symmetry breaking with option: " << symmetry_break_point << "." << std::endl;
 
         encode_labelling();
 

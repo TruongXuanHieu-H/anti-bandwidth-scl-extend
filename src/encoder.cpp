@@ -61,14 +61,6 @@ void Encoder::encode_symmetry_break_on_minnode() {
 };
 
 
-void Encoder::print_clauses() const {
-    cv->print_clauses();
-};
-
-void Encoder::print_dimacs() const {
-    cv->print_dimacs();
-};
-
 int Encoder::size() const {
     return cv->size();
 };

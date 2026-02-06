@@ -42,14 +42,12 @@ static const std::map<std::string, std::string> option_list = {
     {"--seq", "Use sequential encoding for staircase constraints [default: false]"},
     {"--product", "Use 2-Product encoding for staircase constraints [default: false]"},
     {"--duplex", "Use duplex encoding for staircase constraints [default: true]"},
-    {"--ladder", "Use ladder encoding for staircase constraints and NSC for At-Most-One constraints [default: false]"},
+    {"--scl", "Use scl encoding for staircase constraints and NSC for At-Most-One constraints [default: false]"},
     {"--conf-sat", "Use --sat configuration of CaDiCaL [default: true]"},
     {"--conf-unsat", "Use --unsat configuration of CaDiCaL [default: false]"},
     {"--force-phase", "Set options --forcephase,--phase=0 and --no-rephase of CaDiCal [default: false]"},
     {"--verify-result", "Verify the antibandwidth of the found SAT solution [default: false]"},
-    {"--from-ub", "Start solving with width = UB, decreasing in each iteration [default: false]"},
     {"--from-lb", "Start solving with width = LB, increasing in each iteration [default: true]"},
-    {"--bin-search", "Start solving with LB+UB/2 and update LB or UB according to SAT/UNSAT result and repeat"},
     {"-split-size <n>", "Maximal allowed length of clauses, every longer clause is split up into two by introducing a new variable"},
     {"-set-lb <new LB>", "Overwrite predefined LB with <new LB>, has to be at least 2"},
     {"-set-ub <new UB>", "Overwrite predefined UB with <new UB>, has to be positive"},
@@ -59,7 +57,6 @@ static const std::map<std::string, std::string> option_list = {
     {"-sample-rate <microseconds>", "Overwrite sampler interval [default: 100000]"},
     {"-report-rate <sampler>", "Overwrite elapsed time interval [default: 100 samplers generates 1 report]"},
     {"-symmetry-break <break point>", "Apply symetry breaking technique in <break point> (f: first node, h: highest degree node, l: lowest degree node, n: none) [default: none]"},
-    {"-print-w <w>", "Only encode and print SAT formula of specified width w (where w > 0), without solving it"},
     {"-process-count <number process>", "Number processes used to solve"}};
 
 int get_number_arg(std::string const &arg)
@@ -110,18 +107,15 @@ int main(int argc, char **argv)
 
     std::string graph_file;
 
-    bool just_print_dimacs = false;
-    int spec_width = 2;
-
     if (argc < 2)
     {
-        std::cout << "c LadderEncoder 1." << ver << "." << std::endl;
+        std::cout << "c SCLEncoder 1." << ver << "." << std::endl;
         std::cerr << "c Error, no graph file was specified." << std::endl;
         print_usage();
         return 1;
     }
 
-    std::cout << "c LadderEncoder 1." << ver << "." << std::endl;
+    std::cout << "c SCLEncoder 1." << ver << "." << std::endl;
 
     abw_enc = new AntibandwidthEncoder();
 
@@ -153,9 +147,9 @@ int main(int argc, char **argv)
         {
             abw_enc->enc_choice = EncoderStrategy::duplex;
         }
-        else if (argv[i] == std::string("--ladder"))
+        else if (argv[i] == std::string("--scl"))
         {
-            abw_enc->enc_choice = EncoderStrategy::ladder;
+            abw_enc->enc_choice = EncoderStrategy::scl;
         }
         else if (argv[i] == std::string("--conf-sat"))
         {
@@ -177,29 +171,9 @@ int main(int argc, char **argv)
         {
             abw_enc->enable_solution_verification = true;
         }
-        else if (argv[i] == std::string("--from-ub"))
-        {
-            abw_enc->iterative_strategy = IterativeStrategy::from_ub;
-        }
         else if (argv[i] == std::string("--from-lb"))
         {
             abw_enc->iterative_strategy = IterativeStrategy::from_lb;
-        }
-        else if (argv[i] == std::string("--bin-search"))
-        {
-            abw_enc->iterative_strategy = IterativeStrategy::bin_search;
-        }
-        else if (argv[i] == std::string("-print-w"))
-        {
-            spec_width = get_number_arg(argv[++i]);
-            if (spec_width < 2)
-            {
-                std::cout << "Error, width has to be at least 2." << std::endl;
-                delete abw_enc;
-                return 1;
-            }
-            std::cout << "c DIMACS Printing mode for w = " << spec_width << "." << std::endl;
-            just_print_dimacs = true;
         }
         else if (argv[i] == std::string("-set-lb"))
         {
@@ -314,11 +288,6 @@ int main(int argc, char **argv)
         }
     }
 
-    if (just_print_dimacs)
-    {
-        abw_enc->encode_and_print_abw_problem(spec_width);
-    }
-    else
     {
         abw_enc->encode_and_solve_abws();
     }

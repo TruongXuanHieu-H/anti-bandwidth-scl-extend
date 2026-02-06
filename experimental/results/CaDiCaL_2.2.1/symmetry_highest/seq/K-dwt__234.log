@@ -1,0 +1,83 @@
+c SCLEncoder 1.0.
+c Real time limit is set to 1800.
+c Memory limit is set to 30000.
+c Iterative strategy: from LB to UB.
+c LB-w = 46 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 58 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c [w = 46] Start task in PID: 44199.
+c [w = 46] Antibandwidth problem with w = 46 (K-dwt__234.mtx.rnd):
+c [w = 46] Initializing CaDiCaL (version 2.2.1).
+c [w = 46] Configuring CaDiCaL as --sat (1).
+c [w = 46] Initializing a Sequential encoder with n = 117.
+c [w = 46] Encoding starts with w = 46:
+c	Encode symmetry breaking with option: h.
+c [w = 46] Encoding duration: 0s
+c [w = 46] Number of clauses: 3242200
+c [w = 46] Number of irredundant clauses: 3213039
+c [w = 46] Number of variables: 1090359
+c [w = 46] SAT Solving starts:
+c [w = 46] Solving duration: 99927 ms
+c [w = 46] Answer: 
+s [w = 46] SAT (w = 46)
+c [w = 46] Solution check w = 46.
+c [w = 46] Result: 10
+c Max width SAT is set to 46
+c [w = 47] Start task in PID: 44216.
+c [w = 47] Antibandwidth problem with w = 47 (K-dwt__234.mtx.rnd):
+c [w = 47] Initializing CaDiCaL (version 2.2.1).
+c [w = 47] Configuring CaDiCaL as --sat (1).
+c [w = 47] Initializing a Sequential encoder with n = 117.
+c [w = 47] Encoding starts with w = 47:
+c	Encode symmetry breaking with option: h.
+c [w = 47] Encoding duration: 0s
+c [w = 47] Number of clauses: 3267310
+c [w = 47] Number of irredundant clauses: 3237933
+c [w = 47] Number of variables: 1098783
+c [w = 47] SAT Solving starts:
+c [w = 47] Solving duration: 702660 ms
+c [w = 47] Answer: 
+s [w = 47] SAT (w = 47)
+c [w = 47] Solution check w = 47.
+c [w = 47] Result: 10
+c Max width SAT is set to 47
+c [w = 48] Start task in PID: 44321.
+c [w = 48] Antibandwidth problem with w = 48 (K-dwt__234.mtx.rnd):
+c [w = 48] Initializing CaDiCaL (version 2.2.1).
+c [w = 48] Configuring CaDiCaL as --sat (1).
+c [w = 48] Initializing a Sequential encoder with n = 117.
+c [w = 48] Encoding starts with w = 48:
+c	Encode symmetry breaking with option: h.
+c [w = 48] Encoding duration: 0s
+c [w = 48] Number of clauses: 3290476
+c [w = 48] Number of irredundant clauses: 3260901
+c [w = 48] Number of variables: 1106559
+c [w = 48] SAT Solving starts:
+c [w = 48] Solving duration: 724589 ms
+c [w = 48] Answer: 
+s [w = 48] SAT (w = 48)
+c [w = 48] Solution check w = 48.
+c [w = 48] Result: 10
+c Max width SAT is set to 48
+c [w = 49] Start task in PID: 44565.
+c [w = 49] Antibandwidth problem with w = 49 (K-dwt__234.mtx.rnd):
+c [w = 49] Initializing CaDiCaL (version 2.2.1).
+c [w = 49] Configuring CaDiCaL as --sat (1).
+c [w = 49] Initializing a Sequential encoder with n = 117.
+c [w = 49] Encoding starts with w = 49:
+c	Encode symmetry breaking with option: h.
+c [w = 49] Encoding duration: 0s
+c [w = 49] Number of clauses: 3311698
+c [w = 49] Number of irredundant clauses: 3281943
+c [w = 49] Number of variables: 1113687
+c [w = 49] SAT Solving starts:
+c [Lim] End with result: 65024
+c All children have completed their tasks or were terminated.
+c Signal interruption.
+r
+r Final results: 
+r Max width SAT:  	48
+r Min width UNSAT:	-
+r Total real time: 1805667 ms
+r Total memory consumed 1084.7 MB
+r
+r

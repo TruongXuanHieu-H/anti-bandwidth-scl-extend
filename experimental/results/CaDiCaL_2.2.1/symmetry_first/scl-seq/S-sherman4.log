@@ -1,0 +1,28 @@
+c SCLEncoder 1.0.
+c Real time limit is set to 1800.
+c Memory limit is set to 30000.
+c Iterative strategy: from LB to UB.
+c LB-w = 256 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 272 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c [w = 256] Start task in PID: 76091.
+c [w = 256] Antibandwidth problem with w = 256 (S-sherman4.mtx.rnd):
+c [w = 256] Initializing CaDiCaL (version 2.2.1).
+c [w = 256] Configuring CaDiCaL as --sat (1).
+c [w = 256] Initializing a SCL encoder with n = 546.
+c [w = 256] Encoding starts with w = 256:
+c [w = 256] Encoding duration: 1s
+c [w = 256] Number of clauses: 3985035
+c [w = 256] Number of irredundant clauses: 3982770
+c [w = 256] Number of variables: 782418
+c [w = 256] SAT Solving starts:
+c [Lim] End with result: 65024
+c All children have completed their tasks or were terminated.
+c Signal interruption.
+r
+r Final results: 
+r Max width SAT:  	-
+r Min width UNSAT:	-
+r Total real time: 1805484 ms
+r Total memory consumed 1315.7 MB
+r
+r

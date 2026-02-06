@@ -23,14 +23,12 @@ namespace SATABP
 		reduced,
 		seq,
 		product,
-		ladder,
+		scl,
 	};
 
 	enum IterativeStrategy
 	{
 		from_lb,
-		from_ub,
-		bin_search,
 	};
 
 	class AntibandwidthEncoder
@@ -67,7 +65,6 @@ namespace SATABP
 
 		void read_graph(std::string graph_file_name);
 		void encode_and_solve_abws();
-		void encode_and_print_abw_problem(int w);
 
 		void create_limit_pid();
 		void create_abp_pid(int width);
@@ -96,8 +93,6 @@ namespace SATABP
 		pid_t lim_pid;
 
 		void encode_and_solve_abw_problems_from_lb();
-		void encode_and_solve_abw_problems_from_ub();
-		void encode_and_solve_abw_problems_bin_search();
 
 		void encode_and_solve_abw_problems(int w_from, int w_to, int stop_w);
 		bool encode_and_solve_antibandwidth_problem(int w);

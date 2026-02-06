@@ -1,0 +1,140 @@
+c SCLEncoder 1.0.
+c Real time limit is set to 1800.
+c Memory limit is set to 30000.
+c Iterative strategy: from LB to UB.
+c LB-w = 219 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 246 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c [w = 219] Start task in PID: 68014.
+c [w = 219] Antibandwidth problem with w = 219 (Q-494_bus.mtx.rnd):
+c [w = 220] Start task in PID: 68015.
+c [w = 220] Antibandwidth problem with w = 220 (Q-494_bus.mtx.rnd):
+c [w = 219] Initializing CaDiCaL (version 2.2.1).
+c [w = 219] Configuring CaDiCaL as --sat (1).
+c [w = 219] Initializing a SCL encoder with n = 494.
+c [w = 219] Encoding starts with w = 219:
+c [w = 220] Initializing CaDiCaL (version 2.2.1).
+c [w = 220] Configuring CaDiCaL as --sat (1).
+c [w = 220] Initializing a SCL encoder with n = 494.
+c [w = 220] Encoding starts with w = 220:
+c [w = 222] Start task in PID: 68017.
+c [w = 222] Antibandwidth problem with w = 222 (Q-494_bus.mtx.rnd):
+c [w = 221] Start task in PID: 68016.
+c [w = 221] Antibandwidth problem with w = 221 (Q-494_bus.mtx.rnd):
+c [w = 222] Initializing CaDiCaL (version 2.2.1).
+c [w = 222] Configuring CaDiCaL as --sat (1).
+c [w = 222] Initializing a SCL encoder with n = 494.
+c [w = 222] Encoding starts with w = 222:
+c [w = 221] Initializing CaDiCaL (version 2.2.1).
+c [w = 221] Configuring CaDiCaL as --sat (1).
+c [w = 221] Initializing a SCL encoder with n = 494.
+c [w = 221] Encoding starts with w = 221:
+c [w = 219] Encoding duration: 1s
+c [w = 219] Number of clauses: 2624615
+c [w = 219] Number of irredundant clauses: 2622620
+c [w = 219] Number of variables: 636272
+c [w = 219] SAT Solving starts:
+c [w = 221] Encoding duration: 1s
+c [w = 221] Number of clauses: 2621903
+c [w = 221] Number of irredundant clauses: 2619944
+c [w = 221] Number of variables: 637260
+c [w = 221] SAT Solving starts:
+c [w = 220] Encoding duration: 1s
+c [w = 220] Number of clauses: 2623259
+c [w = 220] Number of irredundant clauses: 2621282
+c [w = 220] Number of variables: 636766
+c [w = 220] SAT Solving starts:
+c [w = 222] Encoding duration: 1s
+c [w = 222] Number of clauses: 2620547
+c [w = 222] Number of irredundant clauses: 2618606
+c [w = 222] Number of variables: 637754
+c [w = 222] SAT Solving starts:
+c [w = 222] Solving duration: 607935 ms
+c [w = 222] Answer: 
+s [w = 222] SAT (w = 222)
+c [w = 222] Solution check w = 222.
+c [w = 222] Result: 10
+c Max width SAT is set to 222
+c Kill lower pid 221.
+c Kill lower pid 220.
+c Kill lower pid 219.
+c Signal interruption.
+c Signal interruption.
+c Signal interruption.
+c [w = 223] Start task in PID: 68133.
+c [w = 223] Antibandwidth problem with w = 223 (Q-494_bus.mtx.rnd):
+c [w = 223] Initializing CaDiCaL (version 2.2.1).
+c [w = 223] Configuring CaDiCaL as --sat (1).
+c [w = 223] Initializing a SCL encoder with n = 494.
+c [w = 223] Encoding starts with w = 223:
+c Child pid 219 - 68014 terminated by signal 15
+c [w = 224] Start task in PID: 68134.
+c [w = 224] Antibandwidth problem with w = 224 (Q-494_bus.mtx.rnd):
+c [w = 224] Initializing CaDiCaL (version 2.2.1).
+c [w = 224] Configuring CaDiCaL as --sat (1).
+c [w = 224] Initializing a SCL encoder with n = 494.
+c [w = 224] Encoding starts with w = 224:
+c Child pid 220 - 68015 terminated by signal 15
+c [w = 225] Start task in PID: 68135.
+c [w = 225] Antibandwidth problem with w = 225 (Q-494_bus.mtx.rnd):
+c [w = 225] Initializing CaDiCaL (version 2.2.1).
+c [w = 225] Configuring CaDiCaL as --sat (1).
+c [w = 225] Initializing a SCL encoder with n = 494.
+c [w = 225] Encoding starts with w = 225:
+c Child pid 221 - 68016 terminated by signal 15
+c [w = 226] Start task in PID: 68136.
+c [w = 226] Antibandwidth problem with w = 226 (Q-494_bus.mtx.rnd):
+c [w = 226] Initializing CaDiCaL (version 2.2.1).
+c [w = 226] Configuring CaDiCaL as --sat (1).
+c [w = 226] Initializing a SCL encoder with n = 494.
+c [w = 226] Encoding starts with w = 226:
+c [w = 223] Encoding duration: 0s
+c [w = 223] Number of clauses: 2619191
+c [w = 223] Number of irredundant clauses: 2617268
+c [w = 223] Number of variables: 638248
+c [w = 223] SAT Solving starts:
+c [w = 224] Encoding duration: 1s
+c [w = 224] Number of clauses: 2617835
+c [w = 224] Number of irredundant clauses: 2615930
+c [w = 224] Number of variables: 638742
+c [w = 224] SAT Solving starts:
+c [w = 225] Encoding duration: 1s
+c [w = 225] Number of clauses: 2616479
+c [w = 225] Number of irredundant clauses: 2614592
+c [w = 225] Number of variables: 639236
+c [w = 225] SAT Solving starts:
+c [w = 226] Encoding duration: 1s
+c [w = 226] Number of clauses: 2615123
+c [w = 226] Number of irredundant clauses: 2613254
+c [w = 226] Number of variables: 639730
+c [w = 226] SAT Solving starts:
+c [w = 223] Solving duration: 438939 ms
+c [w = 223] Answer: 
+s [w = 223] SAT (w = 223)
+c [w = 223] Solution check w = 223.
+c [w = 223] Result: 10
+c Max width SAT is set to 223
+c [w = 227] Start task in PID: 68224.
+c [w = 227] Antibandwidth problem with w = 227 (Q-494_bus.mtx.rnd):
+c [w = 227] Initializing CaDiCaL (version 2.2.1).
+c [w = 227] Configuring CaDiCaL as --sat (1).
+c [w = 227] Initializing a SCL encoder with n = 494.
+c [w = 227] Encoding starts with w = 227:
+c [w = 227] Encoding duration: 0s
+c [w = 227] Number of clauses: 2613767
+c [w = 227] Number of irredundant clauses: 2611916
+c [w = 227] Number of variables: 640224
+c [w = 227] SAT Solving starts:
+c [Lim] End with result: 65024
+c All children have completed their tasks or were terminated.
+c Signal interruption.
+c Signal interruption.
+c Signal interruption.
+c Signal interruption.
+r
+r Final results: 
+r Max width SAT:  	223
+r Min width UNSAT:	-
+r Total real time: 1809477 ms
+r Total memory consumed 3914.9 MB
+r
+r

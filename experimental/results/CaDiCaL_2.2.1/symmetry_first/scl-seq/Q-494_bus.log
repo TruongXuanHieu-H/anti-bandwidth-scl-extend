@@ -1,0 +1,62 @@
+c SCLEncoder 1.0.
+c Real time limit is set to 1800.
+c Memory limit is set to 30000.
+c Iterative strategy: from LB to UB.
+c LB-w = 219 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 246 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c [w = 219] Start task in PID: 75109.
+c [w = 219] Antibandwidth problem with w = 219 (Q-494_bus.mtx.rnd):
+c [w = 219] Initializing CaDiCaL (version 2.2.1).
+c [w = 219] Configuring CaDiCaL as --sat (1).
+c [w = 219] Initializing a SCL encoder with n = 494.
+c [w = 219] Encoding starts with w = 219:
+c [w = 219] Encoding duration: 0s
+c [w = 219] Number of clauses: 2624615
+c [w = 219] Number of irredundant clauses: 2622620
+c [w = 219] Number of variables: 636272
+c [w = 219] SAT Solving starts:
+c [w = 219] Solving duration: 662244 ms
+c [w = 219] Answer: 
+s [w = 219] SAT (w = 219)
+c [w = 219] Solution check w = 219.
+c [w = 219] Result: 10
+c Max width SAT is set to 219
+c [w = 220] Start task in PID: 75248.
+c [w = 220] Antibandwidth problem with w = 220 (Q-494_bus.mtx.rnd):
+c [w = 220] Initializing CaDiCaL (version 2.2.1).
+c [w = 220] Configuring CaDiCaL as --sat (1).
+c [w = 220] Initializing a SCL encoder with n = 494.
+c [w = 220] Encoding starts with w = 220:
+c [w = 220] Encoding duration: 0s
+c [w = 220] Number of clauses: 2623259
+c [w = 220] Number of irredundant clauses: 2621282
+c [w = 220] Number of variables: 636766
+c [w = 220] SAT Solving starts:
+c [w = 220] Solving duration: 872825 ms
+c [w = 220] Answer: 
+s [w = 220] SAT (w = 220)
+c [w = 220] Solution check w = 220.
+c [w = 220] Result: 10
+c Max width SAT is set to 220
+c [w = 221] Start task in PID: 75489.
+c [w = 221] Antibandwidth problem with w = 221 (Q-494_bus.mtx.rnd):
+c [w = 221] Initializing CaDiCaL (version 2.2.1).
+c [w = 221] Configuring CaDiCaL as --sat (1).
+c [w = 221] Initializing a SCL encoder with n = 494.
+c [w = 221] Encoding starts with w = 221:
+c [w = 221] Encoding duration: 0s
+c [w = 221] Number of clauses: 2621903
+c [w = 221] Number of irredundant clauses: 2619944
+c [w = 221] Number of variables: 637260
+c [w = 221] SAT Solving starts:
+c [Lim] End with result: 65024
+c All children have completed their tasks or were terminated.
+c Signal interruption.
+r
+r Final results: 
+r Max width SAT:  	220
+r Min width UNSAT:	-
+r Total real time: 1805487 ms
+r Total memory consumed 1345.9 MB
+r
+r

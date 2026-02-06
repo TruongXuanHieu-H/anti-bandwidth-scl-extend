@@ -8,6 +8,7 @@
 #include <sstream>
 #include <cmath>
 #include <sys/mman.h>
+#include <sys/prctl.h>
 
 namespace SATABP
 {
@@ -19,18 +20,8 @@ namespace SATABP
     };
 
     AntibandwidthEncoder::~AntibandwidthEncoder()
-    {
-        end_time = std::chrono::high_resolution_clock::now();
-        auto encode_duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
-
-        std::cout << "r\n";
-        std::cout << "r Final results: \n";
-        std::cout << "r Max width SAT:  \t" << (max_width_SAT == std::numeric_limits<int>::min() ? "-" : std::to_string(max_width_SAT)) << "\n";
-        std::cout << "r Min width UNSAT:\t" << (min_width_UNSAT == std::numeric_limits<int>::max() ? "-" : std::to_string(min_width_UNSAT)) << "\n";
-        std::cout << "r Total real time: " << encode_duration << " ms\n";
-        std::cout << "r Total memory consumed " << *max_consumed_memory << " MB\n";
-        std::cout << "r\n";
-        std::cout << "r\n";
+    {        
+        abp_pids.clear();
     };
 
     void AntibandwidthEncoder::read_graph(std::string graph_file_name)
@@ -46,14 +37,6 @@ namespace SATABP
             std::cout << "c Iterative strategy: from LB to UB.\n";
             encode_and_solve_abw_problems_from_lb();
             break;
-        case from_ub:
-            std::cout << "c Iterative strategy: from UB to LB.\n";
-            encode_and_solve_abw_problems_from_ub();
-            break;
-        case bin_search:
-            std::cout << "c Iterative strategy: binary search between LB and UB.\n";
-            encode_and_solve_abw_problems_bin_search();
-            break;
         default:
             std::cerr << "c Unrecognized iterative strategy " << iterative_strategy << ".\n";
             return;
@@ -65,16 +48,6 @@ namespace SATABP
         int w_from, w_to;
         setup_bounds(w_from, w_to);
         encode_and_solve_abw_problems(w_from, +1, w_to + 1);
-    };
-
-    void AntibandwidthEncoder::encode_and_solve_abw_problems_from_ub()
-    {
-        std::cerr << "e Iterative strategy UB has not yet implemented.\n";
-    };
-
-    void AntibandwidthEncoder::encode_and_solve_abw_problems_bin_search()
-    {
-        std::cerr << "e Iterative strategy bin has not yet implemented.\n";
     };
 
     std::vector<int> AntibandwidthEncoder::get_child_pids(int ppid)
@@ -212,8 +185,7 @@ namespace SATABP
                 sampler_count++;
                 if (sampler_count >= report_rate)
                 {
-                    std::cout << "c [Lim] Sampler:\t" << "Memory: " << consumed_memory << " MB\tReal time: "
-                              << consumed_real_time << "s\tElapsed time: " << consumed_elapsed_time << "s\n";
+                    // std::cout << "c [Lim] Sampler:\t" << "Memory: " << consumed_memory << " MB\tReal time: " << consumed_real_time << "s\tElapsed time: " << consumed_elapsed_time << "s\n";
                     sampler_count = 0;
                 }
                 usleep(sample_rate);
@@ -242,6 +214,7 @@ namespace SATABP
         }
         else if (pid == 0)
         {
+            prctl(PR_SET_PDEATHSIG, SIGTERM);
             std::cout << "c [w = " << width << "] Start task in PID: " << getpid() << ".\n";
 
             // Child process: perform the task
@@ -260,7 +233,7 @@ namespace SATABP
     int AntibandwidthEncoder::do_abp_pid_task(int width)
     {
         // Dynamically allocate and use ABPEncoder in child process
-        ABPEncoder *abp_enc = new ABPEncoder(symmetry_break_strategy, graph, width);
+        ABPEncoder *abp_enc = new ABPEncoder(symmetry_break_strategy, graph, width, enc_choice);
         int result = abp_enc->encode_and_solve_abp();
 
         std::cout << "c [w = " << width << "] Result: " << result << "\n";
@@ -274,6 +247,7 @@ namespace SATABP
 
     void AntibandwidthEncoder::encode_and_solve_abw_problems(int start_w, int step, int stop_w)
     {
+        fflush(stdout);
         start_time = std::chrono::high_resolution_clock::now();
         create_limit_pid();
 
@@ -354,8 +328,10 @@ namespace SATABP
                         }
 
                         abp_pids.erase(it);
-                        if (abp_pids.empty() && kill(lim_pid, 0) == 0)
+                        if (abp_pids.empty() && kill(lim_pid, 0) == 0
+                            && (current_width >= stop_w || current_width >= min_width_UNSAT))
                         {
+                            std::cout << "c All ABP tasks are done. Terminating limit monitor process " << lim_pid << ".\n";
                             kill(lim_pid, SIGTERM);
                         }
                         break;
@@ -371,7 +347,8 @@ namespace SATABP
                     {
                         std::cout << "c Child pid " << it->first << " - " << it->second << " terminated by signal " << WTERMSIG(status) << "\n";
                         abp_pids.erase(it);
-                        if (abp_pids.empty() && kill(lim_pid, 0) == 0)
+                        if (abp_pids.empty() && kill(lim_pid, 0) == 0
+                            && (current_width >= stop_w || current_width >= min_width_UNSAT))
                         {
                             kill(lim_pid, SIGTERM);
                         }
@@ -387,7 +364,8 @@ namespace SATABP
                     {
                         std::cerr << "e Child pid " << it->first << " - " << it->second << " stopped or otherwise terminated.\n";
                         abp_pids.erase(it);
-                        if (abp_pids.empty() && kill(lim_pid, 0) == 0)
+                        if (abp_pids.empty() && kill(lim_pid, 0) == 0
+                            && (current_width >= stop_w || current_width >= min_width_UNSAT))
                         {
                             kill(lim_pid, SIGTERM);
                         }
@@ -423,6 +401,7 @@ namespace SATABP
             // std::cout << log_saved_child_pids;
 
             if (!limit_violated){
+                fflush(stdout);
                 while (int(abp_pids.size()) < process_count && current_width < stop_w && current_width < min_width_UNSAT)
                 {
                     create_abp_pid(current_width);
@@ -432,13 +411,21 @@ namespace SATABP
             
         }
         std::cout << "c All children have completed their tasks or were terminated." << std::endl;
+        
+
+        end_time = std::chrono::high_resolution_clock::now();
+        auto encode_duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+
+        std::cout << "r\n";
+        std::cout << "r Final results: \n";
+        std::cout << "r Max width SAT:  \t" << (max_width_SAT == std::numeric_limits<int>::min() ? "-" : std::to_string(max_width_SAT)) << "\n";
+        std::cout << "r Min width UNSAT:\t" << (min_width_UNSAT == std::numeric_limits<int>::max() ? "-" : std::to_string(min_width_UNSAT)) << "\n";
+        std::cout << "r Total real time: " << encode_duration << " ms\n";
+        std::cout << "r Total memory consumed " << *max_consumed_memory << " MB\n";
+        std::cout << "r\n";
+        std::cout << "r\n";    
     };
 
-    void AntibandwidthEncoder::encode_and_print_abw_problem(int w)
-    {
-        w = w;
-        std::cerr << "e Encode and print ABP have not yet implemented.\n";
-    };
 
     void AntibandwidthEncoder::setup_bounds(int &w_from, int &w_to)
     {

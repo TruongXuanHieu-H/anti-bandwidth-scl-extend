@@ -1,0 +1,101 @@
+c SCLEncoder 1.0.
+c Real time limit is set to 1800.
+c Memory limit is set to 30000.
+c Iterative strategy: from LB to UB.
+c LB-w = 32 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 40 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c [w = 32] Start task in PID: 72032.
+c [w = 32] Antibandwidth problem with w = 32 (J-nos4.mtx.rnd):
+c [w = 32] Initializing CaDiCaL (version 2.2.1).
+c [w = 32] Configuring CaDiCaL as --sat (1).
+c [w = 32] Initializing a SCL encoder with n = 100.
+c [w = 32] Encoding starts with w = 32:
+c [w = 32] Encoding duration: 0s
+c [w = 32] Number of clauses: 155399
+c [w = 32] Number of irredundant clauses: 154388
+c [w = 32] Number of variables: 29200
+c [w = 32] SAT Solving starts:
+c [w = 32] Solving duration: 5441 ms
+c [w = 32] Answer: 
+s [w = 32] SAT (w = 32)
+c [w = 32] Solution check w = 32.
+c [w = 32] Result: 10
+c Max width SAT is set to 32
+c [w = 33] Start task in PID: 72035.
+c [w = 33] Antibandwidth problem with w = 33 (J-nos4.mtx.rnd):
+c [w = 33] Initializing CaDiCaL (version 2.2.1).
+c [w = 33] Configuring CaDiCaL as --sat (1).
+c [w = 33] Initializing a SCL encoder with n = 100.
+c [w = 33] Encoding starts with w = 33:
+c [w = 33] Encoding duration: 0s
+c [w = 33] Number of clauses: 154911
+c [w = 33] Number of irredundant clauses: 153936
+c [w = 33] Number of variables: 29400
+c [w = 33] SAT Solving starts:
+c [w = 33] Solving duration: 44309 ms
+c [w = 33] Answer: 
+s [w = 33] SAT (w = 33)
+c [w = 33] Solution check w = 33.
+c [w = 33] Result: 10
+c Max width SAT is set to 33
+c [w = 34] Start task in PID: 72047.
+c [w = 34] Antibandwidth problem with w = 34 (J-nos4.mtx.rnd):
+c [w = 34] Initializing CaDiCaL (version 2.2.1).
+c [w = 34] Configuring CaDiCaL as --sat (1).
+c [w = 34] Initializing a SCL encoder with n = 100.
+c [w = 34] Encoding starts with w = 34:
+c [w = 34] Encoding duration: 0s
+c [w = 34] Number of clauses: 145464
+c [w = 34] Number of irredundant clauses: 144573
+c [w = 34] Number of variables: 26500
+c [w = 34] SAT Solving starts:
+c [w = 34] Solving duration: 24977 ms
+c [w = 34] Answer: 
+s [w = 34] SAT (w = 34)
+c [w = 34] Solution check w = 34.
+c [w = 34] Result: 10
+c Max width SAT is set to 34
+c [w = 35] Start task in PID: 72056.
+c [w = 35] Antibandwidth problem with w = 35 (J-nos4.mtx.rnd):
+c [w = 35] Initializing CaDiCaL (version 2.2.1).
+c [w = 35] Configuring CaDiCaL as --sat (1).
+c [w = 35] Initializing a SCL encoder with n = 100.
+c [w = 35] Encoding starts with w = 35:
+c [w = 35] Encoding duration: 0s
+c [w = 35] Number of clauses: 144676
+c [w = 35] Number of irredundant clauses: 143821
+c [w = 35] Number of variables: 26600
+c [w = 35] SAT Solving starts:
+c [w = 35] Solving duration: 595324 ms
+c [w = 35] Answer: 
+s [w = 35] SAT (w = 35)
+c [w = 35] Solution check w = 35.
+c [w = 35] Result: 10
+c Max width SAT is set to 35
+c [w = 36] Start task in PID: 72242.
+c [w = 36] Antibandwidth problem with w = 36 (J-nos4.mtx.rnd):
+c [w = 36] Initializing CaDiCaL (version 2.2.1).
+c [w = 36] Configuring CaDiCaL as --sat (1).
+c [w = 36] Initializing a SCL encoder with n = 100.
+c [w = 36] Encoding starts with w = 36:
+c [w = 36] Encoding duration: 0s
+c [w = 36] Number of clauses: 143888
+c [w = 36] Number of irredundant clauses: 143069
+c [w = 36] Number of variables: 26700
+c [w = 36] SAT Solving starts:
+c [w = 36] Solving duration: 115938 ms
+c [w = 36] Answer: 
+s [w = 36] UNSAT (w = 36)
+c [w = 36] Result: 20
+c Min width UNSAT is set to 36
+c All ABP tasks are done. Terminating limit monitor process 72031.
+c All children have completed their tasks or were terminated.
+c Signal interruption.
+r
+r Final results: 
+r Max width SAT:  	35
+r Min width UNSAT:	36
+r Total real time: 786292 ms
+r Total memory consumed 115.6 MB
+r
+r

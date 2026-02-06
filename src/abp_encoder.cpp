@@ -7,11 +7,15 @@
 #include "sequential_encoder.h"
 #include "product_encoder.h"
 #include "duplex_encoder.h"
-#include "ladder_encoder.h"
+#include "scl_encoder.h"
 
 namespace SATABP
 {
-    ABPEncoder::ABPEncoder(std::string symmetry_break_strategy, Graph *graph, int width) : symmetry_break_strategy(symmetry_break_strategy), width(width), graph(graph) {};
+    ABPEncoder::ABPEncoder(std::string symmetry_break_strategy, Graph *graph, int width, EncoderStrategy enc_strategy) 
+        : symmetry_break_strategy(symmetry_break_strategy), width(width), graph(graph), enc_strategy(enc_strategy) 
+    {
+        
+    };
 
     ABPEncoder::~ABPEncoder() {};
 
@@ -46,6 +50,7 @@ namespace SATABP
 
         setup_for_solving();
         std::cout << "c " + get_signature() + " Encoding starts with w = " << width << ":" << std::endl;
+        std::cout << "c " + get_signature() + " Encode symmetry breaking with option: " << symmetry_break_strategy << "." << std::endl;
 
         auto t1 = std::chrono::high_resolution_clock::now();
         enc->encode_antibandwidth(width, graph->edges);
@@ -95,16 +100,6 @@ namespace SATABP
         return SAT_res;
     };
 
-    void ABPEncoder::encode_and_print_abp()
-    {
-        setup_for_print();
-
-        enc->encode_antibandwidth(width, graph->edges);
-        cc->print_clauses();
-
-        cleanup_print();
-    }
-
     int ABPEncoder::verify_solution()
     {
         std::vector<int> node_labels = std::vector<int>();
@@ -112,7 +107,7 @@ namespace SATABP
             return 0;
         int min_dist = graph->calculate_antibandwidth(node_labels);
 
-        std::cout << "c " + get_signature() + " Solution check = " << min_dist << "." << std::endl;
+        std::cout << "c " + get_signature() + " Solution check w = " << min_dist << "." << std::endl;
 
         return min_dist;
     }
@@ -157,24 +152,6 @@ namespace SATABP
         vh = nullptr;
         delete solver;
         solver = nullptr;
-    }
-
-    void ABPEncoder::setup_for_print()
-    {
-        vh = new VarHandler(1, graph->n);
-        cc = new ClauseVector(vh, split_limit);
-
-        setup_encoder();
-    }
-
-    void ABPEncoder::cleanup_print()
-    {
-        delete enc;
-        enc = nullptr;
-        delete cc;
-        cc = nullptr;
-        delete vh;
-        vh = nullptr;
     }
 
     void ABPEncoder::setup_cadical()
@@ -222,9 +199,9 @@ namespace SATABP
             enc = new ProductEncoder(graph, cc, vh);
             enc->symmetry_break_point = symmetry_break_strategy;
             break;
-        case ladder:
-            std::cout << "c " + get_signature() + " Initializing a Ladder encoder with n = " << graph->n << "." << std::endl;
-            enc = new LadderEncoder(graph, cc, vh);
+        case scl:
+            std::cout << "c " + get_signature() + " Initializing a SCL encoder with n = " << graph->n << "." << std::endl;
+            enc = new SCLEncoder(graph, cc, vh);
             enc->symmetry_break_point = symmetry_break_strategy;
             break;
         default:

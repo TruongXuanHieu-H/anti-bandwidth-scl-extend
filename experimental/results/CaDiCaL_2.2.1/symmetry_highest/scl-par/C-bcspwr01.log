@@ -1,0 +1,51 @@
+c SCLEncoder 1.0.
+c Real time limit is set to 1800.
+c Memory limit is set to 30000.
+c Iterative strategy: from LB to UB.
+c LB-w = 16 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 17 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c [w = 16] Start task in PID: 136856.
+c [w = 16] Antibandwidth problem with w = 16 (C-bcspwr01.mtx.rnd):
+c [w = 16] Initializing CaDiCaL (version 2.2.1).
+c [w = 16] Configuring CaDiCaL as --sat (1).
+c [w = 16] Initializing a SCL encoder with n = 39.
+c [w = 16] Encoding starts with w = 16:
+c [w = 17] Start task in PID: 136857.
+c [w = 17] Antibandwidth problem with w = 17 (C-bcspwr01.mtx.rnd):
+c [w = 17] Initializing CaDiCaL (version 2.2.1).
+c [w = 17] Configuring CaDiCaL as --sat (1).
+c [w = 17] Initializing a SCL encoder with n = 39.
+c [w = 17] Encoding starts with w = 17:
+c [w = 16] Encoding duration: 0s
+c [w = 16] Number of clauses: 16756
+c [w = 16] Number of irredundant clauses: 16529
+c [w = 16] Number of variables: 4329
+c [w = 16] SAT Solving starts:
+c [w = 17] Encoding duration: 0s
+c [w = 17] Number of clauses: 16650
+c [w = 17] Number of irredundant clauses: 16453
+c [w = 17] Number of variables: 4368
+c [w = 17] SAT Solving starts:
+c [w = 16] Solving duration: 54 ms
+c [w = 16] Answer: 
+s [w = 16] SAT (w = 16)
+c [w = 16] Solution check w = 16.
+c [w = 16] Result: 10
+c Max width SAT is set to 16
+c [w = 17] Solving duration: 1222 ms
+c [w = 17] Answer: 
+s [w = 17] SAT (w = 17)
+c [w = 17] Solution check w = 17.
+c [w = 17] Result: 10
+c Max width SAT is set to 17
+c All ABP tasks are done. Terminating limit monitor process 136855.
+c All children have completed their tasks or were terminated.
+c Signal interruption.
+r
+r Final results: 
+r Max width SAT:  	17
+r Min width UNSAT:	-
+r Total real time: 1231 ms
+r Total memory consumed 14.2 MB
+r
+r

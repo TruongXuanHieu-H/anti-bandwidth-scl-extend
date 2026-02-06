@@ -1,0 +1,45 @@
+c SCLEncoder 1.0.
+c Real time limit is set to 1800.
+c Memory limit is set to 30000.
+c Iterative strategy: from LB to UB.
+c LB-w = 103 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 150 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c [w = 103] Start task in PID: 148802.
+c [w = 103] Antibandwidth problem with w = 103 (T-dwt__592.mtx.rnd):
+c [w = 103] Initializing CaDiCaL (version 2.2.1).
+c [w = 103] Configuring CaDiCaL as --sat (1).
+c [w = 103] Initializing a SCL encoder with n = 592.
+c [w = 103] Encoding starts with w = 103:
+c [w = 103] Encoding duration: 2s
+c [w = 103] Number of clauses: 7579688
+c [w = 103] Number of irredundant clauses: 7564217
+c [w = 103] Number of variables: 992192
+c [w = 103] SAT Solving starts:
+c [w = 103] Solving duration: 1279427 ms
+c [w = 103] Answer: 
+s [w = 103] SAT (w = 103)
+c [w = 103] Solution check w = 103.
+c [w = 103] Result: 10
+c Max width SAT is set to 103
+c [w = 104] Start task in PID: 149446.
+c [w = 104] Antibandwidth problem with w = 104 (T-dwt__592.mtx.rnd):
+c [w = 104] Initializing CaDiCaL (version 2.2.1).
+c [w = 104] Configuring CaDiCaL as --sat (1).
+c [w = 104] Initializing a SCL encoder with n = 592.
+c [w = 104] Encoding starts with w = 104:
+c [w = 104] Encoding duration: 2s
+c [w = 104] Number of clauses: 7577176
+c [w = 104] Number of irredundant clauses: 7561813
+c [w = 104] Number of variables: 994560
+c [w = 104] SAT Solving starts:
+c [Lim] End with result: 65024
+c All children have completed their tasks or were terminated.
+c Signal interruption.
+r
+r Final results: 
+r Max width SAT:  	103
+r Min width UNSAT:	-
+r Total real time: 1805305 ms
+r Total memory consumed 2078 MB
+r
+r

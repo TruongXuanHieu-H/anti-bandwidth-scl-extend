@@ -25,8 +25,6 @@ namespace SATABP
 
     void encode_antibandwidth(unsigned w, const std::vector<std::pair<int, int>> &node_pairs);
 
-    void print_clauses() const;
-    void print_dimacs() const;
     int size() const;
     int vars_size() const;
 

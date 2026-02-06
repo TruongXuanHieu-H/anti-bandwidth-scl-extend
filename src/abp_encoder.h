@@ -16,10 +16,8 @@ namespace SATABP
     class ABPEncoder
     {
     public:
-        ABPEncoder(std::string symmetry_break_strategy, Graph *graph, int width);
+        ABPEncoder(std::string symmetry_break_strategy, Graph *graph, int width, EncoderStrategy enc_strategy);
         virtual ~ABPEncoder();
-
-        EncoderStrategy enc_strategy = ladder; // Default strategy
 
         // Solver configurations
         bool force_phase = false;
@@ -31,13 +29,13 @@ namespace SATABP
         std::string symmetry_break_strategy = "n";
 
         int encode_and_solve_abp();
-        void encode_and_print_abp();
 
     private:
         int SAT_res = 0;
         int width = 0;
 
         Graph *graph;
+        EncoderStrategy enc_strategy = scl; // Default strategy
         VarHandler *vh;
         Encoder *enc;
         ClauseContainer *cc;
@@ -47,8 +45,6 @@ namespace SATABP
         bool extract_node_labels(std::vector<int> &node_labels);
         void setup_for_solving();
         void cleanup_solving();
-        void setup_for_print();
-        void cleanup_print();
 
         void setup_cadical();
         void setup_encoder();

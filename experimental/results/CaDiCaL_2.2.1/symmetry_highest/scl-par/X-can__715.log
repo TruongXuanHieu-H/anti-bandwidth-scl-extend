@@ -1,0 +1,109 @@
+c SCLEncoder 1.0.
+c Real time limit is set to 1800.
+c Memory limit is set to 30000.
+c Iterative strategy: from LB to UB.
+c LB-w = 112 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 142 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c [w = 112] Start task in PID: 143269.
+c [w = 112] Antibandwidth problem with w = 112 (X-can__715.mtx.rnd):
+c [w = 113] Start task in PID: 143270.
+c [w = 113] Antibandwidth problem with w = 113 (X-can__715.mtx.rnd):
+c [w = 112] Initializing CaDiCaL (version 2.2.1).
+c [w = 112] Configuring CaDiCaL as --sat (1).
+c [w = 114] Start task in PID: 143271.
+c [w = 114] Antibandwidth problem with w = 114 (X-can__715.mtx.rnd):
+c [w = 112] Initializing a SCL encoder with n = 715.
+c [w = 112] Encoding starts with w = 112:
+c [w = 113] Initializing CaDiCaL (version 2.2.1).
+c [w = 113] Configuring CaDiCaL as --sat (1).
+c [w = 113] Initializing a SCL encoder with n = 715.
+c [w = 113] Encoding starts with w = 113:
+c [w = 114] Initializing CaDiCaL (version 2.2.1).
+c [w = 115] Start task in PID: 143272.
+c [w = 115] Antibandwidth problem with w = 115 (X-can__715.mtx.rnd):
+c [w = 114] Configuring CaDiCaL as --sat (1).
+c [w = 114] Initializing a SCL encoder with n = 715.
+c [w = 114] Encoding starts with w = 114:
+c [w = 115] Initializing CaDiCaL (version 2.2.1).
+c [w = 115] Configuring CaDiCaL as --sat (1).
+c [w = 115] Initializing a SCL encoder with n = 715.
+c [w = 115] Encoding starts with w = 115:
+c [w = 115] Encoding duration: 4s
+c [w = 115] Number of clauses: 11919237
+c [w = 115] Number of irredundant clauses: 11813661
+c [w = 115] Number of variables: 1495780
+c [w = 115] SAT Solving starts:
+c [w = 113] Encoding duration: 4s
+c [w = 113] Number of clauses: 11923017
+c [w = 113] Number of irredundant clauses: 11815369
+c [w = 113] Number of variables: 1488630
+c [w = 113] SAT Solving starts:
+c [w = 114] Encoding duration: 4s
+c [w = 114] Number of clauses: 11921127
+c [w = 114] Number of irredundant clauses: 11814515
+c [w = 114] Number of variables: 1492205
+c [w = 114] SAT Solving starts:
+c [w = 112] Encoding duration: 4s
+c [w = 112] Number of clauses: 11924907
+c [w = 112] Number of irredundant clauses: 11816223
+c [w = 112] Number of variables: 1485055
+c [w = 112] SAT Solving starts:
+c [w = 114] Solving duration: 843141 ms
+c [w = 114] Answer: 
+s [w = 114] SAT (w = 114)
+c [w = 114] Solution check w = 114.
+c [w = 114] Result: 10
+c Max width SAT is set to 114
+c Kill lower pid 113.
+c Kill lower pid 112.
+c Signal interruption.
+c Signal interruption.
+c [w = 116] Start task in PID: 143557.
+c [w = 116] Antibandwidth problem with w = 116 (X-can__715.mtx.rnd):
+c [w = 116] Initializing CaDiCaL (version 2.2.1).
+c [w = 116] Configuring CaDiCaL as --sat (1).
+c [w = 116] Initializing a SCL encoder with n = 715.
+c [w = 116] Encoding starts with w = 116:
+c Child pid 112 - 143269 terminated by signal 15
+c [w = 117] Start task in PID: 143558.
+c [w = 117] Antibandwidth problem with w = 117 (X-can__715.mtx.rnd):
+c [w = 117] Initializing CaDiCaL (version 2.2.1).
+c [w = 117] Configuring CaDiCaL as --sat (1).
+c [w = 117] Initializing a SCL encoder with n = 715.
+c [w = 117] Encoding starts with w = 117:
+c Child pid 113 - 143270 terminated by signal 15
+c [w = 118] Start task in PID: 143559.
+c [w = 118] Antibandwidth problem with w = 118 (X-can__715.mtx.rnd):
+c [w = 118] Initializing CaDiCaL (version 2.2.1).
+c [w = 118] Configuring CaDiCaL as --sat (1).
+c [w = 118] Initializing a SCL encoder with n = 715.
+c [w = 118] Encoding starts with w = 118:
+c [w = 116] Encoding duration: 4s
+c [w = 116] Number of clauses: 11917347
+c [w = 116] Number of irredundant clauses: 11812807
+c [w = 116] Number of variables: 1499355
+c [w = 116] SAT Solving starts:
+c [w = 117] Encoding duration: 4s
+c [w = 117] Number of clauses: 11915457
+c [w = 117] Number of irredundant clauses: 11811953
+c [w = 117] Number of variables: 1502930
+c [w = 117] SAT Solving starts:
+c [w = 118] Encoding duration: 4s
+c [w = 118] Number of clauses: 11913567
+c [w = 118] Number of irredundant clauses: 11811099
+c [w = 118] Number of variables: 1506505
+c [w = 118] SAT Solving starts:
+c Signal interruption.
+c [Lim] End with result: 65024
+c All children have completed their tasks or were terminated.
+c Signal interruption.
+c Signal interruption.
+c Signal interruption.
+r
+r Final results: 
+r Max width SAT:  	114
+r Min width UNSAT:	-
+r Total real time: 1809283 ms
+r Total memory consumed 11488 MB
+r
+r

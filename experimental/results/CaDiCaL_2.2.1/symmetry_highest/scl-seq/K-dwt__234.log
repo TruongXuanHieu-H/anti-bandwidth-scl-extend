@@ -1,0 +1,113 @@
+c SCLEncoder 1.0.
+c Real time limit is set to 1800.
+c Memory limit is set to 30000.
+c Iterative strategy: from LB to UB.
+c LB-w = 46 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 58 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c [w = 46] Start task in PID: 144699.
+c [w = 46] Antibandwidth problem with w = 46 (K-dwt__234.mtx.rnd):
+c [w = 46] Initializing CaDiCaL (version 2.2.1).
+c [w = 46] Configuring CaDiCaL as --sat (1).
+c [w = 46] Initializing a SCL encoder with n = 117.
+c [w = 46] Encoding starts with w = 46:
+c [w = 46] Encoding duration: 0s
+c [w = 46] Number of clauses: 157594
+c [w = 46] Number of irredundant clauses: 156559
+c [w = 46] Number of variables: 36855
+c [w = 46] SAT Solving starts:
+c [w = 46] Solving duration: 360310 ms
+c [w = 46] Answer: 
+s [w = 46] SAT (w = 46)
+c [w = 46] Solution check w = 46.
+c [w = 46] Result: 10
+c Max width SAT is set to 46
+c [w = 47] Start task in PID: 144886.
+c [w = 47] Antibandwidth problem with w = 47 (K-dwt__234.mtx.rnd):
+c [w = 47] Initializing CaDiCaL (version 2.2.1).
+c [w = 47] Configuring CaDiCaL as --sat (1).
+c [w = 47] Initializing a SCL encoder with n = 117.
+c [w = 47] Encoding starts with w = 47:
+c [w = 47] Encoding duration: 0s
+c [w = 47] Number of clauses: 157180
+c [w = 47] Number of irredundant clauses: 156199
+c [w = 47] Number of variables: 36972
+c [w = 47] SAT Solving starts:
+c [w = 47] Solving duration: 53040 ms
+c [w = 47] Answer: 
+s [w = 47] SAT (w = 47)
+c [w = 47] Solution check w = 47.
+c [w = 47] Result: 10
+c Max width SAT is set to 47
+c [w = 48] Start task in PID: 144909.
+c [w = 48] Antibandwidth problem with w = 48 (K-dwt__234.mtx.rnd):
+c [w = 48] Initializing CaDiCaL (version 2.2.1).
+c [w = 48] Configuring CaDiCaL as --sat (1).
+c [w = 48] Initializing a SCL encoder with n = 117.
+c [w = 48] Encoding starts with w = 48:
+c [w = 48] Encoding duration: 0s
+c [w = 48] Number of clauses: 156766
+c [w = 48] Number of irredundant clauses: 155839
+c [w = 48] Number of variables: 37089
+c [w = 48] SAT Solving starts:
+c [w = 48] Solving duration: 3444 ms
+c [w = 48] Answer: 
+s [w = 48] SAT (w = 48)
+c [w = 48] Solution check w = 48.
+c [w = 48] Result: 10
+c Max width SAT is set to 48
+c [w = 49] Start task in PID: 144911.
+c [w = 49] Antibandwidth problem with w = 49 (K-dwt__234.mtx.rnd):
+c [w = 49] Initializing CaDiCaL (version 2.2.1).
+c [w = 49] Configuring CaDiCaL as --sat (1).
+c [w = 49] Initializing a SCL encoder with n = 117.
+c [w = 49] Encoding starts with w = 49:
+c [w = 49] Encoding duration: 0s
+c [w = 49] Number of clauses: 156352
+c [w = 49] Number of irredundant clauses: 155479
+c [w = 49] Number of variables: 37206
+c [w = 49] SAT Solving starts:
+c [w = 49] Solving duration: 96673 ms
+c [w = 49] Answer: 
+s [w = 49] SAT (w = 49)
+c [w = 49] Solution check w = 49.
+c [w = 49] Result: 10
+c Max width SAT is set to 49
+c [w = 50] Start task in PID: 144940.
+c [w = 50] Antibandwidth problem with w = 50 (K-dwt__234.mtx.rnd):
+c [w = 50] Initializing CaDiCaL (version 2.2.1).
+c [w = 50] Configuring CaDiCaL as --sat (1).
+c [w = 50] Initializing a SCL encoder with n = 117.
+c [w = 50] Encoding starts with w = 50:
+c [w = 50] Encoding duration: 0s
+c [w = 50] Number of clauses: 155938
+c [w = 50] Number of irredundant clauses: 155119
+c [w = 50] Number of variables: 37323
+c [w = 50] SAT Solving starts:
+c [w = 50] Solving duration: 298270 ms
+c [w = 50] Answer: 
+s [w = 50] SAT (w = 50)
+c [w = 50] Solution check w = 50.
+c [w = 50] Result: 10
+c Max width SAT is set to 50
+c [w = 51] Start task in PID: 145030.
+c [w = 51] Antibandwidth problem with w = 51 (K-dwt__234.mtx.rnd):
+c [w = 51] Initializing CaDiCaL (version 2.2.1).
+c [w = 51] Configuring CaDiCaL as --sat (1).
+c [w = 51] Initializing a SCL encoder with n = 117.
+c [w = 51] Encoding starts with w = 51:
+c [w = 51] Encoding duration: 0s
+c [w = 51] Number of clauses: 155524
+c [w = 51] Number of irredundant clauses: 154759
+c [w = 51] Number of variables: 37440
+c [w = 51] SAT Solving starts:
+c [Lim] End with result: 65024
+c All children have completed their tasks or were terminated.
+c Signal interruption.
+r
+r Final results: 
+r Max width SAT:  	50
+r Min width UNSAT:	-
+r Total real time: 1805355 ms
+r Total memory consumed 136.1 MB
+r
+r
