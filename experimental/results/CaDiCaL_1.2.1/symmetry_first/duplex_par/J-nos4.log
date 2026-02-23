@@ -1,0 +1,147 @@
+c SCLEncoder 1.0.
+c Real time limit is set to 1800.
+c Memory limit is set to 30000.
+c Iterative strategy: from LB to UB.
+c LB-w = 32 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 40 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c [w = 32] Start task in PID: 5487.
+c [w = 32] Antibandwidth problem with w = 32 (J-nos4.mtx.rnd):
+c [w = 32] Initializing CaDiCaL (version 1.2.1).
+c [w = 33] Start task in PID: 5488.
+c [w = 33] Antibandwidth problem with w = 33 (J-nos4.mtx.rnd):
+c [w = 32] Configuring CaDiCaL as --sat (1).
+c [w = 32] Initializing a Duplex encoder with n = 100.
+c [w = 32] Encoding starts with w = 32:
+c [w = 32] Encode symmetry breaking with option: f.
+c [w = 33] Initializing CaDiCaL (version 1.2.1).
+c [w = 33] Configuring CaDiCaL as --sat (1).
+c [w = 33] Initializing a Duplex encoder with n = 100.
+c [w = 34] Start task in PID: 5489.
+c [w = 34] Antibandwidth problem with w = 34 (J-nos4.mtx.rnd):
+c [w = 33] Encoding starts with w = 33:
+c [w = 33] Encode symmetry breaking with option: f.
+c [w = 34] Initializing CaDiCaL (version 1.2.1).
+c [w = 34] Configuring CaDiCaL as --sat (1).
+c [w = 34] Initializing a Duplex encoder with n = 100.
+c [w = 34] Encoding starts with w = 34:
+c [w = 34] Encode symmetry breaking with option: f.
+c [w = 35] Start task in PID: 5490.
+c [w = 35] Antibandwidth problem with w = 35 (J-nos4.mtx.rnd):
+c [w = 35] Initializing CaDiCaL (version 1.2.1).
+c [w = 35] Configuring CaDiCaL as --sat (1).
+c [w = 35] Initializing a Duplex encoder with n = 100.
+c [w = 35] Encoding starts with w = 35:
+c [w = 35] Encode symmetry breaking with option: f.
+c [w = 35] Encoding duration: 0s
+c [w = 35] Number of clauses: 174623
+c [w = 35] Number of irredundant clauses: 160449
+c [w = 35] Number of variables: 39800
+c [w = 35] SAT Solving starts:
+c [w = 34] Encoding duration: 0s
+c [w = 34] Number of clauses: 175411
+c [w = 34] Number of irredundant clauses: 161003
+c [w = 34] Number of variables: 39600
+c [w = 34] SAT Solving starts:
+c [w = 33] Encoding duration: 0s
+c [w = 33] Number of clauses: 191158
+c [w = 33] Number of irredundant clauses: 176706
+c [w = 33] Number of variables: 45600
+c [w = 33] SAT Solving starts:
+c [w = 32] Encoding duration: 0s
+c [w = 32] Number of clauses: 191546
+c [w = 32] Number of irredundant clauses: 176664
+c [w = 32] Number of variables: 45200
+c [w = 32] SAT Solving starts:
+c [w = 32] Solving duration: 9670 ms
+c [w = 32] Answer: 
+s [w = 32] SAT (w = 32)
+c [w = 32] Solution check w = 32.
+c [w = 32] Result: 10
+c Max width SAT is set to 32
+c [w = 36] Start task in PID: 5495.
+c [w = 36] Antibandwidth problem with w = 36 (J-nos4.mtx.rnd):
+c [w = 36] Initializing CaDiCaL (version 1.2.1).
+c [w = 36] Configuring CaDiCaL as --sat (1).
+c [w = 36] Initializing a Duplex encoder with n = 100.
+c [w = 36] Encoding starts with w = 36:
+c [w = 36] Encode symmetry breaking with option: f.
+c [w = 36] Encoding duration: 0s
+c [w = 36] Number of clauses: 173835
+c [w = 36] Number of irredundant clauses: 159895
+c [w = 36] Number of variables: 40000
+c [w = 36] SAT Solving starts:
+c [w = 35] Solving duration: 30610 ms
+c [w = 35] Answer: 
+s [w = 35] SAT (w = 35)
+c [w = 35] Solution check w = 35.
+c [w = 35] Result: 10
+c Max width SAT is set to 35
+c Kill lower pid 34.
+c Kill lower pid 33.
+c Signal interruption.
+c Signal interruption.
+c [w = 37] Start task in PID: 5498.
+c [w = 37] Antibandwidth problem with w = 37 (J-nos4.mtx.rnd):
+c [w = 37] Initializing CaDiCaL (version 1.2.1).
+c [w = 37] Configuring CaDiCaL as --sat (1).
+c [w = 37] Initializing a Duplex encoder with n = 100.
+c [w = 37] Encoding starts with w = 37:
+c [w = 37] Encode symmetry breaking with option: f.
+c Child pid 33 - 5488 terminated by signal 15
+c Child pid 34 - 5489 terminated by signal 15
+c [w = 38] Start task in PID: 5499.
+c [w = 38] Antibandwidth problem with w = 38 (J-nos4.mtx.rnd):
+c [w = 38] Initializing CaDiCaL (version 1.2.1).
+c [w = 38] Configuring CaDiCaL as --sat (1).
+c [w = 38] Initializing a Duplex encoder with n = 100.
+c [w = 38] Encoding starts with w = 38:
+c [w = 38] Encode symmetry breaking with option: f.
+c [w = 39] Start task in PID: 5500.
+c [w = 39] Antibandwidth problem with w = 39 (J-nos4.mtx.rnd):
+c [w = 39] Initializing CaDiCaL (version 1.2.1).
+c [w = 39] Configuring CaDiCaL as --sat (1).
+c [w = 39] Initializing a Duplex encoder with n = 100.
+c [w = 39] Encoding starts with w = 39:
+c [w = 39] Encode symmetry breaking with option: f.
+c [w = 37] Encoding duration: 0s
+c [w = 37] Number of clauses: 173047
+c [w = 37] Number of irredundant clauses: 159341
+c [w = 37] Number of variables: 40200
+c [w = 37] SAT Solving starts:
+c [w = 39] Encoding duration: 0s
+c [w = 39] Number of clauses: 171471
+c [w = 39] Number of irredundant clauses: 158233
+c [w = 39] Number of variables: 40600
+c [w = 39] SAT Solving starts:
+c [w = 38] Encoding duration: 0s
+c [w = 38] Number of clauses: 172259
+c [w = 38] Number of irredundant clauses: 158787
+c [w = 38] Number of variables: 40400
+c [w = 38] SAT Solving starts:
+c [w = 37] Solving duration: 35324 ms
+c [w = 37] Answer: 
+s [w = 37] UNSAT (w = 37)
+c [w = 37] Result: 20
+c Min width UNSAT is set to 37
+c Kill higher pid 39.
+c Kill higher pid 38.
+c Signal interruption.
+c Signal interruption.
+c Child pid 38 - 5499 terminated by signal 15
+c Child pid 39 - 5500 terminated by signal 15
+c [w = 36] Solving duration: 411662 ms
+c [w = 36] Answer: 
+s [w = 36] UNSAT (w = 36)
+c [w = 36] Result: 20
+c Min width UNSAT is set to 36
+c All ABP tasks are done. Terminating limit monitor process 5486.
+c All children have completed their tasks or were terminated.
+c Signal interruption.
+r
+r Final results: 
+r Max width SAT:  	35
+r Min width UNSAT:	36
+r Total real time: 421550 ms
+r Total memory consumed 319.2 MB
+r
+r

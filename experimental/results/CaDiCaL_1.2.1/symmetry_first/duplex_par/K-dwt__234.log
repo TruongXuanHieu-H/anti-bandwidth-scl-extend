@@ -1,0 +1,149 @@
+c SCLEncoder 1.0.
+c Real time limit is set to 1800.
+c Memory limit is set to 30000.
+c Iterative strategy: from LB to UB.
+c LB-w = 46 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 58 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c [w = 46] Start task in PID: 5570.
+c [w = 46] Antibandwidth problem with w = 46 (K-dwt__234.mtx.rnd):
+c [w = 47] Start task in PID: 5571.
+c [w = 47] Antibandwidth problem with w = 47 (K-dwt__234.mtx.rnd):
+c [w = 46] Initializing CaDiCaL (version 1.2.1).
+c [w = 46] Configuring CaDiCaL as --sat (1).
+c [w = 46] Initializing a Duplex encoder with n = 117.
+c [w = 46] Encoding starts with w = 46:
+c [w = 46] Encode symmetry breaking with option: f.
+c [w = 47] Initializing CaDiCaL (version 1.2.1).
+c [w = 47] Configuring CaDiCaL as --sat (1).
+c [w = 47] Initializing a Duplex encoder with n = 117.
+c [w = 48] Start task in PID: 5572.
+c [w = 48] Antibandwidth problem with w = 48 (K-dwt__234.mtx.rnd):
+c [w = 47] Encoding starts with w = 47:
+c [w = 47] Encode symmetry breaking with option: f.
+c [w = 48] Initializing CaDiCaL (version 1.2.1).
+c [w = 49] Start task in PID: 5573.
+c [w = 49] Antibandwidth problem with w = 49 (K-dwt__234.mtx.rnd):
+c [w = 48] Configuring CaDiCaL as --sat (1).
+c [w = 48] Initializing a Duplex encoder with n = 117.
+c [w = 48] Encoding starts with w = 48:
+c [w = 48] Encode symmetry breaking with option: f.
+c [w = 49] Initializing CaDiCaL (version 1.2.1).
+c [w = 49] Configuring CaDiCaL as --sat (1).
+c [w = 49] Initializing a Duplex encoder with n = 117.
+c [w = 49] Encoding starts with w = 49:
+c [w = 49] Encode symmetry breaking with option: f.
+c [w = 48] Encoding duration: 0s
+c [w = 48] Number of clauses: 197644
+c [w = 48] Number of irredundant clauses: 180247
+c [w = 48] Number of variables: 56043
+c [w = 48] SAT Solving starts:
+c [w = 46] Encoding duration: 0s
+c [w = 46] Number of clauses: 198472
+c [w = 46] Number of irredundant clauses: 180515
+c [w = 46] Number of variables: 55575
+c [w = 46] SAT Solving starts:
+c [w = 49] Encoding duration: 0s
+c [w = 49] Number of clauses: 197230
+c [w = 49] Number of irredundant clauses: 180113
+c [w = 49] Number of variables: 56277
+c [w = 49] SAT Solving starts:
+c [w = 47] Encoding duration: 0s
+c [w = 47] Number of clauses: 198058
+c [w = 47] Number of irredundant clauses: 180381
+c [w = 47] Number of variables: 55809
+c [w = 47] SAT Solving starts:
+c [w = 49] Solving duration: 16478 ms
+c [w = 49] Answer: 
+s [w = 49] SAT (w = 49)
+c [w = 49] Solution check w = 49.
+c [w = 49] Result: 10
+c Signal interruption.
+c Signal interruption.
+c Signal interruption.
+c Max width SAT is set to 49
+c Kill lower pid 48.
+c Kill lower pid 47.
+c Kill lower pid 46.
+c [w = 50] Start task in PID: 5580.
+c [w = 50] Antibandwidth problem with w = 50 (K-dwt__234.mtx.rnd):
+c [w = 50] Initializing CaDiCaL (version 1.2.1).
+c [w = 50] Configuring CaDiCaL as --sat (1).
+c [w = 50] Initializing a Duplex encoder with n = 117.
+c [w = 50] Encoding starts with w = 50:
+c [w = 50] Encode symmetry breaking with option: f.
+c Child pid 46 - 5570 terminated by signal 15
+c [w = 51] Start task in PID: 5581.
+c [w = 51] Antibandwidth problem with w = 51 (K-dwt__234.mtx.rnd):
+c [w = 51] Initializing CaDiCaL (version 1.2.1).
+c [w = 51] Configuring CaDiCaL as --sat (1).
+c [w = 51] Initializing a Duplex encoder with n = 117.
+c [w = 51] Encoding starts with w = 51:
+c [w = 51] Encode symmetry breaking with option: f.
+c Child pid 48 - 5572 terminated by signal 15
+c [w = 52] Start task in PID: 5582.
+c [w = 52] Antibandwidth problem with w = 52 (K-dwt__234.mtx.rnd):
+c [w = 52] Initializing CaDiCaL (version 1.2.1).
+c [w = 52] Configuring CaDiCaL as --sat (1).
+c [w = 52] Initializing a Duplex encoder with n = 117.
+c [w = 52] Encoding starts with w = 52:
+c [w = 52] Encode symmetry breaking with option: f.
+c Child pid 47 - 5571 terminated by signal 15
+c [w = 53] Start task in PID: 5583.
+c [w = 53] Antibandwidth problem with w = 53 (K-dwt__234.mtx.rnd):
+c [w = 53] Initializing CaDiCaL (version 1.2.1).
+c [w = 53] Configuring CaDiCaL as --sat (1).
+c [w = 53] Initializing a Duplex encoder with n = 117.
+c [w = 53] Encoding starts with w = 53:
+c [w = 53] Encode symmetry breaking with option: f.
+c [w = 51] Encoding duration: 0s
+c [w = 51] Number of clauses: 196402
+c [w = 51] Number of irredundant clauses: 179845
+c [w = 51] Number of variables: 56745
+c [w = 51] SAT Solving starts:
+c [w = 50] Encoding duration: 0s
+c [w = 50] Number of clauses: 196816
+c [w = 50] Number of irredundant clauses: 179979
+c [w = 50] Number of variables: 56511
+c [w = 50] SAT Solving starts:
+c [w = 52] Encoding duration: 0s
+c [w = 52] Number of clauses: 195988
+c [w = 52] Number of irredundant clauses: 179711
+c [w = 52] Number of variables: 56979
+c [w = 52] SAT Solving starts:
+c [w = 53] Encoding duration: 0s
+c [w = 53] Number of clauses: 195574
+c [w = 53] Number of irredundant clauses: 179577
+c [w = 53] Number of variables: 57213
+c [w = 53] SAT Solving starts:
+c [w = 50] Solving duration: 1186821 ms
+c [w = 50] Answer: 
+s [w = 50] SAT (w = 50)
+c [w = 50] Solution check w = 50.
+c [w = 50] Result: 10
+c Max width SAT is set to 50
+c [w = 54] Start task in PID: 5806.
+c [w = 54] Antibandwidth problem with w = 54 (K-dwt__234.mtx.rnd):
+c [w = 54] Initializing CaDiCaL (version 1.2.1).
+c [w = 54] Configuring CaDiCaL as --sat (1).
+c [w = 54] Initializing a Duplex encoder with n = 117.
+c [w = 54] Encoding starts with w = 54:
+c [w = 54] Encode symmetry breaking with option: f.
+c [w = 54] Encoding duration: 0s
+c [w = 54] Number of clauses: 195160
+c [w = 54] Number of irredundant clauses: 179443
+c [w = 54] Number of variables: 57447
+c [w = 54] SAT Solving starts:
+c Signal interruption.
+c [Lim] End with result: 65024
+c All children have completed their tasks or were terminated.
+c Signal interruption.
+c Signal interruption.
+c Signal interruption.
+r
+r Final results: 
+r Max width SAT:  	50
+r Min width UNSAT:	-
+r Total real time: 1809920 ms
+r Total memory consumed 1577.7 MB
+r
+r

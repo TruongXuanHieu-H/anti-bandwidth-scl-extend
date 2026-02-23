@@ -1,0 +1,68 @@
+c SCLEncoder 1.0.
+c Real time limit is set to 1800.
+c Memory limit is set to 30000.
+c Iterative strategy: from LB to UB.
+c LB-w = 78 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 120 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c [w = 78] Start task in PID: 7460.
+c [w = 78] Antibandwidth problem with w = 78 (P-can__445.mtx.rnd):
+c [w = 78] Initializing CaDiCaL (version 1.2.1).
+c [w = 78] Configuring CaDiCaL as --sat (1).
+c [w = 78] Initializing a Duplex encoder with n = 445.
+c [w = 79] Start task in PID: 7461.
+c [w = 79] Antibandwidth problem with w = 79 (P-can__445.mtx.rnd):
+c [w = 78] Encoding starts with w = 78:
+c [w = 78] Encode symmetry breaking with option: f.
+c [w = 79] Initializing CaDiCaL (version 1.2.1).
+c [w = 80] Start task in PID: 7462.
+c [w = 80] Antibandwidth problem with w = 80 (P-can__445.mtx.rnd):
+c [w = 79] Configuring CaDiCaL as --sat (1).
+c [w = 79] Initializing a Duplex encoder with n = 445.
+c [w = 79] Encoding starts with w = 79:
+c [w = 79] Encode symmetry breaking with option: f.
+c [w = 80] Initializing CaDiCaL (version 1.2.1).
+c [w = 80] Configuring CaDiCaL as --sat (1).
+c [w = 80] Initializing a Duplex encoder with n = 445.
+c [w = 80] Encoding starts with w = 80:
+c [w = 80] Encode symmetry breaking with option: f.
+c [w = 81] Start task in PID: 7463.
+c [w = 81] Antibandwidth problem with w = 81 (P-can__445.mtx.rnd):
+c [w = 81] Initializing CaDiCaL (version 1.2.1).
+c [w = 81] Configuring CaDiCaL as --sat (1).
+c [w = 81] Initializing a Duplex encoder with n = 445.
+c [w = 81] Encoding starts with w = 81:
+c [w = 81] Encode symmetry breaking with option: f.
+c [w = 80] Encoding duration: 2s
+c [w = 80] Number of clauses: 5063287
+c [w = 80] Number of irredundant clauses: 4730238
+c [w = 80] Number of variables: 906465
+c [w = 80] SAT Solving starts:
+c [w = 79] Encoding duration: 2s
+c [w = 79] Number of clauses: 5062450
+c [w = 79] Number of irredundant clauses: 4728450
+c [w = 79] Number of variables: 902905
+c [w = 79] SAT Solving starts:
+c [w = 78] Encoding duration: 2s
+c [w = 78] Number of clauses: 5061613
+c [w = 78] Number of irredundant clauses: 4726662
+c [w = 78] Number of variables: 899345
+c [w = 78] SAT Solving starts:
+c [w = 81] Encoding duration: 2s
+c [w = 81] Number of clauses: 5064124
+c [w = 81] Number of irredundant clauses: 4732026
+c [w = 81] Number of variables: 910025
+c [w = 81] SAT Solving starts:
+c Signal interruption.
+c [Lim] End with result: 65024
+c All children have completed their tasks or were terminated.
+c Signal interruption.
+c Signal interruption.
+c Signal interruption.
+r
+r Final results: 
+r Max width SAT:  	-
+r Min width UNSAT:	-
+r Total real time: 1809676 ms
+r Total memory consumed 7844.8 MB
+r
+r

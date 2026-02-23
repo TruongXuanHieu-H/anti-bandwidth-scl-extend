@@ -1,0 +1,308 @@
+c SCLEncoder 1.0.
+c Real time limit is set to 1800.
+c Memory limit is set to 30000.
+c Iterative strategy: from LB to UB.
+c LB-w = 91 (LB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c UB-w = 173 (UB in Sinnl - A note on computational approaches for the antibandwidth problem).
+c [w = 91] Start task in PID: 24025.
+c [w = 91] Antibandwidth problem with w = 91 (O-impcol_d.mtx.rnd):
+c [w = 92] Start task in PID: 24026.
+c [w = 92] Antibandwidth problem with w = 92 (O-impcol_d.mtx.rnd):
+c [w = 91] Initializing CaDiCaL (version 1.2.1).
+c [w = 91] Configuring CaDiCaL as --sat (1).
+c [w = 91] Initializing a Duplex encoder with n = 425.
+c [w = 91] Encoding starts with w = 91:
+c [w = 91] Encode symmetry breaking with option: h.
+c [w = 92] Initializing CaDiCaL (version 1.2.1).
+c [w = 92] Configuring CaDiCaL as --sat (1).
+c [w = 92] Initializing a Duplex encoder with n = 425.
+c [w = 92] Encoding starts with w = 92:
+c [w = 92] Encode symmetry breaking with option: h.
+c [w = 93] Start task in PID: 24027.
+c [w = 93] Antibandwidth problem with w = 93 (O-impcol_d.mtx.rnd):
+c [w = 93] Initializing CaDiCaL (version 1.2.1).
+c [w = 93] Configuring CaDiCaL as --sat (1).
+c [w = 93] Initializing a Duplex encoder with n = 425.
+c [w = 93] Encoding starts with w = 93:
+c [w = 93] Encode symmetry breaking with option: h.
+c [w = 94] Start task in PID: 24028.
+c [w = 94] Antibandwidth problem with w = 94 (O-impcol_d.mtx.rnd):
+c [w = 94] Initializing CaDiCaL (version 1.2.1).
+c [w = 94] Configuring CaDiCaL as --sat (1).
+c [w = 94] Initializing a Duplex encoder with n = 425.
+c [w = 94] Encoding starts with w = 94:
+c [w = 94] Encode symmetry breaking with option: h.
+c [w = 91] Encoding duration: 2s
+c [w = 91] Number of clauses: 3992230
+c [w = 91] Number of irredundant clauses: 3698026
+c [w = 91] Number of variables: 801125
+c [w = 91] SAT Solving starts:
+c [w = 92] Encoding duration: 2s
+c [w = 92] Number of clauses: 3992262
+c [w = 92] Number of irredundant clauses: 3699021
+c [w = 92] Number of variables: 803675
+c [w = 92] SAT Solving starts:
+c [w = 93] Encoding duration: 2s
+c [w = 93] Number of clauses: 3992294
+c [w = 93] Number of irredundant clauses: 3700016
+c [w = 93] Number of variables: 806225
+c [w = 93] SAT Solving starts:
+c [w = 94] Encoding duration: 2s
+c [w = 94] Number of clauses: 3992326
+c [w = 94] Number of irredundant clauses: 3701011
+c [w = 94] Number of variables: 808775
+c [w = 94] SAT Solving starts:
+c [w = 91] Solving duration: 114722 ms
+c [w = 91] Answer: 
+s [w = 91] SAT (w = 91)
+c [w = 91] Solution check w = 91.
+c [w = 91] Result: 10
+c Max width SAT is set to 91
+c [w = 95] Start task in PID: 24054.
+c [w = 95] Antibandwidth problem with w = 95 (O-impcol_d.mtx.rnd):
+c [w = 95] Initializing CaDiCaL (version 1.2.1).
+c [w = 95] Configuring CaDiCaL as --sat (1).
+c [w = 95] Initializing a Duplex encoder with n = 425.
+c [w = 95] Encoding starts with w = 95:
+c [w = 95] Encode symmetry breaking with option: h.
+c [w = 95] Encoding duration: 2s
+c [w = 95] Number of clauses: 3992358
+c [w = 95] Number of irredundant clauses: 3702006
+c [w = 95] Number of variables: 811325
+c [w = 95] SAT Solving starts:
+c [w = 92] Solving duration: 138170 ms
+c [w = 92] Answer: 
+s [w = 92] SAT (w = 92)
+c [w = 92] Solution check w = 92.
+c [w = 92] Result: 10
+c Max width SAT is set to 92
+c [w = 96] Start task in PID: 24065.
+c [w = 96] Antibandwidth problem with w = 96 (O-impcol_d.mtx.rnd):
+c [w = 96] Initializing CaDiCaL (version 1.2.1).
+c [w = 96] Configuring CaDiCaL as --sat (1).
+c [w = 96] Initializing a Duplex encoder with n = 425.
+c [w = 96] Encoding starts with w = 96:
+c [w = 96] Encode symmetry breaking with option: h.
+c [w = 96] Encoding duration: 2s
+c [w = 96] Number of clauses: 3992390
+c [w = 96] Number of irredundant clauses: 3703001
+c [w = 96] Number of variables: 813875
+c [w = 96] SAT Solving starts:
+c [w = 93] Solving duration: 270180 ms
+c [w = 93] Answer: 
+s [w = 93] SAT (w = 93)
+c [w = 93] Solution check w = 93.
+c [w = 93] Result: 10
+c Max width SAT is set to 93
+c [w = 97] Start task in PID: 24091.
+c [w = 97] Antibandwidth problem with w = 97 (O-impcol_d.mtx.rnd):
+c [w = 97] Initializing CaDiCaL (version 1.2.1).
+c [w = 97] Configuring CaDiCaL as --sat (1).
+c [w = 97] Initializing a Duplex encoder with n = 425.
+c [w = 97] Encoding starts with w = 97:
+c [w = 97] Encode symmetry breaking with option: h.
+c [w = 97] Encoding duration: 2s
+c [w = 97] Number of clauses: 3992422
+c [w = 97] Number of irredundant clauses: 3703996
+c [w = 97] Number of variables: 816425
+c [w = 97] SAT Solving starts:
+c [w = 96] Solving duration: 223800 ms
+c [w = 96] Answer: 
+s [w = 96] SAT (w = 96)
+c [w = 96] Solution check w = 96.
+c [w = 96] Result: 10
+c Max width SAT is set to 96
+c Kill lower pid 95.
+c Kill lower pid 94.
+c Signal interruption.
+c Signal interruption.
+c [w = 98] Start task in PID: 24113.
+c [w = 98] Antibandwidth problem with w = 98 (O-impcol_d.mtx.rnd):
+c [w = 98] Initializing CaDiCaL (version 1.2.1).
+c [w = 98] Configuring CaDiCaL as --sat (1).
+c [w = 98] Initializing a Duplex encoder with n = 425.
+c [w = 98] Encoding starts with w = 98:
+c [w = 98] Encode symmetry breaking with option: h.
+c Child pid 94 - 24028 terminated by signal 15
+c [w = 99] Start task in PID: 24114.
+c [w = 99] Antibandwidth problem with w = 99 (O-impcol_d.mtx.rnd):
+c [w = 99] Initializing CaDiCaL (version 1.2.1).
+c [w = 99] Configuring CaDiCaL as --sat (1).
+c [w = 99] Initializing a Duplex encoder with n = 425.
+c [w = 99] Encoding starts with w = 99:
+c [w = 99] Encode symmetry breaking with option: h.
+c Child pid 95 - 24054 terminated by signal 15
+c [w = 100] Start task in PID: 24115.
+c [w = 100] Antibandwidth problem with w = 100 (O-impcol_d.mtx.rnd):
+c [w = 100] Initializing CaDiCaL (version 1.2.1).
+c [w = 100] Configuring CaDiCaL as --sat (1).
+c [w = 100] Initializing a Duplex encoder with n = 425.
+c [w = 100] Encoding starts with w = 100:
+c [w = 100] Encode symmetry breaking with option: h.
+c [w = 98] Encoding duration: 2s
+c [w = 98] Number of clauses: 3992454
+c [w = 98] Number of irredundant clauses: 3704991
+c [w = 98] Number of variables: 818975
+c [w = 98] SAT Solving starts:
+c [w = 99] Encoding duration: 2s
+c [w = 99] Number of clauses: 3992486
+c [w = 99] Number of irredundant clauses: 3705986
+c [w = 99] Number of variables: 821525
+c [w = 99] SAT Solving starts:
+c [w = 100] Encoding duration: 2s
+c [w = 100] Number of clauses: 3992518
+c [w = 100] Number of irredundant clauses: 3706981
+c [w = 100] Number of variables: 824075
+c [w = 100] SAT Solving starts:
+c [w = 97] Solving duration: 292689 ms
+c [w = 97] Answer: 
+s [w = 97] SAT (w = 97)
+c [w = 97] Solution check w = 97.
+c [w = 97] Result: 10
+c Max width SAT is set to 97
+c [w = 101] Start task in PID: 24152.
+c [w = 101] Antibandwidth problem with w = 101 (O-impcol_d.mtx.rnd):
+c [w = 101] Initializing CaDiCaL (version 1.2.1).
+c [w = 101] Configuring CaDiCaL as --sat (1).
+c [w = 101] Initializing a Duplex encoder with n = 425.
+c [w = 101] Encoding starts with w = 101:
+c [w = 101] Encode symmetry breaking with option: h.
+c [w = 101] Encoding duration: 2s
+c [w = 101] Number of clauses: 3992550
+c [w = 101] Number of irredundant clauses: 3707976
+c [w = 101] Number of variables: 826625
+c [w = 101] SAT Solving starts:
+c [w = 98] Solving duration: 455887 ms
+c [w = 98] Answer: 
+s [w = 98] SAT (w = 98)
+c [w = 98] Solution check w = 98.
+c [w = 98] Result: 10
+c Max width SAT is set to 98
+c [w = 102] Start task in PID: 24191.
+c [w = 102] Antibandwidth problem with w = 102 (O-impcol_d.mtx.rnd):
+c [w = 102] Initializing CaDiCaL (version 1.2.1).
+c [w = 102] Configuring CaDiCaL as --sat (1).
+c [w = 102] Initializing a Duplex encoder with n = 425.
+c [w = 102] Encoding starts with w = 102:
+c [w = 102] Encode symmetry breaking with option: h.
+c [w = 102] Encoding duration: 2s
+c [w = 102] Number of clauses: 3992582
+c [w = 102] Number of irredundant clauses: 3708971
+c [w = 102] Number of variables: 829175
+c [w = 102] SAT Solving starts:
+c [w = 99] Solving duration: 621100 ms
+c [w = 99] Answer: 
+s [w = 99] SAT (w = 99)
+c [w = 99] Solution check w = 99.
+c [w = 99] Result: 10
+c Max width SAT is set to 99
+c [w = 103] Start task in PID: 24218.
+c [w = 103] Antibandwidth problem with w = 103 (O-impcol_d.mtx.rnd):
+c [w = 103] Initializing CaDiCaL (version 1.2.1).
+c [w = 103] Configuring CaDiCaL as --sat (1).
+c [w = 103] Initializing a Duplex encoder with n = 425.
+c [w = 103] Encoding starts with w = 103:
+c [w = 103] Encode symmetry breaking with option: h.
+c [w = 103] Encoding duration: 2s
+c [w = 103] Number of clauses: 3992614
+c [w = 103] Number of irredundant clauses: 3709966
+c [w = 103] Number of variables: 831725
+c [w = 103] SAT Solving starts:
+c [w = 100] Solving duration: 646069 ms
+c [w = 100] Answer: 
+s [w = 100] SAT (w = 100)
+c [w = 100] Solution check w = 100.
+c [w = 100] Result: 10
+c Max width SAT is set to 100
+c [w = 104] Start task in PID: 24222.
+c [w = 104] Antibandwidth problem with w = 104 (O-impcol_d.mtx.rnd):
+c [w = 104] Initializing CaDiCaL (version 1.2.1).
+c [w = 104] Configuring CaDiCaL as --sat (1).
+c [w = 104] Initializing a Duplex encoder with n = 425.
+c [w = 104] Encoding starts with w = 104:
+c [w = 104] Encode symmetry breaking with option: h.
+c [w = 104] Encoding duration: 2s
+c [w = 104] Number of clauses: 3992646
+c [w = 104] Number of irredundant clauses: 3710961
+c [w = 104] Number of variables: 834275
+c [w = 104] SAT Solving starts:
+c [w = 102] Solving duration: 277956 ms
+c [w = 102] Answer: 
+s [w = 102] SAT (w = 102)
+c [w = 102] Solution check w = 102.
+c [w = 102] Result: 10
+c Max width SAT is set to 102
+c Kill lower pid 101.
+c Signal interruption.
+c [w = 105] Start task in PID: 24240.
+c [w = 105] Antibandwidth problem with w = 105 (O-impcol_d.mtx.rnd):
+c [w = 105] Initializing CaDiCaL (version 1.2.1).
+c [w = 105] Configuring CaDiCaL as --sat (1).
+c [w = 105] Initializing a Duplex encoder with n = 425.
+c [w = 105] Encoding starts with w = 105:
+c [w = 105] Encode symmetry breaking with option: h.
+c Child pid 101 - 24152 terminated by signal 15
+c [w = 106] Start task in PID: 24241.
+c [w = 106] Antibandwidth problem with w = 106 (O-impcol_d.mtx.rnd):
+c [w = 106] Initializing CaDiCaL (version 1.2.1).
+c [w = 106] Configuring CaDiCaL as --sat (1).
+c [w = 106] Initializing a Duplex encoder with n = 425.
+c [w = 106] Encoding starts with w = 106:
+c [w = 106] Encode symmetry breaking with option: h.
+c [w = 106] Encoding duration: 2s
+c [w = 106] Number of clauses: 3992285
+c [w = 106] Number of irredundant clauses: 3713376
+c [w = 106] Number of variables: 839375
+c [w = 106] SAT Solving starts:
+c [w = 105] Encoding duration: 2s
+c [w = 105] Number of clauses: 3992678
+c [w = 105] Number of irredundant clauses: 3711956
+c [w = 105] Number of variables: 836825
+c [w = 105] SAT Solving starts:
+c [w = 104] Solving duration: 309100 ms
+c [w = 104] Answer: 
+s [w = 104] SAT (w = 104)
+c [w = 104] Solution check w = 104.
+c [w = 104] Result: 10
+c Max width SAT is set to 104
+c Kill lower pid 103.
+c Signal interruption.
+c [w = 107] Start task in PID: 24287.
+c [w = 107] Antibandwidth problem with w = 107 (O-impcol_d.mtx.rnd):
+c [w = 107] Initializing CaDiCaL (version 1.2.1).
+c [w = 107] Configuring CaDiCaL as --sat (1).
+c [w = 107] Initializing a Duplex encoder with n = 425.
+c [w = 107] Encoding starts with w = 107:
+c [w = 107] Encode symmetry breaking with option: h.
+c Child pid 103 - 24218 terminated by signal 15
+c [w = 108] Start task in PID: 24288.
+c [w = 108] Antibandwidth problem with w = 108 (O-impcol_d.mtx.rnd):
+c [w = 108] Initializing CaDiCaL (version 1.2.1).
+c [w = 108] Configuring CaDiCaL as --sat (1).
+c [w = 108] Initializing a Duplex encoder with n = 425.
+c [w = 108] Encoding starts with w = 108:
+c [w = 108] Encode symmetry breaking with option: h.
+c [w = 107] Encoding duration: 2s
+c [w = 107] Number of clauses: 3771718
+c [w = 107] Number of irredundant clauses: 3489396
+c [w = 107] Number of variables: 752675
+c [w = 107] SAT Solving starts:
+c [w = 108] Encoding duration: 2s
+c [w = 108] Number of clauses: 3769625
+c [w = 108] Number of irredundant clauses: 3488237
+c [w = 108] Number of variables: 754375
+c [w = 108] SAT Solving starts:
+c Signal interruption.
+c [Lim] End with result: 65024
+c All children have completed their tasks or were terminated.
+c Signal interruption.
+c Signal interruption.
+c Signal interruption.
+r
+r Final results: 
+r Max width SAT:  	104
+r Min width UNSAT:	-
+r Total real time: 1810020 ms
+r Total memory consumed 4035.7 MB
+r
+r
