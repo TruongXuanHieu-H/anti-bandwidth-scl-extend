@@ -1,65 +1,101 @@
-OBJDIR=build
-OBJECTS= utils.o math_extension.o reduced_encoder.o sequential_encoder.o product_encoder.o duplex_encoder.o scl_encoder.o encoder.o bdd.o clause_cont.o cadical_clauses.o antibandwidth_encoder.o abp_encoder.o
-OBJS = $(patsubst %.o,$(OBJDIR)/%.o,$(OBJECTS))
+# ================================
+# Project directories
+# ================================
+SRCDIR  := src
+OBJDIR  := build/obj
+BINDIR  := build
 
-SRCDIR=src
+TARGET  := $(BINDIR)/abw_enc
 
-FLAGS= -Wall -Werror -Wextra -O3 -DNDEBUG
-IGNORE_ASSERTVARS= -Wno-unused-but-set-variable
-STANDARD= -std=c++11
+# ================================
+# Compiler
+# ================================
+CXX       := g++
+STANDARD  := -std=c++11
 
-CADICAL_INC=./cadical/
-CADICAL_LIB_DIR=./cadical/
-CADICAL_LIB=-lcadical
+# ================================
+# Compiler flags
+# ================================
+IGNORE_ASSERTVARS := -Wno-unused-but-set-variable
+CXXFLAGS := -Wall -Wextra -Werror -O3 -DNDEBUG $(STANDARD)
 
-all : $(OBJDIR)/main.o
-	g++ $(FLAGS) $(OBJDIR)/main.o $(OBJS) -L$(CADICAL_LIB_DIR) $(CADICAL_LIB) -o build/abw_enc
+# ================================
+# CaDiCaL
+# ================================
+CADICAL_FOLDER	?= cadical-1.2.1
+CADICAL_INC     := ./$(CADICAL_FOLDER)
+CADICAL_LIB_DIR := ./$(CADICAL_FOLDER)
+CADICAL_LIB     := -lcadical
 
-$(OBJDIR)/main.o : main.cpp $(OBJS) $(SRCDIR)/antibandwidth_encoder.h
-	g++ $(FLAGS) $(STANDARD) -I$(CADICAL_INC) -c $< -o $@
+INCLUDES := -I$(CADICAL_INC)
 
-$(OBJDIR)/antibandwidth_encoder.o : $(SRCDIR)/antibandwidth_encoder.cpp $(SRCDIR)/antibandwidth_encoder.h $(SRCDIR)/abp_encoder.h $(SRCDIR)/reduced_encoder.h $(SRCDIR)/sequential_encoder.h $(SRCDIR)/product_encoder.h $(SRCDIR)/duplex_encoder.h $(SRCDIR)/scl_encoder.h $(SRCDIR)/utils.h $(SRCDIR)/math_extension.h $(SRCDIR)/clause_cont.h $(SRCDIR)/cadical_clauses.h
-	g++ $(FLAGS) $(STANDARD) -I$(CADICAL_INC) -c $< -o $@
+# ================================
+# Source files
+# ================================
+SOURCES := \
+	main.cpp \
+	utils.cpp \
+	math_extension.cpp \
+	reduced_encoder.cpp \
+	sequential_encoder.cpp \
+	product_encoder.cpp \
+	duplex_encoder.cpp \
+	scl_encoder.cpp \
+	encoder.cpp \
+	bdd.cpp \
+	clause_cont.cpp \
+	cadical_clauses.cpp \
+	antibandwidth_encoder.cpp \
+	abp_encoder.cpp
 
-$(OBJDIR)/abp_encoder.o : $(SRCDIR)/abp_encoder.cpp $(SRCDIR)/abp_encoder.h $(SRCDIR)/antibandwidth_encoder.h $(SRCDIR)/reduced_encoder.h $(SRCDIR)/sequential_encoder.h $(SRCDIR)/product_encoder.h $(SRCDIR)/duplex_encoder.h $(SRCDIR)/scl_encoder.h $(SRCDIR)/utils.h $(SRCDIR)/math_extension.h $(SRCDIR)/clause_cont.h $(SRCDIR)/cadical_clauses.h
-	g++ $(FLAGS) $(STANDARD) -I$(CADICAL_INC) -c $< -o $@
+# ================================
+# Object files
+# ================================
+OBJECTS := $(SOURCES:%.cpp=$(OBJDIR)/%.o)
 
-$(OBJDIR)/reduced_encoder.o : $(SRCDIR)/reduced_encoder.cpp $(SRCDIR)/reduced_encoder.h $(SRCDIR)/encoder.h
-	g++ $(FLAGS) $(STANDARD) -c $< -o $@
+# ================================
+# Default target
+# ================================
+.PHONY: all
+all: $(TARGET)
 
-$(OBJDIR)/product_encoder.o : $(SRCDIR)/product_encoder.cpp $(SRCDIR)/product_encoder.h $(SRCDIR)/encoder.h
-	g++ $(FLAGS) $(STANDARD) -c $< -o $@
+# ================================
+# Link
+# ================================
+$(TARGET): $(OBJECTS)
+	@mkdir -p $(BINDIR)
+	$(CXX) $(CXXFLAGS) $^ -L$(CADICAL_LIB_DIR) $(CADICAL_LIB) -o $@
 
-$(OBJDIR)/sequential_encoder.o : $(SRCDIR)/sequential_encoder.cpp $(SRCDIR)/sequential_encoder.h $(SRCDIR)/encoder.h
-	g++ $(FLAGS) $(STANDARD) -c $< -o $@
+# ================================
+# Compile rules
+# ================================
+$(OBJDIR)/%.o: %.cpp
+	@mkdir -p $(OBJDIR)
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
-$(OBJDIR)/duplex_encoder.o : $(SRCDIR)/duplex_encoder.cpp $(SRCDIR)/duplex_encoder.h $(SRCDIR)/encoder.h $(SRCDIR)/bdd.h
-	g++ $(FLAGS) $(IGNORE_ASSERTVARS) $(STANDARD) -c $< -o $@
-	
-$(OBJDIR)/scl_encoder.o : $(SRCDIR)/scl_encoder.cpp $(SRCDIR)/scl_encoder.h $(SRCDIR)/encoder.h $(SRCDIR)/math_extension.h 
-	g++ $(FLAGS) $(STANDARD) -c $< -o $@
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	@mkdir -p $(OBJDIR)
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
-$(OBJDIR)/cadical_clauses.o : $(SRCDIR)/cadical_clauses.cpp $(SRCDIR)/cadical_clauses.h $(SRCDIR)/clause_cont.h
-	g++ $(FLAGS) $(STANDARD) -I$(CADICAL_INC) -c $< -o $@
+# Special flags for specific files
+$(OBJDIR)/bdd.o: CXXFLAGS += $(IGNORE_ASSERTVARS)
+$(OBJDIR)/duplex_encoder.o: CXXFLAGS += $(IGNORE_ASSERTVARS)
 
-$(OBJDIR)/clause_cont.o : $(SRCDIR)/clause_cont.cpp $(SRCDIR)/clause_cont.h $(SRCDIR)/utils.h
-	g++ $(FLAGS) $(STANDARD) -c $< -o $@
-
-$(OBJDIR)/encoder.o : $(SRCDIR)/encoder.cpp $(SRCDIR)/encoder.h $(SRCDIR)/clause_cont.h
-	g++ $(FLAGS) $(STANDARD) -c $< -o $@
-
-$(OBJDIR)/utils.o : $(SRCDIR)/utils.cpp $(SRCDIR)/utils.h
-	g++ $(FLAGS) $(STANDARD) -c $< -o $@
-	
-$(OBJDIR)/math_extension.o : $(SRCDIR)/math_extension.cpp $(SRCDIR)/math_extension.h
-	g++ $(FLAGS) $(STANDARD) -c $< -o $@
-
-$(OBJDIR)/bdd.o : $(SRCDIR)/bdd.cpp $(SRCDIR)/bdd.h
-	g++ $(FLAGS) $(IGNORE_ASSERTVARS) $(STANDARD) -c $< -o $@
-
-#.PHONY : clean
+# ================================
+# Clean
+# ================================
+.PHONY: clean
 clean:
-	rm -f *.a $(OBJDIR)/*.o *~ *.out  $(OBJDIR)/abw_enc
+	rm -rf $(OBJDIR) $(TARGET) *.a *~ *.out
 
+# ================================
+# Archive
+# ================================
+.PHONY: tar
 tar:
-	tar cfv abw_enc.tar main.cpp makefile $(SRCDIR)/*.cpp $(SRCDIR)/*.h cadical/*.a cadical/*.hpp
+	tar cfv abw_enc.tar \
+		main.cpp \
+		makefile \
+		$(SRCDIR) \
+		$(CADICAL_LIB_DIR)/*.a \
+		$(CADICAL_LIB_DIR)/*.hpp
