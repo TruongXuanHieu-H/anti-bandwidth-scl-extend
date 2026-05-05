@@ -7,15 +7,12 @@
 
 #include "clause_cont.h"
 
-namespace SATABP
+typedef std::vector<int>::iterator vec_int_it;
+typedef std::deque<int>::iterator deq_int_it;
+
+class Encoder
 {
-
-  typedef std::vector<int>::iterator vec_int_it;
-  typedef std::deque<int>::iterator deq_int_it;
-
-  class Encoder
-  {
-  public:
+public:
     virtual ~Encoder();
 
     Encoder(Encoder const &) = delete;
@@ -30,7 +27,7 @@ namespace SATABP
 
     ClauseContainer *cv;
 
-  protected:
+protected:
     Encoder(Graph *g, ClauseContainer *clause_container, VarHandler *var_handler);
 
     Graph *g;
@@ -40,11 +37,9 @@ namespace SATABP
     void encode_symmetry_break_on_maxnode();
     void encode_symmetry_break_on_minnode();
 
-  private:
+private:
     virtual void do_encode_antibandwidth(unsigned w, std::vector<std::pair<int, int>> const &node_pairs) = 0;
     virtual int do_vars_size() const = 0;
-  };
-
-}
+};
 
 #endif

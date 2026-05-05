@@ -8,7 +8,6 @@
 #include <map>
 #include "src/antibandwidth_encoder.h"
 
-using namespace SATABP;
 
 const int ver{0};
 

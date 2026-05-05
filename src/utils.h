@@ -5,12 +5,9 @@
 #include <utility>
 #include <string>
 
-namespace SATABP
+class Graph
 {
-
-  class Graph
-  {
-  public:
+public:
     unsigned n;
     unsigned number_of_edges;
     std::string graph_name;
@@ -25,21 +22,20 @@ namespace SATABP
     unsigned find_smallest_outdegree_node() const;
 
     void filename(std::string &path);
-  };
+};
 
-  class VarHandler
-  {
-  public:
+class VarHandler
+{
+public:
     VarHandler(int start_id, int input_size);
     int get_new_var();
     int last_var() const;
     int size() const;
 
-  private:
+private:
     int first_assigned_id;
     int next_to_assign;
     int last_intput_var;
-  };
-}
+};
 
 #endif

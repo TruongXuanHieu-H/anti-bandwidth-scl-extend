@@ -7,59 +7,54 @@
 #include <cstdint>
 #include <cstddef>
 
-namespace SATABP
+typedef int BDD_id;
+
+struct hash_pair final
 {
+	template <class TFirst, class TSecond>
+	size_t operator()(const std::pair<TFirst, TSecond> &p) const noexcept
+	{
+		uintmax_t hash = std::hash<TFirst>{}(p.first);
+		hash <<= sizeof(uintmax_t) * 4;
+		hash ^= std::hash<TSecond>{}(p.second);
+		return std::hash<uintmax_t>{}(hash);
+	}
+};
 
-  typedef int BDD_id;
+class BDD
+{
+public:
+	BDD();
+	BDD(int from, int to, bool bound);
 
-  struct hash_pair final
-  {
-    template <class TFirst, class TSecond>
-    size_t operator()(const std::pair<TFirst, TSecond> &p) const noexcept
-    {
-      uintmax_t hash = std::hash<TFirst>{}(p.first);
-      hash <<= sizeof(uintmax_t) * 4;
-      hash ^= std::hash<TSecond>{}(p.second);
-      return std::hash<uintmax_t>{}(hash);
-    }
-  };
+	BDD_id id = 0;
+	BDD_id false_child_id = 0;
+	BDD_id true_child_id = 0;
 
-  class BDD
-  {
-  public:
-    BDD();
-    BDD(int from, int to, bool bound);
+	bool bound;
+	int i_from;
+	int i_to;
+};
 
-    BDD_id id = 0;
-    BDD_id false_child_id = 0;
-    BDD_id true_child_id = 0;
+class BDDHandler
+{
+public:
+	BDDHandler();
+	std::unordered_map<BDD_id, BDD> bdds;
 
-    bool bound;
-    int i_from;
-    int i_to;
-  };
+	void save_amo(BDD &new_bdd);
+	void save_amz(BDD &new_bdd);
 
-  class BDDHandler
-  {
-  public:
-    BDDHandler();
-    std::unordered_map<BDD_id, BDD> bdds;
+	bool lookup_amo(const std::pair<int, int> &from_to_pair, BDD_id &id);
+	bool lookup_amz(const std::pair<int, int> &from_to_pair, BDD_id &id);
 
-    void save_amo(BDD &new_bdd);
-    void save_amz(BDD &new_bdd);
+	void print_node(BDD_id id);
+	void print_bdd(BDD_id id);
+	void print_all_bdds();
 
-    bool lookup_amo(const std::pair<int, int> &from_to_pair, BDD_id &id);
-    bool lookup_amz(const std::pair<int, int> &from_to_pair, BDD_id &id);
-
-    void print_node(BDD_id id);
-    void print_bdd(BDD_id id);
-    void print_all_bdds();
-
-  private:
-    std::unordered_map<std::pair<int, int>, BDD_id, hash_pair> amo_bdds;
-    std::unordered_map<std::pair<int, int>, BDD_id, hash_pair> amz_bdds;
-  };
-
-}
+private:
+	std::unordered_map<std::pair<int, int>, BDD_id, hash_pair> amo_bdds;
+	std::unordered_map<std::pair<int, int>, BDD_id, hash_pair> amz_bdds;
+};
 
 #endif

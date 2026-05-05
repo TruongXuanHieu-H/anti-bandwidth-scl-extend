@@ -11,46 +11,43 @@
 #include "cadical_clauses.h"
 #include "encoder.h"
 
-namespace SATABP
+class ABPEncoder
 {
-    class ABPEncoder
-    {
-    public:
-        ABPEncoder(std::string symmetry_break_strategy, Graph *graph, int width, EncoderStrategy enc_strategy);
-        virtual ~ABPEncoder();
+public:
+    ABPEncoder(std::string symmetry_break_strategy, Graph *graph, int width, EncoderStrategy enc_strategy);
+    virtual ~ABPEncoder();
 
-        // Solver configurations
-        bool force_phase = false;
-        bool verbose = true;
-        std::string sat_configuration = "sat";
+    // Solver configurations
+    bool force_phase = false;
+    bool verbose = true;
+    std::string sat_configuration = "sat";
 
-        bool enable_solution_verification = true;
-        int split_limit = 0;
-        std::string symmetry_break_strategy = "n";
+    bool enable_solution_verification = true;
+    int split_limit = 0;
+    std::string symmetry_break_strategy = "n";
 
-        int encode_and_solve_abp();
+    int encode_and_solve_abp();
 
-    private:
-        int SAT_res = 0;
-        int width = 0;
+private:
+    int SAT_res = 0;
+    int width = 0;
 
-        Graph *graph;
-        EncoderStrategy enc_strategy = scl; // Default strategy
-        VarHandler *vh;
-        Encoder *enc;
-        ClauseContainer *cc;
-        CaDiCaL::Solver *solver;
+    Graph *graph;
+    EncoderStrategy enc_strategy = scl; // Default strategy
+    VarHandler *vh;
+    Encoder *enc;
+    ClauseContainer *cc;
+    CaDiCaL::Solver *solver;
 
-        int verify_solution();
-        bool extract_node_labels(std::vector<int> &node_labels);
-        void setup_for_solving();
-        void cleanup_solving();
+    int verify_solution();
+    bool extract_node_labels(std::vector<int> &node_labels);
+    void setup_for_solving();
+    void cleanup_solving();
 
-        void setup_cadical();
-        void setup_encoder();
+    void setup_cadical();
+    void setup_encoder();
 
-        std::string get_signature();
-    };
-}
+    std::string get_signature();
+};
 
 #endif
