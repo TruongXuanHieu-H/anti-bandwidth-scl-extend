@@ -8,32 +8,9 @@
 #include <map>
 #include "src/antibandwidth_encoder.h"
 
-#include "src/utils/version.h"
+#include "src/utils/signal_handler.h"
 #include "src/utils/usage.h"
-
-static void SIGINT_exit(int);
-
-static void (*signal_SIGINT)(int);
-static void (*signal_SIGXCPU)(int);
-static void (*signal_SIGSEGV)(int);
-static void (*signal_SIGTERM)(int);
-static void (*signal_SIGABRT)(int);
-
-static void SIGINT_exit(int signum)
-{
-    signal(SIGINT, signal_SIGINT);
-    signal(SIGXCPU, signal_SIGXCPU);
-    signal(SIGSEGV, signal_SIGSEGV);
-    signal(SIGTERM, signal_SIGTERM);
-    signal(SIGABRT, signal_SIGABRT);
-
-    std::cout << "c Signal interruption." << std::endl;
-
-    fflush(stdout);
-    fflush(stderr);
-
-    raise(signum);
-}
+#include "src/utils/version.h"
 
 int get_number_arg(std::string const &arg)
 {
@@ -61,11 +38,9 @@ int get_number_arg(std::string const &arg)
 
 int main(int argc, char **argv)
 {
-    signal_SIGINT = signal(SIGINT, SIGINT_exit);
-    signal_SIGXCPU = signal(SIGXCPU, SIGINT_exit);
-    signal_SIGSEGV = signal(SIGSEGV, SIGINT_exit);
-    signal_SIGTERM = signal(SIGTERM, SIGINT_exit);
-    signal_SIGABRT = signal(SIGABRT, SIGINT_exit);
+    SignalHandler::init_signals();
+
+    Version::print_version();
 
     AntibandwidthEncoder *abw_enc;
 

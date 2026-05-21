@@ -47,6 +47,7 @@ SOURCES := \
 	cadical_clauses.cpp \
 	antibandwidth_encoder.cpp \
 	abp_encoder.cpp \
+	utils/signal_handler.cpp \
 	utils/usage.cpp \
 	utils/version.cpp
 
