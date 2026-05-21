@@ -8,8 +8,7 @@
 #include <map>
 #include "src/antibandwidth_encoder.h"
 
-
-const int ver{0};
+#include "utils/version.h"
 
 static void SIGINT_exit(int);
 
@@ -108,13 +107,12 @@ int main(int argc, char **argv)
 
     if (argc < 2)
     {
-        std::cout << "c SCLEncoder 1." << ver << "." << std::endl;
         std::cerr << "c Error, no graph file was specified." << std::endl;
         print_usage();
         return 1;
     }
 
-    std::cout << "c SCLEncoder 1." << ver << "." << std::endl;
+    Version::print_version();
 
     abw_enc = new AntibandwidthEncoder();
 
