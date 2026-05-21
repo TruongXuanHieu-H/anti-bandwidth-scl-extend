@@ -10,6 +10,8 @@
 #include <sys/mman.h>
 #include <sys/prctl.h>
 
+#include "utils/pid_manager.h"
+
 AntibandwidthEncoder::AntibandwidthEncoder()
 {
     max_consumed_memory = (float *)mmap(nullptr, sizeof(float), PROT_READ | PROT_WRITE,
@@ -46,91 +48,6 @@ void AntibandwidthEncoder::encode_and_solve_abw_problems_from_lb()
     setup_bounds(w_from, w_to);
     encode_and_solve_abw_problems(w_from, +1, w_to + 1);
 };
-
-std::vector<int> AntibandwidthEncoder::get_child_pids(int ppid)
-{
-    std::vector<int> childPIDs;
-    std::ifstream file("/proc/" + std::to_string(ppid) + "/task/" + std::to_string(ppid) + "/children");
-
-    if (!file.is_open())
-    {
-        std::cerr << "Unable to open /proc/" << ppid << "/task/" << ppid << "/children" << std::endl;
-        return childPIDs;
-    }
-
-    std::string line;
-    if (std::getline(file, line))
-    {
-        std::istringstream iss(line);
-        int childPID;
-        while (iss >> childPID)
-        {
-            childPIDs.push_back(childPID);
-        }
-    }
-    file.close();
-    return childPIDs;
-}
-
-std::vector<int> AntibandwidthEncoder::get_descendant_pids(int ppid)
-{
-    std::vector<int> descendantPIDs;
-
-    std::vector<int> childPIDs = get_child_pids(ppid);
-
-    for (int childPID : childPIDs)
-    {
-        descendantPIDs.push_back(childPID);
-
-        std::vector<int> grandChildPIDs = get_descendant_pids(childPID);
-        descendantPIDs.insert(descendantPIDs.end(), grandChildPIDs.begin(), grandChildPIDs.end());
-    }
-
-    return descendantPIDs;
-}
-
-size_t AntibandwidthEncoder::get_total_memory_usage(int pid)
-{
-    size_t totalMemoryUsage = get_memory_usage(pid);
-
-    std::vector<int> descendant_pids = get_descendant_pids(pid);
-    for (int descendant_pid : descendant_pids)
-    {
-        totalMemoryUsage += get_memory_usage(descendant_pid);
-    }
-
-    // std::cout << "c [Lim] Process " << pid << " consumed total " << totalMemoryUsage / 1024.0 << " MB.\n";
-    return totalMemoryUsage;
-}
-
-size_t AntibandwidthEncoder::get_memory_usage(int pid)
-{
-    std::ifstream file("/proc/" + std::to_string(pid) + "/status");
-    if (!file.is_open())
-    {
-        std::cerr << "Unable to open /proc/" << pid << "/status" << std::endl;
-        return 0;
-    }
-
-    std::string line;
-    size_t memoryUsage = 0;
-
-    while (std::getline(file, line))
-    {
-        if (line.find("VmRSS:") == 0)
-        { // Look for the VmRSS field
-            std::istringstream iss(line);
-            std::string key, value, unit;
-            iss >> key >> value >> unit;     // VmRSS: value unit
-            memoryUsage = std::stoul(value); // Memory usage in kilobytes (KB)
-            break;
-        }
-    }
-
-    file.close();
-    // std::cout << "c [Lim] Process " << pid << " consumed " << memoryUsage / 1024.0 << " MB.\n";
-    return memoryUsage;
-}
 
 /*
  *  Check if limit conditions are satified or not
@@ -169,9 +86,9 @@ void AntibandwidthEncoder::create_limit_pid()
 
         while (limit_state == 0)
         {
-            consumed_memory = std::round(get_total_memory_usage(main_pid) * 10 / 1024.0) / 10;
+            consumed_memory = std::round(PIDManager::get_total_memory_usage(main_pid) * 10 / 1024.0) / 10;
             consumed_real_time += std::round((float)sample_rate * 10 / 1000000.0) / 10;
-            consumed_elapsed_time += (float)(sample_rate * (get_descendant_pids(main_pid).size() - 1)) / 1000000.0;
+            consumed_elapsed_time += (float)(sample_rate * (PIDManager::get_descendant_pids(main_pid).size() - 1)) / 1000000.0;
 
             if (consumed_memory > *max_consumed_memory)
             {

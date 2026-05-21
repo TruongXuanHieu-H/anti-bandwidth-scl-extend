@@ -67,11 +67,6 @@ public:
 	void create_abp_pid(int width);
 	int do_abp_pid_task(int width);
 
-	std::vector<int> get_child_pids(int ppid);		// Get child pids of the given pid
-	std::vector<int> get_descendant_pids(int pids); // Get descendant pids of the given pid, include its child pids
-	size_t get_total_memory_usage(int pid);			// Get memory usage of the given pid and all of its descendant pids
-	size_t get_memory_usage(int pid);				// Get memory usage of the given pid
-
 	int sample_rate = 100000; // Interval of sampler, in microseconds
 	int report_rate = 100;	  // Interval of report, in number of sampler
 	int sampler_count = 0;
