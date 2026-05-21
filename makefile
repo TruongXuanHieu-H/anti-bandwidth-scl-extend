@@ -11,13 +11,13 @@ TARGET  := $(BINDIR)/abw_enc
 # Compiler
 # ================================
 CXX       := g++
-STANDARD  := -std=c++11
+STANDARD  := -std=c++23
 
 # ================================
 # Compiler flags
 # ================================
 IGNORE_ASSERTVARS := -Wno-unused-but-set-variable
-CXXFLAGS := -Wall -Wextra -Werror -O3 -DNDEBUG $(STANDARD)
+CXXFLAGS := -Wall -Wextra -Werror -O3 $(STANDARD)
 
 # ================================
 # CaDiCaL
@@ -46,7 +46,9 @@ SOURCES := \
 	clause_cont.cpp \
 	cadical_clauses.cpp \
 	antibandwidth_encoder.cpp \
-	abp_encoder.cpp
+	abp_encoder.cpp \
+	utils/usage.cpp \
+	utils/version.cpp
 
 # ================================
 # Object files
@@ -74,7 +76,7 @@ $(OBJDIR)/%.o: %.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
-	@mkdir -p $(OBJDIR)
+	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
 # Special flags for specific files
