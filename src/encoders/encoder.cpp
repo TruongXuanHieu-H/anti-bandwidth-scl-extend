@@ -18,50 +18,32 @@ void Encoder::encode_antibandwidth(int w, const std::vector<std::pair<int, int>>
     do_encode_antibandwidth(w, node_pairs);
 };
 
-void Encoder::encode_symmetry_break()
+void Encoder::encode_symmetry_break_on_firstnode()
 {
-    // Negate the second half
     for (int i = g->n; i > g->n - (g->n / 2); i--)
     {
         cv->add_clause({-1 * int(i)}); // narrowing, but we already failed if it is a too high int
     }
-
-    // // Negate the first half
-    // for(int i = 1; i <= g->n / 2; i++) {
-    //     cv->add_clause({-1*int(i)}); //narrowing, but we already failed if it is a too high int
-    // }
 };
 
 void Encoder::encode_symmetry_break_on_maxnode()
 {
     int max_node_id = g->find_greatest_outdegree_node();
 
-    // Negate the second half
     for (int i = max_node_id * g->n; i > (max_node_id * g->n) - (g->n / 2); i--)
     {
         cv->add_clause({-1 * int(i)}); // narrowing, but we already failed if it is a too high int
     }
-
-    // // Negate the first half
-    // for(int i = max_node_id * (g->n - 1) + 1; i <= max_node_id * (g->n - 1) + g->n / 2; i++) {
-    //     cv->add_clause({-1*int(i)}); //narrowing, but we already failed if it is a too high int
-    // }
 };
 
 void Encoder::encode_symmetry_break_on_minnode()
 {
     int max_node_id = g->find_smallest_outdegree_node();
 
-    // Negate the second half
     for (int i = max_node_id * g->n; i > (max_node_id * g->n) - (g->n / 2); i--)
     {
         cv->add_clause({-1 * int(i)}); // narrowing, but we already failed if it is a too high int
     }
-
-    // // Negate the first half
-    // for(int i = max_node_id * (g->n - 1) + 1; i <= max_node_id * (g->n - 1) + g->n / 2; i++) {
-    //     cv->add_clause({-1*int(i)}); //narrowing, but we already failed if it is a too high int
-    // }
 };
 
 int Encoder::size() const

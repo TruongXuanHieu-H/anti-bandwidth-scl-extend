@@ -35,7 +35,7 @@ protected:
     Graph *g;
     VarHandler *vh;
 
-    void encode_symmetry_break();
+    void encode_symmetry_break_on_firstnode();
     void encode_symmetry_break_on_maxnode();
     void encode_symmetry_break_on_minnode();
 

@@ -21,7 +21,7 @@ void SeqEncoder::do_encode_antibandwidth(int w, const std::vector<std::pair<int,
 {
     if (symmetry_break_point == SymmetryBreakingType::FIRST)
     {
-        encode_symmetry_break();
+        encode_symmetry_break_on_firstnode();
     }
     else if (symmetry_break_point == SymmetryBreakingType::HIGHEST_DEGREE)
     {
