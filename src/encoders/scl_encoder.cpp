@@ -41,23 +41,7 @@ void SCLEncoder::do_encode_antibandwidth(int w, const std::vector<std::pair<int,
     vertices_aux_var = g->n * g->n;
     labels_aux_var = vertices_aux_var + g->n * g->n;
 
-    if (symmetry_break_point == SymmetryBreakingType::FIRST)
-    {
-        encode_symmetry_break_on_firstnode();
-    }
-    else if (symmetry_break_point == SymmetryBreakingType::HIGHEST_DEGREE)
-    {
-        encode_symmetry_break_on_maxnode();
-    }
-    else if (symmetry_break_point == SymmetryBreakingType::LOWEST_DEGREE)
-    {
-        encode_symmetry_break_on_minnode();
-    }
-    else
-    {
-        // No symmetry breaking
-    }
-    // std::cout << "c\tEncode symmetry breaking with option: " << symmetry_break_point << "." << std::endl;
+    encode_symmetry_break();
 
     encode_vertices();
     // encode_labels();

@@ -18,11 +18,31 @@ void Encoder::encode_antibandwidth(int w, const std::vector<std::pair<int, int>>
     do_encode_antibandwidth(w, node_pairs);
 };
 
+void Encoder::encode_symmetry_break()
+{
+    if (symmetry_break_point == SymmetryBreakingType::FIRST)
+    {
+        encode_symmetry_break_on_firstnode();
+    }
+    else if (symmetry_break_point == SymmetryBreakingType::HIGHEST_DEGREE)
+    {
+        encode_symmetry_break_on_maxnode();
+    }
+    else if (symmetry_break_point == SymmetryBreakingType::LOWEST_DEGREE)
+    {
+        encode_symmetry_break_on_minnode();
+    }
+    else
+    {
+        // No symmetry breaking
+    }
+}
+
 void Encoder::encode_symmetry_break_on_firstnode()
 {
     for (int i = g->n; i > g->n - (g->n / 2); i--)
     {
-        cv->add_clause({-1 * int(i)}); // narrowing, but we already failed if it is a too high int
+        cv->add_clause({-1 * int(i)});
     }
 };
 
@@ -32,7 +52,7 @@ void Encoder::encode_symmetry_break_on_maxnode()
 
     for (int i = max_node_id * g->n; i > (max_node_id * g->n) - (g->n / 2); i--)
     {
-        cv->add_clause({-1 * int(i)}); // narrowing, but we already failed if it is a too high int
+        cv->add_clause({-1 * int(i)});
     }
 };
 
@@ -42,7 +62,7 @@ void Encoder::encode_symmetry_break_on_minnode()
 
     for (int i = max_node_id * g->n; i > (max_node_id * g->n) - (g->n / 2); i--)
     {
-        cv->add_clause({-1 * int(i)}); // narrowing, but we already failed if it is a too high int
+        cv->add_clause({-1 * int(i)});
     }
 };
 

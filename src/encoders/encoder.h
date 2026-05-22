@@ -35,13 +35,15 @@ protected:
     Graph *g;
     VarHandler *vh;
 
-    void encode_symmetry_break_on_firstnode();
-    void encode_symmetry_break_on_maxnode();
-    void encode_symmetry_break_on_minnode();
+    void encode_symmetry_break();
 
 private:
     virtual void do_encode_antibandwidth(int w, std::vector<std::pair<int, int>> const &node_pairs) = 0;
     virtual int do_vars_size() const = 0;
+
+    void encode_symmetry_break_on_firstnode();
+    void encode_symmetry_break_on_maxnode();
+    void encode_symmetry_break_on_minnode();
 };
 
 #endif

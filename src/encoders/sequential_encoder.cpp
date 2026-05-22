@@ -19,23 +19,7 @@ int SeqEncoder::do_vars_size() const
 
 void SeqEncoder::do_encode_antibandwidth(int w, const std::vector<std::pair<int, int>> &node_pairs)
 {
-    if (symmetry_break_point == SymmetryBreakingType::FIRST)
-    {
-        encode_symmetry_break_on_firstnode();
-    }
-    else if (symmetry_break_point == SymmetryBreakingType::HIGHEST_DEGREE)
-    {
-        encode_symmetry_break_on_maxnode();
-    }
-    else if (symmetry_break_point == SymmetryBreakingType::LOWEST_DEGREE)
-    {
-        encode_symmetry_break_on_minnode();
-    }
-    else
-    {
-        // No symmetry breaking
-    }
-    // std::cout << "c\tEncode symmetry breaking with option: " << symmetry_break_point << "." << std::endl;
+    encode_symmetry_break();
 
     encode_labelling();
 
