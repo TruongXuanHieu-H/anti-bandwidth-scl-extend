@@ -14,7 +14,7 @@
 class ABPEncoder
 {
 public:
-    ABPEncoder(std::string symmetry_break_strategy, Graph *graph, int width, EncoderStrategy enc_strategy);
+    ABPEncoder(std::string symmetry_break_strategy, Graph *graph, int width, EncodeType enc_strategy);
     virtual ~ABPEncoder();
 
     // Solver configurations
@@ -33,7 +33,7 @@ private:
     int width = 0;
 
     Graph *graph;
-    EncoderStrategy enc_strategy = scl; // Default strategy
+    EncodeType enc_strategy = scl; // Default strategy
     VarHandler *vh;
     Encoder *enc;
     ClauseContainer *cc;

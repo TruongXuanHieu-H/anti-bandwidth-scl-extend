@@ -71,23 +71,23 @@ int main(int argc, char **argv)
         }
         else if (argv[i] == std::string("--reduced"))
         {
-            abw_enc->enc_choice = EncoderStrategy::reduced;
+            abw_enc->enc_choice = EncodeType::reduced;
         }
         else if (argv[i] == std::string("--seq"))
         {
-            abw_enc->enc_choice = EncoderStrategy::seq;
+            abw_enc->enc_choice = EncodeType::seq;
         }
         else if (argv[i] == std::string("--product"))
         {
-            abw_enc->enc_choice = EncoderStrategy::product;
+            abw_enc->enc_choice = EncodeType::product;
         }
         else if (argv[i] == std::string("--duplex"))
         {
-            abw_enc->enc_choice = EncoderStrategy::duplex;
+            abw_enc->enc_choice = EncodeType::duplex;
         }
         else if (argv[i] == std::string("--scl"))
         {
-            abw_enc->enc_choice = EncoderStrategy::scl;
+            abw_enc->enc_choice = EncodeType::scl;
         }
         else if (argv[i] == std::string("--conf-sat"))
         {

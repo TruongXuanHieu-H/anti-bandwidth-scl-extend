@@ -10,7 +10,7 @@
 #include "scl_encoder.h"
 #include "../graph/graph.h"
 
-ABPEncoder::ABPEncoder(std::string symmetry_break_strategy, Graph *graph, int width, EncoderStrategy enc_strategy)
+ABPEncoder::ABPEncoder(std::string symmetry_break_strategy, Graph *graph, int width, EncodeType enc_strategy)
     : symmetry_break_strategy(symmetry_break_strategy), width(width), graph(graph), enc_strategy(enc_strategy) {
 
       };

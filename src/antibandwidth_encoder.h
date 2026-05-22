@@ -15,7 +15,7 @@
 #include "encoders/encoder.h"
 #include "graph/graph.h"
 
-enum EncoderStrategy
+enum EncodeType
 {
 	duplex,
 	reduced,
@@ -41,7 +41,7 @@ public:
 	int max_width_SAT = std::numeric_limits<int>::min();
 	int min_width_UNSAT = std::numeric_limits<int>::max();
 
-	EncoderStrategy enc_choice = duplex;
+	EncodeType enc_choice = duplex;
 	IterativeStrategy iterative_strategy = from_lb;
 
 	std::chrono::time_point<std::chrono::high_resolution_clock> start_time;
