@@ -104,7 +104,7 @@ int main(int argc, char **argv)
         }
         else if (argv[i] == std::string("--from-lb"))
         {
-            abw_enc->iterative_strategy = IterativeStrategy::from_lb;
+            abw_enc->iterative_strategy = SearchStrategy::from_lb;
         }
         else if (argv[i] == std::string("-set-lb"))
         {

@@ -16,7 +16,7 @@
 #include "enum/encode_type.h"
 #include "graph/graph.h"
 
-enum IterativeStrategy
+enum SearchStrategy
 {
 	from_lb,
 };
@@ -34,7 +34,7 @@ public:
 	int min_width_UNSAT = std::numeric_limits<int>::max();
 
 	EncodeType enc_choice = EncodeType::duplex;
-	IterativeStrategy iterative_strategy = from_lb;
+	SearchStrategy iterative_strategy = from_lb;
 
 	std::chrono::time_point<std::chrono::high_resolution_clock> start_time;
 	std::chrono::time_point<std::chrono::high_resolution_clock> end_time;
