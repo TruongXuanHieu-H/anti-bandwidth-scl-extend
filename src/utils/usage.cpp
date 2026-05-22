@@ -30,7 +30,7 @@ const std::map<std::string, std::string> Helper::option_list = {
 
 void Helper::print_usage()
 {
-    std::cout << "c [Usage] Usage: cabw_enc path_to_graph_file [ <option> ... ].\n";
+    std::cout << "c [Usage] Usage: abw_enc path_to_graph_file [ <option> ... ].\n";
     std::cout << "c [Usage] where '<option>' is one of the following options:\n";
     std::cout << std::endl;
     for (const auto &option : option_list)

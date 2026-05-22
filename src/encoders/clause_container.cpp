@@ -1,13 +1,18 @@
 #include "clause_container.h"
+#include "../global_data.h"
+#include "instance_data.h"
 #include <iostream>
-#include <assert.h>
 
-ClauseContainer::ClauseContainer(VarHandler *v, int split_limit) : vh(v), split_size(split_limit)
+ClauseContainer::ClauseContainer()
 {
-    if (split_limit == 0)
-        do_split = false;
-    else
+    if (GlobalData::split_limit > 0)
+    {
         do_split = true;
+    }
+    else
+    {
+        do_split = false;
+    }
 };
 
 ClauseContainer::~ClauseContainer() {};
@@ -21,86 +26,46 @@ void ClauseContainer::add_clause(const Clause &c)
     else
     {
         Clause long_clause = c;
-        while ((int)long_clause.size() > split_size)
+        while ((int)long_clause.size() > GlobalData::split_limit)
         {
-            int split_var = vh->get_new_var();
+            int split_var = InstanceData::vh->get_new_var();
 
-            Clause chunk(long_clause.begin(), long_clause.begin() + split_size);
+            Clause chunk(long_clause.begin(), long_clause.begin() + GlobalData::split_limit);
             chunk.push_back(split_var);
             do_add_clause(chunk);
 
             Clause rest = {-1 * split_var};
-            rest.insert(rest.end(), long_clause.begin() + split_size, long_clause.end());
+            rest.insert(rest.end(), long_clause.begin() + GlobalData::split_limit, long_clause.end());
             long_clause = rest;
         }
         do_add_clause(long_clause);
     }
 };
 
-void ClauseContainer::print_clauses() const
-{
-    do_print_clauses();
-};
-
-void ClauseContainer::print_dimacs() const
-{
-    do_print_dimacs();
-};
-
-int ClauseContainer::size() const
+int ClauseContainer::size()
 {
     return do_size();
 };
 
-ClauseVector::ClauseVector(VarHandler *v, int split_size)
-    : ClauseContainer(v, split_size)
-{
-    clause_list = std::vector<Clause>();
-};
-
-ClauseVector::~ClauseVector() {};
-
-void ClauseVector::do_add_clause(const Clause &c)
+void ClauseContainer::do_add_clause(const Clause &c)
 {
     clause_list.push_back(c);
-    for (auto cl : c)
-    {
-        std::cout << cl << " ";
-    }
-    std::cout << std::endl;
+    // for (auto cl : c)
+    // {
+    //     std::cout << cl << " ";
+    // }
+    // std::cout << "0" << std::endl;
+
+    if (InstanceData::solver)
+        InstanceData::solver->add_clause(c);
 };
 
-int ClauseVector::do_size() const
+int ClauseContainer::do_size()
 {
     return clause_list.size();
 };
 
-void ClauseVector::do_print_dimacs() const
-{
-    std::cout << "p cnf " << vh->size() << " " << size() << std::endl;
-    for (auto const &c : clause_list)
-    {
-        for (auto const &l : c)
-        {
-            std::cout << l << " ";
-        }
-        std::cout << "0" << std::endl;
-    }
-};
-
-void ClauseVector::do_print_clauses() const
-{
-    for (auto const &c : clause_list)
-    {
-        for (auto const &l : c)
-        {
-            std::cout << l << " ";
-        }
-        std::cout << "0" << std::endl;
-    }
-};
-
-void ClauseVector::do_clear()
+void ClauseContainer::do_clear()
 {
     clause_list.clear();
 };

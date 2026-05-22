@@ -1,8 +1,8 @@
 #ifndef CLAUSE_CONTAINER_H
 #define CLAUSE_CONTAINER_H
 
-#include "var_handler.h"
 #include <vector>
+#include "var_handler.h"
 
 typedef std::vector<int> Clause;
 typedef std::vector<Clause> Clauses;
@@ -10,45 +10,21 @@ typedef std::vector<Clause> Clauses;
 class ClauseContainer
 {
 public:
-	ClauseContainer(const ClauseContainer &) = delete;
-	ClauseContainer &operator=(const ClauseContainer &) = delete;
-
-	virtual ~ClauseContainer();
+	ClauseContainer();
+	~ClauseContainer();
 
 	Clauses clause_list;
 
 	void add_clause(const Clause &c);
-	void print_dimacs() const;
-	void print_clauses() const;
-	int size() const;
+	int size();
 
 protected:
-	VarHandler *vh;
-
-	ClauseContainer(VarHandler *, int split_size = 0);
-	const int split_size;
 	bool do_split = false;
 
 private:
-	virtual void do_add_clause(const Clause &c) = 0;
-	virtual int do_size() const = 0;
-	virtual void do_print_dimacs() const = 0;
-	virtual void do_clear() = 0;
-	virtual void do_print_clauses() const = 0;
-};
-
-class ClauseVector : public ClauseContainer
-{
-public:
-	ClauseVector(VarHandler *, int split_size);
-	virtual ~ClauseVector();
-
-private:
-	void do_add_clause(const Clause &c) final;
-	int do_size() const final;
-	void do_print_dimacs() const final;
-	void do_clear() final;
-	void do_print_clauses() const final;
+	void do_add_clause(const Clause &c);
+	int do_size();
+	void do_clear();
 };
 
 #endif

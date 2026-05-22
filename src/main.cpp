@@ -1,33 +1,10 @@
 #include <iostream>
-#include "antibandwidth_encoder.h"
 
+#include "global_data.h"
+#include "abw_encoder.h"
 #include "utils/signal_handler.h"
-#include "utils/usage.h"
 #include "utils/version.h"
-
-int get_number_arg(std::string const &arg)
-{
-    try
-    {
-        std::size_t pos;
-        int x = std::stoi(arg, &pos);
-        if (pos < arg.size())
-        {
-            std::cerr << "Trailing characters after number: " << arg << '\n';
-        }
-        return x;
-    }
-    catch (std::invalid_argument const &ex)
-    {
-        std::cerr << "Invalid number: " << arg << '\n';
-        return 0;
-    }
-    catch (std::out_of_range const &ex)
-    {
-        std::cerr << "Number out of range: " << arg << '\n';
-        return 0;
-    }
-}
+#include "utils/args_parser.h"
 
 int main(int argc, char **argv)
 {
@@ -35,210 +12,19 @@ int main(int argc, char **argv)
 
     Version::print_version();
 
-    AntibandwidthEncoder *abw_enc;
-
-    std::string graph_file;
-
-    if (argc < 2)
+    ArgsParser::init_parser();
+    int parse_result = ArgsParser::try_parse_args(argc, argv);
+    if (parse_result != 0)
     {
-        std::cerr << "c Error, no graph file was specified." << std::endl;
-        Helper::print_usage();
-        return 1;
+        return parse_result;
     }
 
-    Version::print_version();
+    AntibandwidthEncoder abw_enc;
 
-    abw_enc = new AntibandwidthEncoder();
+    if (GlobalData::just_print_dimacs)
+        abw_enc.encode_and_print_dimacs();
+    else
+        abw_enc.encode_and_solve();
 
-    for (int i = 1; i < argc; i++)
-    {
-        if (argv[i][0] != '-')
-        {
-            abw_enc->read_graph(argv[i]);
-        }
-        else if (argv[i] == std::string("--help"))
-        {
-            Helper::print_usage();
-            delete abw_enc;
-            return 1;
-        }
-        else if (argv[i] == std::string("--reduced"))
-        {
-            abw_enc->enc_choice = EncodeType::reduced;
-        }
-        else if (argv[i] == std::string("--seq"))
-        {
-            abw_enc->enc_choice = EncodeType::seq;
-        }
-        else if (argv[i] == std::string("--product"))
-        {
-            abw_enc->enc_choice = EncodeType::product;
-        }
-        else if (argv[i] == std::string("--duplex"))
-        {
-            abw_enc->enc_choice = EncodeType::duplex;
-        }
-        else if (argv[i] == std::string("--scl"))
-        {
-            abw_enc->enc_choice = EncodeType::scl;
-        }
-        else if (argv[i] == std::string("--conf-sat"))
-        {
-            abw_enc->sat_configuration = "sat";
-        }
-        else if (argv[i] == std::string("--conf-unsat"))
-        {
-            abw_enc->sat_configuration = "unsat";
-        }
-        else if (argv[i] == std::string("--conf-def"))
-        {
-            abw_enc->sat_configuration = "";
-        }
-        else if (argv[i] == std::string("--force-phase"))
-        {
-            abw_enc->force_phase = true;
-        }
-        else if (argv[i] == std::string("--verify-result"))
-        {
-            abw_enc->enable_solution_verification = true;
-        }
-        else if (argv[i] == std::string("--from-lb"))
-        {
-            abw_enc->iterative_strategy = SearchStrategy::iterate_from_lb;
-        }
-        else if (argv[i] == std::string("-set-lb"))
-        {
-            abw_enc->forced_lb = get_number_arg(argv[++i]);
-            if (abw_enc->forced_lb < 2)
-            {
-                std::cout << "Error, width has to be at least 2." << std::endl;
-                delete abw_enc;
-                return 1;
-            }
-            abw_enc->overwrite_lb = true;
-            std::cout << "c LB is predefined as " << abw_enc->forced_lb << "." << std::endl;
-        }
-        else if (argv[i] == std::string("-set-ub"))
-        {
-            abw_enc->forced_ub = get_number_arg(argv[++i]);
-            if (abw_enc->forced_ub < 0)
-            {
-                std::cout << "Error, width has to be positive." << std::endl;
-                delete abw_enc;
-                return 1;
-            }
-            abw_enc->overwrite_ub = true;
-            std::cout << "c UB is predefined as " << abw_enc->forced_ub << "." << std::endl;
-        }
-        else if (argv[i] == std::string("-limit-memory"))
-        {
-            int lim_mem = get_number_arg(argv[++i]);
-            if (lim_mem <= 0)
-            {
-                std::cout << "Error, memory limit has to be positive." << std::endl;
-                delete abw_enc;
-                return 1;
-            }
-            std::cout << "c Memory limit is set to " << lim_mem << "." << std::endl;
-            abw_enc->memory_limit = lim_mem;
-        }
-        else if (argv[i] == std::string("-limit-real-time"))
-        {
-            int limit_real_time = get_number_arg(argv[++i]);
-            if (limit_real_time <= 0)
-            {
-                std::cout << "Error, real time limit has to be positive." << std::endl;
-                delete abw_enc;
-                return 1;
-            }
-            std::cout << "c Real time limit is set to " << limit_real_time << "." << std::endl;
-            abw_enc->real_time_limit = limit_real_time;
-        }
-        else if (argv[i] == std::string("-limit-elapsed-time"))
-        {
-            int limit_elapsed_time = get_number_arg(argv[++i]);
-            if (limit_elapsed_time <= 0)
-            {
-                std::cout << "Error, elapsed time limit has to be positive." << std::endl;
-                delete abw_enc;
-                return 1;
-            }
-            std::cout << "c Elapsed time limit is set to " << limit_elapsed_time << "." << std::endl;
-            abw_enc->elapsed_time_limit = limit_elapsed_time;
-        }
-        else if (argv[i] == std::string("-sample-rate"))
-        {
-            int sample_rate = get_number_arg(argv[++i]);
-            if (sample_rate <= 0)
-            {
-                std::cout << "Error, sample rate has to be positive." << std::endl;
-                delete abw_enc;
-                return 1;
-            }
-            std::cout << "c Sample rate is set to " << sample_rate << "." << std::endl;
-            abw_enc->sample_rate = sample_rate;
-        }
-        else if (argv[i] == std::string("-report-rate"))
-        {
-            int report_rate = get_number_arg(argv[++i]);
-            if (report_rate <= 0)
-            {
-                std::cout << "Error, sample rate has to be positive." << std::endl;
-                delete abw_enc;
-                return 1;
-            }
-            std::cout << "c Sample rate is set to " << report_rate << "." << std::endl;
-            abw_enc->report_rate = report_rate;
-        }
-        else if (argv[i] == std::string("-split-size"))
-        {
-            int split_size = get_number_arg(argv[++i]);
-            if (split_size < 0)
-            {
-                std::cout << "Error, split size has to be positive." << std::endl;
-                delete abw_enc;
-                return 1;
-            }
-            std::cout << "c Splitting clauses at length " << split_size << "." << std::endl;
-            abw_enc->split_limit = split_size;
-        }
-        else if (argv[i] == std::string("-symmetry-break"))
-        {
-            std::string s = argv[++i];
-            if (s == "f")
-            {
-                abw_enc->symmetry_break_strategy = SymmetryBreakingType::FIRST;
-            }
-            else if (s == "h")
-            {
-                abw_enc->symmetry_break_strategy = SymmetryBreakingType::HIGHEST_DEGREE;
-            }
-            else if (s == "l")
-            {
-                abw_enc->symmetry_break_strategy = SymmetryBreakingType::LOWEST_DEGREE;
-            }
-            else
-            {
-                throw std::runtime_error("Unrecognized symmetry breaking type: " + s);
-            }
-        }
-        else if (argv[i] == std::string("-process-count"))
-        {
-            abw_enc->process_count = get_number_arg(argv[++i]);
-        }
-        else
-        {
-            std::cerr << "Unrecognized option: " << argv[i] << std::endl;
-
-            delete abw_enc;
-            return 1;
-        }
-    }
-
-    {
-        abw_enc->encode_and_solve_abws();
-    }
-
-    delete abw_enc;
     return 0;
 }
