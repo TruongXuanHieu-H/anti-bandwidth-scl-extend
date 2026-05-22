@@ -32,50 +32,50 @@ std::string ABPEncoder::get_signature()
 */
 int ABPEncoder::encode_and_solve_abp()
 {
-    std::cout << "c " + get_signature() + " Antibandwidth problem with w = " << width << " (" << graph->graph_name << "):" << std::endl;
+    std::cout << "c " << get_signature() << " Antibandwidth problem with w = " << width << " (" << graph->graph_name << "):" << std::endl;
     if (graph->n < 1)
     {
-        std::cout << "c " + get_signature() + " The input graph is too small, there is nothing to encode here." << std::endl;
+        std::cout << "c " << get_signature() << " The input graph is too small, there is nothing to encode here." << std::endl;
         SAT_res = 0; // should break loop
         return 0;
     }
     if (width < 2)
     {
-        std::cout << "c " + get_signature() + " There is always at least 1 distance in any labelling. There is nothing to encode here." << std::endl;
+        std::cout << "c " << get_signature() << " There is always at least 1 distance in any labelling. There is nothing to encode here." << std::endl;
         SAT_res = 10; // check solution can not be invoked
         return 10;
     }
 
     setup_for_solving();
-    std::cout << "c " + get_signature() + " Encoding starts with w = " << width << ":" << std::endl;
-    std::cout << "c " + get_signature() + " Encode symmetry breaking with option: " << symmetry_break_strategy << "." << std::endl;
+    std::cout << "c " << get_signature() << " Encoding starts with w = " << width << ":" << std::endl;
+    std::cout << "c " << get_signature() << " Encode symmetry breaking with option: " << symmetry_break_strategy << "." << std::endl;
 
     auto t1 = std::chrono::high_resolution_clock::now();
     enc->encode_antibandwidth(width, graph->edges);
     auto t2 = std::chrono::high_resolution_clock::now();
     auto encode_duration = std::chrono::duration_cast<std::chrono::seconds>(t2 - t1).count();
 
-    std::cout << "c " + get_signature() + " Encoding duration: " << encode_duration << "s" << std::endl;
-    std::cout << "c " + get_signature() + " Number of clauses: " << cc->size() << std::endl;
-    std::cout << "c " + get_signature() + " Number of irredundant clauses: " << solver->irredundant() << std::endl;
-    std::cout << "c " + get_signature() + " Number of variables: " << vh->size() << std::endl;
-    std::cout << "c " + get_signature() + " SAT Solving starts:" << std::endl;
+    std::cout << "c " << get_signature() << " Encoding duration: " << encode_duration << "s" << std::endl;
+    std::cout << "c " << get_signature() << " Number of clauses: " << cc->size() << std::endl;
+    std::cout << "c " << get_signature() << " Number of irredundant clauses: " << solver->irredundant() << std::endl;
+    std::cout << "c " << get_signature() << " Number of variables: " << vh->size() << std::endl;
+    std::cout << "c " << get_signature() << " SAT Solving starts:" << std::endl;
 
     t1 = std::chrono::high_resolution_clock::now();
     SAT_res = solver->solve();
     t2 = std::chrono::high_resolution_clock::now();
     auto solving_duration = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
-    std::cout << "c " + get_signature() + " Solving duration: " << solving_duration << " ms" << std::endl;
-    std::cout << "c " + get_signature() + " Answer: " << std::endl;
+    std::cout << "c " << get_signature() << " Solving duration: " << solving_duration << " ms" << std::endl;
+    std::cout << "c " << get_signature() << " Answer: " << std::endl;
     if (SAT_res == 10)
     {
-        std::cout << "s " + get_signature() + " SAT (w = " << width << ")" << std::endl;
+        std::cout << "s " << get_signature() << " SAT (w = " << width << ")" << std::endl;
     }
     else if (SAT_res == 20)
-        std::cout << "s " + get_signature() + " UNSAT (w = " << width << ")" << std::endl;
+        std::cout << "s " << get_signature() << " UNSAT (w = " << width << ")" << std::endl;
     else
     {
-        std::cout << "s " + get_signature() + " Error at w = " << width << ", SAT result: " << SAT_res << std::endl;
+        std::cout << "s " << get_signature() << " Error at w = " << width << ", SAT result: " << SAT_res << std::endl;
         cleanup_solving();
         return -20;
     }
@@ -85,7 +85,7 @@ int ABPEncoder::encode_and_solve_abp()
         int solution_abp = verify_solution();
         if (solution_abp < width)
         {
-            std::cerr << "c " + get_signature() + " Error, the solution is not correct, antibandwidth should be at least " << width << ", but it is " << solution_abp << "." << std::endl;
+            std::cerr << "c " << get_signature() << " Error, the solution is not correct, antibandwidth should be at least " << width << ", but it is " << solution_abp << "." << std::endl;
 
             cleanup_solving();
             return -10;
@@ -94,7 +94,7 @@ int ABPEncoder::encode_and_solve_abp()
 
     cleanup_solving();
 
-    // std::cout << "c " + get_signature() + " Closed." << std::endl;
+    // std::cout << "c " << get_signature() << " Closed." << std::endl;
     return SAT_res;
 };
 
@@ -105,7 +105,7 @@ int ABPEncoder::verify_solution()
         return 0;
     int min_dist = graph->calculate_antibandwidth(node_labels);
 
-    std::cout << "c " + get_signature() + " Solution check w = " << min_dist << "." << std::endl;
+    std::cout << "c " << get_signature() << " Solution check w = " << min_dist << "." << std::endl;
 
     return min_dist;
 }
@@ -155,11 +155,11 @@ void ABPEncoder::cleanup_solving()
 void ABPEncoder::setup_cadical()
 {
     solver = new CaDiCaL::Solver;
-    std::cout << "c " + get_signature() + " Initializing CaDiCaL (version " << solver->version() << ")." << std::endl;
+    std::cout << "c " << get_signature() << " Initializing CaDiCaL (version " << solver->version() << ")." << std::endl;
 
     auto res = solver->configure(sat_configuration.data());
     if (verbose)
-        std::cout << "c " + get_signature() + " Configuring CaDiCaL as --" << sat_configuration << " (" << res << ")." << std::endl;
+        std::cout << "c " << get_signature() << " Configuring CaDiCaL as --" << sat_configuration << " (" << res << ")." << std::endl;
 
     if (force_phase)
     {
@@ -168,7 +168,7 @@ void ABPEncoder::setup_cadical()
         {
             res = solver->set_long_option(force_phase_options[i].data());
             if (verbose)
-                std::cout << "c " + get_signature() + " CaDiCaL option " << force_phase_options[i] << " added (" << res << ")" << std::endl;
+                std::cout << "c " << get_signature() << " CaDiCaL option " << force_phase_options[i] << " added (" << res << ")" << std::endl;
         }
     }
 }
@@ -177,33 +177,33 @@ void ABPEncoder::setup_encoder()
 {
     switch (enc_strategy)
     {
-    case duplex:
-        std::cout << "c " + get_signature() + " Initializing a Duplex encoder with n = " << graph->n << "." << std::endl;
+    case EncodeType::duplex:
+        std::cout << "c " << get_signature() << " Initializing a Duplex encoder with n = " << graph->n << "." << std::endl;
         enc = new DuplexEncoder(graph, cc, vh);
         enc->symmetry_break_point = symmetry_break_strategy;
         break;
-    case reduced:
-        std::cout << "c " + get_signature() + " Initializing a Naive-Reduced encoder with n = " << graph->n << "." << std::endl;
+    case EncodeType::reduced:
+        std::cout << "c " << get_signature() << " Initializing a Naive-Reduced encoder with n = " << graph->n << "." << std::endl;
         enc = new ReducedEncoder(graph, cc, vh);
         enc->symmetry_break_point = symmetry_break_strategy;
         break;
-    case seq:
-        std::cout << "c " + get_signature() + " Initializing a Sequential encoder with n = " << graph->n << "." << std::endl;
+    case EncodeType::seq:
+        std::cout << "c " << get_signature() << " Initializing a Sequential encoder with n = " << graph->n << "." << std::endl;
         enc = new SeqEncoder(graph, cc, vh);
         enc->symmetry_break_point = symmetry_break_strategy;
         break;
-    case product:
-        std::cout << "c " + get_signature() + " Initializing a 2-Product encoder with n = " << graph->n << "." << std::endl;
+    case EncodeType::product:
+        std::cout << "c " << get_signature() << " Initializing a 2-Product encoder with n = " << graph->n << "." << std::endl;
         enc = new ProductEncoder(graph, cc, vh);
         enc->symmetry_break_point = symmetry_break_strategy;
         break;
-    case scl:
-        std::cout << "c " + get_signature() + " Initializing a SCL encoder with n = " << graph->n << "." << std::endl;
+    case EncodeType::scl:
+        std::cout << "c " << get_signature() << " Initializing a SCL encoder with n = " << graph->n << "." << std::endl;
         enc = new SCLEncoder(graph, cc, vh);
         enc->symmetry_break_point = symmetry_break_strategy;
         break;
     default:
-        std::cerr << "c " + get_signature() + " Unrecognized encoder type " << enc_strategy << "." << std::endl;
+        std::cerr << "c " << get_signature() << " Unrecognized encoder type." << std::endl;
         return;
     }
 }

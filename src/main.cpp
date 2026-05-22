@@ -1,11 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string>
 #include <iostream>
-#include <iomanip>
-#include <signal.h>
-#include <stdexcept>
-#include <map>
 #include "antibandwidth_encoder.h"
 
 #include "utils/signal_handler.h"

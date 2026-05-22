@@ -13,16 +13,8 @@
 #include <fstream>
 
 #include "encoders/encoder.h"
+#include "enum/encode_type.h"
 #include "graph/graph.h"
-
-enum EncodeType
-{
-	duplex,
-	reduced,
-	seq,
-	product,
-	scl,
-};
 
 enum IterativeStrategy
 {
@@ -41,7 +33,7 @@ public:
 	int max_width_SAT = std::numeric_limits<int>::min();
 	int min_width_UNSAT = std::numeric_limits<int>::max();
 
-	EncodeType enc_choice = duplex;
+	EncodeType enc_choice = EncodeType::duplex;
 	IterativeStrategy iterative_strategy = from_lb;
 
 	std::chrono::time_point<std::chrono::high_resolution_clock> start_time;

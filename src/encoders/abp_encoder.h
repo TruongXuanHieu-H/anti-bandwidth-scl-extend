@@ -1,6 +1,7 @@
 #ifndef ABP_ENCODER_H
 #define ABP_ENCODER_H
 
+#include "../enum/encode_type.h"
 #include "../antibandwidth_encoder.h"
 
 #include <string>
@@ -33,7 +34,7 @@ private:
     int width = 0;
 
     Graph *graph;
-    EncodeType enc_strategy = scl; // Default strategy
+    EncodeType enc_strategy = EncodeType::scl; // Default strategy
     VarHandler *vh;
     Encoder *enc;
     ClauseContainer *cc;
