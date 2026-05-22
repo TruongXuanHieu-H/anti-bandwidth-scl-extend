@@ -34,12 +34,12 @@ void AntibandwidthEncoder::encode_and_solve_abws()
 {
     switch (iterative_strategy)
     {
-    case from_lb:
+    case SearchStrategy::iterate_from_lb:
         std::cout << "c Iterative strategy: from LB to UB.\n";
         encode_and_solve_abw_problems_from_lb();
         break;
     default:
-        std::cerr << "c Unrecognized iterative strategy " << iterative_strategy << ".\n";
+        std::cerr << "c Unrecognized iterative strategy.\n";
         return;
     }
 };
