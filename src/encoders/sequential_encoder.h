@@ -1,17 +1,24 @@
-#ifndef SEQ_H
-#define SEQ_H
+#ifndef SEQ_ENCODER_H
+#define SEQ_ENCODER_H
 
-#include "encoder.h"
+#include "instance_encoder.h"
 
-class SeqEncoder : public Encoder
+#include <vector>
+#include <deque>
+
+typedef std::vector<int>::iterator vec_int_it;
+typedef std::deque<int>::iterator deq_int_it;
+
+class SeqEncoder : public InstanceEncoder
 {
 public:
-    SeqEncoder(Graph *g, ClauseContainer *cc, VarHandler *vh);
-    virtual ~SeqEncoder();
+    SeqEncoder();
+    ~SeqEncoder();
+
+    void encode_antibandwidth() override;
 
 private:
-    void do_encode_antibandwidth(int w, const std::vector<std::pair<int, int>> &node_pairs) final;
-    int do_vars_size() const final;
+    void do_encode_antibandwidth();
 
     void encode_labelling();
     void encode_pair_amo(int w, int node1, int node2);

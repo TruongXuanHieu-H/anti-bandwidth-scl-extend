@@ -1,43 +1,56 @@
-#ifndef SCL_ENCODER
-#define SCL_ENCODER
+#ifndef SCL_ENCODER_H
+#define SCL_ENCODER_H
 
-#include "encoder.h"
+#include "instance_encoder.h"
 #include <map>
+#include <vector>
+#include <unordered_map>
+#include <cstddef>
 
-class SCLEncoder : public Encoder
+struct VectorHash
+{
+    size_t operator()(const std::vector<int> &v) const
+    {
+        size_t hash = 0;
+
+        for (int x : v)
+        {
+            hash ^= std::hash<int>()(x) + 0x9e3779b9 + (hash << 6) + (hash >> 2);
+        }
+
+        return hash;
+    }
+};
+
+class SCLEncoder : public InstanceEncoder
 {
 public:
-    SCLEncoder(Graph *g, ClauseContainer *cc, VarHandler *vh);
-    virtual ~SCLEncoder();
+    SCLEncoder();
+    ~SCLEncoder() override;
+
+    void encode_antibandwidth() override;
 
 private:
     bool is_debug_mode = false;
 
-    int vertices_aux_var = 0;
-    int labels_aux_var = 0;
-
-    // Use to save aux vars of LABELS and VERTICES constraints
-    std::map<int, int> aux_vars = {};
-
     // Use to save aux vars of OBJ-K constraints
-    std::map<std::pair<int, int>, int> obj_k_aux_vars;
+    std::unordered_map<std::vector<int>, int, VectorHash> obj_k_aux_vars;
 
-    void do_encode_antibandwidth(int w, const std::vector<std::pair<int, int>> &node_pairs) final;
+    void do_encode_antibandwidth();
 
-    int do_vars_size() const final;
-
-    int get_obj_k_aux_var(int first, int last);
+    int get_obj_k_aux_var(std::vector<int> key, bool is_key_exist = false);
 
     void encode_vertices();
     void encode_labels();
     void encode_exactly_one_product(const std::vector<int> &vars);
     void encode_amo_seq(const std::vector<int> &vars);
 
-    void encode_obj_k(int w);
-    void encode_stair(int stair, int w);
-    void encode_window(int window, int stair, int w);
-    void glue_window(int window, int stair, int w);
-    void glue_stair(int stair1, int stair2, int w);
+    void encode_obj_k();
+
+    void encode_ladder(const std::vector<int> ladder_vars, int width);
+    void encode_window(const std::vector<int> window_vars, bool is_first_window, bool is_last_window);
+    void connect_windows(const std::vector<int> first_window_vars, const std::vector<int> second_window_vars);
+    virtual void connect_ladder(const std::vector<int> first_ladder_vars, const std::vector<int> second_ladder_vars, int width);
 };
 
 #endif

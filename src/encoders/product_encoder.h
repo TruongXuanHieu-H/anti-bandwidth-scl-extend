@@ -1,17 +1,24 @@
-#ifndef PRODUCT_H
-#define PRODUCT_H
+#ifndef PRODUCT_ENCODER_H
+#define PRODUCT_ENCODER_H
 
-#include "encoder.h"
+#include "instance_encoder.h"
 
-class ProductEncoder : public Encoder
+#include <vector>
+#include <deque>
+
+typedef std::vector<int>::iterator vec_int_it;
+typedef std::deque<int>::iterator deq_int_it;
+
+class ProductEncoder : public InstanceEncoder
 {
 public:
-    ProductEncoder(Graph *g, ClauseContainer *cc, VarHandler *vh);
-    virtual ~ProductEncoder();
+    ProductEncoder();
+    ~ProductEncoder();
+
+    void encode_antibandwidth() override;
 
 private:
-    void do_encode_antibandwidth(int w, std::vector<std::pair<int, int>> const &node_pairs) final;
-    int do_vars_size() const final;
+    void do_encode_antibandwidth();
 
     void encode_labelling();
     void encode_pair_amo(int w, int node1, int node2);

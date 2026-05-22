@@ -36,24 +36,29 @@ INCLUDES := -I$(CADICAL_INC)
 # Source files
 # ================================
 SOURCES := \
-	encoders/abp_encoder.cpp \
+	encoders/abw_instance.cpp \
 	encoders/bdd.cpp \
-	encoders/cadical_clauses.cpp \
 	encoders/clause_container.cpp \
 	encoders/duplex_encoder.cpp \
-	encoders/encoder.cpp \
+	encoders/instance_data.cpp \
+	encoders/instance_encoder.cpp \
 	encoders/product_encoder.cpp \
 	encoders/reduced_encoder.cpp \
+	encoders/sat_solver_cadical.cpp \
 	encoders/scl_encoder.cpp \
 	encoders/sequential_encoder.cpp \
 	encoders/var_handler.cpp \
 	graph/graph.cpp \
+	searchers/abw_searcher_iterate_from_lb.cpp \
+	searchers/abw_searcher.cpp \
+	utils/args_parser.cpp \
 	utils/pid_manager.cpp \
 	utils/signal_handler.cpp \
 	utils/usage.cpp \
 	utils/version.cpp \
-	antibandwidth_encoder.cpp \
-	main.cpp \
+	abw_encoder.cpp \
+	global_data.cpp \
+	main.cpp
 
 # ================================
 # Object files

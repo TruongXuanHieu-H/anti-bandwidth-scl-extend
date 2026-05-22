@@ -1,17 +1,22 @@
-#ifndef DUPLEX_H
-#define DUPLEX_H
+#ifndef DUPLEX_ENCODER_H
+#define DUPLEX_ENCODER_H
 
-#include "encoder.h"
+#include "instance_encoder.h"
 #include "bdd.h"
 
 #include <deque>
 #include <unordered_map>
 
-class DuplexEncoder : public Encoder
+typedef std::vector<int>::iterator vec_int_it;
+typedef std::deque<int>::iterator deq_int_it;
+
+class DuplexEncoder : public InstanceEncoder
 {
 public:
-	DuplexEncoder(Graph *g, ClauseContainer *cc, VarHandler *vh);
-	virtual ~DuplexEncoder();
+	DuplexEncoder();
+	~DuplexEncoder();
+
+	void encode_antibandwidth() override;
 
 private:
 	BDDHandler bh;
@@ -27,9 +32,7 @@ private:
 
 	void init_members();
 
-	void do_encode_antibandwidth(int w, const std::vector<std::pair<int, int>> &node_pairs) final;
-
-	int do_vars_size() const final;
+	void do_encode_antibandwidth();
 
 	void construct_window_bdds(int w);
 	void glue_window_bdds();
