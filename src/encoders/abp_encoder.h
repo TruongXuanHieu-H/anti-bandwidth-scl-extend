@@ -1,12 +1,12 @@
 #ifndef ABP_ENCODER_H
 #define ABP_ENCODER_H
 
-#include "antibandwidth_encoder.h"
+#include "../antibandwidth_encoder.h"
 
 #include <string>
 #include <vector>
 
-#include "utils.h"
+#include "../utils.h"
 #include "clause_cont.h"
 #include "cadical_clauses.h"
 #include "encoder.h"

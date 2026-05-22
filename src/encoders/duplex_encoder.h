@@ -22,8 +22,8 @@ private:
 	std::unordered_map<int, std::vector<int>> bwd_amz_roots;
 
 	std::unordered_map<int, std::vector<std::vector<int>>> node_amz_literals;
-	unsigned number_of_windows;
-	unsigned last_window_w;
+	int number_of_windows;
+	int last_window_w;
 
 	// Number of LABELS and VERTICES's aux vars and constraints
 	int num_l_v_constraints = 0;
@@ -52,8 +52,8 @@ private:
 	void seq_encode_amo(const std::vector<int> &vars);
 
 	// Not & on purpose!
-	BDD_id build_amo(std::deque<unsigned int> vars);
-	BDD_id build_amz(std::deque<unsigned int> vars);
+	BDD_id build_amo(std::deque<int> vars);
+	BDD_id build_amz(std::deque<int> vars);
 };
 
 #endif

@@ -6,7 +6,7 @@
 #include <utility> //pair
 
 #include "clause_cont.h"
-#include "graph/graph.h"
+#include "../graph/graph.h"
 
 typedef std::vector<int>::iterator vec_int_it;
 typedef std::deque<int>::iterator deq_int_it;

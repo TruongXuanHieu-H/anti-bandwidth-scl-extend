@@ -6,11 +6,11 @@
 #include <signal.h>
 #include <stdexcept>
 #include <map>
-#include "src/antibandwidth_encoder.h"
+#include "antibandwidth_encoder.h"
 
-#include "src/utils/signal_handler.h"
-#include "src/utils/usage.h"
-#include "src/utils/version.h"
+#include "utils/signal_handler.h"
+#include "utils/usage.h"
+#include "utils/version.h"
 
 int get_number_arg(std::string const &arg)
 {

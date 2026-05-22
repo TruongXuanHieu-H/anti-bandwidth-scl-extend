@@ -8,7 +8,7 @@
 #include "product_encoder.h"
 #include "duplex_encoder.h"
 #include "scl_encoder.h"
-#include "graph/graph.h"
+#include "../graph/graph.h"
 
 ABPEncoder::ABPEncoder(std::string symmetry_break_strategy, Graph *graph, int width, EncoderStrategy enc_strategy)
     : symmetry_break_strategy(symmetry_break_strategy), width(width), graph(graph), enc_strategy(enc_strategy) {

@@ -1,7 +1,7 @@
 #ifndef CLAUSE_CONT_H
 #define CLAUSE_CONT_H
 
-#include "utils.h"
+#include "../utils.h"
 #include <vector>
 
 typedef std::vector<int> Clause;

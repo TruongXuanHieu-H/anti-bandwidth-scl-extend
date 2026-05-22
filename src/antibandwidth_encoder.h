@@ -12,7 +12,7 @@
 #include <chrono>
 #include <fstream>
 
-#include "encoder.h"
+#include "encoders/encoder.h"
 #include "graph/graph.h"
 
 enum EncoderStrategy

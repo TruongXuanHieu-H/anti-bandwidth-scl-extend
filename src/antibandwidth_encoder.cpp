@@ -1,5 +1,5 @@
 #include "antibandwidth_encoder.h"
-#include "abp_encoder.h"
+#include "encoders/abp_encoder.h"
 
 #include <iostream>
 #include <assert.h>

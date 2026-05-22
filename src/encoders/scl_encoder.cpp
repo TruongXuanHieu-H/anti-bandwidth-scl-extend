@@ -1,5 +1,4 @@
 #include "scl_encoder.h"
-#include "math_extension.h"
 
 #include <iostream>
 #include <numeric>

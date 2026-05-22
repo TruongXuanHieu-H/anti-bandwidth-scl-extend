@@ -39,17 +39,17 @@ SOURCES := \
 	main.cpp \
 	utils.cpp \
 	math_extension.cpp \
-	reduced_encoder.cpp \
-	sequential_encoder.cpp \
-	product_encoder.cpp \
-	duplex_encoder.cpp \
-	scl_encoder.cpp \
-	encoder.cpp \
-	bdd.cpp \
-	clause_cont.cpp \
-	cadical_clauses.cpp \
+	encoders/reduced_encoder.cpp \
+	encoders/sequential_encoder.cpp \
+	encoders/product_encoder.cpp \
+	encoders/duplex_encoder.cpp \
+	encoders/scl_encoder.cpp \
+	encoders/encoder.cpp \
+	encoders/bdd.cpp \
+	encoders/clause_cont.cpp \
+	encoders/cadical_clauses.cpp \
 	antibandwidth_encoder.cpp \
-	abp_encoder.cpp \
+	encoders/abp_encoder.cpp \
 	graph/graph.cpp \
 	utils/pid_manager.cpp \
 	utils/signal_handler.cpp \
@@ -102,7 +102,6 @@ clean:
 .PHONY: tar
 tar:
 	tar cfv abw_enc.tar \
-		main.cpp \
 		makefile \
 		$(SRCDIR) \
 		$(CADICAL_LIB_DIR)/*.a \

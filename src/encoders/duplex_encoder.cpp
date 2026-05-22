@@ -76,7 +76,7 @@ void DuplexEncoder::do_encode_antibandwidth(int w, const std::vector<std::pair<i
 
 void DuplexEncoder::seq_encode_column_eo()
 {
-    for (unsigned i = 0; i < g->n; i++)
+    for (int i = 0; i < g->n; i++)
     {
         std::vector<int> label_node_eo(g->n);
         int j = 0;
@@ -114,7 +114,7 @@ void DuplexEncoder::seq_encode_column_eo()
 
 void DuplexEncoder::encode_column_eo()
 {
-    for (unsigned i = 0; i < g->n; i++)
+    for (int i = 0; i < g->n; i++)
     {
         std::vector<int> label_node_eo(g->n);
         int j = 0;
@@ -160,7 +160,7 @@ void DuplexEncoder::product_encode_eo(const std::vector<int> &vars)
 
     int i, j;
     std::vector<int> or_clause = std::vector<int>();
-    for (unsigned idx = 0; idx < vars.size(); ++idx)
+    for (int idx = 0; idx < (int)vars.size(); ++idx)
     {
         i = std::floor(idx / p);
         j = idx % p;
@@ -216,7 +216,7 @@ void DuplexEncoder::product_encode_amo(const std::vector<int> &vars)
 
     int i, j;
 
-    for (unsigned idx = 0; idx < vars.size(); ++idx)
+    for (int idx = 0; idx < (int)vars.size(); ++idx)
     {
         i = std::floor(idx / p);
         j = idx % p;
@@ -238,7 +238,7 @@ void DuplexEncoder::seq_encode_amo(const std::vector<int> &vars)
 
     int prev = vars[0];
 
-    for (unsigned idx = 1; idx < vars.size() - 1; ++idx)
+    for (int idx = 1; idx < (int)vars.size() - 1; ++idx)
     {
         int curr = vars[idx];
         int next = vh->get_new_var();
@@ -263,14 +263,14 @@ void DuplexEncoder::construct_window_bdds(int w)
     if (last_window_w != 0)
         number_of_windows++;
 
-    for (unsigned i = 0; i < g->n; ++i)
+    for (int i = 0; i < g->n; ++i)
     {
         fwd_amo_roots[i] = std::vector<int>();
         bwd_amo_roots[i] = std::vector<int>();
         fwd_amz_roots[i] = std::vector<int>();
         bwd_amz_roots[i] = std::vector<int>();
 
-        for (unsigned gw = 0; gw < number_of_windows; ++gw)
+        for (int gw = 0; gw < number_of_windows; ++gw)
         {
             bool last_window = (gw == number_of_windows - 1);
             int p1 = (i * g->n) + (gw * w) + 1;
@@ -278,11 +278,11 @@ void DuplexEncoder::construct_window_bdds(int w)
             if (last_window)
                 p2 = (i + 1) * g->n;
 
-            std::deque<unsigned int> window_vars(p2 - p1 + 1);
+            std::deque<int> window_vars(p2 - p1 + 1);
             std::iota(window_vars.begin(), window_vars.end(), p1);
 
-            int fwd_amo_id;
-            int fwd_amz_id;
+            int fwd_amo_id = -1;
+            int fwd_amz_id = -1;
             if (gw != number_of_windows - 1)
             {
                 fwd_amo_id = build_amo(window_vars);
@@ -291,8 +291,8 @@ void DuplexEncoder::construct_window_bdds(int w)
                 fwd_amz_roots[i].push_back(fwd_amz_id);
             }
 
-            int bwd_amo_id;
-            int bwd_amz_id;
+            int bwd_amo_id = -1;
+            int bwd_amz_id = -1;
             if (gw != 0)
             {
                 std::reverse(std::begin(window_vars), std::end(window_vars));
@@ -330,11 +330,11 @@ void DuplexEncoder::construct_window_bdds(int w)
         assert(!fwd_amz_roots[i].empty());
 
         std::vector<int> amz_clause;
-        for (unsigned f = 0; f < fwd_amz_roots[i].size() - 1; ++f)
+        for (int f = 0; f < (int)fwd_amz_roots[i].size() - 1; ++f)
         {
             amz_clause.push_back(-1 * fwd_amz_roots[i][f]);
 
-            for (unsigned g = f + 1; g < fwd_amz_roots[i].size(); ++g)
+            for (int g = f + 1; g < (int)fwd_amz_roots[i].size(); ++g)
             {
                 cv->add_clause({fwd_amz_roots[i][f], fwd_amz_roots[i][g]});
                 num_l_v_constraints++;
@@ -351,10 +351,10 @@ void DuplexEncoder::construct_window_bdds(int w)
 
 void DuplexEncoder::glue_window_bdds()
 {
-    for (unsigned var_group = 0; var_group < g->n; ++var_group)
+    for (int var_group = 0; var_group < g->n; ++var_group)
     {
         node_amz_literals[var_group] = std::vector<std::vector<int>>();
-        for (unsigned curr_window = 0; curr_window < number_of_windows - 1; ++curr_window)
+        for (int curr_window = 0; curr_window < number_of_windows - 1; ++curr_window)
         {
             node_amz_literals[var_group].push_back({fwd_amz_roots[var_group][curr_window]});
 
@@ -435,14 +435,14 @@ void DuplexEncoder::glue_window_bdds()
 void DuplexEncoder::glue_edge_windows(int node1, int node2)
 {
     assert(node_amz_literals[node1].size() == node_amz_literals[node2].size());
-    for (unsigned i = 0; i < node_amz_literals[node1].size(); ++i)
+    for (int i = 0; i < (int)node_amz_literals[node1].size(); ++i)
     {
         std::vector<int> node1_amz_clause = node_amz_literals[node1][i];
         std::vector<int> node2_amz_clause = node_amz_literals[node2][i];
         assert(node1_amz_clause.size() == node2_amz_clause.size());
-        for (unsigned c = 0; c < node1_amz_clause.size(); ++c)
+        for (int c = 0; c < (int)node1_amz_clause.size(); ++c)
         {
-            for (unsigned d = 0; d < node2_amz_clause.size(); ++d)
+            for (int d = 0; d < (int)node2_amz_clause.size(); ++d)
             {
                 cv->add_clause({node1_amz_clause[c], node2_amz_clause[d]});
                 num_obj_k_constraints++;
@@ -452,7 +452,7 @@ void DuplexEncoder::glue_edge_windows(int node1, int node2)
     }
 };
 
-BDD_id DuplexEncoder::build_amo(std::deque<unsigned int> vars)
+BDD_id DuplexEncoder::build_amo(std::deque<int> vars)
 {
     BDD_id lookup;
     int from = vars.front();
@@ -497,7 +497,7 @@ BDD_id DuplexEncoder::build_amo(std::deque<unsigned int> vars)
     return new_bdd.id;
 };
 
-BDD_id DuplexEncoder::build_amz(std::deque<unsigned int> vars)
+BDD_id DuplexEncoder::build_amz(std::deque<int> vars)
 {
     BDD_id lookup;
     int from = vars.front();
