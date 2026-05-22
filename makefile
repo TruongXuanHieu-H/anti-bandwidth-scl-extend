@@ -36,25 +36,24 @@ INCLUDES := -I$(CADICAL_INC)
 # Source files
 # ================================
 SOURCES := \
-	main.cpp \
-	utils.cpp \
-	math_extension.cpp \
-	encoders/reduced_encoder.cpp \
-	encoders/sequential_encoder.cpp \
-	encoders/product_encoder.cpp \
-	encoders/duplex_encoder.cpp \
-	encoders/scl_encoder.cpp \
-	encoders/encoder.cpp \
-	encoders/bdd.cpp \
-	encoders/clause_cont.cpp \
-	encoders/cadical_clauses.cpp \
-	antibandwidth_encoder.cpp \
 	encoders/abp_encoder.cpp \
+	encoders/bdd.cpp \
+	encoders/cadical_clauses.cpp \
+	encoders/clause_cont.cpp \
+	encoders/duplex_encoder.cpp \
+	encoders/encoder.cpp \
+	encoders/product_encoder.cpp \
+	encoders/reduced_encoder.cpp \
+	encoders/scl_encoder.cpp \
+	encoders/sequential_encoder.cpp \
 	graph/graph.cpp \
 	utils/pid_manager.cpp \
 	utils/signal_handler.cpp \
 	utils/usage.cpp \
-	utils/version.cpp
+	utils/version.cpp \
+	antibandwidth_encoder.cpp \
+	main.cpp \
+	utils.cpp
 
 # ================================
 # Object files
