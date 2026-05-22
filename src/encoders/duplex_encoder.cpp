@@ -31,12 +31,6 @@ int DuplexEncoder::do_vars_size() const
 
 void DuplexEncoder::do_encode_antibandwidth(int w, const std::vector<std::pair<int, int>> &node_pairs)
 {
-    num_l_v_constraints = 0;
-    num_obj_k_constraints = 0;
-    num_obj_k_glue_staircase_constraint = 0;
-    num_l_v_aux_vars = 0;
-    num_obj_k_aux_vars = 0;
-
     if (symmetry_break_point == SymmetryBreakingType::FIRST)
     {
         encode_symmetry_break();
@@ -66,12 +60,6 @@ void DuplexEncoder::do_encode_antibandwidth(int w, const std::vector<std::pair<i
     node_amz_literals.clear();
 
     encode_column_eo();
-
-    // std::cout << "c\tLabels and Vertices aux var: " << num_l_v_aux_vars << std::endl;
-    // std::cout << "c\tLabels and Vertices constraints:  " << num_l_v_constraints << std::endl;
-    // std::cout << "c\tObj k aux var: " << num_obj_k_aux_vars << std::endl;
-    // std::cout << "c\tObj k constraints: " << num_obj_k_constraints << std::endl;
-    // std::cout << "c\tObj k glue staircase constraints: " << num_obj_k_glue_staircase_constraint << std::endl;
 };
 
 void DuplexEncoder::seq_encode_column_eo()
@@ -92,23 +80,17 @@ void DuplexEncoder::seq_encode_column_eo()
         {
             int curr = *i_pos;
             int next = vh->get_new_var();
-            num_l_v_aux_vars++;
             cv->add_clause({-1 * prev, -1 * curr});
-            num_l_v_constraints++;
             cv->add_clause({-1 * prev, next});
-            num_l_v_constraints++;
             cv->add_clause({-1 * curr, next});
-            num_l_v_constraints++;
 
             or_clause.push_back(curr);
             prev = next;
         }
         cv->add_clause({-1 * prev, -1 * (*std::prev(it_end))});
-        num_l_v_constraints++;
 
         or_clause.push_back(*std::prev(it_end));
         cv->add_clause(or_clause);
-        num_l_v_constraints++;
     }
 };
 
@@ -135,9 +117,7 @@ void DuplexEncoder::product_encode_eo(const std::vector<int> &vars)
     {
         // simplifies to vars[0] /\ -1*vars[0], in case vars[0] == vars[1]
         cv->add_clause({vars[0], vars[1]});
-        num_l_v_constraints++;
         cv->add_clause({-1 * vars[0], -1 * vars[1]});
-        num_l_v_constraints++;
         return;
     }
 
@@ -150,12 +130,10 @@ void DuplexEncoder::product_encode_eo(const std::vector<int> &vars)
     for (int i = 1; i <= p; ++i)
     {
         u_vars.push_back(vh->get_new_var());
-        num_l_v_aux_vars++;
     }
     for (int j = 1; j <= q; ++j)
     {
         v_vars.push_back(vh->get_new_var());
-        num_l_v_aux_vars++;
     }
 
     int i, j;
@@ -166,15 +144,12 @@ void DuplexEncoder::product_encode_eo(const std::vector<int> &vars)
         j = idx % p;
 
         cv->add_clause({-1 * vars[idx], v_vars[i]});
-        num_l_v_constraints++;
         cv->add_clause({-1 * vars[idx], u_vars[j]});
-        num_l_v_constraints++;
 
         // At least one
         or_clause.push_back(vars[idx]);
     }
     cv->add_clause(or_clause);
-    num_l_v_constraints++;
 
     // Similar results (faster on small instances, slightly worse on large)
     // product_encode_amo(u_vars);
@@ -193,7 +168,6 @@ void DuplexEncoder::product_encode_amo(const std::vector<int> &vars)
         if (vars[0] == vars[1])
             return;
         cv->add_clause({-1 * vars[0], -1 * vars[1]});
-        num_l_v_constraints++;
         return;
     }
 
@@ -206,12 +180,10 @@ void DuplexEncoder::product_encode_amo(const std::vector<int> &vars)
     for (int i = 1; i <= p; ++i)
     {
         u_vars.push_back(vh->get_new_var());
-        num_l_v_aux_vars++;
     }
     for (int j = 1; j <= q; ++j)
     {
         v_vars.push_back(vh->get_new_var());
-        num_l_v_aux_vars++;
     }
 
     int i, j;
@@ -222,9 +194,7 @@ void DuplexEncoder::product_encode_amo(const std::vector<int> &vars)
         j = idx % p;
 
         cv->add_clause({-1 * vars[idx], v_vars[i]});
-        num_l_v_constraints++;
         cv->add_clause({-1 * vars[idx], u_vars[j]});
-        num_l_v_constraints++;
     }
 
     product_encode_amo(u_vars);
@@ -242,18 +212,13 @@ void DuplexEncoder::seq_encode_amo(const std::vector<int> &vars)
     {
         int curr = vars[idx];
         int next = vh->get_new_var();
-        num_l_v_aux_vars++;
         cv->add_clause({-1 * prev, -1 * curr});
-        num_l_v_constraints++;
         cv->add_clause({-1 * prev, next});
-        num_l_v_constraints++;
         cv->add_clause({-1 * curr, next});
-        num_l_v_constraints++;
 
         prev = next;
     }
     cv->add_clause({-1 * prev, -1 * vars[vars.size() - 1]});
-    num_l_v_constraints++;
 };
 
 void DuplexEncoder::construct_window_bdds(int w)
@@ -323,7 +288,6 @@ void DuplexEncoder::construct_window_bdds(int w)
             if (window_vars.size() > 1)
             {
                 cv->add_clause({fwd_amo_id});
-                num_obj_k_constraints++;
             }
         }
 
@@ -337,14 +301,12 @@ void DuplexEncoder::construct_window_bdds(int w)
             for (int g = f + 1; g < (int)fwd_amz_roots[i].size(); ++g)
             {
                 cv->add_clause({fwd_amz_roots[i][f], fwd_amz_roots[i][g]});
-                num_l_v_constraints++;
             }
         }
         amz_clause.push_back(-1 * fwd_amz_roots[i].back());
         if (!amz_clause.empty())
         {
             cv->add_clause(amz_clause);
-            num_l_v_constraints++;
         }
     }
 };
@@ -374,12 +336,10 @@ void DuplexEncoder::glue_window_bdds()
             if (fwd_from != fwd_to)
             {
                 cv->add_clause({curr_fwd_amo});
-                num_obj_k_constraints++;
             }
             if (bwd_from != bwd_to)
             {
                 cv->add_clause({next_bwd_amo});
-                num_obj_k_constraints++;
             }
 
             std::deque<int> fwd_window(fwd_to - fwd_from + 1);
@@ -411,16 +371,13 @@ void DuplexEncoder::glue_window_bdds()
                 if (fwd_window.size() > 1)
                 {
                     cv->add_clause({b1_amo});
-                    num_obj_k_constraints++;
                 }
                 if (bwd_window.size() > 1)
                 {
                     cv->add_clause({b2_amo});
-                    num_obj_k_constraints++;
                 }
 
                 cv->add_clause({b1_amz, b2_amz});
-                num_obj_k_constraints++;
 
                 node_amz_literals[var_group].push_back({b1_amz, b2_amz});
 
@@ -445,8 +402,6 @@ void DuplexEncoder::glue_edge_windows(int node1, int node2)
             for (int d = 0; d < (int)node2_amz_clause.size(); ++d)
             {
                 cv->add_clause({node1_amz_clause[c], node2_amz_clause[d]});
-                num_obj_k_constraints++;
-                num_obj_k_glue_staircase_constraint++;
             }
         }
     }
@@ -476,17 +431,14 @@ BDD_id DuplexEncoder::build_amo(std::deque<int> vars)
     else
     {
         new_bdd.id = vh->get_new_var();
-        num_obj_k_aux_vars++;
         vars.pop_front();
         false_child = build_amo(vars);
         true_child = build_amz(vars);
 
         cv->add_clause({-1 * from, -1 * new_bdd.id, true_child});
-        num_obj_k_constraints++;
         if (vars.size() > 1)
         {
             cv->add_clause({new_bdd.id * -1, false_child});
-            num_obj_k_constraints++;
         }
     }
 
@@ -521,17 +473,13 @@ BDD_id DuplexEncoder::build_amz(std::deque<int> vars)
     else
     {
         new_bdd.id = vh->get_new_var();
-        num_obj_k_aux_vars++;
         true_child = 0; //\bot BDD
         vars.pop_front();
         false_child = build_amz(vars);
 
         cv->add_clause({-1 * from, -1 * new_bdd.id});
-        num_obj_k_constraints++;
         cv->add_clause({from, -1 * new_bdd.id, false_child});
-        num_obj_k_constraints++;
         cv->add_clause({from, new_bdd.id, -1 * false_child});
-        num_obj_k_constraints++;
     }
 
     new_bdd.true_child_id = true_child;
@@ -548,21 +496,17 @@ void DuplexEncoder::make_equal_bdds(BDD_id b1, BDD_id b2)
     if (b1 == -1)
     {
         cv->add_clause({b2});
-        num_obj_k_constraints++;
         return;
     }
 
     if (b2 == -1)
     {
         cv->add_clause({b1});
-        num_obj_k_constraints++;
         return;
     }
 
     assert(b1 > 0 && b2 > 0);
 
     cv->add_clause({-1 * b1, b2});
-    num_obj_k_constraints++;
     cv->add_clause({b1, -1 * b2});
-    num_obj_k_constraints++;
 };

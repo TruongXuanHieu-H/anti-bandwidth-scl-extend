@@ -38,10 +38,6 @@ void SCLEncoder::do_encode_antibandwidth(int w, const std::vector<std::pair<int,
     aux_vars.clear();
     obj_k_aux_vars.clear();
 
-    num_l_v_constraints = 0;
-    num_obj_k_constraints = 0;
-    num_obj_k_glue_staircase_constraint = 0;
-
     vertices_aux_var = g->n * g->n;
     labels_aux_var = vertices_aux_var + g->n * g->n;
 
@@ -69,24 +65,10 @@ void SCLEncoder::do_encode_antibandwidth(int w, const std::vector<std::pair<int,
 
     // Prevent error when build due to unused variables
     (void)node_pairs;
-    (void)w;
-    // std::cout << "c\tLabels and Vertices aux var: " << aux_vars.size() << std::endl;
-    // std::cout << "c\tLabels and Vertices constraints:  " << num_l_v_constraints << std::endl;
-    // std::cout << "c\tObj k aux var: " << obj_k_aux_vars.size() << std::endl;
-    // std::cout << "c\tObj k constraints: " << num_obj_k_constraints << std::endl;
-    // std::cout << "c\tObj k glue staircase constraints: " << num_obj_k_glue_staircase_constraint << std::endl;
 };
 
 void SCLEncoder::encode_vertices()
 {
-    /*
-        Encode that each label can only be assigned to one node.
-        Assume there are 30 nodes, the constraints looks like:
-        1 + 31 + 61 + ... + 871 = 1
-        2 + 32 + 62 + ... + 872 = 1
-        ...
-        30 + 60 + 90 + ... + 900 = 1
-    */
     for (int i = 0; i < g->n; i++)
     {
         std::vector<int> node_vertices_eo(g->n);
@@ -101,14 +83,6 @@ void SCLEncoder::encode_vertices()
 
 void SCLEncoder::encode_labels()
 {
-    /*
-        Encode that each vertex can only take one and only one label.
-        Assume there are 30 nodes, the constraints looks like:
-        1 + 2 + 3 + ... + 30 = 1
-        31 + 32 + 33 + ... + 60 = 1
-        ...
-        871 + 872 + 873 + ... + 900 = 1
-    */
     for (int i = 0; i < g->n; i++)
     {
         std::vector<int> node_labels_eo(g->n);
@@ -126,9 +100,7 @@ void SCLEncoder::encode_exactly_one_product(const std::vector<int> &vars)
     {
         // simplifies to vars[0] /\ -1*vars[0], in case vars[0] == vars[1]
         cv->add_clause({vars[0], vars[1]});
-        num_l_v_constraints++;
         cv->add_clause({-1 * vars[0], -1 * vars[1]});
-        num_l_v_constraints++;
         return;
     }
 
@@ -159,14 +131,11 @@ void SCLEncoder::encode_exactly_one_product(const std::vector<int> &vars)
         j = idx % p;
 
         cv->add_clause({-1 * vars[idx], v_vars[i]});
-        num_l_v_constraints++;
         cv->add_clause({-1 * vars[idx], u_vars[j]});
-        num_l_v_constraints++;
 
         or_clause.push_back(vars[idx]);
     }
     cv->add_clause(or_clause);
-    num_l_v_constraints++;
 
     encode_amo_seq(u_vars);
     encode_amo_seq(v_vars);
@@ -185,16 +154,12 @@ void SCLEncoder::encode_amo_seq(const std::vector<int> &vars)
         int next = vh->get_new_var();
         aux_vars.insert({next, next});
         cv->add_clause({-1 * prev, -1 * curr});
-        num_l_v_constraints++;
         cv->add_clause({-1 * prev, next});
-        num_l_v_constraints++;
         cv->add_clause({-1 * curr, next});
-        num_l_v_constraints++;
 
         prev = next;
     }
     cv->add_clause({-1 * prev, -1 * vars[vars.size() - 1]});
-    num_l_v_constraints++;
 };
 
 void SCLEncoder::encode_obj_k(int w)
@@ -251,19 +216,11 @@ void SCLEncoder::encode_stair(int stair, int w)
         {
             int second_window_aux_var = get_obj_k_aux_var(windows[j].first, windows[j].second);
             cv->add_clause({-first_window_aux_var, -second_window_aux_var});
-            num_l_v_constraints++;
         }
     }
     cv->add_clause(alo_clause);
-    num_l_v_constraints++;
 }
 
-/*
- * Encode each window separately.
- * The first window only has lower part.
- * The last window only has upper part.
- * Other windows have both upper part and lower part.
- */
 void SCLEncoder::encode_window(int window, int stair, int w)
 {
     if (window == 0)
@@ -275,14 +232,12 @@ void SCLEncoder::encode_window(int window, int stair, int w)
         {
             int var = stair * (int)g->n + window * (int)w + i;
             cv->add_clause({-var, get_obj_k_aux_var(var, lastVar)});
-            num_obj_k_constraints++;
         }
 
         for (int i = w; i >= 2; i--)
         {
             int var = stair * (int)g->n + window * (int)w + i;
             cv->add_clause({-get_obj_k_aux_var(var, lastVar), get_obj_k_aux_var(var - 1, lastVar)});
-            num_obj_k_constraints++;
         }
 
         for (int i = 1; i < (int)w; i++)
@@ -291,14 +246,12 @@ void SCLEncoder::encode_window(int window, int stair, int w)
             int main = get_obj_k_aux_var(var, lastVar);
             int sub = get_obj_k_aux_var(var + 1, lastVar);
             cv->add_clause({var, sub, -main});
-            num_obj_k_constraints++;
         }
 
         for (int i = 1; i < (int)w; i++)
         {
             int var = stair * (int)g->n + window * (int)w + i;
             cv->add_clause({-var, -get_obj_k_aux_var(var + 1, lastVar)});
-            num_obj_k_constraints++;
         }
     }
     else if (window == ceil((float)g->n / w) - 1)
@@ -314,14 +267,12 @@ void SCLEncoder::encode_window(int window, int stair, int w)
             {
                 int reverse_var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-reverse_var, get_obj_k_aux_var(firstVar, reverse_var)});
-                num_obj_k_constraints++;
             }
 
             for (int i = real_w - 1; i > 0; i--)
             {
                 int reverse_var = stair * (int)g->n + window * (int)w + real_w - i;
                 cv->add_clause({-get_obj_k_aux_var(firstVar, reverse_var), get_obj_k_aux_var(firstVar, reverse_var + 1)});
-                num_obj_k_constraints++;
             }
 
             for (int i = 0; i < (int)real_w - 1; i++)
@@ -330,14 +281,12 @@ void SCLEncoder::encode_window(int window, int stair, int w)
                 int main = get_obj_k_aux_var(firstVar, var);
                 int sub = get_obj_k_aux_var(firstVar, var - 1);
                 cv->add_clause({sub, var, -main});
-                num_obj_k_constraints++;
             }
 
             for (int i = real_w; i > 1; i--)
             {
                 int reverse_var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-reverse_var, -get_obj_k_aux_var(firstVar, reverse_var - 1)});
-                num_obj_k_constraints++;
             }
         }
         else
@@ -347,14 +296,12 @@ void SCLEncoder::encode_window(int window, int stair, int w)
             {
                 int reverse_var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-reverse_var, get_obj_k_aux_var(firstVar, reverse_var)});
-                num_obj_k_constraints++;
             }
 
             for (int i = w - 1; i >= 1; i--)
             {
                 int reverse_var = stair * (int)g->n + window * (int)w + w - i;
                 cv->add_clause({-get_obj_k_aux_var(firstVar, reverse_var), get_obj_k_aux_var(firstVar, reverse_var + 1)});
-                num_obj_k_constraints++;
             }
 
             for (int i = 0; i < (int)w - 1; i++)
@@ -363,14 +310,12 @@ void SCLEncoder::encode_window(int window, int stair, int w)
                 int main = get_obj_k_aux_var(firstVar, var);
                 int sub = get_obj_k_aux_var(firstVar, var - 1);
                 cv->add_clause({sub, var, -main});
-                num_obj_k_constraints++;
             }
 
             for (int i = (int)w; i > 1; i--)
             {
                 int reverse_var = stair * (int)g->n + window * (int)w + i;
                 cv->add_clause({-reverse_var, -get_obj_k_aux_var(firstVar, reverse_var - 1)});
-                num_obj_k_constraints++;
             }
         }
     }
@@ -384,14 +329,12 @@ void SCLEncoder::encode_window(int window, int stair, int w)
         {
             int reverse_var = stair * (int)g->n + window * (int)w + i;
             cv->add_clause({-reverse_var, get_obj_k_aux_var(firstVar, reverse_var)});
-            num_obj_k_constraints++;
         }
 
         for (int i = w - 1; i >= 1; i--)
         {
             int reverse_var = stair * (int)g->n + window * (int)w + w - i;
             cv->add_clause({-get_obj_k_aux_var(firstVar, reverse_var), get_obj_k_aux_var(firstVar, reverse_var + 1)});
-            num_obj_k_constraints++;
         }
 
         for (int i = 0; i < (int)w - 1; i++)
@@ -400,14 +343,12 @@ void SCLEncoder::encode_window(int window, int stair, int w)
             int main = get_obj_k_aux_var(firstVar, var);
             int sub = get_obj_k_aux_var(firstVar, var - 1);
             cv->add_clause({sub, var, -main});
-            num_obj_k_constraints++;
         }
 
         for (int i = (int)w; i > 1; i--)
         {
             int reverse_var = stair * (int)g->n + window * (int)w + i;
             cv->add_clause({-reverse_var, -get_obj_k_aux_var(firstVar, reverse_var - 1)});
-            num_obj_k_constraints++;
         }
 
         // Lower part
@@ -416,14 +357,12 @@ void SCLEncoder::encode_window(int window, int stair, int w)
         {
             int var = stair * (int)g->n + window * (int)w + i;
             cv->add_clause({-var, get_obj_k_aux_var(var, lastVar)});
-            num_obj_k_constraints++;
         }
 
         for (int i = w; i >= 2; i--)
         {
             int var = stair * (int)g->n + window * (int)w + i;
             cv->add_clause({-get_obj_k_aux_var(var, lastVar), get_obj_k_aux_var(var - 1, lastVar)});
-            num_obj_k_constraints++;
         }
 
         for (int i = 1; i < (int)w; i++)
@@ -432,7 +371,6 @@ void SCLEncoder::encode_window(int window, int stair, int w)
             int main = get_obj_k_aux_var(var, lastVar);
             int sub = get_obj_k_aux_var(var + 1, lastVar);
             cv->add_clause({var, sub, -main});
-            num_obj_k_constraints++;
         }
 
         // Can be disable
@@ -480,7 +418,6 @@ void SCLEncoder::glue_window(int window, int stair, int w)
             int var = stair * (int)g->n + window * (int)w + i + 1;
 
             cv->add_clause({-get_obj_k_aux_var(var, last_var), -get_obj_k_aux_var(first_reverse_var, reverse_var)});
-            num_obj_k_constraints++;
         }
     }
     else
@@ -494,7 +431,6 @@ void SCLEncoder::glue_window(int window, int stair, int w)
             int var = stair * (int)g->n + window * (int)w + i + 1;
 
             cv->add_clause({-get_obj_k_aux_var(var, last_var), -get_obj_k_aux_var(first_reverse_var, reverse_var)});
-            num_obj_k_constraints++;
         }
     }
 }
@@ -513,8 +449,6 @@ void SCLEncoder::glue_stair(int stair1, int stair2, int w)
             int firstVar = get_obj_k_aux_var(stair1 * g->n + subset * w + 1, stair1 * g->n + subset * w + w);
             int secondVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1, stair2 * g->n + subset * w + w);
             cv->add_clause({-firstVar, -secondVar});
-            num_obj_k_constraints++;
-            num_obj_k_glue_staircase_constraint++;
         }
         else
         {
@@ -523,17 +457,9 @@ void SCLEncoder::glue_stair(int stair1, int stair2, int w)
             int thirdVar = get_obj_k_aux_var(stair2 * g->n + subset * w + 1 + mod, stair2 * g->n + subset * w + w);
             int forthVar = get_obj_k_aux_var(stair2 * g->n + subset * w + w + 1, stair2 * g->n + subset * w + w + mod);
             cv->add_clause({-firstVar, -thirdVar});
-            num_obj_k_constraints++;
-            num_obj_k_glue_staircase_constraint++;
             cv->add_clause({-firstVar, -forthVar});
-            num_obj_k_constraints++;
-            num_obj_k_glue_staircase_constraint++;
             cv->add_clause({-secondVar, -thirdVar});
-            num_obj_k_constraints++;
-            num_obj_k_glue_staircase_constraint++;
             cv->add_clause({-secondVar, -forthVar});
-            num_obj_k_constraints++;
-            num_obj_k_glue_staircase_constraint++;
         }
     }
 }
