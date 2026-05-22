@@ -10,7 +10,7 @@
 #include "scl_encoder.h"
 #include "../graph/graph.h"
 
-ABPEncoder::ABPEncoder(std::string symmetry_break_strategy, Graph *graph, int width, EncodeType enc_strategy)
+ABPEncoder::ABPEncoder(SymmetryBreakingType symmetry_break_strategy, Graph *graph, int width, EncodeType enc_strategy)
     : symmetry_break_strategy(symmetry_break_strategy), width(width), graph(graph), enc_strategy(enc_strategy) {
 
       };
@@ -48,7 +48,7 @@ int ABPEncoder::encode_and_solve_abp()
 
     setup_for_solving();
     std::cout << "c " << get_signature() << " Encoding starts with w = " << width << ":" << std::endl;
-    std::cout << "c " << get_signature() << " Encode symmetry breaking with option: " << symmetry_break_strategy << "." << std::endl;
+    std::cout << "c " << get_signature() << " Encode symmetry breaking with option: " << (int)symmetry_break_strategy << "." << std::endl;
 
     auto t1 = std::chrono::high_resolution_clock::now();
     enc->encode_antibandwidth(width, graph->edges);

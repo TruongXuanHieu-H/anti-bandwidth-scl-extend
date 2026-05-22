@@ -15,6 +15,7 @@
 #include "encoders/encoder.h"
 #include "enum/encode_type.h"
 #include "enum/search_strategy.h"
+#include "enum/symmetry_breaking_type.h"
 #include "graph/graph.h"
 
 class AntibandwidthEncoder
@@ -42,7 +43,7 @@ public:
 
 	bool enable_solution_verification = true;
 	int split_limit = 0;
-	std::string symmetry_break_strategy = "n";
+	SymmetryBreakingType symmetry_break_strategy = SymmetryBreakingType::NONE;
 
 	bool overwrite_lb = false;
 	bool overwrite_ub = false;

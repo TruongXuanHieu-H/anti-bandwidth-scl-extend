@@ -6,6 +6,7 @@
 #include <utility> //pair
 
 #include "clause_cont.h"
+#include "../enum/symmetry_breaking_type.h"
 #include "../graph/graph.h"
 
 typedef std::vector<int>::iterator vec_int_it;
@@ -19,7 +20,7 @@ public:
     Encoder(Encoder const &) = delete;
     Encoder &operator=(Encoder const &) = delete;
 
-    std::string symmetry_break_point = "n";
+    SymmetryBreakingType symmetry_break_point = SymmetryBreakingType::NONE;
 
     void encode_antibandwidth(int w, const std::vector<std::pair<int, int>> &node_pairs);
 

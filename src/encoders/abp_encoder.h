@@ -15,7 +15,7 @@
 class ABPEncoder
 {
 public:
-    ABPEncoder(std::string symmetry_break_strategy, Graph *graph, int width, EncodeType enc_strategy);
+    ABPEncoder(SymmetryBreakingType symmetry_break_strategy, Graph *graph, int width, EncodeType enc_strategy);
     virtual ~ABPEncoder();
 
     // Solver configurations
@@ -25,7 +25,7 @@ public:
 
     bool enable_solution_verification = true;
     int split_limit = 0;
-    std::string symmetry_break_strategy = "n";
+    SymmetryBreakingType symmetry_break_strategy = SymmetryBreakingType::NONE;
 
     int encode_and_solve_abp();
 

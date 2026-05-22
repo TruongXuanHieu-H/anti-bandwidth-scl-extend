@@ -45,15 +45,15 @@ void SCLEncoder::do_encode_antibandwidth(int w, const std::vector<std::pair<int,
     vertices_aux_var = g->n * g->n;
     labels_aux_var = vertices_aux_var + g->n * g->n;
 
-    if (symmetry_break_point == std::string("f"))
+    if (symmetry_break_point == SymmetryBreakingType::FIRST)
     {
         encode_symmetry_break();
     }
-    else if (symmetry_break_point == std::string("h"))
+    else if (symmetry_break_point == SymmetryBreakingType::HIGHEST_DEGREE)
     {
         encode_symmetry_break_on_maxnode();
     }
-    else if (symmetry_break_point == std::string("l"))
+    else if (symmetry_break_point == SymmetryBreakingType::LOWEST_DEGREE)
     {
         encode_symmetry_break_on_minnode();
     }

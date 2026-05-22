@@ -204,7 +204,23 @@ int main(int argc, char **argv)
         }
         else if (argv[i] == std::string("-symmetry-break"))
         {
-            abw_enc->symmetry_break_strategy = argv[++i];
+            std::string s = argv[++i];
+            if (s == "f")
+            {
+                abw_enc->symmetry_break_strategy = SymmetryBreakingType::FIRST;
+            }
+            else if (s == "h")
+            {
+                abw_enc->symmetry_break_strategy = SymmetryBreakingType::HIGHEST_DEGREE;
+            }
+            else if (s == "l")
+            {
+                abw_enc->symmetry_break_strategy = SymmetryBreakingType::LOWEST_DEGREE;
+            }
+            else
+            {
+                throw std::runtime_error("Unrecognized symmetry breaking type: " + s);
+            }
         }
         else if (argv[i] == std::string("-process-count"))
         {
