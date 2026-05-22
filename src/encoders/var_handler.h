@@ -1,10 +1,5 @@
-#ifndef UTILS_H
-#define UTILS_H
-
-#include <vector>
-#include <utility>
-#include <string>
-
+#ifndef VAR_HANDLER_H
+#define VAR_HANDLER_H
 class VarHandler
 {
 public:
@@ -18,5 +13,4 @@ private:
     int next_to_assign;
     int last_intput_var;
 };
-
 #endif

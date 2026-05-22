@@ -7,8 +7,8 @@
 #include <string>
 #include <vector>
 
-#include "../utils.h"
-#include "clause_cont.h"
+#include "var_handler.h"
+#include "clause_container.h"
 #include "cadical_clauses.h"
 #include "encoder.h"
 

@@ -1,7 +1,7 @@
 #ifndef CAD_CONT_H
 #define CAD_CONT_H
 
-#include "clause_cont.h"
+#include "clause_container.h"
 #include "cadical.hpp"
 
 class CadicalClauseContainer : public ClauseContainer

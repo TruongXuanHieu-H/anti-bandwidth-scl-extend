@@ -1,9 +1,4 @@
-#include "utils.h"
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <assert.h>
-#include <stdlib.h> //abs
+#include "var_handler.h"
 
 /*
  * input_size: number of nodes -> number of variables will be input_size^2

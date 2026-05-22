@@ -1,7 +1,7 @@
-#ifndef CLAUSE_CONT_H
-#define CLAUSE_CONT_H
+#ifndef CLAUSE_CONTAINER_H
+#define CLAUSE_CONTAINER_H
 
-#include "../utils.h"
+#include "var_handler.h"
 #include <vector>
 
 typedef std::vector<int> Clause;

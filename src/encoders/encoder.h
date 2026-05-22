@@ -5,7 +5,7 @@
 #include <deque>
 #include <utility> //pair
 
-#include "clause_cont.h"
+#include "clause_container.h"
 #include "../enum/symmetry_breaking_type.h"
 #include "../graph/graph.h"
 

@@ -39,13 +39,14 @@ SOURCES := \
 	encoders/abp_encoder.cpp \
 	encoders/bdd.cpp \
 	encoders/cadical_clauses.cpp \
-	encoders/clause_cont.cpp \
+	encoders/clause_container.cpp \
 	encoders/duplex_encoder.cpp \
 	encoders/encoder.cpp \
 	encoders/product_encoder.cpp \
 	encoders/reduced_encoder.cpp \
 	encoders/scl_encoder.cpp \
 	encoders/sequential_encoder.cpp \
+	encoders/var_handler.cpp \
 	graph/graph.cpp \
 	utils/pid_manager.cpp \
 	utils/signal_handler.cpp \
@@ -53,7 +54,6 @@ SOURCES := \
 	utils/version.cpp \
 	antibandwidth_encoder.cpp \
 	main.cpp \
-	utils.cpp
 
 # ================================
 # Object files
