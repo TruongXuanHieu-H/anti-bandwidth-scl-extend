@@ -29,7 +29,7 @@ private:
     int num_obj_k_constraints = 0;
     int num_obj_k_glue_staircase_constraint = 0;
 
-    void do_encode_antibandwidth(unsigned w, const std::vector<std::pair<int, int>> &node_pairs) final;
+    void do_encode_antibandwidth(int w, const std::vector<std::pair<int, int>> &node_pairs) final;
 
     int do_vars_size() const final;
 
@@ -40,11 +40,11 @@ private:
     void encode_exactly_one_product(const std::vector<int> &vars);
     void encode_amo_seq(const std::vector<int> &vars);
 
-    void encode_obj_k(unsigned w);
-    void encode_stair(int stair, unsigned w);
-    void encode_window(int window, int stair, unsigned w);
-    void glue_window(int window, int stair, unsigned w);
-    void glue_stair(int stair1, int stair2, unsigned w);
+    void encode_obj_k(int w);
+    void encode_stair(int stair, int w);
+    void encode_window(int window, int stair, int w);
+    void glue_window(int window, int stair, int w);
+    void glue_stair(int stair1, int stair2, int w);
 };
 
 #endif

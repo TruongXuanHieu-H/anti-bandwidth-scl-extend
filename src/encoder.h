@@ -6,6 +6,7 @@
 #include <utility> //pair
 
 #include "clause_cont.h"
+#include "graph/graph.h"
 
 typedef std::vector<int>::iterator vec_int_it;
 typedef std::deque<int>::iterator deq_int_it;
@@ -20,7 +21,7 @@ public:
 
     std::string symmetry_break_point = "n";
 
-    void encode_antibandwidth(unsigned w, const std::vector<std::pair<int, int>> &node_pairs);
+    void encode_antibandwidth(int w, const std::vector<std::pair<int, int>> &node_pairs);
 
     int size() const;
     int vars_size() const;
@@ -38,7 +39,7 @@ protected:
     void encode_symmetry_break_on_minnode();
 
 private:
-    virtual void do_encode_antibandwidth(unsigned w, std::vector<std::pair<int, int>> const &node_pairs) = 0;
+    virtual void do_encode_antibandwidth(int w, std::vector<std::pair<int, int>> const &node_pairs) = 0;
     virtual int do_vars_size() const = 0;
 };
 

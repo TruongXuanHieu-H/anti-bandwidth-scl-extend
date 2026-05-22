@@ -10,7 +10,7 @@ public:
     virtual ~SeqEncoder();
 
 private:
-    void do_encode_antibandwidth(unsigned w, const std::vector<std::pair<int, int>> &node_pairs) final;
+    void do_encode_antibandwidth(int w, const std::vector<std::pair<int, int>> &node_pairs) final;
     int do_vars_size() const final;
 
     void encode_labelling();

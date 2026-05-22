@@ -12,10 +12,10 @@ public:
 
 private:
 	CaDiCaL::Solver *cad_solver;
-	unsigned clause_counter = 0;
+	int clause_counter = 0;
 
 	void do_add_clause(const Clause &c) final;
-	unsigned do_size() const final;
+	int do_size() const final;
 	void do_print_dimacs() const final;
 	void do_print_clauses() const final;
 	void do_clear() final;

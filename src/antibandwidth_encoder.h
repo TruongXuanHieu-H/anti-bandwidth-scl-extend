@@ -13,6 +13,7 @@
 #include <fstream>
 
 #include "encoder.h"
+#include "graph/graph.h"
 
 enum EncoderStrategy
 {

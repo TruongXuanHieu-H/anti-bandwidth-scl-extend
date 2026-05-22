@@ -10,7 +10,7 @@ public:
     virtual ~ProductEncoder();
 
 private:
-    void do_encode_antibandwidth(unsigned w, std::vector<std::pair<int, int>> const &node_pairs) final;
+    void do_encode_antibandwidth(int w, std::vector<std::pair<int, int>> const &node_pairs) final;
     int do_vars_size() const final;
 
     void encode_labelling();

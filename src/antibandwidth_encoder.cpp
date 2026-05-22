@@ -10,6 +10,7 @@
 #include <sys/mman.h>
 #include <sys/prctl.h>
 
+#include "graph/graph.h"
 #include "utils/pid_manager.h"
 
 AntibandwidthEncoder::AntibandwidthEncoder()

@@ -19,7 +19,7 @@ int ProductEncoder::do_vars_size() const
     return vh->size();
 };
 
-void ProductEncoder::do_encode_antibandwidth(unsigned w, std::vector<std::pair<int, int>> const &node_pairs)
+void ProductEncoder::do_encode_antibandwidth(int w, std::vector<std::pair<int, int>> const &node_pairs)
 {
     if (symmetry_break_point == std::string("f"))
     {
@@ -49,14 +49,14 @@ void ProductEncoder::do_encode_antibandwidth(unsigned w, std::vector<std::pair<i
 
 void ProductEncoder::encode_labelling()
 {
-    for (unsigned i = 0; i < g->n; i++)
+    for (int i = 0; i < g->n; i++)
     {
         std::vector<int> node_label_eo(g->n);
         std::iota(node_label_eo.begin(), node_label_eo.end(), (i * g->n) + 1);
         encode_eo(node_label_eo.begin(), node_label_eo.end());
     }
 
-    for (unsigned i = 0; i < g->n; i++)
+    for (int i = 0; i < g->n; i++)
     {
         std::vector<int> label_node_eo(g->n);
         int j = 0;
@@ -93,7 +93,7 @@ void ProductEncoder::encode_pair_amo(int w, int node1, int node2)
 
 void ProductEncoder::encode_eo(vec_int_it it_begin, vec_int_it it_end)
 {
-    unsigned constr_length = std::distance(it_begin, it_end);
+    int constr_length = std::distance(it_begin, it_end);
     if (constr_length < 2)
         return;
     if (constr_length == 2)
@@ -137,7 +137,7 @@ void ProductEncoder::encode_eo(vec_int_it it_begin, vec_int_it it_end)
 
 void ProductEncoder::encode_amo(vec_int_it it_begin, vec_int_it it_end)
 {
-    unsigned constr_length = std::distance(it_begin, it_end);
+    int constr_length = std::distance(it_begin, it_end);
     if (constr_length < 2)
         return;
     if (constr_length == 2)
@@ -175,7 +175,7 @@ void ProductEncoder::encode_amo(vec_int_it it_begin, vec_int_it it_end)
 
 void ProductEncoder::encode_glued_amo(deq_int_it amo1_begin, deq_int_it amo1_end, deq_int_it amo2_begin, deq_int_it amo2_end)
 {
-    unsigned constr_length = std::distance(amo1_begin, amo1_end);
+    int constr_length = std::distance(amo1_begin, amo1_end);
     constr_length += std::distance(amo2_begin, amo2_end);
 
     assert(constr_length > 2);

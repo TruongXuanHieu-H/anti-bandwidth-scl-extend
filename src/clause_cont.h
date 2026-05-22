@@ -20,18 +20,18 @@ public:
 	void add_clause(const Clause &c);
 	void print_dimacs() const;
 	void print_clauses() const;
-	unsigned size() const;
+	int size() const;
 
 protected:
 	VarHandler *vh;
 
-	ClauseContainer(VarHandler *, unsigned split_size = 0);
-	const unsigned split_size;
+	ClauseContainer(VarHandler *, int split_size = 0);
+	const int split_size;
 	bool do_split = false;
 
 private:
 	virtual void do_add_clause(const Clause &c) = 0;
-	virtual unsigned do_size() const = 0;
+	virtual int do_size() const = 0;
 	virtual void do_print_dimacs() const = 0;
 	virtual void do_clear() = 0;
 	virtual void do_print_clauses() const = 0;
@@ -45,7 +45,7 @@ public:
 
 private:
 	void do_add_clause(const Clause &c) final;
-	unsigned do_size() const final;
+	int do_size() const final;
 	void do_print_dimacs() const final;
 	void do_clear() final;
 	void do_print_clauses() const final;

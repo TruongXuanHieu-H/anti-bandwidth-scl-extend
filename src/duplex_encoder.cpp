@@ -29,7 +29,7 @@ int DuplexEncoder::do_vars_size() const
     return vh->size();
 };
 
-void DuplexEncoder::do_encode_antibandwidth(unsigned w, const std::vector<std::pair<int, int>> &node_pairs)
+void DuplexEncoder::do_encode_antibandwidth(int w, const std::vector<std::pair<int, int>> &node_pairs)
 {
     num_l_v_constraints = 0;
     num_obj_k_constraints = 0;

@@ -16,7 +16,7 @@ int ReducedEncoder::do_vars_size() const
     return vh->size();
 };
 
-void ReducedEncoder::do_encode_antibandwidth(unsigned w, const std::vector<std::pair<int, int>> &node_pairs)
+void ReducedEncoder::do_encode_antibandwidth(int w, const std::vector<std::pair<int, int>> &node_pairs)
 {
     if (symmetry_break_point == std::string("f"))
     {
@@ -54,7 +54,7 @@ void ReducedEncoder::encode_labelling()
      * ...
      * 871 + 872 + 873 + ... + 899 + 900 <= 1
      */
-    for (unsigned i = 0; i < g->n; i++)
+    for (int i = 0; i < g->n; i++)
     {
         std::vector<int> node_label_eo(g->n);
         std::iota(node_label_eo.begin(), node_label_eo.end(), (i * g->n) + 1);
@@ -68,7 +68,7 @@ void ReducedEncoder::encode_labelling()
      * ...
      * 30 + 60 + 90 + ... + 870 + 900 <= 1
      */
-    for (unsigned i = 0; i < g->n; i++)
+    for (int i = 0; i < g->n; i++)
     {
         std::vector<int> label_node_eo(g->n);
         int j = 0;

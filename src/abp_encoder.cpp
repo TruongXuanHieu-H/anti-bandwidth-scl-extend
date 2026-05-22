@@ -8,6 +8,7 @@
 #include "product_encoder.h"
 #include "duplex_encoder.h"
 #include "scl_encoder.h"
+#include "graph/graph.h"
 
 ABPEncoder::ABPEncoder(std::string symmetry_break_strategy, Graph *graph, int width, EncoderStrategy enc_strategy)
     : symmetry_break_strategy(symmetry_break_strategy), width(width), graph(graph), enc_strategy(enc_strategy) {
@@ -111,9 +112,9 @@ int ABPEncoder::verify_solution()
 
 bool ABPEncoder::extract_node_labels(std::vector<int> &node_labels)
 {
-    for (unsigned node = 0; node < graph->n; ++node)
+    for (int node = 0; node < graph->n; ++node)
     {
-        for (unsigned label = 1; label <= graph->n; ++label)
+        for (int label = 1; label <= graph->n; ++label)
         {
             int res = solver->val(node * graph->n + label);
             if (res > 0)
@@ -122,9 +123,9 @@ bool ABPEncoder::extract_node_labels(std::vector<int> &node_labels)
             }
         }
     }
-    if (node_labels.size() > graph->n)
+    if ((int)node_labels.size() > graph->n)
     {
-        std::cerr << "e" + get_signature() + " Error, the solution is not a labelling: more than one label assigned for one of the nodes." << std::endl;
+        std::cerr << "e" << get_signature() << " Error, the solution is not a labelling: more than one label assigned for one of the nodes." << std::endl;
         return false;
     }
     return true;
@@ -163,7 +164,7 @@ void ABPEncoder::setup_cadical()
     if (force_phase)
     {
         std::vector<std::string> force_phase_options{"--forcephase", "--phase=0", "--no-rephase"};
-        for (unsigned i = 0; i < force_phase_options.size(); ++i)
+        for (int i = 0; i < (int)force_phase_options.size(); ++i)
         {
             res = solver->set_long_option(force_phase_options[i].data());
             if (verbose)

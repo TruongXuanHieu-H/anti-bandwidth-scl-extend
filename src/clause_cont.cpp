@@ -2,7 +2,7 @@
 #include <iostream>
 #include <assert.h>
 
-ClauseContainer::ClauseContainer(VarHandler *v, unsigned split_limit) : vh(v), split_size(split_limit)
+ClauseContainer::ClauseContainer(VarHandler *v, int split_limit) : vh(v), split_size(split_limit)
 {
     if (split_limit == 0)
         do_split = false;
@@ -21,7 +21,7 @@ void ClauseContainer::add_clause(const Clause &c)
     else
     {
         Clause long_clause = c;
-        while (long_clause.size() > split_size)
+        while ((int)long_clause.size() > split_size)
         {
             int split_var = vh->get_new_var();
 
@@ -47,7 +47,7 @@ void ClauseContainer::print_dimacs() const
     do_print_dimacs();
 };
 
-unsigned ClauseContainer::size() const
+int ClauseContainer::size() const
 {
     return do_size();
 };
@@ -70,7 +70,7 @@ void ClauseVector::do_add_clause(const Clause &c)
     std::cout << std::endl;
 };
 
-unsigned ClauseVector::do_size() const
+int ClauseVector::do_size() const
 {
     return clause_list.size();
 };

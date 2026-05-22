@@ -34,7 +34,7 @@ int SCLEncoder::do_vars_size() const
     return vh->size();
 };
 
-void SCLEncoder::do_encode_antibandwidth(unsigned w, const std::vector<std::pair<int, int>> &node_pairs)
+void SCLEncoder::do_encode_antibandwidth(int w, const std::vector<std::pair<int, int>> &node_pairs)
 {
     aux_vars.clear();
     obj_k_aux_vars.clear();
@@ -88,7 +88,7 @@ void SCLEncoder::encode_vertices()
         ...
         30 + 60 + 90 + ... + 900 = 1
     */
-    for (unsigned i = 0; i < g->n; i++)
+    for (int i = 0; i < g->n; i++)
     {
         std::vector<int> node_vertices_eo(g->n);
         int j = 0;
@@ -110,7 +110,7 @@ void SCLEncoder::encode_labels()
         ...
         871 + 872 + 873 + ... + 900 = 1
     */
-    for (unsigned i = 0; i < g->n; i++)
+    for (int i = 0; i < g->n; i++)
     {
         std::vector<int> node_labels_eo(g->n);
         std::iota(node_labels_eo.begin(), node_labels_eo.end(), (i * g->n) + 1);
@@ -154,7 +154,7 @@ void SCLEncoder::encode_exactly_one_product(const std::vector<int> &vars)
 
     int i, j;
     std::vector<int> or_clause = std::vector<int>();
-    for (unsigned idx = 0; idx < vars.size(); ++idx)
+    for (int idx = 0; idx < (int)vars.size(); ++idx)
     {
         i = std::floor(idx / p);
         j = idx % p;
@@ -180,7 +180,7 @@ void SCLEncoder::encode_amo_seq(const std::vector<int> &vars)
 
     int prev = vars[0];
 
-    for (unsigned idx = 1; idx < vars.size() - 1; ++idx)
+    for (int idx = 1; idx < (int)vars.size() - 1; ++idx)
     {
         int curr = vars[idx];
         int next = vh->get_new_var();
@@ -198,7 +198,7 @@ void SCLEncoder::encode_amo_seq(const std::vector<int> &vars)
     num_l_v_constraints++;
 };
 
-void SCLEncoder::encode_obj_k(unsigned w)
+void SCLEncoder::encode_obj_k(int w)
 {
     for (int i = 0; i < (int)g->n; i++)
     {
@@ -211,7 +211,7 @@ void SCLEncoder::encode_obj_k(unsigned w)
     }
 }
 
-void SCLEncoder::encode_stair(int stair, unsigned w)
+void SCLEncoder::encode_stair(int stair, int w)
 {
     if (is_debug_mode)
         std::cout << "Encode stair " << stair << " with width " << w << std::endl;
@@ -265,7 +265,7 @@ void SCLEncoder::encode_stair(int stair, unsigned w)
  * The last window only has upper part.
  * Other windows have both upper part and lower part.
  */
-void SCLEncoder::encode_window(int window, int stair, unsigned w)
+void SCLEncoder::encode_window(int window, int stair, int w)
 {
     if (window == 0)
     {
@@ -451,7 +451,7 @@ void SCLEncoder::encode_window(int window, int stair, unsigned w)
  * Using lower part of the previous window and upper part of the next window
  * as anchor points to glue.
  */
-void SCLEncoder::glue_window(int window, int stair, unsigned w)
+void SCLEncoder::glue_window(int window, int stair, int w)
 {
     /*  The stair look like this:
      *      Window 1        Window 2        Window 3        Window 4
@@ -500,7 +500,7 @@ void SCLEncoder::glue_window(int window, int stair, unsigned w)
     }
 }
 
-void SCLEncoder::glue_stair(int stair1, int stair2, unsigned w)
+void SCLEncoder::glue_stair(int stair1, int stair2, int w)
 {
     if (is_debug_mode)
         std::cout << "Glue stair " << stair1 << " with stair " << stair2 << std::endl;

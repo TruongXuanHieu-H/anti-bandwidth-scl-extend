@@ -16,7 +16,10 @@ STANDARD  := -std=c++23
 # ================================
 # Compiler flags
 # ================================
-IGNORE_ASSERTVARS := -Wno-unused-but-set-variable
+IGNORE_ASSERTVARS := \
+	-Wno-unused-but-set-variable \
+	-Wno-sign-compare \
+	-Wno-maybe-uninitialized
 CXXFLAGS := -Wall -Wextra -Werror -O3 $(STANDARD)
 
 # ================================
@@ -47,6 +50,7 @@ SOURCES := \
 	cadical_clauses.cpp \
 	antibandwidth_encoder.cpp \
 	abp_encoder.cpp \
+	graph/graph.cpp \
 	utils/pid_manager.cpp \
 	utils/signal_handler.cpp \
 	utils/usage.cpp \

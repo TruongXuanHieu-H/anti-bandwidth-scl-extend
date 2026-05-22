@@ -22,7 +22,7 @@ void CadicalClauseContainer::do_add_clause(const Clause &c)
     clause_counter += 1;
 };
 
-unsigned CadicalClauseContainer::do_size() const
+int CadicalClauseContainer::do_size() const
 {
     // cad_solver->irredundant() != clause_counter. Here the encoding clause size is interesting.
     return clause_counter;
